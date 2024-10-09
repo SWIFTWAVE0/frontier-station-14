@@ -216,7 +216,7 @@ namespace Content.Shared.CCVar
         /// If roles should be restricted based on time.
         /// </summary>
         public static readonly CVarDef<bool>
-            GameRoleTimers = CVarDef.Create("game.role_timers", true, CVar.SERVER | CVar.REPLICATED);
+            GameRoleTimers = CVarDef.Create("game.role_timers", false, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         /// Override default role requirements using a <see cref="JobRequirementOverridePrototype"/>
@@ -228,7 +228,7 @@ namespace Content.Shared.CCVar
         /// If roles should be restricted based on whether or not they are whitelisted.
         /// </summary>
         public static readonly CVarDef<bool>
-            GameRoleWhitelist = CVarDef.Create("game.role_whitelist", true, CVar.SERVER | CVar.REPLICATED);
+            GameRoleWhitelist = CVarDef.Create("game.role_whitelist", false, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         /// Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
@@ -297,7 +297,7 @@ namespace Content.Shared.CCVar
         /// Minimal overall played time.
         /// </summary>
         public static readonly CVarDef<int> PanicBunkerMinOverallMinutes =
-            CVarDef.Create("game.panic_bunker.min_overall_minutes", 600, CVar.SERVERONLY);
+            CVarDef.Create("game.panic_bunker.min_overall_minutes", 1, CVar.SERVERONLY);
 
         /// <summary>
         /// A custom message that will be used for connections denied to the panic bunker

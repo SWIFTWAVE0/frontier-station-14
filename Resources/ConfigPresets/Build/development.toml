@@ -1,7 +1,7 @@
 ﻿[game]
 # Straight in-game baby
-lobbyenabled = false
-map = "NFDev"
+lobbyenabled = true
+map = "FD_hub"
 role_timers = false
 
 [ghost]

@@ -190,7 +190,7 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         {
             if (_roles.TryGetValue(job.PlayTimeTracker, out var locJobName))
             {
-                yield return new KeyValuePair<string, TimeSpan>(job.Name, locJobName);
+                yield return new KeyValuePair<string, TimeSpan>(job.Name, TimeSpan.Zero);
             }
         }
     }

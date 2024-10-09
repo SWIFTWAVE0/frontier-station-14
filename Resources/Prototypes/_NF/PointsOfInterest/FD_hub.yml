@@ -1,0 +1,36 @@
+- type: pointOfInterest
+  id: FD_hub
+  name: 'Sevastopol'
+  rangeMin: 2000
+  rangeMax: 3500
+  IFFColor: "#3737C9" #blue the color of NT
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/FD_hub.yml
+  busStop: true
+
+- type: gameMap
+  id: FD_hub
+  mapName: 'Sevastopol'
+  mapPath: /Maps/_NF/POI/FD_hub.yml
+  minPlayers: 0
+  stations:
+    FD_hub:
+      stationProto: SpawnableFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Sevastopol'
+        - type: StationJobs
+          availableJobs:
+            ChiefMedicalOfficer: [ 1, 1 ]
+            StationEngineer: [ 2, 2 ]
+            Bartender: [ 2, 2]
+            Chef: [ 2, 2 ]
+            Contractor: [ -1, -1 ]
+            Pilot: [ -1, -1 ]
+            Mercenary: [ -1, -1 ]
+        - type: StationDeadDrop
+          maxDeadDrops: 1 # Fewer here, players start here.
+
+# Others:
+#            Borg: [ 0, 0 ]
+#            Chaplain: [ 0, 0 ] # Remove this when we fix bible user spawn in some other way.

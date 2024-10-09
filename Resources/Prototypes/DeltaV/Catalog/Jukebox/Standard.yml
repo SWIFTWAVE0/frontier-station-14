@@ -108,3 +108,57 @@
   name: Amie Waters - Superposition
   path:
     path: /Audio/DeltaV/Jukebox/superposition-MONO.ogg
+
+- type: jukebox
+  id: fd1
+  name: FD Wars of Expansion
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]WarsofExpansion.ogg
+
+- type: jukebox
+  id: fd2
+  name: FD Kavinsky - NightCall
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Kavinsky_NightCall.ogg
+
+- type: jukebox
+  id: fd3
+  name: FD Drunken Sailor
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]drunkensailor.ogg
+
+- type: jukebox
+  id: fd4
+  name: FD Dogfighting
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Dogfighting.ogg
+
+- type: jukebox
+  id: fd5
+  name: FD Dawsons Christian
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Dawsons_Christian.ogg
+
+- type: jukebox
+  id: fd6
+  name: FD Children Of Enceladus
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]ChildrenOfEnceladus.ogg
+
+- type: jukebox
+  id: fd7
+  name: FD Carpenter Brut - Escape from Midwich Valley
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Carpenter_Brut_Escape_from_Midwich_Valley.ogg
+
+- type: jukebox
+  id: fd8
+  name: FD The Red Strings Club
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]The_Red_Strings_Club.ogg
+
+- type: jukebox
+  id: fd9
+  name: FD Team Fortress 2 - Medic
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Team_Fortress_2_Soundtrack_MEDIC.ogg

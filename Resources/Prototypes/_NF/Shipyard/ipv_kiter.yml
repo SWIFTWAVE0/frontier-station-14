@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Kiter
+  name: IPV Kiter
+  description:
+  price: 51000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/ipv_kiter.yml
+  guidebookPage: Null
+  class:
+  - Salvage
+
+- type: gameMap
+  id: Kiter
+  mapName: 'IPV Kiter'
+  mapPath: /Maps/_NF/Shuttles/ipv_kiter.yml
+  minPlayers: 0
+  stations:
+    Kiter:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Kiter {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

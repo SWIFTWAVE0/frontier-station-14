@@ -1,5 +1,5 @@
 # Author Info
-# GitHub: 
+# GitHub:
 # Discord: Checkraze
 
 # Maintainer Info
@@ -31,7 +31,5 @@
           mapNameTemplate: 'Expeditionary Lodge'
         - type: StationJobs
           availableJobs:
-            Pilot: [ -1, -1 ]
-            Mercenary: [ -1, -1 ]
         - type: StationDeadDrop
           maxDeadDrops: 1 # Fewer here, players start here.

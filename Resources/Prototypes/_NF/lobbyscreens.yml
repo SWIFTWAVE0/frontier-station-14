@@ -1,35 +1,15 @@
 - type: lobbyBackground
-  id: BingGuss
-  background: /Textures/_NF/LobbyScreens/bingguss.png
+  id: fd1_art
+  background: /Textures/_NF/LobbyScreens/fd1_art.png
 
 - type: lobbyBackground
-  id: Janigang
-  background: /Textures/_NF/LobbyScreens/janigang.png
+  id: fd2_art
+  background: /Textures/_NF/LobbyScreens/fd2_art.png
 
 - type: lobbyBackground
-  id: Xeeenoooossss
-  background: /Textures/_NF/LobbyScreens/xeeenoooossss.png
+  id: fd3_art
+  background: /Textures/_NF/LobbyScreens/fd3_art.png
 
 - type: lobbyBackground
-  id: Secrun
-  background: /Textures/_NF/LobbyScreens/secrun.png
-
-- type: lobbyBackground
-  id: TheSecStealers
-  background: /Textures/_NF/LobbyScreens/thesecstealers.png
-
-- type: lobbyBackground
-  id: HandsomeKiller
-  background: /Textures/_NF/LobbyScreens/handsomekiller.png
-  
-- type: lobbyBackground
-  id: CaughtUp
-  background: /Textures/_NF/LobbyScreens/caughtup.png
-
-- type: lobbyBackground
-  id: Rebirth
-  background: /Textures/_NF/LobbyScreens/rebirth.png
-
-- type: lobbyBackground
-  id: BrownPants
-  background: /Textures/_NF/LobbyScreens/brownpants.png
+  id: fd4_art
+  background: /Textures/_NF/LobbyScreens/fd4_art.png
