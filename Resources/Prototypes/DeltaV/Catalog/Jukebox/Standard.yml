@@ -162,3 +162,15 @@
   name: FD Team Fortress 2 - Medic
   path:
     path: /Audio/DeltaV/Jukebox/[FD]Team_Fortress_2_Soundtrack_MEDIC.ogg
+
+- type: jukebox
+  id: fd10
+  name: FD Buckshot Roulette
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]buckshot.ogg
+
+- type: jukebox
+  id: fd11
+  name: FD Club Holle
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Club_Holle.ogg

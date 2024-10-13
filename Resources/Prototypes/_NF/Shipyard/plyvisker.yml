@@ -1,0 +1,42 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Plyvisker
+  name: IPV Plyvisker
+  description: Unfinished combat exploratory vessel prototype, seems to be taken early from the shipyard without being properly finished.
+  price: 64000
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/plyvisker.yml
+  guidebookPage: Null
+  class:
+  - Salvage
+  - Science
+
+- type: gameMap
+  id: Plyvisker
+  mapName: 'IPV Plyvisker'
+  mapPath: /Maps/_NF/Shuttles/plyvisker.yml
+  minPlayers: 0
+  stations:
+    Plyvisker:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'IPV Plyvisker {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

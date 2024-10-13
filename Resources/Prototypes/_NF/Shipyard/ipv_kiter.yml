@@ -11,8 +11,8 @@
 - type: vessel
   id: Kiter
   name: IPV Kiter
-  description:
-  price: 51000
+  description: Kiter - is a repurposed salvage shuttle, equipped with four small energy cannons and basic stealth-tech, enough for unexpected, fast as lightning attacks. Kiter's size also gives it enough space and speed to outmaneuver most of the opponents.
+  price: 22500
   category: Small
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/ipv_kiter.yml
