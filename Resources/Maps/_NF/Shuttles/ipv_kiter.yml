@@ -23,6 +23,7 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
+    - type: LoadedMap
   - uid: 2
     components:
     - type: MetaData
@@ -231,6 +232,87 @@ entities:
     - type: GridAtmosphere
       version: 2
       data:
+        tiles:
+          0,0:
+            0: 52479
+            1: 256
+          0,-1:
+            1: 4354
+            0: 49280
+          0,1:
+            1: 33825
+            0: 2188
+          1,0:
+            0: 7487
+          1,1:
+            0: 50
+          0,2:
+            1: 8
+          1,-1:
+            0: 7696
+          2,0:
+            0: 3903
+          2,-1:
+            0: 16128
+          2,3:
+            1: 1128
+          2,2:
+            1: 18432
+          3,0:
+            0: 22135
+          3,2:
+            1: 22080
+          3,-1:
+            0: 28688
+            1: 128
+          3,1:
+            1: 36864
+            0: 17476
+          4,1:
+            1: 1
+          0,-2:
+            1: 51328
+          1,-2:
+            1: 256
+          2,-3:
+            1: 51200
+          2,-2:
+            1: 128
+          3,-2:
+            1: 20993
+          4,-1:
+            1: 256
+        uniqueMixes:
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 21.824879
+          - 82.10312
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          immutable: True
+          moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
@@ -347,6 +429,21 @@ entities:
       parent: 2
 - proto: CableApcExtension
   entities:
+  - uid: 120
+    components:
+    - type: Transform
+      pos: 6.5,-1.5
+      parent: 2
+  - uid: 121
+    components:
+    - type: Transform
+      pos: 7.5,-1.5
+      parent: 2
+  - uid: 122
+    components:
+    - type: Transform
+      pos: 5.5,-1.5
+      parent: 2
   - uid: 245
     components:
     - type: Transform
@@ -536,6 +633,31 @@ entities:
     components:
     - type: Transform
       pos: 15.5,-1.5
+      parent: 2
+  - uid: 327
+    components:
+    - type: Transform
+      pos: 10.5,-1.5
+      parent: 2
+  - uid: 328
+    components:
+    - type: Transform
+      pos: 11.5,-1.5
+      parent: 2
+  - uid: 329
+    components:
+    - type: Transform
+      pos: 12.5,-1.5
+      parent: 2
+  - uid: 330
+    components:
+    - type: Transform
+      pos: 9.5,-1.5
+      parent: 2
+  - uid: 331
+    components:
+    - type: Transform
+      pos: 13.5,3.5
       parent: 2
 - proto: CableHV
   entities:
@@ -1323,26 +1445,6 @@ entities:
     - type: Transform
       pos: 3.6922026,-0.46074045
       parent: 2
-- proto: PowerCellHyper
-  entities:
-  - uid: 117
-    components:
-    - type: Transform
-      parent: 116
-    - type: Physics
-      canCollide: False
-  - uid: 120
-    components:
-    - type: Transform
-      parent: 119
-    - type: Physics
-      canCollide: False
-  - uid: 122
-    components:
-    - type: Transform
-      parent: 121
-    - type: Physics
-      canCollide: False
 - proto: PowerCellMedium
   entities:
   - uid: 325
@@ -1505,79 +1607,28 @@ entities:
       parent: 2
 - proto: ShuttleGunSvalinnMachineGun
   entities:
+  - uid: 3
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 16.5,4.5
+      parent: 2
+  - uid: 29
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,4.5
+      parent: 2
   - uid: 116
     components:
     - type: Transform
-      anchored: False
-      rot: 3.141592653589793 rad
-      pos: 16.504013,4.52221
+      pos: 0.5,-1.5
       parent: 2
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 117
-    - type: Physics
-      bodyType: Dynamic
-  - uid: 118
+  - uid: 117
     components:
     - type: Transform
       pos: 16.5,-1.5
       parent: 2
-  - uid: 119
-    components:
-    - type: Transform
-      anchored: False
-      rot: 3.141592653589793 rad
-      pos: 0.504014,4.52221
-      parent: 2
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 120
-    - type: Physics
-      bodyType: Dynamic
-  - uid: 121
-    components:
-    - type: Transform
-      anchored: False
-      pos: 0.504014,-1.4777901
-      parent: 2
-    - type: ContainerContainer
-      containers:
-        machine_board: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        machine_parts: !type:Container
-          showEnts: False
-          occludes: True
-          ents: []
-        gun_magazine: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 122
-    - type: Physics
-      bodyType: Dynamic
 - proto: SignalButton
   entities:
   - uid: 131
@@ -1588,10 +1639,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.8788095,3.4675453
       parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        116:
-        - Pressed: Toggle
   - uid: 132
     components:
     - type: MetaData
@@ -1600,10 +1647,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.337143,3.4571283
       parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        119:
-        - Pressed: Toggle
   - uid: 135
     components:
     - type: MetaData
@@ -1612,10 +1655,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.1125064,3.463146
       parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        118:
-        - Pressed: Toggle
   - uid: 136
     components:
     - type: MetaData
@@ -1624,10 +1663,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.64392,3.4650323
       parent: 2
-    - type: DeviceLinkSource
-      linkedPorts:
-        121:
-        - Pressed: Toggle
 - proto: SubstationBasic
   entities:
   - uid: 201
@@ -1671,29 +1706,23 @@ entities:
       parent: 2
 - proto: Thruster
   entities:
-  - uid: 3
-    components:
-    - type: Transform
-      anchored: False
-      rot: 3.141592653589793 rad
-      pos: 4.504014,-2.47779
-      parent: 2
-    - type: Physics
-      bodyType: Dynamic
-  - uid: 29
-    components:
-    - type: Transform
-      anchored: False
-      rot: 3.141592653589793 rad
-      pos: 3.504014,-2.47779
-      parent: 2
-    - type: Physics
-      bodyType: Dynamic
   - uid: 99
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,-2.5
+      parent: 2
+  - uid: 118
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 4.5,-2.5
+      parent: 2
+  - uid: 119
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-2.5
       parent: 2
   - uid: 317
     components:
