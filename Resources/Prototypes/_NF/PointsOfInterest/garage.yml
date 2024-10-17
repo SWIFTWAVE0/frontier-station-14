@@ -1,0 +1,20 @@
+# Author Info
+# GitHub:
+# Discord: Checkraze
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# Provides higher end expeditionary ships and a space for vets to spawn in away from potential frontier shenanigans
+- type: pointOfInterest
+  id: Garage
+  name: 'Storage Facility'
+  rangeMin: 1000
+  rangeMax: 1050
+  IFFColor: "#ffa07a" #blue the color of NT
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/garage.yml
+  busStop: true
+

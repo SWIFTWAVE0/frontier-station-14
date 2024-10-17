@@ -210,6 +210,24 @@
   - type: FaxMachine
     name: "Edison Power Plant"
 
+- type: entity
+  parent: [BaseStructureDisableToolUse, FaxMachineBase]
+  id: FaxMachineFDhub
+  suffix: POI, FD_hub
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FaxMachine
+    name: "Sevastopol"
+
+- type: entity
+  parent: [BaseStructureDisableToolUse, FaxMachineBase]
+  id: FaxMachineNFGarage
+  suffix: POI, Garage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FaxMachine
+    name: "Storage Facility"
+
 # Events
 - type: entity
   parent: FaxMachineNFLPBravo

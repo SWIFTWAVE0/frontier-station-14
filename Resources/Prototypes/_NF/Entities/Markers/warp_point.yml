@@ -173,6 +173,24 @@
   - type: WarpPoint
     location: Edison Power Plant
 
+- type: entity
+  id: WarpPointNFGarage
+  parent: WarpPoint
+  suffix: POI, Garage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WarpPoint
+    location: Storage Facility
+
+- type: entity
+  id: WarpPointFDhub
+  parent: WarpPoint
+  suffix: POI, FD_hub
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WarpPoint
+    location: Sevastopol
+
 # Events
 - type: entity
   id: WarpPointNFCave

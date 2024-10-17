@@ -1,7 +1,7 @@
 ﻿[game]
 # Straight in-game baby
 lobbyenabled = true
-map = "FD_hub"
+map = "Frontier"
 role_timers = false
 
 [ghost]
