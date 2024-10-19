@@ -24,13 +24,13 @@ namespace Content.Shared.CCVar
         ///     Guide Entry Prototype ID to be displayed as the server rules.
         /// </summary>
         public static readonly CVarDef<string> RulesFile =
-            CVarDef.Create("server.rules_file", "FrontierRuleset", CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("server.rules_file", "FDRuleset", CVar.REPLICATED | CVar.SERVER);
 
         /// <summary>
         ///     A loc string for what should be displayed as the title on the Rules window.
         /// </summary>
         public static readonly CVarDef<string> RulesHeader =
-            CVarDef.Create("server.rules_header", "Frontier Server Rules", CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("server.rules_header", "FD Server Rules", CVar.REPLICATED | CVar.SERVER);
 
         /// <summary>
         ///     Guide entry that is displayed by default when a guide is opened.

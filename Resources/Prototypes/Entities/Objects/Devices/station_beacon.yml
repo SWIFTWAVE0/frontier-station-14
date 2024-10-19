@@ -639,3 +639,244 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-escape-pod
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell01
+  suffix: Cell 01
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-01
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell02
+  suffix: Cell 02
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-02
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell03
+  suffix: Cell 03
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-03
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell04
+  suffix: Cell 04
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-04
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell05
+  suffix: Cell 05
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-05
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell06
+  suffix: Cell 06
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-06
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell07
+  suffix: Cell 07
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-07
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell08
+  suffix: Cell 08
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-08
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell09
+  suffix: Cell 09
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-09
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell10
+  suffix: Cell 10
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-10
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell11
+  suffix: Cell 11
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-11
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell12
+  suffix: Cell 12
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-12
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell13
+  suffix: Cell 13
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-13
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell14
+  suffix: Cell 14
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-14
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell15
+  suffix: Cell 15
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-15
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell16
+  suffix: Cell 16
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-16
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell17
+  suffix: Cell 17
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-17
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell18
+  suffix: Cell 18
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-18
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell19
+  suffix: Cell 19
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-19
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell20
+  suffix: Cell 20
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-20
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell21
+  suffix: Cell 21
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-21
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell22
+  suffix: Cell 22
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-22
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell23
+  suffix: Cell 23
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-23
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell24
+  suffix: Cell 24
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-24
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell25
+  suffix: Cell 25
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-25
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell26
+  suffix: Cell 26
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-26
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell27
+  suffix: Cell 27
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-27
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell28
+  suffix: Cell 28
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-28
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell29
+  suffix: Cell 29
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-29
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconCell30
+  suffix: Cell 30
+  components:
+  - type: NavMapBeacon
+    defaultText: cell-30
+

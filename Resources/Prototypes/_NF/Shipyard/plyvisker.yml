@@ -11,15 +11,17 @@
 - type: vessel
   id: Plyvisker
   name: IPV Plyvisker
-  description: Unfinished combat exploratory vessel prototype, seems to be taken early from the shipyard without being properly finished.
-  price: 64000
+  description: Stealth combat exploratory vessel prototype, seems to be taken early from the shipyard without being properly finished.
+  price: 80000
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/plyvisker.yml
   guidebookPage: Null
   class:
   - Salvage
-  - Science
+  - Mercenary
+  - Personalized
+  - Stealth
 
 - type: gameMap
   id: Plyvisker

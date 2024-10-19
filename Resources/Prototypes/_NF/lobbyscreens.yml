@@ -13,3 +13,11 @@
 - type: lobbyBackground
   id: fd4_art
   background: /Textures/_NF/LobbyScreens/fd4_art.png
+
+- type: lobbyBackground
+  id: fd5_art
+  background: /Textures/_NF/LobbyScreens/fd5_art.png
+
+- type: lobbyBackground
+  id: fd6_art
+  background: /Textures/_NF/LobbyScreens/fd6_art.png

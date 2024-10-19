@@ -1,8 +1,8 @@
 - type: pointOfInterest
   id: FD_hub
   name: 'Sevastopol'
-  rangeMin: 1500
-  rangeMax: 1500
+  rangeMin: 200
+  rangeMax: 200
   IFFColor: "#FFDEAD" #blue the color of NT
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/FD_hub.yml
@@ -19,12 +19,17 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Sevastopol'
+        - type: ExtraStationInformation
+          iconPath: /Textures/_NF/Markers/jobs.rsi/mercenary.png
+          stationSubtext: 'frontier-lobby-exped-subtext'
+          stationDescription: 'frontier-lobby-exped-description'
+          lobbySortOrder: 1
         - type: StationJobs
           availableJobs:
             ChiefMedicalOfficer: [ 1, 1 ]
-            StationEngineer: [ 2, 2 ]
+            StationEngineer: [ 1, 1 ]
             Bartender: [ 1, 1]
-            Chef: [ 2, 2 ]
+            Chef: [ 1, 1 ]
             Contractor: [ -1, -1 ]
             Pilot: [ -1, -1 ]
             Mercenary: [ -1, -1 ]

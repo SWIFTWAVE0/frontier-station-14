@@ -30,11 +30,6 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Pirate Cove'
-        - type: StationJobs
-          availableJobs:
-            PirateCaptain: [ 1, 1 ]
-            PirateFirstMate: [ 1, 1 ]
-            Pirate: [ 0, 0 ]
         - type: ExtraStationInformation
           iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
           stationSubtext: 'frontier-lobby-pirate-subtext'

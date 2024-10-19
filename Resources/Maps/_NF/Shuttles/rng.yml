@@ -24,26 +24,13 @@ tilemap:
 entities:
 - proto: ""
   entities:
-  - uid: 1
-    components:
-    - type: MetaData
-      name: Map Entity
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: PhysicsMap
-    - type: GridTree
-    - type: MovedGrids
-    - type: Broadphase
-    - type: OccluderTree
-    - type: LoadedMap
   - uid: 2
     components:
     - type: MetaData
       name: grid
     - type: Transform
       pos: -0.45833334,-0.46875
-      parent: 1
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -2336,37 +2323,21 @@ entities:
     - type: Transform
       pos: 11.643218,7.285835
       parent: 2
-    - type: ItemSlots
-    - type: ContainerContainer
-      containers:
-        paper_label: !type:ContainerSlot {}
   - uid: 305
     components:
     - type: Transform
       pos: 12.158843,7.70771
       parent: 2
-    - type: ItemSlots
-    - type: ContainerContainer
-      containers:
-        paper_label: !type:ContainerSlot {}
   - uid: 306
     components:
     - type: Transform
       pos: 12.1828575,7.240324
       parent: 2
-    - type: ItemSlots
-    - type: ContainerContainer
-      containers:
-        paper_label: !type:ContainerSlot {}
   - uid: 307
     components:
     - type: Transform
       pos: 12.580718,7.692085
       parent: 2
-    - type: ItemSlots
-    - type: ContainerContainer
-      containers:
-        paper_label: !type:ContainerSlot {}
 - proto: DrinkPoisonWinebottleFull
   entities:
   - uid: 288
@@ -3717,19 +3688,11 @@ entities:
     - type: Transform
       pos: 13.5,-6.5
       parent: 2
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
   - uid: 468
     components:
     - type: Transform
       pos: 12.5,-6.5
       parent: 2
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
 - proto: PosterContrabandBountyHunters
   entities:
   - uid: 469

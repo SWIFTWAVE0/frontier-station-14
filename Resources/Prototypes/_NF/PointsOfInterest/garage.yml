@@ -1,20 +1,25 @@
-# Author Info
-# GitHub:
-# Discord: Checkraze
-
-# Maintainer Info
-# GitHub: ???
-# Discord: ???
-
-# Notes:
-# Provides higher end expeditionary ships and a space for vets to spawn in away from potential frontier shenanigans
 - type: pointOfInterest
   id: Garage
   name: 'Storage Facility'
-  rangeMin: 1000
-  rangeMax: 1050
+  rangeMin: 300
+  rangeMax: 300
   IFFColor: "#ffa07a" #blue the color of NT
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/garage.yml
   busStop: true
+
+- type: gameMap
+  id: Garage
+  mapName: 'Storage Facility'
+  mapPath: /Maps/_NF/POI/garage.yml
+  minPlayers: 0
+  stations:
+    Garage:
+      stationProto: SpawnableFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Storage Facility'
+        - type: StationJobs
+          availableJobs:
+            StationTrafficController: [ 1, 1 ]
 

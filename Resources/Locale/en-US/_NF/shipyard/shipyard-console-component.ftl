@@ -60,3 +60,6 @@ shipyard-console-class-Detective = Detective
 shipyard-console-class-Fighter = Fighter
 shipyard-console-class-Stealth = Stealth
 shipyard-console-class-Capital = Capital
+shipyard-console-class-Mercenary = Mercenary
+shipyard-console-class-Personalized = Personalized
+

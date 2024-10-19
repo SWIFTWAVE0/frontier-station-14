@@ -18,7 +18,6 @@ frontier-lobby-exped-subtext = Where seasoned mercenaries gather.
 frontier-lobby-exped-description = This is base camp for mercenaries and alike. Here you can:
    - Start a mercenary crew
    - Find a crew to join
-   - Purchase weapons and gear
    - Purchase expedition-ready ships
    - Socialize with other mercenaries - or not.
 frontier-lobby-nfsd-description = The New Frontier Security Department is the center of operations for the Sheriffs department. Here you can:
