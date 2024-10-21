@@ -55,7 +55,6 @@ shipyard-console-class-Medical = Medical
 shipyard-console-class-Civilian = Civilian
 shipyard-console-class-Kitchen = Kitchen
 shipyard-console-class-Stealth = Stealth
-shipyard-console-class-Capital = Capital
 shipyard-console-class-Mercenary = Mercenary
 shipyard-console-class-Personalized = Personalized
 # Antag
