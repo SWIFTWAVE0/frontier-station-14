@@ -174,3 +174,9 @@
   name: FD Club Holle
   path:
     path: /Audio/DeltaV/Jukebox/[FD]Club_Holle.ogg
+
+- type: jukebox
+  id: fd12
+  name: FD Necross Madness
+  path:
+    path: /Audio/DeltaV/Jukebox/[FD]Necross_Madness.ogg
