@@ -20,7 +20,8 @@
                     <BoxContainer Name="StationItemList"
                                   Orientation="Vertical"
                                   HorizontalExpand="True"
-                                  MinSize="50 50"/>
+                                  MinSize="50 50">
+                    </BoxContainer>
                 </ScrollContainer>
             </BoxContainer>
         </PanelContainer>
@@ -39,16 +40,18 @@
                     <Label Name="StationName"
                            HorizontalExpand="True"
                            StyleClasses="FancyWindowTitle"/>
+
                     <RichTextLabel Name="StationDescription"/>
                 </BoxContainer>
 
                 <Label Text="{Loc 'frontier-lobby-available-jobs'}"
                        Margin="20 4 0 4"
                        StyleClasses="FancyWindowTitle"/>
-
                 <ScrollContainer HorizontalExpand="True"
                                  VerticalExpand="True"
                                  VScrollEnabled="True">
+
+
                     <BoxContainer Name="StationJobItemList"
                                   Orientation="Vertical"
                                   HorizontalExpand="True"

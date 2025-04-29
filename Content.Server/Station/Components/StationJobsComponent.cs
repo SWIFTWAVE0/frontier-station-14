@@ -6,7 +6,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
-using Content.Shared.Access; // Frontier
 
 namespace Content.Server.Station.Components;
 
@@ -80,12 +79,4 @@ public sealed partial class StationJobsComponent : Component
     /// </summary>
     [DataField("availableJobs", required: true)]
     public Dictionary<ProtoId<JobPrototype>, int[]> SetupAvailableJobs = default!;
-
-    // Frontier: when editing jobs, what accesses should be required?
-    [DataField]
-    public List<ProtoId<AccessGroupPrototype>> Groups = new();
-
-    [DataField]
-    public List<ProtoId<AccessLevelPrototype>> Tags = new();
-    // End Frontier
 }

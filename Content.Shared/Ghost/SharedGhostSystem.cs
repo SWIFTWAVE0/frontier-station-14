@@ -57,21 +57,6 @@ namespace Content.Shared.Ghost
         {
             component.CanReturnToBody = value;
         }
-
-        // Frontier: uncryo status (mirroring CanReturnToBody)
-        public void SetCanReturnFromCryo(EntityUid uid, bool value, GhostComponent? component = null)
-        {
-            if (!Resolve(uid, ref component))
-                return;
-
-            component.CanReturnFromCryo = value;
-        }
-
-        public void SetCanReturnFromCryo(GhostComponent component, bool value)
-        {
-            component.CanReturnFromCryo = value;
-        }
-        // Frontier: uncryo status (mirroring CanReturnToBody)
     }
 
     /// <summary>

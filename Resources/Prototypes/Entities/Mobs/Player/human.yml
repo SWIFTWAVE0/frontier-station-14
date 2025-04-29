@@ -18,7 +18,7 @@
     prototypes: [SyndicateOperativeGearExtremelyBasic]
     roleLoadout: [ RoleSurvivalSyndicate ]
   - type: RandomMetadata
-    nameSegments: [NamesDeathCommando]
+    nameSegments: [names_death_commando]
   - type: NpcFactionMember
     factions:
     - Syndicate
@@ -31,7 +31,8 @@
   components:
   # make the player a traitor once its taken
   - type: AutoTraitor
-    profile: TraitorReinforcement
+    giveUplink: false
+    giveObjectives: false
 
 - type: entity
   parent: MobHumanSyndicateAgent
@@ -69,7 +70,7 @@
   - type: RandomMetadata
     nameSegments:
     - nukeops-role-operator
-    - NamesSyndicateNormal
+    - SyndicateNamesNormal
   - type: Loadout
     prototypes: [SyndicateOperativeGearFullNoUplink]
 
@@ -97,20 +98,8 @@
     roleLoadout: [ RoleSurvivalSyndicate ]
   - type: RandomMetadata
     nameSegments:
-    - NamesSyndicatePrefix
-    - NamesSyndicateNormal
+    - SyndicateNamesPrefix
+    - SyndicateNamesNormal
   - type: NpcFactionMember
     factions:
     - Syndicate
-
-# Wizard
-- type: entity
-  categories: [ HideSpawnMenu ]
-  name: Wizard
-  parent: MobHuman
-  id: MobHumanWizard
-  components:
-  - type: RandomHumanoidAppearance
-  - type: NpcFactionMember
-    factions:
-    - Wizard

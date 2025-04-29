@@ -13,8 +13,8 @@
       state: ertmailcarrier
     - type: RandomMetadata
       nameSegments:
-      - NamesMilitaryFirst
-      - NamesMilitaryLast
+      - NamesFirstMilitary
+      - NamesLastMilitary
     - type: RandomHumanoidSpawner
       settings: ERTMailCarrier
 
@@ -30,8 +30,8 @@
     - type: GhostTakeoverAvailable
     - type: RandomMetadata
       nameSegments:
-      - NamesMilitaryFirst
-      - NamesMilitaryLast
+      - NamesFirstMilitary
+      - NamesLastMilitary
     - type: Loadout
       prototypes: [ ERTMailCarrierGear ]
 

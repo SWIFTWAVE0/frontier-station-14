@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [BaseItem, RecyclableItemCardboard] # Frontier: added RecyclableItemCardboard
+  parent: BaseItem
   id: BaseMagazineBoxCaselessRifle
   name: ammunition box (.25 caseless)
   components:
@@ -17,14 +17,60 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi # Frontier: add _NF prefix
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi
   - type: MagazineVisuals
     magState: mag
-    steps: 4
+    steps: 2
     zeroVisible: false
   - type: Appearance
 
 # Boxes
+- type: entity
+  parent: BaseMagazineBoxCaselessRifle
+  id: MagazineBoxCaselessRifle10x24
+  name: ammunition box (.25 caseless)
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 200
+    proto: CartridgeCaselessRifle
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi # Frontier
+    state: 10x24display # Frontier
+  - type: Sprite
+    layers:
+    - state: base-10x24
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag10-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag10
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  parent: BaseMagazineBoxCaselessRifle
+  id: MagazineBoxCaselessRifleBig
+  name: ammunition box (.25 caseless)
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 200
+    proto: CartridgeCaselessRifle
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi # Frontier
+    state: bigdisplay # Frontier
+  - type: Sprite
+    layers:
+    - state: base-b
+      map: ["enum.GunVisualLayers.Base"]
+    - state: magb-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: magb
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
 - type: entity
   parent: BaseMagazineBoxCaselessRifle
   id: MagazineBoxCaselessRifle
@@ -32,6 +78,9 @@
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeCaselessRifle
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi # Frontier
+    state: display # Frontier
   - type: Sprite
     layers:
     - state: base
@@ -46,6 +95,9 @@
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeCaselessRiflePractice
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/caseless_rifle.rsi # Frontier
+    state: practicedisplay # Frontier
   - type: Sprite
     layers:
     - state: base

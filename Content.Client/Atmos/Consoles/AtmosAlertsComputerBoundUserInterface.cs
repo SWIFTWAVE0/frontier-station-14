@@ -1,6 +1,4 @@
 using Content.Shared.Atmos.Components;
-using Content.Shared.Shuttles.Events; // Frontier
-using Content.Shared._NF.Atmos.BUI; // Frontier
 
 namespace Content.Client.Atmos.Consoles;
 
@@ -13,11 +11,11 @@ public sealed class AtmosAlertsComputerBoundUserInterface : BoundUserInterface
 
     protected override void Open()
     {
-        base.Open();
-
         _menu = new AtmosAlertsComputerWindow(this, Owner);
         _menu.OpenCentered();
         _menu.OnClose += Close;
+
+        EntMan.TryGetComponent<TransformComponent>(Owner, out var xform);
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -26,8 +24,11 @@ public sealed class AtmosAlertsComputerBoundUserInterface : BoundUserInterface
 
         var castState = (AtmosAlertsComputerBoundInterfaceState) state;
 
+        if (castState == null)
+            return;
+
         EntMan.TryGetComponent<TransformComponent>(Owner, out var xform);
-        _menu?.UpdateUI(xform?.Coordinates, castState.AirAlarms, castState.FireAlarms, castState.FocusData, castState.Gaslocks, castState.FocusGaslockData); // Frontier: add gaslocks, focusGaslockData
+        _menu?.UpdateUI(xform?.Coordinates, castState.AirAlarms, castState.FireAlarms, castState.FocusData);
     }
 
     public void SendFocusChangeMessage(NetEntity? netEntity)
@@ -39,28 +40,6 @@ public sealed class AtmosAlertsComputerBoundUserInterface : BoundUserInterface
     {
         SendMessage(new AtmosAlertsComputerDeviceSilencedMessage(netEntity, silenceDevice));
     }
-
-    // Frontier: gaslock message
-    public void SendGaslockChangeDirectionMessage(NetEntity netEntity, bool direction)
-    {
-        SendMessage(new RemoteGasPressurePumpChangePumpDirectionMessage(netEntity, direction));
-    }
-
-    public void SendGaslockPressureChangeMessage(NetEntity netEntity, float pressure)
-    {
-        SendMessage(new RemoteGasPressurePumpChangeOutputPressureMessage(netEntity, pressure));
-    }
-
-    public void SendGaslockChangeEnabled(NetEntity netEntity, bool enabled)
-    {
-        SendMessage(new RemoteGasPressurePumpToggleStatusMessage(netEntity, enabled));
-    }
-
-    public void SendGaslockUndock(NetEntity netEntity)
-    {
-        SendMessage(new UndockRequestMessage { DockEntity = netEntity });
-    }
-    // End Frontier
 
     protected override void Dispose(bool disposing)
     {

@@ -11,7 +11,6 @@ public sealed class SecretStartsTest
     ///     Tests that when secret is started, all of the game rules it successfully adds are also started.
     /// </summary>
     [Test]
-    [Ignore("Irrelevant - no secret game preset")] // Frontier
     public async Task TestSecretStarts()
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });

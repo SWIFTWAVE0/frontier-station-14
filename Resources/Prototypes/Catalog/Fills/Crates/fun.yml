@@ -16,8 +16,6 @@
         weight: 9
       - id: PlushieSpaceLizard
         weight: 1
-      - id: PlushieLizardInversed
-        weight: 0.5
     - !type:GroupSelector
       children:
       - id: PlushieCarp
@@ -102,6 +100,8 @@
         amount: 2
       - id: FrenchHornInstrument
         amount: 2
+      - id: SaxophoneInstrument
+        amount: 2
       - id: EuphoniumInstrument
       - id: TubaInstrument
 
@@ -137,8 +137,6 @@
       - id: ClarinetInstrument
       - id: FluteInstrument
       - id: HarmonicaInstrument
-        amount: 2
-      - id: SaxophoneInstrument
         amount: 2
       - id: OcarinaInstrument
       - id: PanFluteInstrument
@@ -221,7 +219,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: NFVehicleATV # Frontier
+      - id: VehicleATVNF # Frontier
       - id: VehicleKeyATV
 
 - type: entity
@@ -291,19 +289,15 @@
         amount: 4
 
 - type: entity
-  id: CrateFunFoamGuns
-  parent: CratePlastic
-  name: Foam Force crate
-  description: Contains four Foam Force rifles, some grenades, and extra ammo. It's [REDACTED] or nothing!
+  id: CrateFunSyndicateSegway
+  parent: CrateLivestock
+  name: Syndicate segway crate
+  description: A crate containing a two-wheeler that will help you escape from the security officers. Or not.
   components:
-  - type: StorageFill
-    contents:
-    - id: WeaponRifleFoam
-      amount: 4
-    - id: BoxDonkSoftBox
-      amount: 2
-    - id: GrenadeFoamDart
-      amount: 4
+    - type: StorageFill
+      contents:
+        - id: VehicleSyndicateSegway
+        - id: VehicleKeySyndicateSegway
 
 - type: entity
   id: CrateFunBoxing

@@ -1,4 +1,3 @@
-using Content.Shared._NF.CCVar; // Frontier
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 
@@ -27,7 +26,6 @@ namespace Content.Server.Atmos.EntitySystems
         public float AtmosTickRate { get; private set; }
         public float Speedup { get; private set; }
         public float HeatScale { get; private set; }
-        public bool AllowMapGasExtraction { get; private set; } // Frontier
 
         /// <summary>
         /// Time between each atmos sub-update.  If you are writing an atmos device, use AtmosDeviceUpdateEvent.dt
@@ -57,7 +55,6 @@ namespace Content.Server.Atmos.EntitySystems
             Subs.CVar(_cfg, CCVars.AtmosHeatScale, value => { HeatScale = value; InitializeGases(); }, true);
             Subs.CVar(_cfg, CCVars.ExcitedGroups, value => ExcitedGroups = value, true);
             Subs.CVar(_cfg, CCVars.ExcitedGroupsSpaceIsAllConsuming, value => ExcitedGroupsSpaceIsAllConsuming = value, true);
-            Subs.CVar(_cfg, NFCCVars.AllowMapGasExtraction, value => AllowMapGasExtraction = value, true); // Frontier
         }
     }
 }

@@ -1,2 +1,3 @@
 salvage-faction-xenos = Xenos
-salvage-faction-carps = Carps
+# Frontier: Carps<Carp
+salvage-faction-carps = Carp

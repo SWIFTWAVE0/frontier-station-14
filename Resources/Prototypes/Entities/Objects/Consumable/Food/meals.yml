@@ -18,7 +18,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 36 # Frontier: 26<36
+        maxVol: 31
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
@@ -99,25 +99,11 @@
   id: FoodMealNachos
   description: Chips from Space Mexico.
   components:
-  - type: Food
-    trash:
-    - FoodPlateSmall
   - type: FlavorProfile
     flavors:
       - nachos
   - type: Sprite
     state: nachos
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 11
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 1
-        - ReagentId: TableSalt
-          Quantity: 1
 # Tastes like nachos.
 
 - type: entity
@@ -126,9 +112,6 @@
   id: FoodMealNachosCheesy
   description: The delicious combination of nachos and melting cheese.
   components:
-  - type: Food
-    trash:
-    - FoodPlateSmall
   - type: FlavorProfile
     flavors:
       - nachos
@@ -156,27 +139,24 @@
   id: FoodMealNachosCuban
   description: That's some dangerously spicy nachos.
   components:
-  - type: Food
-    trash:
-    - FoodPlateSmall
   - type: FlavorProfile
     flavors:
       - nachos
-      - tomato
+      - cheesy
       - spicy
   - type: Sprite
     state: nachos-cuban
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 30 # Frontier: 25<30
+        maxVol: 20
         reagents:
         - ReagentId: Nutriment
-          Quantity: 8
-        - ReagentId: CapsaicinOil
           Quantity: 7
+        - ReagentId: CapsaicinOil
+          Quantity: 8
         - ReagentId: Vitamin
-          Quantity: 5
+          Quantity: 4
         - ReagentId: Flavorol
           Quantity: 5
 # Tastes like nachos, hot pepper.
@@ -501,7 +481,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 20
+        maxVol: 15
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
@@ -559,7 +539,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 25
+        maxVol: 18
         reagents:
         - ReagentId: Nutriment
           Quantity: 6

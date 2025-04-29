@@ -19,7 +19,6 @@ public sealed partial class PlantRestoreSeeds : EntityEffect
             || plantHolderComp.Seed == null
             || plantHolderComp.Dead
             || plantHolderComp.Seed.Immutable
-            || plantHolderComp.Seed.PermanentlySeedless // Frontier
         )
             return;
 

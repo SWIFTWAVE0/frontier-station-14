@@ -1,4 +1,4 @@
-- type: vendingMachineInventory
+﻿- type: vendingMachineInventory
   id: DinnerwareInventory
   startingInventory:
     ButchCleaver: 1
@@ -11,7 +11,6 @@
     FoodPlate: 10
     FoodPlateSmall: 10
     FoodPlateTin: 5
-    FoodPlateMuffinTin: 5
     FoodKebabSkewer: 5
     DrinkGlass: 5
     Beaker: 5
@@ -27,8 +26,4 @@
     DrinkMugOne: 1
     DrinkMugRainbow: 2
     DrinkMugRed: 2
-    ServiceSelectiveDropper: 2 # Frontier
-  contrabandInventory:
-    CandyBowl: 1
-    BarSpoon: 2
-    DrinkShaker: 2
+    ServiceSelectiveDropper: 2

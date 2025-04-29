@@ -1,4 +1,11 @@
 - type: entity
+  abstract: true
+  id: MobSyndicateNavalTimedDespawn
+  components:
+  - type: TimedDespawn
+    lifetime: 3000 # 50 mins (max blue space event duration involving these mobs - 40 mins)
+
+- type: entity
   name: syndicate naval agent
   abstract: true
   categories: [ HideSpawnMenu ]
@@ -6,7 +13,7 @@
   - MobHumanoidHostileBase
   - MobHumanoidInvetory
   - MobHumanoidHostileAISimpleRanged
-  - NFMobRestrictions
+  #- MobSyndicateNavalTimedDespawn
   id: MobSyndicateNavalBase
   components:
   - type: Body
@@ -19,9 +26,9 @@
     randomizeName: false
   - type: RandomMetadata
     nameSegments:
-    - NamesSyndicatePrefix
-    - NamesSyndicateNormal
-    - NamesSyndicateElite
+    - SyndicateNamesPrefix
+    - SyndicateNamesNormal
+    - SyndicateNamesElite
   #- type: AutoImplant
     #implants:
     #- DeathRattleImplant
@@ -44,9 +51,6 @@
     deleteOrgans: true
     gib: false
     useArgumentEntity: true
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
 
 # Humans
 # Syndicate Captain, "armed" with AP Python
@@ -488,40 +492,29 @@
   parent:
   - MobHumanoidHostileBase
   - MobHumanoidHostileAISimpleMelee
-  - NFMobRestrictions
   id: MobExperimentationVictim
   categories: [ HideSpawnMenu ]
   components:
-  - type: NameIdentifier
-    group: GenericNumber
-  - type: NpcFactionMember
-    factions:
-      - SimpleHostile
-  - type: Loadout
-    prototypes:
-      - SyndicateVictimInsaneGear
-  - type: InputMover
-  - type: MobMover
-  - type: HTN
-    rootTask:
-      task: SimpleHumanoidHostileCompound
-  - type: NFSalvageMobRestrictions
-    despawnIfOffLinkedGrid: false
-    addComponentsOnDeath: []
-    removeComponentsOnDeath:
-    - type: Prying
-    - type: Tool
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
+    - type: NameIdentifier
+      group: GenericNumber
+    - type: NpcFactionMember
+      factions:
+        - SimpleHostile
+    - type: Loadout
+      prototypes:
+        - SyndicateVictimInsaneGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
 
 # Syndicate Commander, "armed" with AK
 - type: entity
   name: syndicate commander # Mega Fauna for Dungeons
   parent:
   - MobSyndicateNavalBase
-  #- MobLaserReflect # Added to prevent laser abuse from players
-  - NFMobBossRestrictions
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalCommanderA
   description: A regional commander of Syndicate operations, this officer holds ultimate local command and responsibility. Armed with an assault rifle and heavily armored.
   categories: [ HideSpawnMenu ]
@@ -662,8 +655,8 @@
       baseSprintSpeed: 6
     - type: Advertise
       pack: mimehumanoidchatter
-      minimumWait: 120
-      maximumWait: 240
+      minimumWait: 120 # 1 * 2
+      maximumWait: 240 # 2 * 60
       nextAdvertisementTime: 0
 
 # Syndicate Chemwarrior, shoots healthy mixes of chems
@@ -739,7 +732,7 @@
   name: syndicate captain
   parent:
   - MobSyndicateNavalCaptainA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalCaptainVoid
   categories: [ HideSpawnMenu ]
   components:
@@ -755,7 +748,7 @@
 - type: entity
   parent:
   - MobSyndicateNavalSecondOfficerA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalSecondOfficerVoid
   categories: [ HideSpawnMenu ]
   components:
@@ -767,7 +760,7 @@
 - type: entity
   parent:
   - MobSyndicateNavalOperatorA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalOperatorVoid
   categories: [ HideSpawnMenu ]
   components:
@@ -779,7 +772,7 @@
 - type: entity
   parent:
   - MobSyndicateNavalEngineerA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalEngineerVoid
   categories: [ HideSpawnMenu ]
   components:
@@ -797,7 +790,7 @@
 - type: entity
   parent:
   - MobSyndicateNavalDeckhandA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalDeckhandVoid
   categories: [ HideSpawnMenu ]
   components:
@@ -811,7 +804,7 @@
 - type: entity
   parent:
   - MobSyndicateNavalMedicA
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobSyndicateNavalMedicVoid
   categories: [ HideSpawnMenu ]
   components:

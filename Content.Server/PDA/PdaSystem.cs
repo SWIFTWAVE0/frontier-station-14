@@ -1,4 +1,3 @@
-using Content.Server.Access.Systems;
 using Content.Server.AlertLevel;
 using Content.Server.CartridgeLoader;
 using Content.Server.Chat.Managers;
@@ -23,10 +22,9 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Content.Shared._NF.Bank.Components; // Frontier
-using Content.Shared._NF.Shipyard.Components; // Frontier
-using Content.Server._NF.Shipyard.Systems; // Frontier
-using Content.Server._NF.SectorServices; // Frontier
+using Content.Shared.Bank.Components; // Frontier
+using Content.Shared.Shipyard.Components; // Frontier
+using Content.Server.Shipyard.Systems; // Frontier
 
 namespace Content.Server.PDA
 {
@@ -41,8 +39,6 @@ namespace Content.Server.PDA
         [Dependency] private readonly UserInterfaceSystem _ui = default!;
         [Dependency] private readonly UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
         [Dependency] private readonly ContainerSystem _containerSystem = default!;
-        [Dependency] private readonly IdCardSystem _idCard = default!;
-        [Dependency] private readonly SectorServiceSystem _sectorService = default!;
 
         public override void Initialize()
         {
@@ -62,25 +58,19 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<PdaComponent, CartridgeLoaderNotificationSentEvent>(OnNotification);
 
             SubscribeLocalEvent<StationRenamedEvent>(OnStationRenamed);
-            SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed, after: new[] { typeof(IdCardSystem) });
+            SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed);
             SubscribeLocalEvent<AlertLevelChangedEvent>(OnAlertLevelChanged);
         }
 
         private void OnEntityRenamed(ref EntityRenamedEvent ev)
         {
-            if (HasComp<IdCardComponent>(ev.Uid))
-                return;
+            var query = EntityQueryEnumerator<PdaComponent>();
 
-            if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
+            while (query.MoveNext(out var uid, out var comp))
             {
-                var query = EntityQueryEnumerator<PdaComponent>();
-
-                while (query.MoveNext(out var uid, out var comp))
+                if (comp.PdaOwner == ev.Uid)
                 {
-                    if (comp.ContainedId == idCard)
-                    {
-                        SetOwner(uid, comp, ev.Uid, ev.NewName);
-                    }
+                    SetOwner(uid, comp, ev.Uid, ev.NewName);
                 }
             }
         }
@@ -99,9 +89,6 @@ namespace Content.Server.PDA
         protected override void OnItemInserted(EntityUid uid, PdaComponent pda, EntInsertedIntoContainerMessage args)
         {
             base.OnItemInserted(uid, pda, args);
-            var id = CompOrNull<IdCardComponent>(pda.ContainedId);
-            if (id != null)
-                pda.OwnerName = id.FullName;
             UpdatePdaUi(uid, pda);
         }
 
@@ -215,7 +202,7 @@ namespace Content.Server.PDA
                 {
                     ActualOwnerName = pda.OwnerName,
                     IdOwner = id?.FullName,
-                    JobTitle = id?.LocalizedJobTitle,
+                    JobTitle = id?.JobTitle,
                     StationAlertLevel = pda.StationAlertLevel,
                     StationAlertColor = pda.StationAlertColor
                 },
@@ -308,8 +295,7 @@ namespace Content.Server.PDA
 
         private void UpdateAlertLevel(EntityUid uid, PdaComponent pda)
         {
-            //var station = _station.GetOwningStation(uid); // Frontier
-            var station = _sectorService.GetServiceEntity(); // Frontier
+            var station = _station.GetOwningStation(uid);
             if (!TryComp(station, out AlertLevelComponent? alertComp) ||
                 alertComp.AlertLevels == null)
                 return;

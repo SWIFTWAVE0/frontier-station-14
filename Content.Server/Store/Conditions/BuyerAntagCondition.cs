@@ -27,21 +27,22 @@ public sealed partial class BuyerAntagCondition : ListingCondition
     public override bool Condition(ListingConditionArgs args)
     {
         var ent = args.EntityManager;
+        var minds = ent.System<SharedMindSystem>();
 
-        if (!ent.HasComponent<MindComponent>(args.Buyer))
-            return true; // inanimate objects don't have minds
+        if (!minds.TryGetMind(args.Buyer, out var mindId, out var mind))
+            return true;
 
         var roleSystem = ent.System<SharedRoleSystem>();
-        var roles = roleSystem.MindGetAllRoleInfo(args.Buyer);
+        var roles = roleSystem.MindGetAllRoles(mindId);
 
         if (Blacklist != null)
         {
             foreach (var role in roles)
             {
-                if (!role.Antagonist || string.IsNullOrEmpty(role.Prototype))
+                if (role.Component is not AntagonistRoleComponent blacklistantag)
                     continue;
 
-                if (Blacklist.Contains(role.Prototype))
+                if (blacklistantag.PrototypeId != null && Blacklist.Contains(blacklistantag.PrototypeId))
                     return false;
             }
         }
@@ -51,11 +52,10 @@ public sealed partial class BuyerAntagCondition : ListingCondition
             var found = false;
             foreach (var role in roles)
             {
-
-                if (!role.Antagonist || string.IsNullOrEmpty(role.Prototype))
+                if (role.Component is not AntagonistRoleComponent antag)
                     continue;
 
-                if (Whitelist.Contains(role.Prototype))
+                if (antag.PrototypeId != null && Whitelist.Contains(antag.PrototypeId))
                     found = true;
             }
             if (!found)

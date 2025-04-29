@@ -37,6 +37,7 @@ public sealed partial class PickerWindow : FancyWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>();
+        _gameTicker.LobbyJobsAvailableUpdated += UpdateUi;
         _sawmill = Logger.GetSawmill("latejoin");
 
         CrewTabButton.OnPressed += _ =>
@@ -63,12 +64,6 @@ public sealed partial class PickerWindow : FancyWindow
         {
             SetCurrentTab(PickerType.StationOrCrewLarge);
         }
-    }
-
-    protected override void EnteredTree()
-    {
-        base.EnteredTree();
-        _gameTicker.LobbyJobsAvailableUpdated += UpdateUi;
     }
 
     protected override void ExitedTree()

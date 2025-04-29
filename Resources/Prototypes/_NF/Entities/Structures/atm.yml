@@ -30,7 +30,7 @@
       swap: false
       whitelist:
         components:
-          - Cash
+          - Currency
   - type: ActivatableUI
     key: enum.BankATMMenuUiKey.ATM
   - type: UserInterface
@@ -58,7 +58,7 @@
   - type: UserInterface
     interfaces:
       enum.BankATMMenuUiKey.ATM:
-        type: BankATMWithdrawOnlyMenuBoundUserInterface
+        type: WithdrawBankATMMenuBoundUserInterface
 
 - type: entity
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerBankATMDeposit]
@@ -75,7 +75,7 @@
       state: unshaded
 
 - type: entity
-  parent: ComputerBankATMWithdraw
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerBankATMWithdraw]
   id: ComputerWithdrawBankATM
   components:
   - type: Sprite
@@ -87,12 +87,10 @@
       state: icon
     - map: ["computerLayerScreen"]
       state: unshaded
-  - type: Computer
-    board: ComputerWithdrawBankATMComputerCircuitboard
 
 - type: entity
   suffix: Wallmount
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputerWallmount, ComputerBankATMDeposit]
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureWallmount, ComputerBankATMDeposit]
   id: ComputerWallmountBankATM
   components:
   - type: Sprite
@@ -106,7 +104,7 @@
 
 - type: entity
   suffix: Wallmount
-  parent: [BaseStructureComputerWallmount, ComputerBankATMWithdraw]
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureWallmount, ComputerBankATMWithdraw]
   id: ComputerWallmountWithdrawBankATM
   components:
   - type: Sprite
@@ -117,8 +115,6 @@
         state: icon
       - map: ["computerLayerScreen"]
         state: unshaded
-  - type: Computer
-    board: ComputerWithdrawBankATMComputerCircuitboard
 
 - type: entity
   suffix: BlackMarket
@@ -141,13 +137,10 @@
     interfaces:
       enum.BankATMMenuUiKey.BlackMarket:
         type: BankATMMenuBoundUserInterface
-  - type: BankATM
-    taxAccounts:
-      Frontier: 0.3 # The scandal!
 
 - type: entity
   suffix: Wallmount, BlackMarket
-  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, BaseStructureComputerWallmount, ComputerBankATMDeposit]
+  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, BaseStructureWallmount, ComputerBankATMDeposit]
   id: ComputerWallmountBlackMarketBankATM
   description: Has some sketchy looking modifications and a sticker that says DEPOSIT FEE 30%
   components:
@@ -165,16 +158,12 @@
     interfaces:
       enum.BankATMMenuUiKey.BlackMarket:
         type: BankATMMenuBoundUserInterface
-  - type: BankATM
-    taxAccounts:
-      Frontier: 0.3 # The scandal!
 
 - type: entity
   name: station administration console
-  parent: [BaseStructureDisableScrewing, BaseStructureDisablePrying, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, ComputerBankATMBase]
-  id: BaseStationAdminBankATM
-  abstract: true
-  description: Used to transfer funds to and from the station's bank account.
+  parent: [BaseStructureDisableScrewing, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, ComputerBankATMBase]
+  id: StationAdminBankATM
+  description: Used to pay out from the station's bank account
   components:
   - type: Sprite
     netsync: false
@@ -185,8 +174,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      sprite: _NF/Structures/Machines/computers.rsi
-      state: station_atm
+      state: id
     - map: ["computerLayerKeys"]
       state: id_key
   - type: StationBankATM
@@ -198,15 +186,13 @@
       swap: false
       whitelist:
         components:
-          - Cash
+          - Currency
   - type: ActivatableUI
     key: enum.BankATMMenuUiKey.ATM
   - type: UserInterface
     interfaces:
       enum.BankATMMenuUiKey.ATM:
-        type: StationAdminConsoleBoundUserInterface
-  - type: ActivatableUIRequiresAccess
-  - type: ActivatableUIRequiresPower
+        type: StationBankATMMenuBoundUserInterface
   - type: ItemSlots
   - type: ContainerContainer
     containers:
@@ -214,30 +200,3 @@
       station-bank-ATM-cashSlot: !type:ContainerSlot
   - type: AccessReader
     access: [["HeadOfPersonnel"], ["HeadOfSecurity"]]
-
-- type: entity
-  parent: BaseStationAdminBankATM
-  id: StationAdminBankATMFrontier
-  description: Used to transfer funds to and from Frontier Outpost's bank account.
-  suffix: Frontier
-  components:
-  - type: StationBankATM
-    account: Frontier
-
-- type: entity
-  parent: BaseStationAdminBankATM
-  id: StationAdminBankATMNfsd
-  description: Used to transfer funds to and from NFSD's bank account.
-  suffix: NFSD
-  components:
-  - type: StationBankATM
-    account: Nfsd
-
-- type: entity
-  parent: BaseStationAdminBankATM
-  id: StationAdminBankATMMedical
-  description: Used to transfer funds to and from the medical bank account.
-  suffix: Medical
-  components:
-  - type: StationBankATM
-    account: Medical

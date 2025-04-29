@@ -50,7 +50,7 @@
 - type: entity
   parent: [ BaseItem, StorePresetSecurityUplink ]
   id: BaseSecurityUplinkRadio
-  name: NFSD uplink
+  name: nfsd uplink
   description: Retro looking old radio...
   suffix: Empty
   categories: [ HideSpawnMenu ]
@@ -100,7 +100,7 @@
       FrontierUplinkCoin: 15
 
 - type: entity
-  name: NFSD deployable barrier
+  name: nfsd deployable barrier
   id: NfsdDeployableBarrier
   description: A deployable barrier. Swipe your ID card to lock/unlock it.
   parent: DeployableBarrier

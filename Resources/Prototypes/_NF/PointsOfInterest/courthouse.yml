@@ -7,21 +7,15 @@
 # Discord: ???
 
 # Notes:
-#
+# 
 - type: pointOfInterest
   id: Courthouse
-  parent: BasePOI
   name: "Courthouse"
-  minimumDistance: 1150
-  maximumDistance: 2050
+  rangeMin: 1150
+  rangeMax: 2050
+  IFFColor: "#8e6444" #brown
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/courthouse.yml
-  addComponents:
-  - type: IFF
-    color: "#ae7d57"
-  - type: StationTransit
-    routes:
-      MinorPointsOfInterest: 30
 
 - type: gameMap
   id: Courthouse

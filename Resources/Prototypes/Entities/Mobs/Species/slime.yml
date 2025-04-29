@@ -16,7 +16,6 @@
   # they like eat it idk lol
   - type: Storage
     clickInsert: false
-    openOnActivate: false
     grid:
     - 0,0,1,2
     maxItemSize: Large
@@ -30,6 +29,8 @@
     interfaces:
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+      enum.VoiceMaskUIKey.Key:
+        type: VoiceMaskBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
@@ -42,7 +43,7 @@
   - type: Speech
     speechVerb: Slime
     speechSounds: Slime
-    allowedEmotes: ['Squish', 'Bubble', 'Pop'] # Imp: add Bubble, Pop
+    allowedEmotes: ['Squish']
   - type: TypingIndicator
     proto: slime
   - type: Vocal

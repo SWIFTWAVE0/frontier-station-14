@@ -19,7 +19,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
 using Content.Server._NF.SectorServices; // Frontier
-using Content.Shared._NF.Trade; // Frontier
+using Content.Shared._NF.Trade.Components; // Frontier
 using Content.Shared.Whitelist; // Frontier
 
 namespace Content.Server.Cargo.Systems;
@@ -50,6 +50,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
 
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;
+    private EntityQuery<TradeCrateComponent> _tradeCrateQuery;
     private EntityQuery<MobStateComponent> _mobQuery;
     private EntityQuery<TradeStationComponent> _tradeQuery;
 
@@ -63,6 +64,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
 
         _xformQuery = GetEntityQuery<TransformComponent>();
         _blacklistQuery = GetEntityQuery<CargoSellBlacklistComponent>();
+        _tradeCrateQuery = GetEntityQuery<TradeCrateComponent>();
         _mobQuery = GetEntityQuery<MobStateComponent>();
         _tradeQuery = GetEntityQuery<TradeStationComponent>();
 
@@ -72,7 +74,6 @@ public sealed partial class CargoSystem : SharedCargoSystem
         InitializeBounty();
         // Frontier: add specific initialization calls here.
         InitializePirateBounty();
-        InitializeTradeCrates();
         // End Frontier
     }
 
@@ -85,23 +86,19 @@ public sealed partial class CargoSystem : SharedCargoSystem
     }
 
     [PublicAPI]
-    public void UpdateBankAccount(Entity<StationBankAccountComponent?> ent, int balanceAdded)
+    public void UpdateBankAccount(EntityUid uid, StationBankAccountComponent component, int balanceAdded)
     {
-        if (!Resolve(ent, ref ent.Comp))
-            return;
-
-        ent.Comp.Balance += balanceAdded;
-
-        var ev = new BankBalanceUpdatedEvent(ent, ent.Comp.Balance);
-
+        component.Balance += balanceAdded;
         var query = EntityQueryEnumerator<BankClientComponent, TransformComponent>();
+
+        var ev = new BankBalanceUpdatedEvent(uid, component.Balance);
         while (query.MoveNext(out var client, out var comp, out var xform))
         {
             var station = _station.GetOwningStation(client, xform);
-            if (station != ent)
+            if (station != uid)
                 continue;
 
-            comp.Balance = ent.Comp.Balance;
+            comp.Balance = component.Balance;
             Dirty(client, comp);
             RaiseLocalEvent(client, ref ev);
         }

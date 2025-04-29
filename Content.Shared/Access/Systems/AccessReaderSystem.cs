@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Access.Components;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
@@ -15,7 +16,7 @@ using Content.Shared.IdentityManagement;
 using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared._NF.Trade;
+using Content.Shared._NF.Trade.Components;
 
 namespace Content.Shared.Access.Systems;
 
@@ -24,7 +25,6 @@ public sealed class AccessReaderSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly SharedGameTicker _gameTicker = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -35,6 +35,7 @@ public sealed class AccessReaderSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AccessReaderComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<AccessReaderComponent, GotUnEmaggedEvent>(OnUnEmagged); // Frontier - DEMAG
         SubscribeLocalEvent<AccessReaderComponent, LinkAttemptEvent>(OnLinkAttempt);
 
         SubscribeLocalEvent<AccessReaderComponent, ComponentGetState>(OnGetState);
@@ -72,29 +73,26 @@ public sealed class AccessReaderSystem : EntitySystem
     {
         if (args.User == null) // AutoLink (and presumably future external linkers) have no user.
             return;
-        if (!IsAllowed(args.User.Value, uid, component))
+        if (!HasComp<EmaggedComponent>(uid) && !IsAllowed(args.User.Value, uid, component))
             args.Cancel();
     }
 
-    // Frontier: TODO - cache for demag?
     private void OnEmagged(EntityUid uid, AccessReaderComponent reader, ref GotEmaggedEvent args)
     {
-        if (!_emag.CompareFlag(args.Type, EmagType.Access))
-            return;
-
-        if (!reader.BreakOnAccessBreaker)
-            return;
-
-        if (!GetMainAccessReader(uid, out var accessReader))
-            return;
-
-        if (accessReader.Value.Comp.AccessLists.Count < 1)
-            return;
-
-        args.Repeatable = true;
+        //if (!reader.BreakOnEmag) // Frontier
+        //    return; // Frontier
+        if (reader.ImmuneToEmag) // Frontier
+            return; // Frontier
         args.Handled = true;
-        accessReader.Value.Comp.AccessLists.Clear();
-        accessReader.Value.Comp.AccessLog.Clear();
+        reader.Enabled = false;
+        reader.AccessLog.Clear();
+        Dirty(uid, reader);
+    }
+
+    private void OnUnEmagged(EntityUid uid, AccessReaderComponent reader, ref GotUnEmaggedEvent args) // Frontier - DEMAG
+    {
+        args.Handled = true;
+        reader.Enabled = true;
         Dirty(uid, reader);
     }
 
@@ -126,29 +124,28 @@ public sealed class AccessReaderSystem : EntitySystem
         return false;
     }
 
-    public bool GetMainAccessReader(EntityUid uid, [NotNullWhen(true)] out Entity<AccessReaderComponent>? ent)
+    public bool GetMainAccessReader(EntityUid uid, [NotNullWhen(true)] out AccessReaderComponent? component)
     {
-        ent = null;
-        if (!TryComp<AccessReaderComponent>(uid, out var accessReader))
+        component = null;
+        if (!TryComp(uid, out AccessReaderComponent? accessReader))
             return false;
 
-        ent = (uid, accessReader);
+        component = accessReader;
 
-        if (ent.Value.Comp.ContainerAccessProvider == null)
+        if (component.ContainerAccessProvider == null)
             return true;
 
-        if (!_containerSystem.TryGetContainer(uid, ent.Value.Comp.ContainerAccessProvider, out var container))
+        if (!_containerSystem.TryGetContainer(uid, component.ContainerAccessProvider, out var container))
             return true;
 
         foreach (var entity in container.ContainedEntities)
         {
-            if (TryComp<AccessReaderComponent>(entity, out var containedReader))
+            if (TryComp(entity, out AccessReaderComponent? containedReader))
             {
-                ent = (entity, containedReader);
+                component = containedReader;
                 return true;
             }
         }
-
         return true;
     }
 

@@ -67,8 +67,8 @@ public sealed class MoverController : SharedMoverController
         {
             var physicsUid = uid;
 
-            // if (RelayQuery.HasComponent(uid)) // Upstream - #34015
-            //     continue; // Upstream - #34015
+            if (RelayQuery.HasComponent(uid))
+                continue;
 
             if (!XformQuery.TryGetComponent(uid, out var xform))
             {
@@ -100,14 +100,6 @@ public sealed class MoverController : SharedMoverController
                 xformMover,
                 frameTime);
         }
-
-        // Upstream - #34016
-        var movementRelayTargetEnumerator = AllEntityQuery<MovementRelayTargetComponent, InputMoverComponent>();
-        while (movementRelayTargetEnumerator.MoveNext(out var uid, out var relay, out var mover))
-        {
-            HandleRelayMovement((uid, relay, mover));
-        }
-        // End Upstream - #34016
 
         HandleShuttleMovement(frameTime);
     }
@@ -322,9 +314,6 @@ public sealed class MoverController : SharedMoverController
             var linearInput = Vector2.Zero;
             var brakeInput = 0f;
             var angularInput = 0f;
-            var linearCount = 0;
-            var brakeCount = 0;
-            var angularCount = 0;
 
             foreach (var (pilotUid, pilot, _, consoleXform) in pilots)
             {
@@ -333,27 +322,24 @@ public sealed class MoverController : SharedMoverController
                 if (brakes > 0f)
                 {
                     brakeInput += brakes;
-                    brakeCount++;
                 }
 
                 if (strafe.Length() > 0f)
                 {
                     var offsetRotation = consoleXform.LocalRotation;
                     linearInput += offsetRotation.RotateVec(strafe);
-                    linearCount++;
                 }
 
                 if (rotation != 0f)
                 {
                     angularInput += rotation;
-                    angularCount++;
                 }
             }
 
-            // Don't slow down the shuttle if there's someone just looking at the console
-            linearInput /= Math.Max(1, linearCount);
-            angularInput /= Math.Max(1, angularCount);
-            brakeInput /= Math.Max(1, brakeCount);
+            var count = pilots.Count;
+            linearInput /= count;
+            angularInput /= count;
+            brakeInput /= count;
 
             // Handle shuttle movement
             if (brakeInput > 0f)
@@ -524,7 +510,7 @@ public sealed class MoverController : SharedMoverController
                 var finalForce = Vector2Dot(totalForce, properAccel.Normalized()) * properAccel.Normalized();
 
                 if (localVel.Length() >= maxVelocity.Length() && Vector2.Dot(totalForce, localVel) > 0f)
-                    finalForce -= Vector2.Dot(totalForce, localVel.Normalized()) * localVel.Normalized(); // Frontier: instead of setting to zero, subtract the inline component
+                    finalForce = Vector2.Zero; // burn would be faster if used as such
 
                 if (finalForce.Length() > properAccel.Length())
                     finalForce = properAccel; // don't overshoot

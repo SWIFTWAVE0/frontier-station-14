@@ -274,17 +274,6 @@
       prob: 0.10
       orGroup: Pizza
     - id: KnifePlastic
-  
-- type: entity
-  name: pizza box
-  parent: FoodBoxPizzaFilled
-  id: FoodBoxPizzaCotton
-  suffix: Cotton Pizza
-  components:
-  - type: StorageFill
-    contents:
-    - id: FoodPizzaCotton
-    - id: KnifePlastic
 
 # Nugget
 
@@ -489,15 +478,15 @@
   description: The toy is more edible than the food.
   components:
   - type: Sprite
-    sprite: _NF/Objects/Storage/Happyhonk/clown.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/clown.rsi
     state: box
     layers:
     - state: box
-      map: ["closeLayer"] # Frontier: return the visualizer
-    - state: box-open # Frontier
-      map: ["openLayer"] # Frontier
+      map: ["closeLayer"]
+    - state: box-open
+      map: ["openLayer"]
   - type: Item
-    sprite: _NF/Objects/Storage/Happyhonk/clown.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/clown.rsi
     heldPrefix: box
   - type: Storage
     maxItemSize: Normal
@@ -581,10 +570,10 @@
     - Trash
     - MimeHappyHonk
   - type: Sprite
-    sprite: _NF/Objects/Storage/Happyhonk/mime.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/mime.rsi
     state: box
   - type: Item
-    sprite: _NF/Objects/Storage/Happyhonk/mime.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/mime.rsi
     heldPrefix: box
 
 - type: entity
@@ -595,10 +584,10 @@
   suffix: Toy Unsafe
   components:
   - type: Sprite
-    sprite: _NF/Objects/Storage/Happyhonk/nukie.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/nukie.rsi
     state: box
   - type: Item
-    sprite: _NF/Objects/Storage/Happyhonk/nukie.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/nukie.rsi
     heldPrefix: box
   - type: StorageFill
     contents:
@@ -680,10 +669,10 @@
     - Trash
     - CluwneHappyHonk
   - type: Sprite
-    sprite: _NF/Objects/Storage/Happyhonk/cluwne.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/cluwne.rsi
     state: box
   - type: Item
-    sprite: _NF/Objects/Storage/Happyhonk/cluwne.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Happyhonk/cluwne.rsi
     heldPrefix: box
   - type: StorageFill
     contents:
@@ -704,8 +693,6 @@
       - id: DrinkColaCan
         orGroup: DrinkPool
       - id: DrinkLemonLimeCan
-        orGroup: DrinkPool
-      - id: DrinkLemonLimeCranberryCan
         orGroup: DrinkPool
       - id: DrinkIcedTeaCan
         orGroup: DrinkPool
@@ -769,25 +756,3 @@
       - id: GoldenBikeHorn
         prob: 0.1
         orGroup: GiftPool
-
-- type: entity
-  parent: BoxCardboard
-  id: FoodBoxCloth
-  name: box of FlutterSoft-brand cloth
-  description: Fiber is the most important moth meal of the day! Don't skip it or use bottom-of-the-locker junk, buy high-quality FlutterSoft-brand cloth instead.
-  components:
-  - type: Sprite
-    sprite: Objects/Consumable/Food/ingredients.rsi
-    state: cloth-box
-  - type: Storage
-    grid:
-    - 0,0,1,1
-    maxItemSize: Normal
-    whitelist:
-      tags:
-      - ClothMade
-  - type: Item
-    size: Normal
-  - type: StorageFill
-    contents:
-    - id: MaterialCloth10

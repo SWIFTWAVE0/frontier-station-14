@@ -1,47 +1,12 @@
 - type: gamePreset
-  id: NFAdventure
+  id: Adventure
   alias:
-    - nfadventure
     - adventure
-  name: nf-adventure-title
-  description: nf-adventure-description
-  showInVote: true
-  rules:
-    - NFAdventure
-    - NFBasicStationEventScheduler
-    - BluespaceEventScheduler
-    - BluespaceDungeonEventScheduler
-    - BluespaceSalvageEventScheduler
-    - SmugglingEventScheduler
-    - NFRoundstartVariation
-
-- type: gamePreset
-  id: NFPirate
-  alias:
-    - nfpirate
-    - pirate
-  name: nf-pirate-title
-  description: nf-pirate-description
-  showInVote: true
-  rules:
-    - NFAdventure
-    - NFBasicStationEventScheduler
-    - BluespaceEventScheduler
-    - BluespaceDungeonEventScheduler
-    - BluespaceSalvageEventScheduler
-    - SmugglingEventScheduler
-    - NFRoundstartVariation
-
-# Test preset: intended to be close enough to upstream stuff but should be
-#              quicker to setup and teardown than adventure/pirate
-- type: gamePreset
-  id: NFTest
-  alias:
-    - nftest
-    - test
-  name: nf-test-title
+  name: adventure-title
+  description: adventure-description
   showInVote: false
-  description: nf-test-description
   rules:
-    - NFBasicStationEventScheduler
-    - NFRoundstartVariation
+    - Adventure
+    - BasicStationEventScheduler
+    - BluespaceEventScheduler
+    - FrontierRoundstartVariation

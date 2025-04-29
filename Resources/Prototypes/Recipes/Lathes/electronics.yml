@@ -3,8 +3,7 @@
 - type: latheRecipe
   abstract: true
   id: BaseElectronicsRecipe
-  categories:
-  - Circuitry
+  category: Circuitry
   completetime: 2
   materials:
     Steel: 100
@@ -98,11 +97,6 @@
   parent: BaseCheapElectronicsRecipe
   id: DoorElectronics
   result: DoorElectronics
-
-- type: latheRecipe
-  parent: BaseCheapElectronicsRecipe
-  id: FreezerElectronics
-  result: FreezerElectronics
 
 - type: latheRecipe
   parent: BaseElectronicsRecipe
@@ -269,12 +263,10 @@
   id: AnomalyVesselExperimentalCircuitboard
   result: AnomalyVesselExperimentalCircuitboard
 
-# Frontier: no recipes for the anomaly synchronizer
-# - type: latheRecipe
-#   parent: BaseSilverCircuitboardRecipe
-#   id: AnomalySynchronizerCircuitboard
-#   result: AnomalySynchronizerCircuitboard
-# End Frontier
+- type: latheRecipe
+  parent: BaseSilverCircuitboardRecipe
+  id: AnomalySynchronizerCircuitboard
+  result: AnomalySynchronizerCircuitboard
 
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
@@ -296,12 +288,10 @@
   id: AnalysisComputerCircuitboard
   result: AnalysisComputerCircuitboard
 
-# Frontier: no tech disk recipes
-# - type: latheRecipe
-#   parent: BaseGoldCircuitboardRecipe
-#   id: TechDiskComputerCircuitboard
-#   result: TechDiskComputerCircuitboard
-# End Frontier
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: TechDiskComputerCircuitboard
+  result: TechDiskComputerCircuitboard
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
@@ -405,11 +395,6 @@
   result: SMESMachineCircuitboard
 
 - type: latheRecipe
-  parent: BaseGoldCircuitboardRecipe
-  id: SMESAdvancedMachineCircuitboard
-  result: SMESAdvancedMachineCircuitboard
-
-- type: latheRecipe
   parent: BaseCircuitboardRecipe
   id: PortableGeneratorPacmanMachineCircuitboard
   result: PortableGeneratorPacmanMachineCircuitboard
@@ -433,6 +418,11 @@
   parent: BaseCircuitboardRecipe
   id: SolarTrackerElectronics
   result: SolarTrackerElectronics
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: PowerComputerCircuitboard
+  result: PowerComputerCircuitboard
 
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
@@ -591,6 +581,12 @@
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
+  id: StationAnchorCircuitboard
+  result: StationAnchorCircuitboard
+  completetime: 8
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
   id: ReagentGrinderIndustrialMachineCircuitboard
   result: ReagentGrinderIndustrialMachineCircuitboard
 
@@ -603,8 +599,3 @@
   parent: BaseCircuitboardRecipe
   id: CutterMachineCircuitboard
   result: CutterMachineCircuitboard
-
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: HolopadMachineCircuitboard
-  result: HolopadMachineCircuitboard

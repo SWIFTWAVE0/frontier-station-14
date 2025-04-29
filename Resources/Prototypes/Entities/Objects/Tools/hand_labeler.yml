@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, RecyclableItemPlasticSmall] # Frontier: added RecyclableItemPlasticSmall
+  parent: BaseItem
   id: HandLabeler
   name: hand labeler
   description: A hand labeler, used to label items and objects.

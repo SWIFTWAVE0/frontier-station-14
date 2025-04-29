@@ -1,86 +1,44 @@
 - type: latheRecipe
   id: SalvageTechFabCircuitboardNF
-  parent: BaseCircuitboardRecipe
   result: SalvageTechFabCircuitboardNF
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 800
     Glass: 900
 
 - type: latheRecipe
   id: BlueprintLithographMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: BlueprintLithographMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 800
     Glass: 900
 
 - type: latheRecipe
   id: ElectricRangeMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: ElectricRangeMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 800
     Glass: 900
 
 - type: latheRecipe
   id: KitchenAssemblerMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: KitchenAssemblerMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 600
     Glass: 750
 
 - type: latheRecipe
   id: MedicalAssemblerMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: MedicalAssemblerMachineCircuitboard
-  materials:
-    Steel: 800
-    Glass: 900
-
-- type: latheRecipe
-  id: NFScrapProcessorCircuitboard
-  parent: BaseCircuitboardRecipe
-  result: NFScrapProcessorCircuitboard
-  materials:
-    Steel: 800
-    Glass: 900
-
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: CondimentDispenserCircuitboard
-  result: CondimentDispenserCircuitboard
-  materials:
-    Steel: 100
-    Glass: 500
-
-- type: latheRecipe
-  parent: BaseGoldCircuitboardRecipe
-  id: MiniStationAnchorCircuitboard
-  result: MiniStationAnchorCircuitboard
-  completetime: 8
-
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: PortablePumpMachineCircuitBoard
-  result: PortablePumpMachineCircuitBoard
-  materials:
-    Steel: 100
-    Glass: 500
-
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: GasMiningDrillMachineCircuitboard
-  result: GasMiningDrillMachineCircuitboard
-  materials:
-    Steel: 800
-    Glass: 900
-    Gold: 100
-
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: GaslockFrameMachineCircuitboard
-  result: GaslockFrameMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 800
     Glass: 900
@@ -88,24 +46,27 @@
 # Thrusters
 - type: latheRecipe
   id: ThrusterSecurityMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: ThrusterSecurityMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 400
     Glass: 900
 
 - type: latheRecipe
   id: ThrusterNfsdMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: ThrusterNfsdMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
     Steel: 400
     Glass: 900
 
 - type: latheRecipe
   id: SmallThrusterMachineCircuitboard
-  parent: BaseCircuitboardRecipe
   result: SmallThrusterMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   applyMaterialDiscount: false
   materials:
     Steel: 140
@@ -113,43 +74,37 @@
 
 # Gyroscope
 - type: latheRecipe
-  id: GyroscopeSecurityMachineCircuitboard
   parent: BaseCircuitboardRecipe
+  id: GyroscopeSecurityMachineCircuitboard
   result: GyroscopeSecurityMachineCircuitboard
+  category: Circuitry
 
 - type: latheRecipe
-  id: SmallGyroscopeSecurityMachineCircuitboard
   parent: BaseCircuitboardRecipe
+  id: SmallGyroscopeSecurityMachineCircuitboard
   result: SmallGyroscopeSecurityMachineCircuitboard
 
 - type: latheRecipe
-  id: GyroscopeNfsdMachineCircuitboard
   parent: BaseCircuitboardRecipe
+  id: GyroscopeNfsdMachineCircuitboard
   result: GyroscopeNfsdMachineCircuitboard
 
 - type: latheRecipe
-  id: SmallGyroscopeNfsdMachineCircuitboard
   parent: BaseCircuitboardRecipe
+  id: SmallGyroscopeNfsdMachineCircuitboard
   result: SmallGyroscopeNfsdMachineCircuitboard
 
 - type: latheRecipe
-  id: SmallGyroscopeMachineCircuitboard
   parent: BaseCircuitboardRecipe
+  id: SmallGyroscopeMachineCircuitboard
   result: SmallGyroscopeMachineCircuitboard
 
 # Generators
 - type: latheRecipe
-  id: PortableGeneratorDKMachineCircuitboard
-  parent: BaseCircuitboardRecipe
-  result: PortableGeneratorDKMachineCircuitboard
-  materials:
-     Steel: 350
-     Glass: 350
-
-- type: latheRecipe
-  id: PortableGeneratorDKJrMachineCircuitboard
-  parent: BaseCircuitboardRecipe
-  result: PortableGeneratorDKJrMachineCircuitboard
+  id: PortableGeneratorHyperPacmanMachineCircuitboard
+  result: PortableGeneratorHyperPacmanMachineCircuitboard
+  category: Circuitry
+  completetime: 4
   materials:
      Steel: 350
      Glass: 350

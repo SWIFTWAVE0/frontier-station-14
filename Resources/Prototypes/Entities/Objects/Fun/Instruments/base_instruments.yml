@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [BaseItem, RecyclableItemWoodMedium] # Frontier: added RecyclableItemWoodMedium
+  parent: BaseItem
   id: BaseHandheldInstrument
   description: That's an instrument.
   components:
@@ -62,9 +62,11 @@
         density: 80
         mask:
         - Impassable
+        - HighImpassable
         - MidImpassable
         layer:
         - Opaque
+        - HighImpassable
         - MidImpassable
         - BulletImpassable
   - type: StaticPrice

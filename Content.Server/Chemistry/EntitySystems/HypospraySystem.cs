@@ -1,7 +1,6 @@
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.Hypospray.Events;
 using Content.Shared.Chemistry;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
@@ -12,7 +11,10 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Timing;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Server.Interaction;
 using Content.Server.Body.Components;
+using Robust.Shared.GameStates;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Robust.Server.Audio;
 using Content.Shared.DoAfter; // Frontier
@@ -22,6 +24,7 @@ namespace Content.Server.Chemistry.EntitySystems;
 public sealed class HypospraySystem : SharedHypospraySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; // Frontier - Upstream: #30704 - MIT
 
     public override void Initialize()
@@ -122,43 +125,13 @@ public sealed class HypospraySystem : SharedHypospraySystem
 
         string? msgFormat = null;
 
-        // Self event
-        var selfEvent = new SelfBeforeHyposprayInjectsEvent(user, entity.Owner, target);
-        RaiseLocalEvent(user, selfEvent);
-
-        if (selfEvent.Cancelled)
-        {
-            _popup.PopupEntity(Loc.GetString(selfEvent.InjectMessageOverride ?? "hypospray-cant-inject", ("owner", Identity.Entity(target, EntityManager))), target, user);
-            return false;
-        }
-
-        target = selfEvent.TargetGettingInjected;
-
-        if (!EligibleEntity(target, EntityManager, component))
-            return false;
-
-        // Target event
-        var targetEvent = new TargetBeforeHyposprayInjectsEvent(user, entity.Owner, target);
-        RaiseLocalEvent(target, targetEvent);
-
-        if (targetEvent.Cancelled)
-        {
-            _popup.PopupEntity(Loc.GetString(targetEvent.InjectMessageOverride ?? "hypospray-cant-inject", ("owner", Identity.Entity(target, EntityManager))), target, user);
-            return false;
-        }
-
-        target = targetEvent.TargetGettingInjected;
-
-        if (!EligibleEntity(target, EntityManager, component))
-            return false;
-
-        // The target event gets priority for the overriden message.
-        if (targetEvent.InjectMessageOverride != null)
-            msgFormat = targetEvent.InjectMessageOverride;
-        else if (selfEvent.InjectMessageOverride != null)
-            msgFormat = selfEvent.InjectMessageOverride;
-        else if (target == user)
+        if (target == user)
             msgFormat = "hypospray-component-inject-self-message";
+        else if (EligibleEntity(user, EntityManager, component) && _interaction.TryRollClumsy(user, component.ClumsyFailChance))
+        {
+            msgFormat = "hypospray-component-inject-self-clumsy-message";
+            target = user;
+        }
 
         // Frontier - Upstream: #30704 - MIT
         // if (!_solutionContainers.TryGetSolution(uid, component.SolutionName, out var hypoSpraySoln, out var hypoSpraySolution) || hypoSpraySolution.Volume == 0)

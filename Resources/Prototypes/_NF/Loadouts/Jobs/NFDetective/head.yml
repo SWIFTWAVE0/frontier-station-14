@@ -1,9 +1,4 @@
 - type: loadout
-  id: NFDetectiveClothingHeadHatFedoraBrown
+  id: NFDetectiveClothingHeadHatNFDetective
   equipment:
     head: ClothingHeadHatFedoraBrown
-
-- type: loadout
-  id: NFDetectiveClothingHeadHatFedoraGrey
-  equipment:
-    head: ClothingHeadHatFedoraGrey

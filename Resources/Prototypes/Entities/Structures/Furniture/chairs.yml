@@ -6,7 +6,6 @@
   placement:
     mode: PlaceFree
   components:
-  - type: Animateable
   - type: Clickable
   - type: InteractionOutline
   - type: Physics
@@ -159,7 +158,7 @@
 - type: entity
   name: white office chair
   id: ChairOfficeLight
-  parent: RollingOfficeChairBase # Goobstation - rolling chair, definition under _Goobstation
+  parent: OfficeChairBase
   components:
   - type: Sprite
     state: office-white
@@ -198,8 +197,6 @@
   components:
   - type: Sprite
     state: shuttle
-  - type: Rotatable # Frontier
-    rotateWhileAnchored: true # Frontier
   - type: Construction
     graph: Seat
     node: chairPilotSeat

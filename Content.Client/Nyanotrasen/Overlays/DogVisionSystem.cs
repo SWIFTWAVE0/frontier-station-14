@@ -1,5 +1,5 @@
 using Content.Shared.Abilities;
-using Content.Shared._DV.CCVars;
+using Content.Shared.DeltaV.CCVars;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;

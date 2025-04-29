@@ -76,7 +76,13 @@ public sealed partial class AccessReaderComponent : Component
     /// Whether or not emag interactions have an effect on this.
     /// </summary>
     [DataField]
-    public bool BreakOnAccessBreaker = true;
+    public bool BreakOnEmag = true;
+
+    /// <summary>
+    /// Frontier - Whether or not its emag immune.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool ImmuneToEmag;
 }
 
 [DataDefinition, Serializable, NetSerializable]

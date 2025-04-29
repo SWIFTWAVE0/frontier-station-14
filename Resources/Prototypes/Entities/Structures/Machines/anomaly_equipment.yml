@@ -184,7 +184,7 @@
     guides:
     - APE
   - type: Gun
-    projectileSpeed: 10
+    projectileSpeed: 4
     fireRate: 10 #just has to be fast enough to keep up with upgrades
     showExamineText: false
     selectedMode: SemiAuto
@@ -217,7 +217,6 @@
       - SetParticleEpsilon
       - SetParticleZeta
       - SetParticleSigma
-  - type: BindToStationExemption #Frontier - we exempt this machine from binding to grids because the intention is for it to have that ability
 
 - type: entity
   id: MachineAnomalyGenerator

@@ -24,9 +24,6 @@
   - type: Intercom
   - type: Speech
     speechVerb: Robotic
-  - type: VoiceOverride # This is for the wire that makes an electricity zapping noise.
-    speechVerbOverride: Electricity
-    enabled: false
   - type: ExtensionCableReceiver
   - type: Clickable
   - type: InteractionOutline
@@ -80,9 +77,6 @@
   - type: Construction
     graph: Intercom
     node: intercom
-    containers:
-    - board
-    - key_slots
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
@@ -242,9 +236,8 @@
 - type: entity
   id: IntercomCommand
   parent: [BaseStructureIndestructible, BaseIntercomSecure] # Frontier - added BaseStructureIndestructible
-  suffix: Command
+  suffix: Command, DO NOT MAP # Frontier - Added DO NOT MAP
   description: An intercom. It's been reinforced with metal.
-  categories: [ DoNotMap ] # Frontier
   components:
   - type: ContainerFill
     containers:
@@ -300,7 +293,7 @@
 - type: entity
   id: IntercomSecurity
   parent: [BaseStructureIndestructible, BaseIntercomSecure] # Frontier - added BaseStructureIndestructible
-  suffix: Security
+  suffix: Security # Frontier - Not adding DO NOT MAP. (Prototype is already matched by "Security" for sec shipyard.)
   description: An intercom. It's been reinforced with metal from security helmets, making it a bitch-and-a-half to open.
   components:
   - type: ContainerFill
@@ -343,8 +336,7 @@
 - type: entity
   id: IntercomAll
   parent: [BaseStructureIndestructible, Intercom] # Frontier - added BaseStructureIndestructible
-  suffix: All
-  categories: [ DoNotMap ] # Frontier
+  suffix: All, DO NOT MAP # Frontier - Added DO NOT MAP
   components:
   - type: ContainerFill
     containers:
@@ -353,16 +345,3 @@
       key_slots:
       - EncryptionKeyCommon
       - EncryptionKeyStationMaster
-
-- type: entity
-  id: IntercomFreelance
-  parent: Intercom
-  suffix: Freelance
-  components:
-  - type: ContainerFill
-    containers:
-      board:
-      - IntercomElectronics
-      key_slots:
-      - EncryptionKeyCommon
-      - EncryptionKeyFreelance

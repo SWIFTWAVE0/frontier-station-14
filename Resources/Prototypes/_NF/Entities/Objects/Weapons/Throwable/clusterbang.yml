@@ -3,6 +3,10 @@
   id: ClusterGrenadeNfsd
 
 - type: entity
+  parent: [BaseC2ContrabandUnredeemable, GrenadeStinger]
+  id: GrenadeStingerNfsd
+
+- type: entity
   parent: [BaseC2ContrabandUnredeemable, GrenadeIncendiary]
   id: GrenadeIncendiaryNfsd
 

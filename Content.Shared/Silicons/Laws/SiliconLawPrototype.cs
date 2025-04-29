@@ -31,12 +31,6 @@ public partial class SiliconLaw : IComparable<SiliconLaw>, IEquatable<SiliconLaw
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public string? LawIdentifierOverride;
 
-    /// <summary>
-    /// Frontier: an identifier that overrides <see cref="Order"/> when printing the stated law.
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public string? LawPrintOverride;
-
     public int CompareTo(SiliconLaw? other)
     {
         if (other == null)
@@ -75,8 +69,7 @@ public partial class SiliconLaw : IComparable<SiliconLaw>, IEquatable<SiliconLaw
         {
             LawString = LawString,
             Order = Order,
-            LawIdentifierOverride = LawIdentifierOverride,
-            LawPrintOverride = LawPrintOverride, // Frontier
+            LawIdentifierOverride = LawIdentifierOverride
         };
     }
 }
@@ -84,7 +77,7 @@ public partial class SiliconLaw : IComparable<SiliconLaw>, IEquatable<SiliconLaw
 /// <summary>
 /// This is a prototype for a law governing the behavior of silicons.
 /// </summary>
-[Prototype]
+[Prototype("siliconLaw")]
 [Serializable, NetSerializable]
 public sealed partial class SiliconLawPrototype : SiliconLaw, IPrototype
 {

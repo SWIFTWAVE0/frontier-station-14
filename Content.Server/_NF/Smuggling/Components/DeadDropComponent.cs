@@ -1,6 +1,5 @@
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Utility;
 
 namespace Content.Server._NF.Smuggling.Components;
 
@@ -11,12 +10,6 @@ namespace Content.Server._NF.Smuggling.Components;
 [Access(typeof(DeadDropSystem))]
 public sealed partial class DeadDropComponent : Component
 {
-    /// <summary>
-    ///     The name for the deaddrop pod
-    /// </summary>
-    [DataField]
-    public LocId Name = "deaddrop-shuttle-name";
-
     /// <summary>
     ///     When the next drop will occur. Used internally.
     /// </summary>
@@ -75,7 +68,7 @@ public sealed partial class DeadDropComponent : Component
     ///     Location of the grid to spawn in as the dead drop.
     /// </summary>
     [DataField]
-    public ResPath DropGrid = new("/Maps/_NF/DeadDrop/deaddrop.yml");
+    public string DropGrid = "/Maps/_NF/DeadDrop/deaddrop.yml";
 
     /// <summary>
     ///     The color of your grid. the name should be set by the mapper when mapping.

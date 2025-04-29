@@ -1,7 +1,7 @@
 - type: entity
   id: PetCarrier
   name: big pet carrier
-  description: Allows large animals to be carried comfortably. # Frontier: remove It smells vaguely of toilet water and explosives.
+  description: Allows large animals to be carried comfortably.
   parent: BaseStructureDynamic
   components:
   - type: Sprite
@@ -36,13 +36,15 @@
   - type: EntityStorage
     capacity: 1
     airtight: false
+    itemCanStoreMobs: true
     whitelist: # Frontier - whitelist
       tags:
       - VimPilot
-      - Cow # Frontier
-      - Goat # Frontier
-      - Mouse # Frontier
-      - Pig # Frontier
+      - Cow
+      - Goat
+      - Mouse
+      - Pig
+    forceWhitelist: true # Frontier - force whitelist
   - type: Weldable
   - type: ResistLocker
   - type: PlaceableSurface
@@ -70,8 +72,3 @@
   - type: Item
     size: Ginormous
     sprite: Objects/Storage/petcarrier.rsi
-  - type: Construction
-    graph: PetCarrier
-    node: petCarrier
-    containers:
-    - entity_storage

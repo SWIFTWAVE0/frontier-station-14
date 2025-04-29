@@ -12,29 +12,68 @@
   effects:
   - !type:SpeciesLoadoutEffect
     species:
+    - Arachnid
+    - Diona
+    - Dwarf
+    - Human
+    - Moth
+    - Reptilian
+    - Goblin
+    - Oni
+    - Felinid
+    - Vulpkanin
+    - Harpy
+    - Rodentia
+
+- type: loadoutEffectGroup
+  id: PantsCapableNF
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+    - Diona
+    - Dwarf
+    - Human
+    - Moth
+    - Reptilian
     - SlimePerson
     - Vox
-    inverted: true
+    - Goblin
+    - Oni
+    - Felinid
+    - Vulpkanin
+    - Rodentia
 
 - type: loadoutEffectGroup
   id: ShoesCapableNF
   effects:
   - !type:SpeciesLoadoutEffect
     species:
-    - Diona
-    inverted: true
+    - Arachnid
+    - Dwarf
+    - Human
+    - Moth
+    - Reptilian
+    - SlimePerson
+    - Vox
+    - Goblin
+    - Oni
+    - Felinid
+    - Vulpkanin
+    - Harpy
+    - Rodentia
 
 - type: loadoutEffectGroup
-  id: NFNotDocOrStc
+  id: NotStcNF
   effects:
   - !type:RoleBlacklistLoadoutEffect
     blacklist:
-    - JobStationTrafficController
-    - JobDirectorOfCare
+      - JobStationTrafficController
 
 - type: loadoutEffectGroup
-  id: NFNotDoc
+  id: NotFemaleNF
   effects:
-  - !type:RoleBlacklistLoadoutEffect
-    blacklist:
-    - JobDirectorOfCare
+  - !type:SexLoadoutEffect
+    sex:
+      - Male
+      - Unsexed

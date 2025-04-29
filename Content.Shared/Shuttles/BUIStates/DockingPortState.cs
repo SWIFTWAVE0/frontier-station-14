@@ -1,6 +1,5 @@
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
-using Content.Shared.Shuttles.Components; // Frontier
 
 namespace Content.Shared.Shuttles.BUIStates;
 
@@ -18,12 +17,4 @@ public sealed class DockingPortState
     public bool Connected => GridDockedWith != null;
 
     public NetEntity? GridDockedWith;
-
-    // Frontier: label, colors, type, receive only
-    public string? LabelName;
-    public Color RadarColor;
-    public Color HighlightedRadarColor;
-    public bool ReceiveOnly;
-    public DockType DockType;
-    // End Frontier
 }

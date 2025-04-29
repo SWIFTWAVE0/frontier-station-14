@@ -17,7 +17,6 @@
     ClothingOuterWinterSci: 2
     ClothingNeckScarfStripedPurple: 3
     ClothingShoesBootsWinterSci: 2
-    # Frontier
     ClothingHeadHatHoodBioScientist: 1
     ClothingOuterBioScientist: 1
 # RoboDrobe:
@@ -46,6 +45,3 @@
     ClothingHandsGlovesColorPurple: 1
     ClothingHeadsetAltScience: 1
     RubberStampRd: 1
-    # End Frontier
-  contrabandInventory:
-    ToyFigurineResearchDirector: 1

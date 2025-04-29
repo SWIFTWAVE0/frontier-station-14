@@ -13,7 +13,10 @@
   name: loadout-group-contractor-outerclothing
   minLimit: 0
   loadouts:
+  - ContractorClothingOuterVestTank
   - BrigmedicOuterClothing
+  fallbacks:
+  - ContractorClothingOuterVestTank
 
 - type: loadoutGroup
   id: BrigmedicHead
@@ -34,15 +37,13 @@
 - type: loadoutGroup
   id: BrigmedicNeck
   name: loadout-group-contractor-neck
-  hidden: true
+  minLimit: 0
   loadouts:
-  - BrigmedicClothingNeckNfsdBadgeSecurityBrigmedic
-  fallbacks:
-  - BrigmedicClothingNeckNfsdBadgeSecurityBrigmedic
+  - BrigmedicClothingNeckMantleBrigmedic
 
 - type: loadoutGroup
   id: BrigmedicPDA
-  name: loadout-group-contractor-pda
+  name: loadout-group-contractor-id
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
   - BrigmedicBrigmedicPDA

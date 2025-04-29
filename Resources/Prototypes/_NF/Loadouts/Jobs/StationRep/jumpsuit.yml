@@ -1,5 +1,8 @@
 - type: loadout
   id: StationRepClothingUniformJumpsuitSr
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitSr
@@ -15,6 +18,9 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT3
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   price: 0
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitarySr

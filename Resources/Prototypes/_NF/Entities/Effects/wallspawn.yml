@@ -1,88 +1,145 @@
-﻿- type: entity
-  id: NFWallSpawnAsteroidIronCrab
+﻿# Upstream
+- type: entity
+  id: WallSpawnAsteroidBananiumCrab
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockIronCrab
+    prototype: AsteroidRockBananiumCrab
 
 - type: entity
-  id: NFWallSpawnAsteroidSilverCrab
+  id: WallSpawnAsteroidCoalCrab
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockSilverCrab
+    prototype: AsteroidRockCoalCrab
 
 - type: entity
-  id: NFWallSpawnAsteroidQuartzCrab
+  id: WallSpawnAsteroidGoldCrab
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockQuartzCrab
+    prototype: AsteroidRockGoldCrab
 
 - type: entity
-  id: NFWallSpawnAsteroidUraniumCrab
+  id: WallSpawnAsteroidPlasmaCrab
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockUraniumCrab
+    prototype: AsteroidRockPlasmaCrab
 
 - type: entity
-  id: NFWallSpawnAsteroidBananiumCrab
+  id: WallSpawnAsteroidSaltCrab
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockBananiumCrab
+    prototype: AsteroidRockSaltCrab
+
+# Frontier
+- type: entity
+  id: WallSpawnAsteroidIronCrabNF
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockTinCrabNF
 
 - type: entity
-  id: NFWallSpawnAsteroidCoalCrab
+  id: WallSpawnAsteroidSilverCrabNF
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockCoalCrab
+    prototype: AsteroidRockSilverCrabNF
 
 - type: entity
-  id: NFWallSpawnAsteroidGoldCrab
+  id: WallSpawnAsteroidQuartzCrabNF
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockGoldCrab
+    prototype: AsteroidRockQuartzCrabNF
 
 - type: entity
-  id: NFWallSpawnAsteroidPlasmaCrab
+  id: WallSpawnAsteroidUraniumCrabNF
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockPlasmaCrab
+    prototype: AsteroidRockUraniumCrabNF
 
 - type: entity
-  id: NFWallSpawnAsteroidSaltCrab
+  id: WallSpawnAsteroidBananiumCrabNF
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
-    prototype: NFAsteroidRockSaltCrab
+    prototype: AsteroidRockBananiumCrabNF
 
-# Missing upstream minerals
+- type: entity
+  id: WallSpawnAsteroidCoalCrabNF
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockCoalCrabNF
+
+- type: entity
+  id: WallSpawnAsteroidGoldCrabNF
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockGoldCrabNF
+
+- type: entity
+  id: WallSpawnAsteroidPlasmaCrabNF
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockPlasmaCrabNF
+
+- type: entity
+  id: WallSpawnAsteroidSaltCrabNF
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockSaltCrabNF
+
 - type: entity
   id: WallSpawnAsteroidBananium
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
     prototype: AsteroidRockBananium
 
 - type: entity
+  id: WallSpawnAsteroidCoal
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockCoal
+
+- type: entity
+  id: WallSpawnAsteroidGold
+  parent: WallSpawnAsteroid
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+  - type: SpawnOnDespawn
+    prototype: AsteroidRockGold
+
+- type: entity
   id: WallSpawnAsteroidPlasma
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
     prototype: AsteroidRockPlasma
@@ -90,7 +147,7 @@
 - type: entity
   id: WallSpawnAsteroidSalt
   parent: WallSpawnAsteroid
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: SpawnOnDespawn
     prototype: AsteroidRockSalt

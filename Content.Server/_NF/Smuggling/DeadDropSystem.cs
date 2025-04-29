@@ -5,12 +5,11 @@ using Content.Server._NF.SectorServices;
 using Content.Server._NF.Smuggling.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.Radio.EntitySystems;
-using Content.Server._NF.Shipyard.Systems;
+using Content.Server.Shipyard.Systems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.StationEvents.Events;
 using Content.Shared._NF.CCVar;
 using Content.Shared._NF.Smuggling.Prototypes;
 using Content.Shared.Database;
@@ -20,13 +19,13 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Paper;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Verbs;
+using Robust.Server.GameObjects;
+using Robust.Server.Maps;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Server._NF.Station.Systems;
-using Robust.Shared.EntitySerialization.Systems;
 
 namespace Content.Server._NF.Smuggling;
 
@@ -48,8 +47,6 @@ public sealed class DeadDropSystem : EntitySystem
     [Dependency] private readonly SectorServiceSystem _sectorService = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly SharedGameTicker _ticker = default!;
-    [Dependency] private readonly LinkedLifecycleGridSystem _linkedLifecycleGrid = default!;
-    [Dependency] private readonly StationRenameWarpsSystems _stationRenameWarps = default!;
     private ISawmill _sawmill = default!;
 
     private readonly Queue<EntityUid> _drops = [];
@@ -442,21 +439,21 @@ public sealed class DeadDropSystem : EntitySystem
             return;
 
         //relying entirely on shipyard capabilities, including using the shipyard map to spawn the items and ftl to bring em in
-        if (_shipyard.ShipyardMap == null)
+        if (_shipyard.ShipyardMap is not MapId shipyardMap)
+            return;
+
+        var options = new MapLoadOptions
         {
-            _shipyard.SetupShipyardIfNeeded();
-            if (_shipyard.ShipyardMap == null)
-                return;
-        }
+            LoadMap = false,
+        };
 
         //load whatever grid was specified on the component, either a special dead drop or default
-        if (!_map.TryLoadGrid(_shipyard.ShipyardMap.Value, component.DropGrid, out var gridUid))
+        if (!_map.TryLoad(shipyardMap, component.DropGrid, out var gridUids, options))
             return;
-        var grid = gridUid.Value;
 
         //setup the radar properties
-        _shuttle.SetIFFColor(grid, component.Color);
-        _shuttle.AddIFFFlag(grid, IFFFlags.HideLabel);
+        _shuttle.SetIFFColor(gridUids[0], component.Color);
+        _shuttle.AddIFFFlag(gridUids[0], IFFFlags.HideLabel);
 
         //this is where we set up all the information that FTL is going to need, including a new null entity as a destination target because FTL needs it for reasons?
         //dont ask me im just fulfilling FTL requirements.
@@ -468,14 +465,6 @@ public sealed class DeadDropSystem : EntitySystem
         {
             return;
         }
-
-        var stationName = Loc.GetString(component.Name);
-
-        var meta = EnsureComp<MetaDataComponent>(grid);
-        _meta.SetEntityName(grid, stationName, meta);
-        List<EntityUid> gridList = [grid];
-
-        _stationRenameWarps.SyncWarpPointsToGrids(gridList, forceAdminOnly: true);
 
         // Get sector info (with sane defaults if it doesn't exist)
         int maxSimultaneousPods = 5;
@@ -491,17 +480,17 @@ public sealed class DeadDropSystem : EntitySystem
         }
 
         //this will spawn in the latest ship, and delete the oldest one available if the amount of ships exceeds 5.
-        if (TryComp<ShuttleComponent>(grid, out var shuttle))
+        if (TryComp<ShuttleComponent>(gridUids[0], out var shuttle))
         {
-            _shuttle.FTLToCoordinates(grid, shuttle, new EntityCoordinates(mapUid.Value, dropLocation), 0f, 0f, 35f);
-            _drops.Enqueue(grid);
+            _shuttle.FTLToCoordinates(gridUids[0], shuttle, new EntityCoordinates(mapUid.Value, dropLocation), 0f, 0f, 35f);
+            _drops.Enqueue(gridUids[0]);
 
             if (_drops.Count > maxSimultaneousPods)
             {
                 //removes the first element of the queue
                 var entityToRemove = _drops.Dequeue();
                 _adminLogger.Add(LogType.Action, LogImpact.Medium, $"{entityToRemove} queued for deletion");
-                _linkedLifecycleGrid.UnparentPlayersFromGrid(entityToRemove, true);
+                EntityManager.QueueDeleteEntity(entityToRemove);
             }
         }
 
@@ -544,8 +533,8 @@ public sealed class DeadDropSystem : EntitySystem
             if (!TryComp<StationDataComponent>(reportStation, out var stationData))
                 continue; // Not a station?
 
-            var stationGrid = _station.GetLargestGrid(stationData);
-            if (stationGrid == null)
+            var gridUid = _station.GetLargestGrid(stationData);
+            if (gridUid == null)
                 continue; // Nobody to send our message.
 
             if (!_prototypeManager.TryIndex(reportComp.MessageSet, out var messageSets))
@@ -590,26 +579,15 @@ public sealed class DeadDropSystem : EntitySystem
                         output = Loc.GetString(messageLoc, ("location", MetaData(sender).EntityName));
                         break;
                     case SmugglingReportMessageType.DeadDropStationWithRandomAlt:
-                        var actualStationName = MetaData(sender).EntityName;
                         if (sectorDeadDrop is not null)
                         {
-                            var otherStationList = sectorDeadDrop.DeadDropStationNames.Values.Where(x => x != actualStationName).ToList();
-                            if (otherStationList.Count > 0)
-                            {
-                                string[] names = [actualStationName, _random.Pick<string>(otherStationList)];
-                                _random.Shuffle(names);
-                                output = Loc.GetString(messageLoc, ("location1", names[0]), ("location2", names[1]));
-                            }
-                            else
-                            {
-                                // No valid alternate, just output where the dead drop is
-                                output = Loc.GetString(messageLoc, ("location1", actualStationName));
-                            }
+                            string[] names = [MetaData(sender).EntityName, _random.Pick<string>(sectorDeadDrop.DeadDropStationNames.Values)];
+                            _random.Shuffle(names);
+                            output = Loc.GetString(messageLoc, ("location1", names[0]), ("location2", names[1]));
                         }
                         else
                         {
-                            // No valid alternate, just output where the dead drop is
-                            output = Loc.GetString(messageLoc, ("location1", actualStationName));
+                            output = Loc.GetString(messageLoc, ("location1", MetaData(sender).EntityName)); // Looks strange, but still has a proper value.
                         }
                         break;
                     case SmugglingReportMessageType.PodLocation:
@@ -622,18 +600,18 @@ public sealed class DeadDropSystem : EntitySystem
                 {
                     Timer.Spawn(TimeSpan.FromMinutes(delayMinutes), () =>
                     {
-                        _radio.SendRadioMessage(stationGrid.Value, output, messageSets.Channel, uid);
+                        _radio.SendRadioMessage(gridUid.Value, output, messageSets.Channel, uid);
                     });
                 }
                 else
                 {
-                    _radio.SendRadioMessage(stationGrid.Value, output, messageSets.Channel, uid);
+                    _radio.SendRadioMessage(gridUid.Value, output, messageSets.Channel, uid);
                 }
             }
         }
     }
 
-    // Generates a random hint from a given set of entities (grabs the first N, N randomly generated between min/max),
+    // Generates a random hint from a given set of entities (grabs the first N, N randomly generated between min/max), 
     public string GenerateRandomHint(List<(EntityUid station, EntityUid ent)>? entityList = null)
     {
         if (entityList == null)

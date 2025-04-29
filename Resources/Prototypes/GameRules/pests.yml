@@ -11,9 +11,9 @@
 - type: entityTable
   id: SpicyPestEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: KingRatMigration
-    - id: SnailMigration
+    children: [] # Frontier
+    # - id: KingRatMigration # Frontier
+    # - id: SnailMigration # Frontier
 
 # events
 
@@ -22,7 +22,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
+    startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
@@ -45,7 +45,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
+    startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
@@ -71,7 +71,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
+    startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
@@ -81,14 +81,16 @@
     - id: MobCockroach
       prob: 0.03
     - id: MobMothroach
-      prob: 0.008
+      prob: 0.006 # Frontier: 0.008<0.006
+    - id: MobRosyMothroach # Frontier
+      prob: 0.002 # Frontier
 
 - type: entity
   id: SnailMigrationLowPop
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
+    startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     weight: 6
@@ -107,7 +109,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
+    startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15

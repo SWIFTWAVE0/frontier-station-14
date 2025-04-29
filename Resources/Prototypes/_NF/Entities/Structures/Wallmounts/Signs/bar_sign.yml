@@ -13,12 +13,12 @@
 
 - type: entity
   parent: BaseBarSign
-  id: BarSignNFMaltroach
+  id: BarSignMaltroach
   name: Maltroach
   description: Mothroaches politely greet you into the bar, or are they greeting each other?
   components:
   - type: BarSign
-    current: NFMaltroach
+    current: Maltroach
 
 - type: entity
   parent: BaseBarSign
@@ -40,9 +40,9 @@
 
 - type: entity
   parent: BaseBarSign
-  id: BarSignWyvernShipyards
-  name: Wyvern Shipyards
-  description: Have a seat, relax and don't worry, the future can't come any faster!
+  id: BarSignWhiskeyEchoes
+  name: Whiskey Echoes
+  description: Wew lad! Sit down and have a drink! No matter your affiliation, the slogan here is 'Death to sobriety!'
   components:
   - type: BarSign
-    current: WyvernShipyards
+    current: WhiskeyEchoes

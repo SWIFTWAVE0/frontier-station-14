@@ -20,6 +20,7 @@
     - net_watchent
     - devwindow
     - fill
+    - dumpentities
     - ">"
     - gcf
     - gc
@@ -64,14 +65,14 @@
     - showemergencyshuttle
     - zoom
     - showsubfloor
+    - showsubfloorforever
     - showmarkers
     - nodevis
     - nodevisfilter
     - detachent
     - localdelete
     - fullstatereset
-    - dumpentities
-    - fuckrules # Frontier
+    - fuckrules
 
 - Flags: MAPPING
   Commands:

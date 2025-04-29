@@ -1,4 +1,10 @@
 - type: loadout
+  id: ContractorClothingHeadHelmetEVALarge
+  price: 250
+  equipment:
+    head: ClothingHeadHelmetEVALarge
+
+- type: loadout
   id: ContractorClothingHeadBandBlack
   price: 250
   equipment:
@@ -190,7 +196,7 @@
   price: 650
   equipment:
     head: ClothingHeadHatGreyFlatcap
-
+    
 - type: loadout
   id: ContractorClothingHeadHatBrownFlatcap
   effects:
@@ -199,6 +205,15 @@
   price: 650
   equipment:
     head: ClothingHeadHatBrownFlatcap
+
+- type: loadout
+  id: ContractorClothingHeadHatCapcap
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT1
+  price: 650
+  equipment:
+    head: ClothingHeadHatCapcap
 
 - type: loadout
   id: ContractorClothingHeadHatParamedicsoft
@@ -274,24 +289,6 @@
 
 
 #T2
-- type: loadout
-  id: ContractorClothingHeadHatCaptain
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
-  price: 1250
-  equipment:
-    head: ClothingHeadHatCaptain
-
-- type: loadout
-  id: ContractorClothingHeadHatCapcap
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ContractorT2
-  price: 1250
-  equipment:
-    head: ClothingHeadHatCapcap
-
 - type: loadout
   id: ContractorClothingHeadTinfoil
   effects:

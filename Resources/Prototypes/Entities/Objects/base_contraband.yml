@@ -1,12 +1,4 @@
-# Frontier: keep these commented out - helps highlight errors that need to be fixed when pulling in upstream changes
-
-# # any type of magical items used by wizards and similiar
-# - type: entity
-#   id: BaseMagicalContraband
-#   abstract: true
-#   components:
-#   - type: Contraband
-#     severity: Magical
+﻿# Frontier: keep these commented out - helps highlight errors that need to be fixed when pulling in upstream changes
 
 # # non-stealth syndicate stuff
 # - type: entity
@@ -15,7 +7,8 @@
 #   components:
 #   - type: Contraband
 #     severity: Syndicate
-
+#     # no one should be carrying this around visibly!
+#     allowedDepartments: null
 
 # # minor contraband not departmentally restricted -- improvised weapons etc
 # - type: entity
@@ -24,6 +17,8 @@
 #   components:
 #   - type: Contraband
 #     severity: Minor
+#     # according to space law no dept is authorized to have
+#     allowedDepartments: null
 
 # # major contraband, for things like guns or weaponry that don't belong to any department and aren't syndicate specific
 # - type: entity
@@ -32,16 +27,7 @@
 #   components:
 #   - type: Contraband
 #     severity: Major
-
-# # base department restricted contraband, this should only be used as a parent for other contraband prototypes, not the restricted items themselves.
-# - type: entity
-#   id: BaseRestrictedContraband
-#   abstract: true
-#   components:
-#   - type: Contraband
-#     severity: Restricted
-#     allowedDepartments: [  ]
-#     allowedJobs: [  ]
+#     allowedDepartments: null
 
 # one department restricted contraband
 - type: entity
@@ -108,14 +94,14 @@
 #   - type: Contraband
 #     allowedDepartments: [ Cargo ]
 
-# multiple departments restricted contraband
-- type: entity
-  id: BaseCentcommCommandContraband
-  parent: BaseC2ContrabandUnredeemable # Frontier: BaseRestrictedContraband<BaseC2ContrabandUnredeemable
-  abstract: true
-  components:
-  - type: Contraband
-    allowedDepartments: [ CentralCommand, Command ]
+# # multiple departments restricted contraband
+# - type: entity
+#   id: BaseCentcommCommandContraband
+#   parent: BaseRestrictedContraband
+#   abstract: true
+#   components:
+#   - type: Contraband
+#     allowedDepartments: [ CentralCommand, Command ]
 
 # - type: entity
 #   id: BaseSecurityCommandContraband
@@ -165,34 +151,15 @@
 #   - type: Contraband
 #     allowedDepartments: [ Medical, Science ]
 
-# contraband restricted by job by some degree
 # - type: entity
-#   id: BaseSecurityBartenderContraband
+#   id: BaseCargoContraband
 #   parent: BaseRestrictedContraband
 #   abstract: true
 #   components:
 #   - type: Contraband
-#     allowedDepartments: [ Security ]
-#     allowedJobs: [ Bartender ]
+#     allowedDepartments: [ Cargo ]
 
-# - type: entity
-#   id: BaseSecurityLawyerContraband
-#   parent: BaseRestrictedContraband
-#   abstract: true
-#   components:
-#   - type: Contraband
-#     allowedDepartments: [ Security ]
-#     allowedJobs: [ Lawyer ]
-
-# - type: entity
-#   id: BaseJanitorContraband
-#   parent: BaseRestrictedContraband
-#   abstract: true
-#   components:
-#   - type: Contraband
-#     allowedJobs: [ Janitor ]
-
-# for ~objective items
+# # for ~objective items
 # - type: entity
 #   id: BaseGrandTheftContraband
 #   abstract: true

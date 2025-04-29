@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [Clothing, RecyclableItemClothDevice] # Frontier: added RecyclableItemClothDevice
+  parent: Clothing
   id: ClothingEyesBase
   components:
   - type: Sprite

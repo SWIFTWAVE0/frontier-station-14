@@ -1,8 +1,8 @@
 ﻿- type: entity
-  name: tac-lite
+  name: nfsdlite
   parent: FlashlightLantern
   id: FlashlightNfsdLite
-  description: A tactical flashlight used by the NFSD.
+  description: A robust flashlight used by the nfsd.
   components:
   - type: Tag
     tags:

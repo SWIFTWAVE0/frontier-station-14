@@ -70,6 +70,7 @@ namespace Content.Server.Guardian
 
             _container.Remove(uid, hostComponent.GuardianContainer);
             hostComponent.HostedGuardian = null;
+            Dirty(host.Value, hostComponent);
             QueueDel(hostComponent.ActionEntity);
             hostComponent.ActionEntity = null;
         }
@@ -268,7 +269,6 @@ namespace Content.Server.Guardian
                 component.Host,
                 args.DamageDelta * component.DamageShare,
                 origin: args.Origin,
-                ignoreResistances: true,
                 interruptsDoAfters: false);
             _popupSystem.PopupEntity(Loc.GetString("guardian-entity-taking-damage"), component.Host.Value, component.Host.Value);
 

@@ -14,8 +14,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Timing;
-using Content.Server.Station.Components; // Frontier
-using Content.Server.Station.Systems; // Frontier
 
 namespace Content.Server.Xenoarchaeology.XenoArtifacts;
 
@@ -29,7 +27,6 @@ public sealed partial class ArtifactSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly StationSystem _station = default!; // Frontier
 
 
     public override void Initialize()
@@ -78,7 +75,7 @@ public sealed partial class ArtifactSystem : EntitySystem
         var sumValue = component.NodeTree.Sum(n => GetNodePointValue(n, component, getMaxPrice));
         var fullyExploredBonus = component.NodeTree.All(x => x.Triggered) || getMaxPrice ? 1.25f : 1;
 
-        return (int) (sumValue * fullyExploredBonus) - component.ConsumedPoints - component.SkippedPoints; // Frontier: subtract SkippedPoints
+        return (int) (sumValue * fullyExploredBonus) - component.ConsumedPoints;
     }
 
     /// <summary>
@@ -138,12 +135,9 @@ public sealed partial class ArtifactSystem : EntitySystem
         EnterNode(uid, ref firstNode, component);
     }
 
-    // Frontier: activate and randomly disintegrate an artifact.
-    public void NFActivateArtifact(EntityUid uid, float disintegrateProb, float disintegrateProbOffStationGrid, float range)
+    // Frontier: randomly disintegrate an artifact.
+    public void DisintegrateArtifact(EntityUid uid, float probabilityMin, float probabilityMax, float range)
     {
-        if (!TryComp<ArtifactComponent>(uid, out var artifactComp))
-            return;
-
         // Frontier - prevent both artifact activation and disintegration on protected grids (no grimforged in the safezone).
         var xform = Transform(uid);
         if (xform.GridUid != null)
@@ -152,13 +146,11 @@ public sealed partial class ArtifactSystem : EntitySystem
                 return;
         }
 
-        // Science should happen on shuttles or stations.
-        if (_station.GetOwningStation(xform.GridUid) == null)
-        {
-            disintegrateProb += disintegrateProbOffStationGrid;
-        }
+        // Make a chance between probabilityMin and probabilityMax
+        var randomChanceForDisintegration = _random.NextFloat(probabilityMin, probabilityMax);
+        var willDisintegrate = _random.Prob(randomChanceForDisintegration);
 
-        if (_random.Prob(disintegrateProb))
+        if (willDisintegrate)
         {
             var artifactCoord = _transform.GetMapCoordinates(uid);
             var flashEntity = Spawn("EffectFlashBluespace", artifactCoord);
@@ -171,14 +163,6 @@ public sealed partial class ArtifactSystem : EntitySystem
             _transform.AttachToGridOrMap(mobEntity);
 
             _entityManager.DeleteEntity(uid);
-        }
-        else
-        {
-            // Activate the artifact, but consume any points from newly visited nodes.
-            bool oldRemove = artifactComp.RemoveGainedPoints;
-            artifactComp.RemoveGainedPoints = true;
-            TryActivateArtifact(uid, uid, artifactComp);
-            artifactComp.RemoveGainedPoints = oldRemove;
         }
     }
     // End Frontier
@@ -241,13 +225,7 @@ public sealed partial class ArtifactSystem : EntitySystem
 
         var currentNode = GetNodeFromId(component.CurrentNodeId.Value, component);
 
-        bool untriggered = !currentNode.Triggered; // Frontier: cache triggered value
-
         currentNode.Triggered = true;
-        // Frontier: remove points from spraying artifacts - must be done after Triggered is set
-        if (component.RemoveGainedPoints && untriggered)
-            component.SkippedPoints += (int)GetNodePointValue(currentNode, component);
-        // End Frontier
         if (currentNode.Edges.Count == 0)
             return;
 

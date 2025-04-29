@@ -9,8 +9,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.EntityTable;
-using Content.Server.Mind; // Frontier
-using Content.Server._NF.Roles.Systems; // Frontier
 
 namespace Content.Server.StationEvents;
 
@@ -23,9 +21,6 @@ public sealed class EventManagerSystem : EntitySystem
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] public readonly GameTicker GameTicker = default!;
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-    [Dependency] private readonly JobTrackingSystem _jobs = default!; // Frontier
-
-    [Dependency] private readonly MindSystem _mindSystem = default!;
 
     public bool EventsEnabled { get; private set; }
     private void SetEnabled(bool value) => EventsEnabled = value;
@@ -153,20 +148,20 @@ public sealed class EventManagerSystem : EntitySystem
             return null;
         }
 
-        var sumOfWeights = 0.0f;
+        var sumOfWeights = 0;
 
         foreach (var stationEvent in availableEvents.Values)
         {
-            sumOfWeights += stationEvent.Weight;
+            sumOfWeights += (int) stationEvent.Weight;
         }
 
-        sumOfWeights = _random.NextFloat(sumOfWeights);
+        sumOfWeights = _random.Next(sumOfWeights);
 
         foreach (var (proto, stationEvent) in availableEvents)
         {
-            sumOfWeights -= stationEvent.Weight;
+            sumOfWeights -= (int) stationEvent.Weight;
 
-            if (sumOfWeights <= 0.0f)
+            if (sumOfWeights <= 0)
             {
                 return proto.ID;
             }
@@ -215,7 +210,7 @@ public sealed class EventManagerSystem : EntitySystem
             if (prototype.Abstract)
                 continue;
 
-            if (!prototype.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+            if (!prototype.TryGetComponent<StationEventComponent>(out var stationEvent))
                 continue;
 
             allEvents.Add(prototype, stationEvent);
@@ -272,17 +267,10 @@ public sealed class EventManagerSystem : EntitySystem
             return false;
         }
 
-        // Frontier: Check max players
+        // Frontier: max players
         if (playerCount > stationEvent.MaximumPlayers)
         {
             return false;
-        }
-
-        // Frontier: require jobs to run event
-        foreach (var (jobProtoId, numJobs) in stationEvent.RequiredJobs)
-        {
-            if (_jobs.GetNumberOfActiveRoles(jobProtoId, false) < numJobs)
-                return false;
         }
         // End Frontier
 

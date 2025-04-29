@@ -25,28 +25,12 @@ public sealed partial class PlantMutateExudeGasses : EntityEffect
         if (plantholder.Seed == null)
             return;
 
-        // Frontier: List of gasses
-        Gas[] gasList =
-        {
-          Gas.Oxygen,
-          Gas.Nitrogen,
-          Gas.CarbonDioxide,
-          Gas.NitrousOxide,
-          Gas.Ammonia,
-          Gas.Plasma,
-          Gas.WaterVapor,
-          //Gas.Tritium,
-          //Gas.Frezon,
-        };
-        // End Frontier: List of gasses
-
         var random = IoCManager.Resolve<IRobustRandom>();
         var gasses = plantholder.Seed.ExudeGasses;
 
         // Add a random amount of a random gas to this gas dictionary
         float amount = random.NextFloat(MinValue, MaxValue);
-        //Gas gas = random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList()); // Frontier
-        Gas gas = random.Pick(gasList); // Frontier
+        Gas gas = random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList());
         if (gasses.ContainsKey(gas))
         {
             gasses[gas] += amount;
@@ -80,28 +64,12 @@ public sealed partial class PlantMutateConsumeGasses : EntityEffect
         if (plantholder.Seed == null)
             return;
 
-        // Frontier: List of gasses
-        Gas[] gasList =
-        {
-          Gas.Oxygen,
-          Gas.Nitrogen,
-          Gas.CarbonDioxide,
-          Gas.NitrousOxide,
-          Gas.Ammonia,
-          Gas.Plasma,
-          Gas.WaterVapor,
-          //Gas.Tritium,
-          //Gas.Frezon,
-        };
-        // End Frontier: List of gasses
-
         var random = IoCManager.Resolve<IRobustRandom>();
         var gasses = plantholder.Seed.ConsumeGasses;
 
         // Add a random amount of a random gas to this gas dictionary
         float amount = random.NextFloat(MinValue, MaxValue);
-        //Gas gas = random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList()); // Frontier
-        Gas gas = random.Pick(gasList); // Frontier
+        Gas gas = random.Pick(Enum.GetValues(typeof(Gas)).Cast<Gas>().ToList());
         if (gasses.ContainsKey(gas))
         {
             gasses[gas] += amount;

@@ -897,7 +897,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Caduceus
+      id: caduceus
 - proto: AirAlarm
   entities:
   - uid: 1169
@@ -3731,19 +3731,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.5,9.5
       parent: 1
-- proto: ChemDispenser
-  entities:
-  - uid: 615
-    components:
-    - type: Transform
-      pos: 3.5,-9.5
-      parent: 1
 - proto: ChemistryHotplate
   entities:
   - uid: 547
     components:
     - type: Transform
-      pos: 4.5,-10.5
+      pos: 3.5,-9.5
       parent: 1
 - proto: ChemMaster
   entities:
@@ -3937,6 +3930,17 @@ entities:
     - type: Transform
       pos: 0.5,7.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: ItemSlots
 - proto: CrateFreezer
   entities:
   - uid: 799
@@ -6444,6 +6448,13 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 16.5,-16.5
       parent: 1
+- proto: HeadBorgMedical
+  entities:
+  - uid: 1454
+    components:
+    - type: Transform
+      pos: 16.493662,-12.606645
+      parent: 1
 - proto: hydroponicsTrayAnchored
   entities:
   - uid: 796
@@ -6472,6 +6483,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-2.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
   - uid: 701
@@ -6480,6 +6493,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: 8.5,-16.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
   - uid: 1184
@@ -6488,6 +6503,8 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-15.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
   - uid: 1186
@@ -6496,6 +6513,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 8.5,-9.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
   - uid: 1191
@@ -6504,6 +6523,8 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -2.5,10.5
       parent: 1
+    - type: Physics
+      canCollide: False
     - type: Fixtures
       fixtures: {}
 - proto: KitchenKnife
@@ -6543,26 +6564,19 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -3.155892,-3.23566
       parent: 1
-- proto: LeftArmBorg
+- proto: LeftArmBorgMedical
   entities:
   - uid: 1453
     components:
     - type: Transform
       pos: 13.550231,-14.493188
       parent: 1
-- proto: LeftLegBorg
+- proto: LeftLegBorgMedical
   entities:
   - uid: 1452
     components:
     - type: Transform
       pos: 15.226535,-12.567066
-      parent: 1
-- proto: LightHeadBorg
-  entities:
-  - uid: 1454
-    components:
-    - type: Transform
-      pos: 16.493662,-12.606645
       parent: 1
 - proto: LockerChemistryFilled
   entities:
@@ -6633,6 +6647,20 @@ entities:
     - type: Transform
       pos: 5.5,-10.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        microwave_entity_container: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: MedicalBed
   entities:
   - uid: 694
@@ -6662,6 +6690,20 @@ entities:
     - type: Transform
       pos: 0.5,-3.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        machine_parts: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        blueprint: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
 - proto: MedkitFilled
   entities:
   - uid: 633
@@ -6687,13 +6729,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -9.5,-15.5
-      parent: 1
-- proto: NFHolopadShip
-  entities:
-  - uid: 1121
-    components:
-    - type: Transform
-      pos: 0.5,8.5
       parent: 1
 - proto: NFSignDock
   entities:
@@ -7064,14 +7099,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 16.5,-19.5
       parent: 1
-- proto: RightArmBorg
+- proto: RightArmBorgMedical
   entities:
   - uid: 1448
     components:
     - type: Transform
       pos: 11.081971,-13.213505
       parent: 1
-- proto: RightLegBorg
+- proto: RightLegBorgMedical
   entities:
   - uid: 1451
     components:
@@ -7939,6 +7974,11 @@ entities:
     - type: Transform
       pos: 3.5,-10.5
       parent: 1
+  - uid: 615
+    components:
+    - type: Transform
+      pos: 3.5,-9.5
+      parent: 1
   - uid: 620
     components:
     - type: Transform
@@ -8119,7 +8159,7 @@ entities:
     - type: Transform
       pos: 15.488791,-11.472113
       parent: 1
-- proto: TorsoBorg
+- proto: TorsoBorgMedical
   entities:
   - uid: 1447
     components:
@@ -9460,7 +9500,7 @@ entities:
     - type: Transform
       pos: 6.5,-16.5
       parent: 1
-- proto: WarpPoint
+- proto: WarpPointShip
   entities:
   - uid: 1277
     components:

@@ -21,16 +21,17 @@ namespace Content.Client.Crayon.UI
         protected override void Open()
         {
             base.Open();
-            _menu = this.CreateWindowCenteredLeft<CrayonWindow>();
+            _menu = this.CreateWindow<CrayonWindow>();
             _menu.OnColorSelected += SelectColor;
             _menu.OnSelected += Select;
             PopulateCrayons();
+            _menu.OpenCenteredLeft();
         }
 
         private void PopulateCrayons()
         {
             var crayonDecals = _protoManager.EnumeratePrototypes<DecalPrototype>().Where(x => x.Tags.Contains("crayon"));
-            _menu?.Populate(crayonDecals.ToList());
+            _menu?.Populate(crayonDecals);
         }
 
         public override void OnProtoReload(PrototypesReloadedEventArgs args)
@@ -41,16 +42,6 @@ namespace Content.Client.Crayon.UI
                 return;
 
             PopulateCrayons();
-        }
-
-        protected override void ReceiveMessage(BoundUserInterfaceMessage message)
-        {
-            base.ReceiveMessage(message);
-
-            if (_menu is null || message is not CrayonUsedMessage crayonMessage)
-                return;
-
-            _menu.AdvanceState(crayonMessage.DrawnDecal);
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)

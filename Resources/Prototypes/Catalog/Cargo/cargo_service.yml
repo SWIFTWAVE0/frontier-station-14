@@ -19,17 +19,6 @@
   group: market
 
 - type: cargoProduct
-  id: ServiceLightsHoliday
-  abstract: true # Frontier
-  icon:
-    sprite: Objects/Power/light_bulb.rsi
-    state: normal
-  product: CrateServiceHolidayLights
-  cost: 800
-  category: cargoproduct-category-name-service
-  group: market
-
-- type: cargoProduct
   id: MousetrapBoxes
   icon:
     sprite: Objects/Devices/mousetrap.rsi
@@ -55,7 +44,7 @@
   abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
-    state: icon
+    state: closed
   product: CrateServiceSmokeables
   cost: 1500
   category: cargoproduct-category-name-service
@@ -65,7 +54,7 @@
   id: ServiceCustomSmokable
   icon:
     sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
-    state: icon
+    state: closed
   product: CrateServiceCustomSmokable
   cost: 1000
   category: cargoproduct-category-name-service
@@ -225,5 +214,3 @@
   cost: 500
   category: cargoproduct-category-name-service
   group: market
-
-

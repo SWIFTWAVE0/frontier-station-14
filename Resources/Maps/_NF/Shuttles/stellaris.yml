@@ -654,6 +654,7 @@ entities:
       parent: 1
     - type: Physics
       canCollide: False
+      bodyType: Static
     - type: Fixtures
       fixtures: {}
 - proto: BenchSofaCorpLeft
@@ -664,6 +665,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,7.5
       parent: 1
+    - type: Physics
+      bodyType: Static
 - proto: BenchSofaCorpRight
   entities:
   - uid: 249
@@ -671,6 +674,8 @@ entities:
     - type: Transform
       pos: 1.5,8.5
       parent: 1
+    - type: Physics
+      bodyType: Static
 - proto: BikeHorn
   entities:
   - uid: 442
@@ -1563,17 +1568,56 @@ entities:
     - type: Transform
       pos: 7.5,-0.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: Physics
+      canCollide: False
+    - type: ItemSlots
   - uid: 239
     components:
     - type: Transform
       pos: -6.5,-0.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: Physics
+      canCollide: False
+    - type: ItemSlots
   - uid: 241
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-4.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        board: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        bank-ATM-cashSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+    - type: Physics
+      canCollide: False
+    - type: ItemSlots
 - proto: CrateFreezer
   entities:
   - uid: 209
@@ -2900,13 +2944,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.3989902,0.9814253
       parent: 1
-- proto: NFHolopadShip
-  entities:
-  - uid: 217
-    components:
-    - type: Transform
-      pos: 0.5,11.5
-      parent: 1
 - proto: OilJarCorn
   entities:
   - uid: 219
@@ -2936,11 +2973,19 @@ entities:
     - type: Transform
       pos: -3.5,-7.5
       parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
   - uid: 447
     components:
     - type: Transform
       pos: -3.5,-8.5
       parent: 1
+    - type: FuelGenerator
+      on: False
+    - type: Physics
+      bodyType: Static
 - proto: PottedPlantRandom
   entities:
   - uid: 626
@@ -3425,10 +3470,10 @@ entities:
       parent: 1
 - proto: SpacemenFigureSpawner
   entities:
-  - uid: 218
+  - uid: 409
     components:
     - type: Transform
-      pos: 2.5,12.5
+      pos: 0.5,11.5
       parent: 1
 - proto: SpawnPointLatejoin
   entities:
@@ -3563,6 +3608,11 @@ entities:
     components:
     - type: Transform
       pos: 0.5,12.5
+      parent: 1
+  - uid: 380
+    components:
+    - type: Transform
+      pos: 0.5,11.5
       parent: 1
   - uid: 385
     components:
@@ -4322,7 +4372,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,13.5
       parent: 1
-- proto: WarpPoint
+- proto: WarpPointShip
   entities:
   - uid: 410
     components:

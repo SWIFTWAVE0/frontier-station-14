@@ -2,8 +2,9 @@
 - type: startingGear
   id: MobHumanoidExplorerGearMeleeT1
   equipment:
-    pocket1: ClothingBackpackExplorerMeleeT1
-    pocket2: OreBag
+    gloves: ClothingHandsGlovesWeaponWieldedPickaxe
+    back: ClothingBackpackExplorerMeleeT1
+    belt: OreBag
     shoes: ClothingShoesBootsSalvage
     suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
@@ -11,8 +12,9 @@
 - type: startingGear
   id: MobHumanoidExplorerGearRangedT1
   equipment:
-    pocket1: ClothingBackpackExplorerRangedT1
-    pocket2: ConstructionBag
+    gloves: ClothingHandsGlovesWeaponPkaFlashlight
+    back: ClothingBackpackExplorerRangedT1
+    belt: ConstructionBag
     shoes: ClothingShoesBootsSalvage
     suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
@@ -21,38 +23,42 @@
 - type: startingGear
   id: MobHumanoidExplorerGearMeleeT2
   equipment:
-    pocket1: ClothingBackpackExplorerMeleeT2
-    pocket2: OreBag
+    gloves: ClothingHandsGlovesWeaponWieldedGlaive
+    outerClothing: ClothingOuterHardsuitSpatio
+    back: ClothingBackpackExplorerMeleeT2
+    belt: OreBag
     shoes: ClothingShoesBootsSalvage
-    suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
 
 - type: startingGear
   id: MobHumanoidExplorerGearRangedT2
   equipment:
-    pocket1: ClothingBackpackExplorerRangedT2
-    pocket2: ConstructionBag
+    gloves: ClothingHandsGlovesWeaponSawnOffPkaDagger
+    outerClothing: ClothingOuterHardsuitSpatio
+    back: ClothingBackpackExplorerRangedT2
+    belt: ConstructionBag
     shoes: ClothingShoesBootsSalvage
-    suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
 
 # Tier 3
 - type: startingGear
   id: MobHumanoidExplorerGearMeleeT3
   equipment:
-    pocket1: ClothingBackpackExplorerMeleeT3
-    pocket2: OreBag
+    gloves: ClothingHandsGlovesWeaponDrill
+    outerClothing: ClothingOuterHardsuitSalvage
+    back: ClothingBackpackExplorerMeleeT3
+    belt: OreBag
     shoes: ClothingShoesBootsSalvage
-    suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
 
 - type: startingGear
   id: MobHumanoidExplorerGearRangedT3
   equipment:
-    pocket1: ClothingBackpackExplorerRangedT3
-    pocket2: ConstructionBag
+    gloves: ClothingHandsGlovesWeaponWieldedPka
+    outerClothing: ClothingOuterHardsuitLuxury
+    back: ClothingBackpackExplorerRangedT3
+    belt: ConstructionBag
     shoes: ClothingShoesBootsSalvage
-    suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan
 
 - type: startingGear
@@ -65,8 +71,9 @@
 - type: startingGear
   id: MobHumanoidExplorerGearBoss
   equipment:
-    pocket1: ClothingBackpackExplorerBoss
-    pocket2: ConstructionBag
+    gloves: ClothingHandsGlovesWeaponEnergyPickaxe
+    outerClothing: ClothingOuterHardsuitMaximPrototype
+    back: ClothingBackpackExplorerBoss
+    belt: ConstructionBag
     shoes: ClothingShoesBootsSalvage
-    suitstorage: AirTankFilled
     neck: ClothingNeckIFFCyan

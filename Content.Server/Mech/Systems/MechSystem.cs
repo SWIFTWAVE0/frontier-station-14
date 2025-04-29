@@ -149,11 +149,6 @@ public sealed partial class MechSystem : SharedMechSystem
 
     private void OnRemoveEquipmentMessage(EntityUid uid, MechComponent component, MechEquipmentRemoveMessage args)
     {
-        // Frontier: mechs with fixed equipment
-        if (!component.CanRemoveEquipment)
-            return;
-        // End Frontier: mechs with fixed equipment
-
         var equip = GetEntity(args.Equipment);
 
         if (!Exists(equip) || Deleted(equip))
@@ -252,7 +247,7 @@ public sealed partial class MechSystem : SharedMechSystem
             if (faction.Factions != null)
                 factionMech.Factions = faction.Factions;
         }
-        // End Frontier
+        // Frontier
 
         TryInsert(uid, args.Args.User, component);
         _actionBlocker.UpdateCanMove(uid);

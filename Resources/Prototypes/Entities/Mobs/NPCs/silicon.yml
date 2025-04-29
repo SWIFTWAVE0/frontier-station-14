@@ -31,12 +31,13 @@
   - type: NpcFactionMember
     factions:
     - SimpleNeutral
-  - type: Access
-    tags:
-    - BasicSilicon
   - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
   - type: ActiveRadio
     channels:
+    - Binary
     - Common
   - type: HealthExaminable
     examinableTypes:
@@ -112,51 +113,45 @@
   - type: Insulated
 
 - type: entity
-  parent: MobSiliconBase
-  id: MobFireBot
-  name: firebot
-  description: A little fire extinguishing bot. He looks rather anxious.
+  parent: [ MobSiliconBase, BaseVehicle]
+  id: MobSiliconBaseVehicle # for vehicles
+  abstract: true
+  components:
+  - type: NoSlip
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 2
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+
+- type: entity
+  parent: MobSiliconBaseVehicle
+  id: MobTaxiBot
+  name: taxibot
+  description: Give a ride?
   components:
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/firebot.rsi
-    state: firebot
+    sprite: Mobs/Silicon/Bots/taxibot.rsi
+    layers:
+    - state: taxibot
+      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+  - type: GhostRole
+    name: ghost-role-information-taxibot-name
+    description: ghost-role-information-taxibot-description
+    rules: ghost-role-information-nonantagonist-rules # Frontier?
+  - type: Strap
+    buckleOffset: "0, 0"
+    unbuckleDistanceSquared: 0.09 # Frontier: (30 cm)^2 - seems unnecessary, but for consistency with vehicles
+    # maxBuckleDistance: 1 # Umbra - buckling fix
   - type: Construction
-    graph: FireBot
+    graph: TaxiBot
     node: bot
-  - type: HTN
-    rootTask:
-      task: FirebotCompound
-  - type: SolutionContainerManager
-    solutions:
-      spray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Water
-          Quantity: 10
-  - type: SolutionRegeneration
-    solution: spray
-    generated:
-      reagents:
-        - ReagentId: Water
-          Quantity: 10
-  - type: Spray
-    transferAmount: 10
-    pushbackAmount: 60
-    spraySound:
-      path: /Audio/Effects/extinguish.ogg
-    sprayedPrototype: ExtinguisherSpray
-    vaporAmount: 1
-    vaporSpread: 90
-    sprayVelocity: 3.0
-  - type: UseDelay
-    delay: 2
-  - type: InteractionPopup
-    interactSuccessString: petting-success-firebot
-    interactFailureString: petting-failure-firebot
-    interactSuccessSound:
-      path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Advertise
-    pack: FirebotAd
+  - type: VehicleHorn # Frontier: beep beep
 
 - type: entity
   parent: MobSiliconBase
@@ -169,8 +164,6 @@
     maxInterval: 12
     sound:
       collection: BikeHorn
-      params:
-        variation: 0.125
   - type: Sprite
     sprite: Mobs/Silicon/Bots/honkbot.rsi
     state: honkbot
@@ -207,8 +200,6 @@
     name: ghost-role-information-honkbot-name
     description: ghost-role-information-honkbot-description
     rules: ghost-role-information-freeagent-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -217,8 +208,6 @@
     interactFailureString: petting-failure-honkbot
     interactSuccessSound:
       path: /Audio/Items/bikehorn.ogg
-      params:
-        variation: 0.125
 
 - type: entity
   parent: MobHonkBot
@@ -229,8 +218,6 @@
   - type: SpamEmitSound
     sound:
       collection: CluwneHorn
-      params:
-        variation: 0.125
   - type: Sprite
     state: jonkbot
   - type: Construction
@@ -241,15 +228,11 @@
     name: ghost-role-information-jonkbot-name
     description: ghost-role-information-jonkbot-description
     rules: ghost-role-information-freeagent-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
     raffle:
       settings: default
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Items/brokenbikehorn.ogg
-      params:
-        variation: 0.125
   - type: Vocal
     sounds:
       Unsexed: Cluwne
@@ -273,6 +256,8 @@
   - type: Construction
     graph: CleanBot
     node: bot
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-mechanical
   - type: Absorbent
     pickupAmount: 10
   - type: UseDelay
@@ -344,6 +329,8 @@
   - type: Construction
     graph: MediBot
     node: bot
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-mechanical
   - type: Anchorable
   - type: InteractionPopup
     interactSuccessString: petting-success-medibot
@@ -354,7 +341,6 @@
     pack: MedibotAds
   - type: Inventory
     templateId: medibot
-  - type: DoAfter
 
 - type: entity
   parent:
@@ -378,8 +364,6 @@
     name: ghost-role-information-mimebot-name
     description: ghost-role-information-mimebot-description
     rules: ghost-role-information-freeagent-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -455,5 +439,6 @@
     - Bot
   - type: ActiveRadio
     channels:
+    - Binary
     - Common
     - Supply

@@ -10,58 +10,47 @@
 # Basic Cargo Depot selling point for economy and great wealth
 - type: pointOfInterest
   id: CargoDepot
-  parent: BasePOI
   name: Cargo Depot
-  minimumDistance: 4000
-  maximumDistance: 5000
+  rangeMin: 4500
+  rangeMax: 6000
+  IFFColor: "#37C837" #green like the color of money
   spawnGroup: CargoDepot
   gridPath: /Maps/_NF/POI/cargodepot.yml
-  addComponents: &cargoComponents
-  - type: IFF
-    color: "#37C837"
-  - type: ProtectedGrid
-    preventArtifactTriggers: true
-  - type: SolarPoweredGrid
-    trackOnInit: true
-    doNotCull: true
-  - type: WorldGenDistanceCarver
-    distanceThresholds:
-      # Dead zone
-      - maxDistance: 500
-        prob: 0.0
-      - maxDistance: 1000
-        prob: 0.3
+  gridProtection:
+    - ArtifactTriggers
 
 - type: pointOfInterest
   id: CargoDepotAlt
-  parent: BasePOI
   name: Cargo Depot
-  minimumDistance: 4000
-  maximumDistance: 5000
+  rangeMin: 4500
+  rangeMax: 6000
+  IFFColor: "#37C837" #green like the color of money
   spawnGroup: CargoDepot
   gridPath: /Maps/_NF/POI/cargodepotalt.yml
-  addComponents: *cargoComponents
+  gridProtection:
+    - ArtifactTriggers
 
 - type: gameMap
   id: CargoDepot
-  mapName: 'Cargo Depot' # Has a letter appended in PointOfInterestSystem
+  mapName: 'Cargo Depot' # Has a letter appended in NfAdventureSystem
   mapPath: /Maps/_NF/POI/cargodepotalt.yml
   minPlayers: 0
   stations:
     CargoDepot:
-      stationProto: StandardFrontierOutpost
-      components: &cargoStationComponents
+      stationProto: MarketFrontierOutpost
+      components:
         - type: StationNameSetup
-          mapNameTemplate: 'Cargo Depot' # Has a letter appended in PointOfInterestSystem
-        - type: TradeCrateDestination
-          destinationProto: CargoA # Redefined in PointOfInterestSystem
+          mapNameTemplate: 'Cargo Depot' # Has a letter appended in NfAdventureSystem
 
 - type: gameMap
   id: CargoDepotAlt
-  mapName: 'Cargo Depot' # Has a letter appended in PointOfInterestSystem
+  mapName: 'Cargo Depot' # Has a letter appended in NfAdventureSystem
   mapPath: /Maps/_NF/POI/cargodepotalt.yml
   minPlayers: 0
   stations:
     CargoDepotAlt:
-      stationProto: StandardFrontierOutpost
-      components: *cargoStationComponents
+      stationProto: MarketFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Cargo Depot' # Has a letter appended in NfAdventureSystem
+  

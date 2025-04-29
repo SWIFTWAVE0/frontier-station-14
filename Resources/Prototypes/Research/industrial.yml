@@ -13,6 +13,8 @@
   - MiningDrill
   - WeaponGrapplingGun # Frontier
   - MineralScannerEmpty
+  - BorgModuleMining
+  - BorgModuleGrapplingGun
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
 
@@ -28,7 +30,7 @@
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
-  # - BorgModuleGPS # Frontier: useless
+  - BorgModuleGPS
 
 - type: technology
   id: AdvancedPowercells
@@ -42,7 +44,6 @@
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
-  - SMESAdvancedMachineCircuitboard
 
 - type: technology
   id: MechanicalCompression
@@ -84,6 +85,7 @@
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
   - PortableGeneratorJrPacmanMachineCircuitboard
+  - PowerComputerCircuitboard #the actual solar panel itself should be in here
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
   - EmitterCircuitboard
@@ -119,7 +121,6 @@
   - RipleyCentralElectronics
   - RipleyPeripheralsElectronics
   - MechEquipmentGrabber
-  - MechEquipmentFork # Frontier
 
 # Tier 2
 
@@ -127,7 +128,7 @@
   id: Shuttlecraft
   name: research-technology-shuttlecraft
   icon:
-    sprite: _NF/Structures/Shuttles/gyroscope.rsi # Frontier: add _NF prefix
+    sprite: Structures/Shuttles/gyroscope.rsi
     state: base
   discipline: Industrial
   tier: 2
@@ -137,7 +138,6 @@
   - ThrusterMachineCircuitboard
   - GyroscopeMachineCircuitboard
   - MiniGravityGeneratorCircuitboard
-  - MiniStationAnchorCircuitboard # Frontier
   - SmallThrusterMachineCircuitboard # Frontier
   - SmallGyroscopeMachineCircuitboard # Frontier
 
@@ -154,7 +154,6 @@
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
-#  - FireExtinguisherBluespace # DeltaV
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -173,8 +172,7 @@
     - JawsOfLife
     - UtilityBeltChiefEngineer
     - BorgModuleAdvancedTool
-    # - Fulton # Frontier
-    # - FultonBeacon # Frontier
+    - BorgModuleRCD
     - NFBlueprintPowerDrill # Frontier
     - NFBlueprintJawsOfLife # Frontier
     - NFBlueprintWelderExperimental # Frontier
@@ -230,8 +228,6 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - NFBlueprintPowerCellMicroreactor # Frontier
-  - PortableGeneratorDKJrMachineCircuitboard # Frontier
-  - NFBlueprintPortableGeneratorDKJr # Frontier
   technologyPrerequisites:
   - AdvancedPowercells
 

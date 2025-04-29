@@ -8,9 +8,9 @@
   markingLimits: MobArachnidMarkingLimits
   dollPrototype: MobArachnidDummy
   skinColoration: Hues
-  maleFirstNames: NamesArachnidFirst
-  femaleFirstNames: NamesArachnidFirst
-  lastNames: NamesArachnidLast
+  maleFirstNames: names_arachnid_first
+  femaleFirstNames: names_arachnid_first
+  lastNames: names_arachnid_last
   sexes:
   - Unsexed
 
@@ -19,8 +19,6 @@
   sprites:
     Head: MobArachnidHead
     Snout: MobHumanoidAnyMarking
-    UndergarmentTop: MobHumanoidAnyMarking
-    UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobArachnidTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
@@ -66,10 +64,10 @@
       points: 1
       required: false
     Legs:
-      points: 8 # imp 2<8
+      points: 2
       required: false
     Arms:
-      points: 8 # imp 2<8
+      points: 2
       required: false
 
 - type: humanoidBaseSprite

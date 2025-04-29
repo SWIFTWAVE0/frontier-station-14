@@ -27,14 +27,14 @@
 - type: entity
   id: BoxFolderNfsdForms
   parent: [FillNfsdForms, BoxFolderPalGreen]
-  name: NFSD form folder
+  name: PAL folder
   description: A folder filled with NFSD paperwork templates.
   suffix: Forms, Green
 
 - type: entity
   id: BoxFolderNfsdFormsBrown
   parent: [FillNfsdForms, BoxFolderPalBrown]
-  name: NFSD form folder
+  name: PAL folder
   description: A folder filled with NFSD paperwork templates.
   suffix: Forms, Brown
 

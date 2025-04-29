@@ -13,7 +13,10 @@
   name: loadout-group-contractor-outerclothing
   minLimit: 0
   loadouts:
+  - ContractorClothingOuterVestTank
   - NfsdOuterClothing
+  fallbacks:
+  - ContractorClothingOuterVestTank
 
 - type: loadoutGroup
   id: DeputyHead
@@ -25,15 +28,13 @@
 - type: loadoutGroup
   id: DeputyNeck
   name: loadout-group-contractor-neck
-  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 0
   loadouts:
-  - DeputyClothingNeckBadgeDeputy
-  fallbacks:
   - DeputyClothingNeckBadgeDeputy
 
 - type: loadoutGroup
   id: DeputyPDA
-  name: loadout-group-contractor-pda
+  name: loadout-group-contractor-id
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
   - DeputyDeputyPDA

@@ -4,7 +4,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._NF.Bank.Components;
+namespace Content.Shared.Bank.Components;
 
 [RegisterComponent, NetworkedComponent]
 
@@ -18,9 +18,6 @@ public sealed partial class StationBankATMComponent : Component
     [DataField]
     public ItemSlot CashSlot = new();
 
-    [DataField]
-    public SectorBankAccount Account = SectorBankAccount.Invalid;
-
     [DataField("soundError")]
     public SoundSpecifier ErrorSound =
         new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg");
@@ -28,12 +25,4 @@ public sealed partial class StationBankATMComponent : Component
     [DataField("soundConfirm")]
     public SoundSpecifier ConfirmSound =
         new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
-}
-
-public enum SectorBankAccount : byte
-{
-    Invalid, // No assigned account.
-    Frontier,
-    Nfsd,
-    Medical,
 }

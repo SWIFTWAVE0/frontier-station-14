@@ -1,5 +1,3 @@
-using Content.Shared.CartridgeLoader;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.BountyContracts;
@@ -19,7 +17,6 @@ public struct BountyContractCategoryMeta
 {
     public string Name;
     public Color UiColor;
-    public LocId? Announcement;
 }
 
 [NetSerializable, Serializable]
@@ -47,7 +44,6 @@ public struct BountyContractTargetInfo
 [NetSerializable, Serializable]
 public struct BountyContractRequest
 {
-    public ProtoId<BountyContractCollectionPrototype> Collection;
     public BountyContractCategory Category;
     public string Name;
     public string? DNA;
@@ -63,20 +59,18 @@ public sealed class BountyContract
     public readonly BountyContractCategory Category;
     public readonly string Name;
     public readonly int Reward;
-    public readonly NetEntity AuthorUid;
     public readonly string? DNA;
     public readonly string? Vessel;
     public readonly string? Description;
     public readonly string? Author;
 
     public BountyContract(uint contractId, BountyContractCategory category, string name,
-        int reward, NetEntity authorUid, string? dna, string? vessel, string? description, string? author)
+        int reward, string? dna, string? vessel, string? description, string? author)
     {
         ContractId = contractId;
         Category = category;
         Name = name;
         Reward = reward;
-        AuthorUid = authorUid;
         DNA = dna;
         Vessel = vessel;
         Description = description;
@@ -87,71 +81,74 @@ public sealed class BountyContract
 [NetSerializable, Serializable]
 public sealed class BountyContractCreateUiState : BoundUserInterfaceState
 {
-    public readonly ProtoId<BountyContractCollectionPrototype> Collection;
     public readonly List<BountyContractTargetInfo> Targets;
     public readonly List<string> Vessels;
 
     public BountyContractCreateUiState(
-        ProtoId<BountyContractCollectionPrototype> collection,
         List<BountyContractTargetInfo> targets,
         List<string> vessels)
     {
-        Collection = collection;
         Targets = targets;
         Vessels = vessels;
     }
 }
 
 [NetSerializable, Serializable]
-public sealed class BountyContractListUiState(ProtoId<BountyContractCollectionPrototype> collection,
-        List<ProtoId<BountyContractCollectionPrototype>> collections,
-        List<BountyContract> contracts,
-        bool isAllowedCreateBounties,
-        bool isAllowedRemoveBounties,
-        NetEntity authorUid,
-        bool notificationsEnabled) : BoundUserInterfaceState
+public sealed class BountyContractListUiState : BoundUserInterfaceState
 {
-    public readonly ProtoId<BountyContractCollectionPrototype> Collection = collection;
-    public readonly List<ProtoId<BountyContractCollectionPrototype>> Collections = collections;
-    public readonly List<BountyContract> Contracts = contracts;
-    public readonly bool IsAllowedCreateBounties = isAllowedCreateBounties;
-    public readonly bool IsAllowedRemoveBounties = isAllowedRemoveBounties;
-    public readonly NetEntity AuthorUid = authorUid;
-    public readonly bool NotificationsEnabled = notificationsEnabled;
-}
+    public readonly List<BountyContract> Contracts;
+    public readonly bool IsAllowedCreateBounties;
+    public readonly bool IsAllowedRemoveBounties;
 
-public enum BountyContractCommand : byte
-{
-    OpenCreateUi = 0,
-    CloseCreateUi = 1,
-    RefreshList = 2,
-    ToggleNotifications = 3,
+    public BountyContractListUiState(List<BountyContract> contracts,
+        bool isAllowedCreateBounties, bool isAllowedRemoveBounties)
+    {
+        Contracts = contracts;
+        IsAllowedCreateBounties = isAllowedCreateBounties;
+        IsAllowedRemoveBounties = isAllowedRemoveBounties;
+    }
+
 }
 
 [NetSerializable, Serializable]
-public sealed class BountyContractCommandMessageEvent(BountyContractCommand command, ProtoId<BountyContractCollectionPrototype> collection) : CartridgeMessageEvent
+public sealed class BountyContractOpenCreateUiMsg : BoundUserInterfaceMessage
 {
-    public readonly ProtoId<BountyContractCollectionPrototype> Collection = collection;
-    public readonly BountyContractCommand Command = command;
 }
 
 [NetSerializable, Serializable]
-public sealed class BountyContractTryRemoveMessageEvent(uint contractId) : CartridgeMessageEvent
+public sealed class BountyContractRefreshListUiMsg : BoundUserInterfaceMessage
 {
-    public readonly uint ContractId = contractId;
 }
 
 [NetSerializable, Serializable]
-public sealed class BountyContractTryCreateMessageEvent(BountyContractRequest contract) : CartridgeMessageEvent
+public sealed class BountyContractCloseCreateUiMsg : BoundUserInterfaceMessage
 {
-    public readonly BountyContractRequest Contract = contract;
+}
+
+[NetSerializable, Serializable]
+public sealed class BountyContractTryRemoveUiMsg : BoundUserInterfaceMessage
+{
+    public readonly uint ContractId;
+
+    public BountyContractTryRemoveUiMsg(uint contractId)
+    {
+        ContractId = contractId;
+    }
+}
+
+[NetSerializable, Serializable]
+public sealed class BountyContractTryCreateMsg : BoundUserInterfaceMessage
+{
+    public readonly BountyContractRequest Contract;
+
+    public BountyContractTryCreateMsg(BountyContractRequest contract)
+    {
+        Contract = contract;
+    }
 }
 
 public abstract class SharedBountyContractSystem : EntitySystem
 {
-    public const int MaxNameLength = 32;
-    public const int MaxVesselLength = 32;
-    public const int MaxDescriptionLength = 256;
     public const int DefaultReward = 5000;
 
     // TODO: move this to prototypes?
@@ -160,32 +157,27 @@ public abstract class SharedBountyContractSystem : EntitySystem
         [BountyContractCategory.Criminal] = new BountyContractCategoryMeta
         {
             Name = "bounty-contracts-category-criminal",
-            UiColor = Color.FromHex("#520c0c"),
-            Announcement = "bounty-contracts-announcement-criminal-create"
+            UiColor = Color.FromHex("#520c0c")
         },
         [BountyContractCategory.Vacancy] = new BountyContractCategoryMeta
         {
             Name = "bounty-contracts-category-vacancy",
-            UiColor = Color.FromHex("#003866"),
-            Announcement = "bounty-contracts-announcement-vacancy-create"
+            UiColor = Color.FromHex("#003866")
         },
         [BountyContractCategory.Construction] = new BountyContractCategoryMeta
         {
             Name = "bounty-contracts-category-construction",
-            UiColor = Color.FromHex("#664a06"),
-            Announcement = "bounty-contracts-announcement-construction-create"
+            UiColor = Color.FromHex("#664a06")
         },
         [BountyContractCategory.Service] = new BountyContractCategoryMeta
         {
             Name = "bounty-contracts-category-service",
-            UiColor = Color.FromHex("#01551e"),
-            Announcement = "bounty-contracts-announcement-service-create"
+            UiColor = Color.FromHex("#01551e")
         },
         [BountyContractCategory.Other] = new BountyContractCategoryMeta
         {
             Name = "bounty-contracts-category-other",
-            UiColor = Color.FromHex("#3c3c3c"),
-            Announcement = "bounty-contracts-announcement-generic-create"
+            UiColor = Color.FromHex("#474747")
         },
     };
 }

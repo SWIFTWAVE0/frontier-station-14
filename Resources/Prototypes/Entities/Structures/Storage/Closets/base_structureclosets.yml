@@ -5,7 +5,6 @@
   description: A standard-issue Nanotrasen storage unit.
   abstract: true
   components:
-  - type: Animateable
   - type: ResistLocker
   - type: Transform
     noRot: true
@@ -20,15 +19,11 @@
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
-    - state: paper
-      visible: false
-      sprite: Structures/Storage/closet_labels.rsi
-      map: ["enum.PaperLabelVisuals.Layer"]
   - type: MovedByPressure
   - type: PaperLabel
     labelSlot:
-      insertVerbText: comp-paper-label-insert
-      ejectVerbText: comp-paper-label-eject
+      insertVerbText: Attach Label
+      ejectVerbText: Remove Label
       whitelist:
         components:
         - Paper
@@ -91,21 +86,6 @@
           SheetSteel1:
             min: 1
             max: 1
-  - type: GenericVisualizer
-    visuals:
-      enum.PaperLabelVisuals.HasLabel:
-        enum.PaperLabelVisuals.Layer:
-          True: { visible: true }
-          False: { visible: false }
-      enum.StorageVisuals.Open:
-        enum.PaperLabelVisuals.Layer:
-          True: { visible: false }
-      enum.PaperLabelVisuals.LabelType:
-        enum.PaperLabelVisuals.Layer:
-          Paper: { state: paper }
-          Bounty: { state: bounty }
-          CaptainsPaper: { state: captains_paper }
-          Invoice: { state: invoice }
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic

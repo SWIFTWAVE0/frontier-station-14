@@ -1,8 +1,8 @@
 # Mail Carrier
 - type: job
   id: ERTMailCarrier
-  name: job-name-ertmailcarrier
-  description: job-description-ertmailcarrier
+  name: job-name-ertjanitor
+  description: job-description-ertjanitor
   playTimeTracker: JobERTMailCarrier
   whitelisted: true
   setPreference: false
@@ -26,13 +26,14 @@
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTMailCarrierPDA
     ears: ClothingHeadsetAltCentCom
-    belt: NFMailBagCapsulePrimed
+    belt: MailBagCapsulePrimed
     pocket1: Flare
     pocket2: DoubleEmergencyAirTankFilled
   storage:
     back:
-#    - SecBreachingHammer
-#    - WeaponMailLake
+    - SecBreachingHammer
+    - WeaponMailLake
+    - BoxSurvivalEngineering
     - RubberStampCentcom
     - BoxFolderCentCom
 
@@ -47,12 +48,13 @@
     outerClothing: ClothingOuterHardsuitERTMailCarrier
     id: ERTMailCarrierPDA
     ears: ClothingHeadsetAltCentCom
-    belt: NFMailBagCapsulePrimed
+    belt: MailBagCapsulePrimed
     pocket1: Flare
     pocket2: DoubleEmergencyAirTankFilled
   storage:
     back:
-#    - SecBreachingHammer
-#    - WeaponMailLake
+    - SecBreachingHammer
+    - WeaponMailLake
+    - BoxSurvivalEngineering
     - RubberStampCentcom
     - BoxFolderCentCom

@@ -55,7 +55,7 @@ public abstract partial class SharedPuddleSystem : EntitySystem
 
     private void OnDrainCanDropTarget(Entity<DrainableSolutionComponent> entity, ref CanDropTargetEvent args)
     {
-        if (TryComp<RefillableSolutionComponent>(args.Dragged, out var refillable) && !refillable.PreventTransferOut) // Frontier: HasComp<TryComp, add PreventTransferOut check
+        if (HasComp<RefillableSolutionComponent>(args.Dragged))
         {
             args.CanDrop = true;
             args.Handled = true;
@@ -66,8 +66,6 @@ public abstract partial class SharedPuddleSystem : EntitySystem
     {
         if (!HasComp<DrainableSolutionComponent>(args.Target) && !HasComp<DumpableSolutionComponent>(args.Target))
             return;
-        if (entity.Comp.PreventTransferOut) // Frontier
-            return; // Frontier
 
         args.CanDrop = true;
         args.Handled = true;

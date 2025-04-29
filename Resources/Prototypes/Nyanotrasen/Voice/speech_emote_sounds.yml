@@ -26,10 +26,6 @@
       collection: Whistles
     Weh:
       collection: Weh
-    Hew:
-      collection: Hew
-    Belch: # Frontier
-      collection: Belch # Frontier
     Hiss:
       collection: FelinidHisses
     Meow:
@@ -72,10 +68,6 @@
       collection: Whistles
     Weh:
       collection: Weh
-    Hew:
-      collection: Hew
-    Belch: # Frontier
-      collection: Belch # Frontier
     Hiss:
       collection: FelinidHisses
     Meow:

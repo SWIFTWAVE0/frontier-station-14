@@ -69,7 +69,7 @@ public sealed class MarketConsoleBoundUserInterface : BoundUserInterface
 
     private void PurchaseCrate(ButtonEventArgs args)
     {
-        SendMessage(new MarketPurchaseMessage());
+        SendMessage(new CrateMachinePurchaseMessage());
         Close();
     }
 

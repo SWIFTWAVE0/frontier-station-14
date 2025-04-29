@@ -9,7 +9,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
 using static Content.Shared.Access.Components.IdCardConsoleComponent;
-using Content.Shared._NF.Shipyard.Components; // Frontier
+using static Content.Shared.Shipyard.Components.ShuttleDeedComponent;
 
 namespace Content.Client.Access.UI
 {
@@ -57,9 +57,9 @@ namespace Content.Client.Access.UI
             };
             JobTitleSaveButton.OnPressed += _ => SubmitData();
 
-            ShipNameLineEdit.OnTextChanged += _ => EnsureValidShuttleName(); // Frontier
-            ShipSuffixLineEdit.OnTextChanged += _ => EnsureValidShuttleName(); // Frontier
-            ShipNameSaveButton.OnPressed += _ => SubmitShuttleData(); // Frontier
+            ShipNameLineEdit.OnTextChanged += _ => EnsureValidShuttleName();
+            ShipSuffixLineEdit.OnTextChanged += _ => EnsureValidShuttleName();
+            ShipNameSaveButton.OnPressed += _ => SubmitShuttleData();
 
             var jobs = _prototypeManager.EnumeratePrototypes<JobPrototype>().ToList();
             jobs.Sort((x, y) => string.Compare(x.LocalizedName, y.LocalizedName, StringComparison.CurrentCulture));
@@ -243,7 +243,7 @@ namespace Content.Client.Access.UI
             var suffix = ShipSuffixLineEdit.Text;
 
             // We skip suffix validation because it's immutable and is ignored by the server
-            var valid = name.Length <= ShuttleDeedComponent.MaxNameLength
+            var valid = name.Length <= MaxNameLength
                 && name.Trim().Length >= 3; // Arbitrary client-side number, should hopefully be long enough.
 
             ShipNameSaveButton.Disabled = !_interfaceEnabled || !valid;

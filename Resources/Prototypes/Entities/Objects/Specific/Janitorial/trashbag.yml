@@ -1,7 +1,7 @@
 - type: entity
   name: trash bag
   id: TrashBag
-  parent: [BaseStorageItem, RecyclableItemPlasticSmall] # Frontier: added RecyclableItemPlasticSmall
+  parent: BaseStorageItem
   components:
   - type: Sprite
     sprite: Objects/Specific/Janitorial/trashbag.rsi
@@ -38,7 +38,6 @@
   - type: Item
     size: Normal
   - type: MagnetPickup # Frontier
-    magnetEnabled: false # Frontier
 
 - type: entity
   name: trash bag

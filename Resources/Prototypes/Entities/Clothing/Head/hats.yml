@@ -182,7 +182,7 @@
     sprite: Clothing/Head/Hats/beret_brigmedic.rsi
 
 - type: entity
-  parent: [ ClothingHeadBase ]
+  parent: ClothingHeadBase # Frontier: removed BaseRestrictedContraband
   id: ClothingHeadHatBeretMercenary # Frontier: Merc to Mercenary
   name: mercenary beret
   description: Olive beret, the badge depicts a jackal on a rock.
@@ -582,7 +582,7 @@
 
 - type: entity
   abstract: true
-  parent: [ ClothingHeadBase, BaseC3WizardContraband ] # Frontier: BaseMagicalContraband<BaseC3WizardContraband
+  parent: ClothingHeadBase
   id: ClothingHeadHatWizardBase
   components:
   - type: WizardClothes
@@ -896,8 +896,6 @@
     sprite: Clothing/Head/Hats/capcap.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/capcap.rsi
-  - type: Item
-    sprite: Clothing/Head/Hats/capcap.rsi
   - type: Tag
     tags:
     - ClothMade
@@ -917,8 +915,6 @@
   - type: Sprite
     sprite: Clothing/Head/Hats/comcap.rsi
   - type: Clothing
-    sprite: Clothing/Head/Hats/comcap.rsi
-  - type: Item
     sprite: Clothing/Head/Hats/comcap.rsi
   - type: Tag
     tags:

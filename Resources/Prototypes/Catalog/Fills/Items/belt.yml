@@ -46,10 +46,10 @@
   table: !type:AllSelector
     children:
     - id: Stunbaton
+    - id: GrenadeFlashBang
+    - id: TearGasGrenade
     - id: Handcuffs
     - id: Handcuffs
-    # - id: HoloprojectorSecurity # Frontier
-    # - id: RadioHandheldSecurity # Frontier
     - id: ContrabandAppraisalTool # Frontier
 
 - type: entity
@@ -128,8 +128,8 @@
     - id: HydroponicsToolMiniHoe
     - id: HydroponicsToolSpade
     - id: HydroponicsToolClippers
-    - id: ChemistryBottleRobustHarvest
-    - id: ChemistryBottleEZNutrient # Frontier
+    - id: RobustHarvestChemistryBottle
+    - id: EZNutrientChemistryBottle # Frontier
 
 - type: entity
   id: ClothingBeltSheathFilled
@@ -169,11 +169,11 @@
   components:
   - type: StorageFill
     contents:
-      - id: ChemistryBottleEpinephrine
+      - id: EpinephrineChemistryBottle
         amount: 2
-      - id: ChemistryBottleEphedrine
+      - id: EphedrineChemistryBottle
         amount: 2
-      - id: ChemistryBottleOmnizine
+      - id: OmnizineChemistryBottle
       - id: MedkitCombatFilled
 
 - type: entity

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [Clothing, RecyclableItemClothBasic] # Frontier: added RecyclableItemClothBasic
+  parent: Clothing
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite
@@ -36,6 +36,7 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  - type: HarpyClothing # Frontier - Harpy
 
 - type: entity
   abstract: true
@@ -59,3 +60,4 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  - type: HarpyClothing # Frontier - Harpy

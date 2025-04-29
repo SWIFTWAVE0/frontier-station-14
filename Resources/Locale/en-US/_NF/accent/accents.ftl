@@ -32,6 +32,3 @@ accent-words-fox-3 = Ruff!
 accent-words-fox-4 = Wraaah!
 accent-words-fox-5 = Aaaaagh!
 accent-words-fox-6 = Screeee!
-
-# Accent Toggle
-accent-clothing-component-toggle = Toggle Accent

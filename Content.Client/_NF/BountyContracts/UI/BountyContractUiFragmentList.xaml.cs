@@ -10,17 +10,15 @@ public sealed partial class BountyContractUiFragmentList : Control
 {
     public event Action? OnCreateButtonPressed;
     public event Action? OnRefreshButtonPressed;
-    public event Action? OnToggleNotificationPressed;
     public event Action<BountyContract>? OnRemoveButtonPressed;
     public BountyContractUiFragmentList()
     {
         RobustXamlLoader.Load(this);
         CreateButton.OnPressed += _ => OnCreateButtonPressed?.Invoke();
         RefreshButton.OnPressed += _ => OnRefreshButtonPressed?.Invoke();
-        NotificationSwitch.OnPressed += _ => OnToggleNotificationPressed?.Invoke();
     }
 
-    public void SetContracts(List<BountyContract> listStateContracts, bool canRemove, NetEntity authorUid)
+    public void SetContracts(List<BountyContract> listStateContracts, bool canRemove)
     {
         BountiesContainer.RemoveAllChildren();
 
@@ -31,10 +29,9 @@ public sealed partial class BountyContractUiFragmentList : Control
         }
 
         NoContractsLabel.Visible = false;
-        listStateContracts.Reverse();
         foreach (var contract in listStateContracts)
         {
-            var entry = new BountyContractUiFragmentListEntry(contract, canRemove || contract.AuthorUid == authorUid);
+            var entry = new BountyContractUiFragmentListEntry(contract, canRemove);
             entry.OnRemoveButtonPressed += c => OnRemoveButtonPressed?.Invoke(c);
             BountiesContainer.AddChild(entry);
         }
@@ -43,10 +40,5 @@ public sealed partial class BountyContractUiFragmentList : Control
     public void SetCanCreate(bool canCreate)
     {
         CreateButton.Disabled = !canCreate;
-    }
-
-    public void SetNotificationsEnabled(bool notificationsEnabled)
-    {
-        NotificationSwitch.Text = Loc.GetString(notificationsEnabled ? "news-read-ui-notification-on" : "news-read-ui-notification-off");
     }
 }

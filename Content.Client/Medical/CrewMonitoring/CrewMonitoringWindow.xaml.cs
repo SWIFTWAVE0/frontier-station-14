@@ -25,8 +25,8 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    private readonly SharedTransformSystem _transformSystem;
     private readonly SpriteSystem _spriteSystem;
+	private readonly SharedTransformSystem _transformSystem; // Frontier modification
 
     private NetEntity? _trackedEntity;
     private bool _tryToScrollToListFocus;
@@ -37,10 +37,11 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        _transformSystem = _entManager.System<SharedTransformSystem>();
         _spriteSystem = _entManager.System<SpriteSystem>();
+		_transformSystem = _entManager.System<SharedTransformSystem>(); // Frontier modification
 
         NavMap.TrackedEntitySelectedAction += SetTrackedEntityFromNavMap;
+
     }
 
     public void Set(string stationName, EntityUid? mapUid)
@@ -276,7 +277,10 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
                 jobContainer.AddChild(jobIcon);
             }
 
-            // Frontier: show location instead of job label
+            // Job name area
+			// Frontier modification
+			// Made in its name appear location name as its much more convenient
+			// While job icons should do good enough job of conveying job
             var jobLabel = new Label()
             {
                 Text = sensor.LocationName,
@@ -285,14 +289,13 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             };
 
             jobContainer.AddChild(jobLabel);
-            // End Frontier
 
             // Add user coordinates to the navmap
             if (coordinates != null && NavMap.Visible && _blipTexture != null)
             {
                 NavMap.TrackedEntities.TryAdd(sensor.SuitSensorUid,
                     new NavMapBlip
-                    (CoordinatesToMap(coordinates.Value), // Frontier: Local<Map
+                    (coordinates.Value,
                     _blipTexture,
                     (_trackedEntity == null || sensor.SuitSensorUid == _trackedEntity) ? Color.LimeGreen : Color.LimeGreen * Color.DimGray,
                     sensor.SuitSensorUid == _trackedEntity));
@@ -358,7 +361,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             if (NavMap.TrackedEntities.TryGetValue(castSensor.SuitSensorUid, out var data))
             {
                 data = new NavMapBlip
-                    (CoordinatesToMap(data.Coordinates), // Frontier: Local<Map
+                    (data.Coordinates,
                     data.Texture,
                     (currTrackedEntity == null || castSensor.SuitSensorUid == currTrackedEntity) ? Color.LimeGreen : Color.LimeGreen * Color.DimGray,
                     castSensor.SuitSensorUid == currTrackedEntity);
@@ -373,16 +376,35 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         if (!_tryToScrollToListFocus)
             return;
 
+        if (!TryGetVerticalScrollbar(SensorScroller, out var vScrollbar))
+            return;
+
         if (TryGetNextScrollPosition(out float? nextScrollPosition))
         {
-            SensorScroller.VScrollTarget = nextScrollPosition.Value;
+            vScrollbar.ValueTarget = nextScrollPosition.Value;
 
-            if (MathHelper.CloseToPercent(SensorScroller.VScroll, SensorScroller.VScrollTarget))
+            if (MathHelper.CloseToPercent(vScrollbar.Value, vScrollbar.ValueTarget))
             {
                 _tryToScrollToListFocus = false;
                 return;
             }
         }
+    }
+
+    private bool TryGetVerticalScrollbar(ScrollContainer scroll, [NotNullWhen(true)] out VScrollBar? vScrollBar)
+    {
+        vScrollBar = null;
+
+        foreach (var child in scroll.Children)
+        {
+            if (child is not VScrollBar)
+                continue;
+
+            vScrollBar = (VScrollBar) child;
+            return true;
+        }
+
+        return false;
     }
 
     private bool TryGetNextScrollPosition([NotNullWhen(true)] out float? nextScrollPosition)
@@ -403,20 +425,6 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
 
         return false;
     }
-
-    // Frontier: all crew monitoring happens in map coords.
-    /// <summary>
-    /// report all 
-    /// </summary>
-    private EntityCoordinates CoordinatesToMap(EntityCoordinates refCoords)
-    {
-        var mapUid = _transformSystem.GetMap(refCoords);
-        if (mapUid != null)
-            return _transformSystem.WithEntityId(refCoords, mapUid.Value);
-        else
-            return refCoords;
-    }
-    // End Frontier
 
     private void ClearOutDatedData()
     {

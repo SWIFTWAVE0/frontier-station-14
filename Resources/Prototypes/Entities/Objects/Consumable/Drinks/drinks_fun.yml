@@ -1,5 +1,5 @@
 - type: entity
-  parent: [DrinkBase, RecyclableItemPlasticSmall] # Frontier: added RecyclableItemPlasticSmall
+  parent: DrinkBase
   id: DrinkSpaceGlue
   name: space glue tube
   description: High performance glue intended for maintenance of extremely complex mechanical equipment. DON'T DRINK!
@@ -42,7 +42,7 @@
     solution: drink
 
 - type: entity
-  parent: [DrinkBase, RecyclableItemPlasticSmall] # Frontier: added RecyclableItemPlasticSmall
+  parent: DrinkBase
   id: DrinkSpaceLube
   name: space lube tube
   description: High performance lubricant intended for maintenance of extremely complex mechanical equipment.
@@ -106,7 +106,6 @@
     - SpaceUp
     - SpaceMountainWind
     - LemonLime
-    - LemonLimeCranberry
     - PwrGame
   - quantity: 10
     weight: 3

@@ -2,23 +2,23 @@
   id: ChemDispenserStandardInventory
   inventory:
   - JugAluminium
-  - ReinforcedJugCarbon # Frontier
-  - ReinforcedJugChlorine # Frontier
+  - JugCarbon
+  - JugChlorine
   - JugCopper
-  - ReinforcedJugEthanol # Frontier
+  - JugEthanol
   - JugFluorine
-  - ReinforcedJugSugar # Frontier
-  - ReinforcedJugHydrogen # Frontier
+  - JugSugar
+  - JugHydrogen
   - JugIodine
   - JugIron
-  - ReinforcedJugLithium # Frontier
+  - JugLithium
   - JugMercury
-  - ReinforcedJugNitrogen # Frontier
-  - ReinforcedJugOxygen # Frontier
-  - ReinforcedJugPhosphorus # Frontier
-  - ReinforcedJugPotassium # Frontier
+  - JugNitrogen
+  - JugOxygen
+  - JugPhosphorus
+  - JugPotassium
   - JugRadium
-  - ReinforcedJugSilicon # Frontier
+  - JugSilicon
   - JugSodium
   - JugSulfur
 

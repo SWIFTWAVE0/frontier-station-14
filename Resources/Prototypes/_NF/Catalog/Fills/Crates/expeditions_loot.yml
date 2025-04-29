@@ -157,6 +157,7 @@
     - id: KitchenElectricGrillFlatpack
     - id: KitchenReagentGrinderFlatpack
     - id: VendingMachineBoozeFlatpack
+    - id: VendingMachineChefvendFlatpack
     - id: VendingMachineDinnerwareFlatpack
     - id: ServiceTechFabFlatpack
     - id: VendingMachineRestockChefvend
@@ -285,7 +286,7 @@
   - type: StorageFill
     contents:
     - id: BoxSyringe
-    - id: ChemistryBottleEpinephrine
+    - id: EpinephrineChemistryBottle
       amount: 1
     - id: Brutepack
       amount: 2
@@ -304,7 +305,7 @@
   - type: StorageFill
     contents:
     - id: BoxSyringe
-    - id: ChemistryBottleEpinephrine
+    - id: EpinephrineChemistryBottle
       amount: 1
     - id: Bloodpack
       amount: 3
@@ -375,7 +376,7 @@
   - type: StorageFill
     contents:
     - id: DoubleEmergencyAirTankFilled
-    - id: ClothingShoesBootsMagSecurity
+    - id: ClothingShoesBootsMagCombat
     - id: ClothingOuterHardsuitPrivateSecurity
     - id: ClothingMaskGasSecurity
     - id: JetpackMiniFilled

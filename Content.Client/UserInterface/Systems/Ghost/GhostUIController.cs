@@ -12,7 +12,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;
-using Content.Client._Corvax.Respawn; // Frontier
+using Content.Server.Corvax.Respawn;
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -27,6 +27,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     [UISystemDependency] private readonly RespawnSystem? _respawn = default;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
+    private bool _canUncryo = true; // Frontier. TODO: find a reliable way to update this, for now it just stays active all the time
 
     public override void Initialize()
     {
@@ -92,7 +93,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
         Gui.Visible = _system?.IsGhost ?? false;
         Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody,
-            _cfg.GetCVar(NFCCVars.CryoReturnEnabled) ? _system?.Player?.CanReturnFromCryo : false);
+            _canUncryo && _cfg.GetCVar(NFCCVars.CryoReturnEnabled));
     }
 
     private void UpdateRespawn(TimeSpan? timeOfDeath)

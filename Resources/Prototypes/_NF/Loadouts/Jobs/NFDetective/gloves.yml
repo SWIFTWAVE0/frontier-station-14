@@ -1,4 +1,4 @@
 - type: loadout
-  id: NFDetectiveClothingHandsGlovesForensicNF
+  id: NFDetectiveClothingHandsGlovesNFDetective
   equipment:
     gloves: ClothingHandsGlovesForensicNF

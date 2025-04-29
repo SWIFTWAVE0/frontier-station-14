@@ -30,7 +30,7 @@ public sealed class RandomHumanoidSystem : EntitySystem
     {
         QueueDel(uid);
         if (component.SettingsPrototypeId != null)
-            component.SpawnedId = SpawnRandomHumanoid(component.SettingsPrototypeId, Transform(uid).Coordinates, MetaData(uid).EntityName); // Frontier: add "component.SpawnedId ="
+            SpawnRandomHumanoid(component.SettingsPrototypeId, Transform(uid).Coordinates, MetaData(uid).EntityName);
     }
 
     public EntityUid SpawnRandomHumanoid(string prototypeId, EntityCoordinates coordinates, string name)

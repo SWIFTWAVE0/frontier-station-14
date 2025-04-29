@@ -48,17 +48,14 @@ public sealed partial class StationPickerControl : PickerControl
 
         // Build station jobs, the right section of the screen.
         StationJobItemList.RemoveAllChildren();
-        if (_lastSelectedStation != null && obj.TryGetValue(_lastSelectedStation.StationEntity, out var stationInfo))
+        foreach (var jobViewState in BuildJobViewStateList(obj[_lastSelectedStation!.StationEntity]))
         {
-            foreach (var jobViewState in BuildJobViewStateList(stationInfo))
+            var item = new JobListItem(jobViewState);
+            item.OnPressed += _ =>
             {
-                var item = new JobListItem(jobViewState);
-                item.OnPressed += _ =>
-                {
-                    OnJobJoined?.Invoke(_lastSelectedStation.StationEntity, jobViewState.JobId);
-                };
-                StationJobItemList.AddChild(item);
-            }
+                OnJobJoined?.Invoke(_lastSelectedStation.StationEntity, jobViewState.JobId);
+            };
+            StationJobItemList.AddChild(item);
         }
 
         StationName.Text = _lastSelectedStation?.StationName ?? "";
@@ -129,14 +126,14 @@ public sealed partial class StationPickerControl : PickerControl
             var viewState = new StationListItem.ViewState(
                 stationEntity,
                 stationJobInformation.GetStationNameWithJobCount(),
-                stationJobInformation.StationDisplayInfo?.StationSubtext != null
-                    ? _loc.GetString(stationJobInformation.StationDisplayInfo.StationSubtext)
+                stationJobInformation.StationSubtext != null
+                    ? _loc.GetString(stationJobInformation.StationSubtext)
                     : "",
-                stationJobInformation.StationDisplayInfo?.StationDescription != null
-                    ? _loc.GetString(stationJobInformation.StationDisplayInfo.StationDescription)
+                stationJobInformation.StationDescription != null
+                    ? _loc.GetString(stationJobInformation.StationDescription)
                     : "",
                 _lastSelectedStation?.StationEntity == stationEntity,
-                stationJobInformation.StationDisplayInfo?.StationIcon?.CanonPath
+                stationJobInformation.StationIcon?.CanonPath
             );
 
             // Always select the first station in the list if none is selected yet.
@@ -153,9 +150,9 @@ public sealed partial class StationPickerControl : PickerControl
         // Sort 0 to the end of the list in the order it is in the dictionary.
         // Sort 1 first, 2 second, etc.
         return viewStateList
-            .OrderBy(viewState => (obj[viewState.StationEntity].StationDisplayInfo?.LobbySortOrder ?? 0) == 0
+            .OrderBy(viewState => obj[viewState.StationEntity].LobbySortOrder == 0
                 ? int.MaxValue
-                : obj[viewState.StationEntity].StationDisplayInfo!.LobbySortOrder)
+                : obj[viewState.StationEntity].LobbySortOrder)
             .ToList();
     }
 }

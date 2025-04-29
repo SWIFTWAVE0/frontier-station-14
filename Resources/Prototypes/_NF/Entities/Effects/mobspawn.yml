@@ -1,5 +1,62 @@
+﻿# Upstream
 - type: entity
-  id: NFMobSpawnCrabQuartz
+  id: MobSpawnBananiumCrab
+  parent: MobSpawnCrabQuartz
+  name: mobspawner bananium crab
+  components:
+  - type: Sprite
+    sprite: /Textures/_NF/Effects/mobspawn.rsi
+    state: crab_bananium
+  - type: SpawnOnDespawn
+    prototype: MobBananiumCrab
+
+- type: entity
+  id: MobSpawnCoalCrab
+  parent: MobSpawnCrabQuartz
+  name: mobspawner coal crab
+  components:
+  - type: Sprite
+    sprite: /Textures/_NF/Effects/mobspawn.rsi
+    state: crab_coal
+  - type: SpawnOnDespawn
+    prototype: MobCoalCrab
+
+- type: entity
+  id: MobSpawnGoldCrab
+  parent: MobSpawnCrabQuartz
+  name: mobspawner gold crab
+  components:
+  - type: Sprite
+    sprite: /Textures/_NF/Effects/mobspawn.rsi
+    state: crab_gold
+  - type: SpawnOnDespawn
+    prototype: MobGoldCrab
+
+- type: entity
+  id: MobSpawnPlasmaCrab
+  parent: MobSpawnCrabQuartz
+  name: mobspawner plasma crab
+  components:
+  - type: Sprite
+    sprite: /Textures/_NF/Effects/mobspawn.rsi
+    state: crab_plasma
+  - type: SpawnOnDespawn
+    prototype: MobPlasmaCrab
+
+- type: entity
+  id: MobSpawnSaltCrab
+  parent: MobSpawnCrabQuartz
+  name: mobspawner salt crab
+  components:
+  - type: Sprite
+    sprite: /Textures/_NF/Effects/mobspawn.rsi
+    state: crab_salt
+  - type: SpawnOnDespawn
+    prototype: MobSaltCrab
+
+# Frontier
+- type: entity
+  id: MobSpawnCrabNFQuartz
   name: mobspawner quartzcrab
   suffix: Frontier
   components:
@@ -25,240 +82,191 @@
   - type: TimedDespawn
     lifetime: 2.1
   - type: SpawnOnDespawn
-    prototype: NFMobQuartzCrab
+    prototype: MobQuartzCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabIron
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnCrabNFIron
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner ironcrab
   components:
   - type: Sprite
     sprite: /Textures/Effects/mobspawn.rsi
     state: crab_iron
   - type: SpawnOnDespawn
-    prototype: NFMobIronCrab
+    prototype: MobIronCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabSilver
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnCrabNFSilver
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner silvercrab
   components:
   - type: Sprite
     sprite: /Textures/Effects/mobspawn.rsi
     state: crab_silver
   - type: SpawnOnDespawn
-    prototype: NFMobSilverCrab
+    prototype: MobSilverCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabUranium
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnCrabNFUranium
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner uraniumcrab
   components:
   - type: Sprite
     sprite: /Textures/Effects/mobspawn.rsi
     state: crab_uranium
   - type: SpawnOnDespawn
-    prototype: NFMobUraniumCrab
+    prototype: MobUraniumCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabBananium
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnBananiumCrabNF
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner bananium crab
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: crab_bananium
   - type: SpawnOnDespawn
-    prototype: NFMobBananiumCrab
+    prototype: MobBananiumCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabCoal
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnCoalCrabNF
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner coal crab
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: crab_coal
   - type: SpawnOnDespawn
-    prototype: NFMobCoalCrab
+    prototype: MobCoalCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabGold
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnGoldCrabNF
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner gold crab
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: crab_gold
   - type: SpawnOnDespawn
-    prototype: NFMobGoldCrab
+    prototype: MobGoldCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabPlasma
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnPlasmaCrabNF
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner plasma crab
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: crab_plasma
   - type: SpawnOnDespawn
-    prototype: NFMobPlasmaCrab
+    prototype: MobPlasmaCrabNF
 
 - type: entity
-  id: NFMobSpawnCrabSalt
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnSaltCrabNF
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner salt crab
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: crab_salt
   - type: SpawnOnDespawn
-    prototype: NFMobSaltCrab
+    prototype: MobSaltCrabNF
 
 - type: entity
-  id: NFMobSpawnBananiumGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnBananiumGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner bananium golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem # only one state from everyone right now. Maybe later.
   - type: SpawnOnDespawn
-    prototype: NFMobBananiumGolem
+    prototype: MobBananiumGolem
 
 - type: entity
-  id: NFMobSpawnCoalGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnCoalGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner bananium golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobCoalGolem
-
+    prototype: MobCoalGolem
+    
 - type: entity
-  id: NFMobSpawnGoldGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnGoldGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner gold golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobGoldGolem
+    prototype: MobGoldGolem
 
 - type: entity
-  id: NFMobSpawnIronGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnIronGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner iron golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobIronGolem
+    prototype: MobIronGolem
 
 - type: entity
-  id: NFMobSpawnPlasmaGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnPlasmaGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner plasma golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobPlasmaGolem
+    prototype: MobPlasmaGolem
 
 - type: entity
-  id: NFMobSpawnQuartzGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnQuartzGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner quartz golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobQuartzGolem
+    prototype: MobQuartzGolem
 
 - type: entity
-  id: NFMobSpawnSaltGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnSaltGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner salt golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobSaltGolem
+    prototype: MobSaltGolem
 
 - type: entity
-  id: NFMobSpawnSilverGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnSilverGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner silver golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobSilverGolem
+    prototype: MobSilverGolem
 
 - type: entity
-  id: NFMobSpawnUraniumGolem
-  parent: NFMobSpawnCrabQuartz
+  id: MobSpawnUraniumGolem
+  parent: MobSpawnCrabNFQuartz
   name: mobspawner uranium golem
   components:
   - type: Sprite
     sprite: /Textures/_NF/Effects/mobspawn.rsi
     state: golem
   - type: SpawnOnDespawn
-    prototype: NFMobUraniumGolem
-
-# Scrapbots
-- type: entity
-  id: NFMobSpawnScrapbot
-  parent: NFMobSpawnCrabQuartz
-  name: mobspawner scrapbot
-  components:
-  - type: Jittering
-  - type: Sprite
-    sprite: /Textures/_NF/Effects/mobspawn.rsi
-    state: scrapbot
-  - type: SpawnOnDespawn
-    prototype: MobRogueSiliconScrapAsteroid
-
-- type: entity
-  id: NFMobSpawnScrapbotThreads
-  parent: NFMobSpawnCrabQuartz
-  name: mobspawner scrapbot
-  components:
-  - type: Jittering
-  - type: Sprite
-    sprite: /Textures/_NF/Effects/mobspawn.rsi
-    state: scrapbot_threads
-  - type: SpawnOnDespawn
-    prototype: MobRogueSiliconScrapThreadsAsteroid
-
-- type: entity
-  id: NFMobSpawnScrapbotThrusters
-  parent: NFMobSpawnCrabQuartz
-  name: mobspawner scrapbot
-  components:
-  - type: Jittering
-  - type: Sprite
-    sprite: /Textures/_NF/Effects/mobspawn.rsi
-    state: scrapbot_thrusters
-  - type: SpawnOnDespawn
-    prototype: MobRogueSiliconScrapThrustersAsteroid
-
-- type: entity
-  id: NFMobSpawnScrapbotLaser
-  parent: NFMobSpawnCrabQuartz
-  name: mobspawner scrapbot
-  components:
-  - type: Jittering
-  - type: Sprite
-    sprite: /Textures/_NF/Effects/mobspawn.rsi
-    state: scrapbot_laser
-  - type: SpawnOnDespawn
-    prototype: MobRogueSiliconScrapThrustersRangedAsteroid
+    prototype: MobUraniumGolem

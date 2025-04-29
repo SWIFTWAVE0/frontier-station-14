@@ -16,3 +16,18 @@ public enum PiratePalletConsoleUiKey : byte
 }
 
 public abstract class SharedPirateSystem : EntitySystem {}
+
+// TODO: remove these.
+// [Serializable, NetSerializable]
+// public enum PirateTelepadState : byte
+// {
+//     Unpowered,
+//     Idle,
+//     Teleporting,
+// };
+
+// [Serializable, NetSerializable]
+// public enum PirateTelepadVisuals : byte
+// {
+//     State,
+// };

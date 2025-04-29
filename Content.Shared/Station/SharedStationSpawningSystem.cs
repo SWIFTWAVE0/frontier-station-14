@@ -2,8 +2,6 @@ using System.Linq;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
-using Content.Shared.NameIdentifier;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
@@ -102,23 +100,10 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     {
         string? name = null;
 
-        if (roleProto.CanCustomizeName)
-        {
-            name = loadout.EntityName;
-        }
-
         if (string.IsNullOrEmpty(name) && PrototypeManager.TryIndex(roleProto.NameDataset, out var nameData))
         {
-            name = Loc.GetString(_random.Pick(nameData.Values));
+            name = _random.Pick(nameData.Values);
         }
-
-        // Frontier: apply name modifiers
-        if (TryComp<NameIdentifierComponent>(entity, out var nameIdentifier))
-        {
-            // Append our name identifier (why have a pseudonym for a role that has a complete name identifier group?)
-            name = $"{name} {nameIdentifier.FullIdentifier}";
-        }
-        // End Frontier
 
         if (!string.IsNullOrEmpty(name))
         {
@@ -193,23 +178,26 @@ public abstract class SharedStationSpawningSystem : EntitySystem
         if (startingGear.Storage.Count > 0)
         {
             var coords = _xformSystem.GetMapCoordinates(entity);
+            var ents = new ValueList<EntityUid>();
             _inventoryQuery.TryComp(entity, out var inventoryComp);
 
-            foreach (var (slotName, entProtos) in startingGear.Storage)
+            foreach (var (slot, entProtos) in startingGear.Storage)
             {
-                if (entProtos == null || entProtos.Count == 0)
+                if (entProtos.Count == 0)
                     continue;
 
                 if (inventoryComp != null &&
-                    InventorySystem.TryGetSlotEntity(entity, slotName, out var slotEnt, inventoryComponent: inventoryComp) &&
+                    InventorySystem.TryGetSlotEntity(entity, slot, out var slotEnt, inventoryComponent: inventoryComp) &&
                     _storageQuery.TryComp(slotEnt, out var storage))
                 {
-
-                    foreach (var entProto in entProtos)
+                    foreach (var ent in entProtos)
                     {
-                        var spawnedEntity = Spawn(entProto, coords);
+                        ents.Add(Spawn(ent, coords));
+                    }
 
-                        _storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false);
+                    foreach (var ent in ents)
+                    {
+                        _storage.Insert(slotEnt.Value, ent, out _, storageComp: storage, playSound: false);
                     }
                 }
             }

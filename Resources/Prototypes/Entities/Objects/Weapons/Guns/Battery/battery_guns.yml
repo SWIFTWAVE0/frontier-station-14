@@ -23,6 +23,11 @@
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
   - type: StaticPrice
     price: 500
 
@@ -99,7 +104,7 @@
 
 - type: entity
   name: svalinn laser pistol
-  parent: [ BaseWeaponPowerCellSmall, BaseC1Contraband ] # Frontier: BaseSecurityContraband<BaseC1Contraband
+  parent: [ BaseWeaponPowerCellSmall, BaseC1Contraband ] # Frontier: BaseMajorContraband<BaseC1Contraband
   id: WeaponLaserSvalinn
   description: A cheap and widely used laser pistol.
   components:
@@ -159,11 +164,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
   - type: HitscanBatteryAmmoProvider
@@ -216,11 +216,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
   - type: Gun
@@ -235,7 +230,7 @@
 
 - type: entity
   name: laser rifle
-  parent: [WeaponLaserCarbinePractice, BaseGunWieldable, BaseC1Contraband] # Frontier: BaseSecurityContraband<BaseC1Contraband
+  parent: [WeaponLaserCarbinePractice, BaseGunWieldable, BaseC1Contraband] # Frontier: BaseRestrictedContraband<BaseC1Contraband
   id: WeaponLaserCarbine
   description: A simple civilian grade laser carbine, the workhorse of many private security organizations. # Frontier: description
   components:
@@ -259,11 +254,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
   - type: Gun
@@ -293,11 +283,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
   - type: Gun
@@ -329,11 +314,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
   - type: Gun
@@ -349,7 +329,7 @@
 
 - type: entity
   name: laser cannon
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseC2ContrabandUnredeemable] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseC2ContrabandUnredeemable] # Frontier: BaseRestrictedContraband<BaseC2ContrabandUnredeemable
   id: WeaponLaserCannon
   description: A heavy duty, high powered laser weapon. On the handle is a label that says 'for authorized use only.' # Frontier: added label sentence
   components:
@@ -361,11 +341,6 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
   - type: Gun
@@ -413,7 +388,7 @@
 
 - type: entity
   name: x-ray cannon
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseC3Contraband] # Frontier: added BaseSecurityContraband<BaseC3Contraband
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseC3Contraband] # Frontier: added BaseC3Contraband
   id: WeaponXrayCannon
   description: An illegal and experimental weapon that uses concentrated x-ray energy against its target.
   components:
@@ -470,12 +445,11 @@
     price: 100
   - type: Gun
     fireRate: 2
-    projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisablerPractice
-    fireCost: 50
+    fireCost: 100
   - type: Tag
     tags:
     - Taser
@@ -503,7 +477,7 @@
       - Belt
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisabler
-    fireCost: 50
+    fireCost: 100
   - type: GuideHelp
     guides:
     - Security
@@ -511,7 +485,7 @@
 
 - type: entity
   name: disabler SMG
-  parent: [ BaseWeaponBattery, BaseC2ContrabandUnredeemable ] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
+  parent: [ BaseWeaponBattery, BaseC2ContrabandUnredeemable ] # Frontier: BaseRestrictedContraband<BaseC2ContrabandUnredeemable
   id: WeaponDisablerSMG
   description: Advanced weapon that exhausts organic targets, weakening them until they collapse. On the handle is a label that says 'for authorized use only.'
   components:
@@ -530,7 +504,7 @@
         shader: unshaded
   - type: Gun
     selectedMode: FullAuto
-    fireRate: 4.5
+    fireRate: 4
     availableModes:
       - SemiAuto
       - FullAuto
@@ -538,18 +512,17 @@
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisablerSmg
-    fireCost: 25
+    fireCost: 33
   - type: MagazineVisuals
     magState: mag
     steps: 5
     zeroVisible: true
-  - type: Appearance
   - type: StaticPrice
     price: 260
 
 - type: entity
   name: taser
-  parent: [ BaseWeaponBatterySmall, BaseC2ContrabandUnredeemable ] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
+  parent: [ BaseWeaponBatterySmall, BaseC2ContrabandUnredeemable ] # Frontier: BaseGrandTheftContraband<BaseC2ContrabandUnredeemable
   id: WeaponTaser
   description: A low-capacity, energy-based stun gun used by security teams to subdue targets at range. On the handle is a label that says 'for authorized use only.'
   components:
@@ -587,7 +560,7 @@
   name: antique laser pistol
   parent: [BaseWeaponBatterySmall, BaseC1Contraband] # Frontier: BaseGrandTheftContraband<BaseC1Contraband
   id: WeaponAntiqueLaser
-  description: This is an antique laser pistol. All craftsmanship is of the highest quality. It is decorated with a mahogany grip and chrome filigree. The object menaces with spikes of energy. On the item is an image of a captain and a clown. The clown is dead. The captain is striking a heroic pose.
+  description: This is a civilian grade antique laser pistol. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
@@ -629,7 +602,7 @@
 
 - type: entity
   name: advanced laser pistol
-  parent: [ BaseWeaponBatterySmall, BaseC1Contraband ] # Frontier: BaseSecurityContraband<BaseC1Contraband
+  parent: [ BaseWeaponBatterySmall, BaseC1Contraband ] # Frontier: BaseRestrictedContraband<BaseC1Contraband
   id: WeaponAdvancedLaser
   description: An experimental civilian grade high-energy laser pistol with a self-charging nuclear battery.
   components:
@@ -685,7 +658,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Revolvers/chimp.rsi
   - type: Gun
-    projectileSpeed: 10
+    projectileSpeed: 4
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
@@ -748,12 +721,17 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 40
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
   - type: StaticPrice
     price: 750
 
 - type: entity
   name: energy shotgun
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseC2ContrabandUnredeemable] # Frontier: BaseGrandTheftContraband<BaseC2ContrabandUnredeemable
+  parent: [BaseWeaponBattery, BaseGunWieldable]
   id: WeaponEnergyShotgun
   description: A one-of-a-kind prototype energy weapon that uses various shotgun configurations. It offers the possibility of both lethal and non-lethal shots, making it a versatile weapon.
   components:
@@ -765,11 +743,6 @@
       - state: mag-unshaded-4
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: false
-  - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
   - type: Gun
@@ -778,15 +751,15 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: BulletLaserSpread
-    fireCost: 150
+    fireCost: 100
   - type: BatteryWeaponFireModes
     fireModes:
     - proto: BulletLaserSpread
-      fireCost: 150
+      fireCost: 100
     - proto: BulletLaserSpreadNarrow
-      fireCost: 200
+      fireCost: 100
     - proto: BulletDisablerSmgSpread
-      fireCost: 120
+      fireCost: 100
   - type: Item
     size: Large
     shape:
@@ -800,10 +773,5 @@
     stealGroup: WeaponEnergyShotgun
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Battery
-    maxCharge: 1200
-    startingCharge: 1200
-  - type: BatterySelfRecharger
-    autoRecharge: true
-    autoRechargeRate: 24
-    autoRechargePause: true
-    autoRechargePauseTime: 30
+    maxCharge: 800
+    startingCharge: 800

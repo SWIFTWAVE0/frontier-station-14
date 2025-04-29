@@ -22,14 +22,6 @@ namespace Content.Shared.Toilet.Components
         /// </summary>
         [DataField]
         public SoundSpecifier SeatSound = new SoundPathSpecifier("/Audio/Effects/toilet_seat_down.ogg");
-
-        // Frontier: clog probability
-        /// <summary>
-        /// Sound to play when toggling toilet seat.
-        /// </summary>
-        [DataField]
-        public float ClogProbability = 0.0f;
-        // End Frontier
     }
 
     [Serializable, NetSerializable]

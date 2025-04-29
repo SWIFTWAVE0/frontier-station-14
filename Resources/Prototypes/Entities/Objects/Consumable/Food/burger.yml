@@ -619,10 +619,6 @@
           Quantity: 1
         - ReagentId: Flavorol
           Quantity: 5
-  - type: Tag
-    tags:
-    - Meat
-
 # Tastes like bun, HEAT.
 
 - type: entity
@@ -930,7 +926,7 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 90 # Frontier: 60<90
+        maxVol: 60
         reagents:
         - ReagentId: Nutriment
           Quantity: 29

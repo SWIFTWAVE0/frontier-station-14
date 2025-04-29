@@ -46,7 +46,7 @@ namespace Content.Server.Singularity.EntitySystems
 
             SubscribeLocalEvent<EmitterComponent, PowerConsumerReceivedChanged>(ReceivedChanged);
             SubscribeLocalEvent<EmitterComponent, PowerChangedEvent>(OnApcChanged);
-            SubscribeLocalEvent<EmitterComponent, ActivateInWorldEvent>(OnActivate);
+            SubscribeLocalEvent<EmitterComponent, InteractHandEvent>(OnInteractHand);
             SubscribeLocalEvent<EmitterComponent, GetVerbsEvent<Verb>>(OnGetVerb);
             SubscribeLocalEvent<EmitterComponent, ExaminedEvent>(OnExamined);
             SubscribeLocalEvent<EmitterComponent, RefreshPartsEvent>(OnRefreshParts);
@@ -63,7 +63,7 @@ namespace Content.Server.Singularity.EntitySystems
             SwitchOff(uid, component);
         }
 
-        private void OnActivate(EntityUid uid, EmitterComponent component, ActivateInWorldEvent args)
+        private void OnInteractHand(EntityUid uid, EmitterComponent component, InteractHandEvent args)
         {
             if (args.Handled)
                 return;
@@ -213,8 +213,7 @@ namespace Content.Server.Singularity.EntitySystems
             if (TryComp<ApcPowerReceiverComponent>(uid, out var apcReceiver))
             {
                 apcReceiver.Load = component.PowerUseActive;
-                if (apcReceiver.Powered)
-                    PowerOn(uid, component);
+                PowerOn(uid, component);
             }
             // Do not directly PowerOn().
             // OnReceivedPowerChanged will get fired due to DrawRate change which will turn it on.

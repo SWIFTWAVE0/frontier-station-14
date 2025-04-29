@@ -8,13 +8,13 @@
     shoes: ClothingShoesColorBlack
 
 - type: loadout
-  id: ContractorClothingShoesClothwrap
+  id: ContractorClothingShoesClothwarp
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
   price: 50
   equipment:
-    shoes: ClothingShoesClothwrap
+    shoes: ClothingShoesClothwarp
 
 - type: loadout
   id: ContractorClothingShoesTourist
@@ -114,12 +114,10 @@
   hideEffects:
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
-  - !type:GroupLoadoutEffect
-    proto: NFNotDoc
   price: 600
   equipment:
     shoes: ClothingShoesColorWhite
-
+    
 - type: loadout
   id: ContractorClothingShoesBootsMag
   effects:
@@ -331,7 +329,7 @@
     proto: ContractorT1
   hideEffects:
   - !type:GroupLoadoutEffect
-    proto: NFNotDocOrStc
+    proto: NotStcNF
   - !type:GroupLoadoutEffect
     proto: ShoesCapableNF
   price: 600

@@ -26,7 +26,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: CBURNPDA
     pocket1: RadioHandheldNF # Frontier: RadioHandheld<RadioHandheldNF
-    pocket2: WeaponNFLaserPistol # Frontier: WeaponLaserGun<WeaponNFLaserPistol
+    pocket2: WeaponLaserPistolNF # Frontier: WeaponLaserGun<WeaponLaserPistolNF
     belt: ClothingBeltBandolier
   storage:
     back:

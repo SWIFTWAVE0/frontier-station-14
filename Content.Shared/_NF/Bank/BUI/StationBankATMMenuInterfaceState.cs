@@ -5,7 +5,7 @@
  */
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._NF.Bank.BUI;
+namespace Content.Shared.Bank.BUI;
 
 [NetSerializable, Serializable]
 public sealed class StationBankATMMenuInterfaceState : BoundUserInterfaceState

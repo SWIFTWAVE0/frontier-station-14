@@ -14,7 +14,6 @@ namespace Content.Client.Guidebook;
 public sealed partial class DocumentParsingManager
 {
     private const string ListBullet = "  › ";
-    private const string SublistBullet = "      • "; // Frontier
 
     // Parser that consumes a - and then just parses normal rich text with some prefix text (a bullet point).
     private static readonly Parser<char, char> TryEscapedChar = Try(Char('\\')
@@ -110,17 +109,7 @@ public sealed partial class DocumentParsingManager
             .Cast<Control>()))
         .Labelled("subheader");
 
-    private static readonly Parser<char, Control> TertiaryHeaderControlParser = Try(String("###"))
-        .Then(SkipWhitespaces.Then(Map(text => new Label
-                {
-                    Text = text,
-                    StyleClasses = { "LabelKeyText" }
-                },
-                AnyCharExcept('\n').AtLeastOnceString())
-            .Cast<Control>()))
-        .Labelled("tertiaryheader");
-
-    private static readonly Parser<char, Control> TryHeaderControl = OneOf(TertiaryHeaderControlParser, SubHeaderControlParser, HeaderControlParser);
+    private static readonly Parser<char, Control> TryHeaderControl = OneOf(SubHeaderControlParser, HeaderControlParser);
 
     private static readonly Parser<char, Control> ListControlParser = Try(Char('-'))
         .Then(SkipWhitespaces)
@@ -133,22 +122,6 @@ public sealed partial class DocumentParsingManager
                 TextControlParser)
             .Cast<Control>())
         .Labelled("list");
-
-    // Frontier: sublists - should duplicate ListControlParser but for more hyphens, and print out more spaces before your list character
-    private static readonly Parser<char, Control> SublistControlParser = Try(String("--"))
-        .Then(SkipWhitespaces)
-        .Then(Map(
-                control => new BoxContainer
-                {
-                    Children = { new Label { Text = SublistBullet, VerticalAlignment = VAlignment.Top }, control },
-                    Orientation = LayoutOrientation.Horizontal
-                },
-                TextControlParser)
-            .Cast<Control>())
-        .Labelled("sublist");
-
-    private static readonly Parser<char, Control> TryListControl = OneOf(SublistControlParser, ListControlParser);
-    // End Frontier: sublists
 
     #region Text Parsing
 

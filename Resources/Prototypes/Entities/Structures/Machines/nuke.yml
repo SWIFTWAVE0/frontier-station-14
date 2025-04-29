@@ -110,9 +110,7 @@
   - type: WarpPoint
     follow: true
     location: nuclear bomb
-  - type: FTLSmashImmune
-  - type: ShipyardSellCondition # Frontier
-    blockSale: true # Frontier
+  - type: DisableShipyardSale # Frontier
     reason: shipyard-console-dangerous-materials # Frontier
     allowedShipyardTypes: # Frontier:
     - Syndicate # Frontier

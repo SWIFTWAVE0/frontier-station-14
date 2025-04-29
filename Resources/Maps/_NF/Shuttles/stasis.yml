@@ -828,8 +828,7 @@ entities:
           6,-1:
             0: 4096
           5,1:
-            1: 29495
-            2: 64
+            1: 29559
           5,2:
             1: 1906
             0: 32768
@@ -864,26 +863,11 @@ entities:
           - 0
           - 0
           - 0
-        - volume: 2500
-          temperature: 293.14996
-          moles:
-          - 20.078888
-          - 75.53487
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Stasis
+      id: stasis
     - type: NavMap
 - proto: AirAlarm
   entities:
@@ -2007,24 +1991,6 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14923
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
   - uid: 445
     components:
     - type: Transform
@@ -3568,10 +3534,10 @@ entities:
       parent: 1
 - proto: LockerChiefMedicalOfficerFilledHardsuit
   entities:
-  - uid: 578
+  - uid: 351
     components:
     - type: Transform
-      pos: 18.5,-0.5
+      pos: 20.5,7.5
       parent: 1
 - proto: LockerMedicineFilled
   entities:
@@ -3689,13 +3655,6 @@ entities:
     components:
     - type: Transform
       pos: 20.5,-3.5
-      parent: 1
-- proto: NFHolopadShip
-  entities:
-  - uid: 351
-    components:
-    - type: Transform
-      pos: 20.5,7.5
       parent: 1
 - proto: NFPosterContrabandEmsCoords
   entities:
@@ -5233,7 +5192,7 @@ entities:
       rot: 3.141592653589793 rad
       pos: 23.5,-9.5
       parent: 1
-- proto: WarpPoint
+- proto: WarpPointShip
   entities:
   - uid: 82
     components:

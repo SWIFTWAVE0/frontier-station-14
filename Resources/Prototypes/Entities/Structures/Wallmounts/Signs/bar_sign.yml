@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: BaseBarSign
   parent: BaseStructure
   name: bar sign
@@ -28,11 +28,7 @@
     interfaces:
       enum.BarSignUiKey.Key:
         type: BarSignBoundUserInterface
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
   - type: Appearance
-  - type: Damageable
-    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -40,15 +36,7 @@
         damage: 50
       behaviors:
       - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
-  - type: StationAiWhitelist
-  - type: WiresPanel
-  - type: Wires
-    boardName: wires-board-name-barsign
-    layoutId: BarSign
+        acts: ["Destruction"]
 
 - type: entity
   parent: BaseBarSign
@@ -278,23 +266,3 @@
   components:
   - type: BarSign
     current: Spacebucks
-
-# Frontier: use the /tg/ maltroach definition
-# - type: entity
-#   parent: BaseBarSign
-#   id: BarSignMaltroach
-#   name: The Maltroach
-#   description: Squeak!
-#   components:
-#   - type: BarSign
-#     current: Maltroach
-# End Frontier
-
-- type: entity
-  parent: BaseBarSign
-  id: BarSignWhiskeyEchoes
-  name: Whiskey Echoes
-  description: An elite bar for elite oper-wait, this is a Nanotrasen station. Why's this sign in the database?
-  components:
-  - type: BarSign
-    current: WhiskeyEchoes

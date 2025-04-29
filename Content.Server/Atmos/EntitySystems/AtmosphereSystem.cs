@@ -2,7 +2,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
-using Content.Server.GameTicking; // Frontier
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Decals;
@@ -15,6 +14,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using System.Linq;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -27,6 +27,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly InternalsSystem _internals = default!;
@@ -38,8 +39,8 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] public readonly PuddleSystem Puddle = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!; // Frontier
 
     private const float ExposedUpdateDelay = 1f;
     private float _exposedTimer = 0f;
@@ -123,6 +124,6 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
 
     private void CacheDecals()
     {
-        _burntDecals = _protoMan.EnumeratePrototypes<DecalPrototype>().Where(x => x.Tags.Contains("burnt")).Select(x => x.ID).ToArray();
+        _burntDecals = _prototypeManager.EnumeratePrototypes<DecalPrototype>().Where(x => x.Tags.Contains("burnt")).Select(x => x.ID).ToArray();
     }
 }

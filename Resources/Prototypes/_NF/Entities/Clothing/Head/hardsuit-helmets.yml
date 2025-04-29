@@ -5,7 +5,7 @@
 
 #Mercenary Hardsuit
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitMercenary
   categories: [ HideSpawnMenu ]
   name: mercenary hardsuit helmet
@@ -44,7 +44,7 @@
 
 #Pilot Hardsuit
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitPilot
   categories: [ HideSpawnMenu ]
   name: pilot hardsuit helmet
@@ -78,7 +78,7 @@
 
 # MAXIM helmet, but with light
 - type: entity
-  parent: [ ClothingHeadHelmetHardsuitMaxim, NFClothingHeadHardsuitWithLightBase ]
+  parent: [ ClothingHeadHelmetHardsuitMaxim, ClothingHeadHardsuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitMaximPrototype
   categories: [ HideSpawnMenu ]
   name: experimental salvager helmet
@@ -93,13 +93,13 @@
     radius: 7
     energy: 3
 
-#Security patrol suit
+#Security Patrol Hardsuit
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBaseNfsd
+  parent: ClothingHeadHardsuitWithLightBaseNfsd
   id: ClothingHeadHelmetHardsuitNfsdBronze
   categories: [ HideSpawnMenu ]
-  name: NFSD patrol suit helmet
-  description: Lightly armored softsuit helmet for beat-cop needs.
+  name: nfsd patrol hardsuit helmet
+  description: Lightly armored hardsuit helmet for beat-cop needs.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hardsuits/nfsd.rsi
@@ -129,6 +129,8 @@
   parent: ClothingHeadHelmetHardsuitNfsdBronze
   id: ClothingHeadHelmetHardsuitNfsdGold
   categories: [ HideSpawnMenu ]
+  name: nfsd patrol hardsuit helmet
+  description: Lightly armored hardsuit helmet for beat-cop needs.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hardsuits/nfsd.rsi
@@ -156,11 +158,11 @@
     sprite: _NF/Clothing/Head/Hardsuits/nfsd_sheriff.rsi
 
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBaseNfsd
+  parent: ClothingHeadHardsuitWithLightBaseNfsd
   id: ClothingHeadHelmetHardsuitNfsdExperimental
   categories: [ HideSpawnMenu ]
-  name: NFSD experimental combat suit helmet
-  description: Heavily armored hardsuit helmet for NFSD raids.
+  name: experimental nfsd hardsuit helmet
+  description: experimental nfsd hardsuit helmet
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Hardsuits/nfsd_experimental.rsi
@@ -179,10 +181,10 @@
 
 #Security Combat Hardsuit
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBaseNfsd
+  parent: ClothingHeadHardsuitWithLightBaseNfsd
   id: ClothingHeadHelmetHardsuitNfsdCombat
   categories: [ HideSpawnMenu ]
-  name: NFSD combat suit helmet
+  name: nfsd combat hardsuit helmet
   description: Medium armored hardsuit helmet for NFSD raids.
   components:
   - type: Sprite
@@ -204,10 +206,10 @@
 
 #Security Command Hardsuit
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBaseNfsd
+  parent: ClothingHeadHardsuitWithLightBaseNfsd
   id: ClothingHeadHelmetHardsuitNfsdCommand
   categories: [ HideSpawnMenu ]
-  name: NFSD command combat suit helmet
+  name: nfsd command hardsuit helmet
   description: Medium armored hardsuit helmet for NFSD raids.
   components:
   - type: Sprite
@@ -229,7 +231,7 @@
 
 #SCAF Helmet
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitScaf
   name: scaf hardsuit helmet
   description: A robust, strong helmet. On the inside smells of pent up anger.
@@ -256,7 +258,7 @@
 
 #Tactical hardsuit Helmet
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetHardsuitTacticalMaid
   name: tactical maid hardsuit helmet
   description: Welded stainless steel alloy covered in multiple layers of anticorrosive materials, perfect for cleaning.
@@ -278,7 +280,7 @@
         Piercing: 0.8
 
 - type: entity
-  parent: NFClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHardsuitWithLightBase
   id: ClothingHeadHelmetHardsuitPirateElite
   categories: [ HideSpawnMenu ]
   name: elite pirate hardsuit helmet

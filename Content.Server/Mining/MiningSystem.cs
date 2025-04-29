@@ -29,18 +29,13 @@ public sealed class MiningSystem : EntitySystem
         if (component.CurrentOre == null)
             return;
 
-        // Frontier
-        if (component.PreventSpawning)
-            return;
-        // End Frontier
-
         var proto = _proto.Index<OrePrototype>(component.CurrentOre);
 
         if (proto.OreEntity == null)
             return;
 
         var coords = Transform(uid).Coordinates;
-        var toSpawn = _random.Next(proto.MinOreYield, proto.MaxOreYield+1);
+        var toSpawn = _random.Next(proto.MinOreYield, proto.MaxOreYield);
         for (var i = 0; i < toSpawn; i++)
         {
             Spawn(proto.OreEntity, coords.Offset(_random.NextVector2(0.2f)));

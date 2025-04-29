@@ -1,26 +1,9 @@
 - type: entity
   name: crispy
   id: MobCatCrispy
-  parent: EdibleBase
+  parent: FoodMealFries
   description: Mistakes were made.
   components:
-  - type: FlavorProfile
-    flavors:
-    - potatoes
-    - salty
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 45 # Using the sausage bread values, fries get eaten too quickly.
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 5
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -82,35 +65,13 @@
     damage:
       groups:
         Brute: 1
-  - type: Appearance
-  - type: DeepFried
-    crispinessLevelSet: Crispy
-    originalName: crispy
   - type: FriedTrait
-    crispinessLevelSet: Crispy
-
-- type: entity
-  name: spooky
-  id: MobCatSpooky
-  parent: MobCatCrispy
-  description: A grave mistake.
-  suffix: Admeme # only way to get it at the moment
-  components:
-  - type: FlavorProfile
-    flavors:
-      - spooky
-  - type: DeepFried
-    crispinessLevelSet: Spectral
-    originalName: spooky
-  - type: FriedTrait
-    crispinessLevelSet: Spectral
-  - type: Spectral
 
 - type: entity
   name: dragon omelette
   parent: FoodMealBase
   id: FoodMealDragonOmelette
-  description: The mother of all omelettes.
+  description:
   components:
   - type: FlavorProfile
     flavors:
@@ -139,7 +100,7 @@
 - type: entity
   name: avocado toast
   parent: FoodBreadSliceBase
-  id: FoodBreadAvocadoToast
+  id: FoodMealAvocadoToast
   description: It was this or home ownership.
   components:
   - type: FlavorProfile
@@ -314,7 +275,7 @@
     tags:
     - Vegetable
     - Fruit
-
+  
 - type: entity
   name: poached pears
   parent: FoodBowlBase
@@ -380,191 +341,54 @@
     - Fruit
 
 - type: entity
-  name: basic noodles
-  parent: FoodBowlBase
-  id: FoodMealBasicNoodles
-  description: A simple ramen bowl of noodles and broth. Yum!
+  name: pear muffin
+  parent: FoodMealBase
+  id: FoodBakedMuffinPear
+  description: I won't tell if you just try to pick out the chocolate.
   components:
   - type: FlavorProfile
     flavors:
-      - finenoodles
-      - richbroth
+      - chocolate
+      - muffin
+      - pear
   - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl
-    - state: basic-noodles
+    sprite: _NF/Objects/Consumable/Food/Baked/bread.rsi
+    state: pearmuffin
+    scale: .75, .75
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 35
+        maxVol: 15
         reagents:
         - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Flavorol
-          Quantity: 10
-
-- type: entity
-  name: miso noodles
-  parent: FoodBowlBase
-  id: FoodMealMisoNoodles
-  description: Miso, or fermented bean paste, broth with scallion and egg. Robust!
-  components:
-  - type: FlavorProfile
-    flavors:
-      - finenoodles
-      - richbroth
-      - tangy
-  - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl
-    - state: miso-noodles
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
+          Quantity: 6
         - ReagentId: Vitamin
-          Quantity: 5
+          Quantity: 4
         - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 3
+          Quantity: 2
+        - ReagentId: Theobromine
+          Quantity: 1
   - type: Tag
     tags:
-    - Meat
+    - Fruit
 
 - type: entity
-  name: shio noodles
-  parent: FoodBowlBase
-  id: FoodMealShioNoodles
-  description: Sea salt broth with corn and seaweed. Light!
+  name: pear and cheese tart
+  parent: FoodPieBase
+  id: FoodTartPearCheese
+  description: The most sublime pair.
   components:
   - type: FlavorProfile
     flavors:
-      - finenoodles
-      - richbroth
+      - sweet
+      - cheesy
+      - pear
   - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
+    sprite: _NF/Objects/Consumable/Food/Baked/pie.rsi
     layers:
-    - state: bowl
-    - state: shio-noodles
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 3
+    - state: tin
+    - state: pearandcheese
   - type: Tag
     tags:
-    - Vegetable
-
-- type: entity
-  name: shoyu noodles
-  parent: FoodBowlBase
-  id: FoodMealShoyuNoodles
-  description: Soy sauce broth with corn, egg, and pork. Salty!
-  components:
-  - type: FlavorProfile
-    flavors:
-      - finenoodles
-      - richbroth
-      - savory
-  - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl
-    - state: shoyu-noodles
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 3
-  - type: Tag
-    tags:
-    - Vegetable
-    - Meat
-
-- type: entity
-  name: spicy noodles
-  parent: FoodBowlBase
-  id: FoodMealSpicyNoodles
-  description: A not-so-simple ramen bowl of noodles, broth, and tofu. Hot!
-  components:
-  - type: FlavorProfile
-    flavors:
-      - finenoodles
-      - tofu
-      - spicy
-  - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl
-    - state: spicy-noodles
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: CapsaicinOil
-          Quantity: 3
-  - type: Tag
-    tags:
-    - Vegetable
-
-- type: entity
-  name: tonkatsu noodles
-  parent: FoodBowlBase
-  id: FoodMealTonkatsuNoodles
-  description: Pork bone broth with garlic and pork. Rich!
-  components:
-  - type: FlavorProfile
-    flavors:
-      - finenoodles
-      - savory
-      - garlic
-  - type: Sprite
-    sprite: _NF/Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl
-    - state: tonkatsu-noodles
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 35
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Flavorol
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 3
-  - type: Tag
-    tags:
-    - Meat
+    - Fruit
+    - Pie

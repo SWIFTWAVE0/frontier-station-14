@@ -1,5 +1,0 @@
-# Parented to the grabber because they function similarly
-- type: latheRecipe
-  parent: MechEquipmentGrabber
-  id: MechEquipmentFork
-  result: MechEquipmentFork

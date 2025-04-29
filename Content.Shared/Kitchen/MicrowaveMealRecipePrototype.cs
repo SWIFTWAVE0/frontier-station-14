@@ -21,9 +21,6 @@ namespace Content.Shared.Kitchen
         [DataField("name")]
         private string _name = string.Empty;
 
-        [DataField]
-        public string Group = "Other";
-
         [DataField("reagents", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<FixedPoint2, ReagentPrototype>))]
         private Dictionary<string, FixedPoint2> _ingsReagents = new();
 
@@ -34,7 +31,7 @@ namespace Content.Shared.Kitchen
         public string Result { get; private set; } = string.Empty;
 
         // Frontier
-        [DataField]
+        [DataField("resultCount")]
         public int ResultCount { get; private set; } = 1;
         // End Frontier
 
@@ -43,11 +40,8 @@ namespace Content.Shared.Kitchen
 
         // Frontier: separate microwave recipe types.
 
-        [DataField(customTypeSerializer: typeof(FlagSerializer<MicrowaveRecipeTypeFlags>))]
+        [DataField("recipeType", customTypeSerializer: typeof(FlagSerializer<MicrowaveRecipeTypeFlags>))]
         public int RecipeType = (int)MicrowaveRecipeType.Microwave;
-
-        [DataField]
-        public bool HideInGuidebook;
 
         public string Name => Loc.GetString(_name);
 

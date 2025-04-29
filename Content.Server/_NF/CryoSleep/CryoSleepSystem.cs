@@ -1,44 +1,46 @@
 using System.Numerics;
-using Content.Server._NF.Shipyard.Systems;
 using Content.Server.DoAfter;
 using Content.Server.EUI;
-using Content.Server.Ghost;
+using Content.Server.GameTicking;
 using Content.Server.Interaction;
 using Content.Server.Mind;
 using Content.Server.Popups;
-using Content.Shared._NF.CCVar;
-using Content.Shared._NF.CryoSleep.Events;
+using Content.Server.Shipyard.Systems;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Climbing.Systems;
+using Content.Shared.CryoSleep;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
-using Content.Shared.Hands.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Movement.Events;
+using Content.Shared._NF.CCVar;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Server.Containers;
-using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
+using Content.Server.Ghost;
 
-namespace Content.Server._NF.CryoSleep;
+namespace Content.Server.CryoSleep;
 
-public sealed partial class CryoSleepSystem : EntitySystem
+public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 {
     [Dependency] private readonly EntityManager _entityManager = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly ClimbSystem _climb = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly EuiManager _euiManager = null!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
@@ -47,9 +49,6 @@ public sealed partial class CryoSleepSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ShipyardSystem _shipyard = default!; // For the FoundOrganics method
     [Dependency] private readonly GhostSystem _ghost = default!;
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
     private EntityUid? _storageMap;
@@ -63,11 +62,10 @@ public sealed partial class CryoSleepSystem : EntitySystem
         SubscribeLocalEvent<CryoSleepComponent, GetVerbsEvent<AlternativeVerb>>(AddAlternativeVerbs);
         SubscribeLocalEvent<CryoSleepComponent, SuicideEvent>(OnSuicide);
         SubscribeLocalEvent<CryoSleepComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<CryoSleepComponent, ContainerRelayMovementEntityEvent>(OnRelayMovement);
-        SubscribeLocalEvent<CryoSleepComponent, DestructionEventArgs>((e, c, _) => EjectBody(e, c));
+        SubscribeLocalEvent<CryoSleepComponent, DestructionEventArgs>((e,c,_) => EjectBody(e, c));
         SubscribeLocalEvent<CryoSleepComponent, CryoStoreDoAfterEvent>(OnAutoCryoSleep);
         SubscribeLocalEvent<CryoSleepComponent, DragDropTargetEvent>(OnEntityDragDropped);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        SubscribeLocalEvent<RoundEndedEvent>(OnRoundEnded);
 
         InitReturning();
     }
@@ -76,8 +74,9 @@ public sealed partial class CryoSleepSystem : EntitySystem
     {
         if (Deleted(_storageMap))
         {
-            _storageMap = _map.CreateMap(out var map);
-            _map.SetPaused(map, true);
+            var map = _mapManager.CreateMap();
+            _storageMap = _mapManager.GetMapEntityId(map);
+            _mapManager.SetMapPaused(map, true);
         }
 
         return _storageMap.Value;
@@ -88,27 +87,25 @@ public sealed partial class CryoSleepSystem : EntitySystem
         component.BodyContainer = _container.EnsureContainer<ContainerSlot>(uid, "body_container");
     }
 
-    private void AddInsertOtherVerb(Entity<CryoSleepComponent> ent, ref GetVerbsEvent<InteractionVerb> args)
+    private void AddInsertOtherVerb(EntityUid uid, CryoSleepComponent component, GetVerbsEvent<InteractionVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
             return;
 
         // If the user is currently holding/pulling an entity that can be cryo-sleeped, add a verb for that.
         if (args.Using is { Valid: true } @using &&
-            !IsOccupied(ent.Comp) &&
+            !IsOccupied(component) &&
             _interaction.InRangeUnobstructed(@using, args.Target) &&
             _actionBlocker.CanMove(@using) &&
             HasComp<MindContainerComponent>(@using))
         {
-            string name;
-            if (TryComp(args.Using.Value, out MetaDataComponent? metadata))
+            var name = "Unknown";
+            if (TryComp<MetaDataComponent>(args.Using.Value, out var metadata))
                 name = metadata.EntityName;
-            else
-                name = Loc.GetString("cryopod-verb-target-unknown");
 
             InteractionVerb verb = new()
             {
-                Act = () => InsertBody(@using, ent, false),
+                Act = () => InsertBody(@using, component, false),
                 Category = VerbCategory.Insert,
                 Text = name
             };
@@ -116,17 +113,17 @@ public sealed partial class CryoSleepSystem : EntitySystem
         }
     }
 
-    private void AddAlternativeVerbs(Entity<CryoSleepComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    private void AddAlternativeVerbs(EntityUid uid, CryoSleepComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
             return;
 
         // Eject verb
-        if (IsOccupied(ent.Comp))
+        if (IsOccupied(component))
         {
             AlternativeVerb verb = new()
             {
-                Act = () => EjectBody(ent.Owner, ent.Comp),
+                Act = () => EjectBody(uid, component),
                 Category = VerbCategory.Eject,
                 Text = Loc.GetString("medical-scanner-verb-noun-occupant")
             };
@@ -134,13 +131,12 @@ public sealed partial class CryoSleepSystem : EntitySystem
         }
 
         // Self-insert verb
-        if (!IsOccupied(ent.Comp) &&
-            _actionBlocker.CanMove(args.User))
+        if (!IsOccupied(component) &&
+            (_actionBlocker.CanMove(args.User))) // || HasComp<WheelchairBoundComponent>(args.User))) // just get working legs
         {
-            var user = args.User;
             AlternativeVerb verb = new()
             {
-                Act = () => InsertBody(user, ent, false),
+                Act = () => InsertBody(args.User, component, false),
                 Category = VerbCategory.Insert,
                 Text = Loc.GetString("medical-scanner-verb-enter")
             };
@@ -170,22 +166,6 @@ public sealed partial class CryoSleepSystem : EntitySystem
         args.PushMarkup(Loc.GetString(message));
     }
 
-    private void OnRelayMovement(EntityUid uid, CryoSleepComponent component, ref ContainerRelayMovementEntityEvent args)
-    {
-        if (!HasComp<HandsComponent>(args.Entity))
-            return;
-
-        if (!_actionBlocker.CanMove(args.Entity))
-            return;
-
-        if (_timing.CurTime < component.NextInternalOpenAttempt)
-            return;
-
-        component.NextInternalOpenAttempt = _timing.CurTime + component.InternalOpenAttemptDelay;
-
-        EjectBody(uid, component, args.Entity);
-    }
-
     private void OnAutoCryoSleep(EntityUid uid, CryoSleepComponent component, CryoStoreDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)
@@ -200,16 +180,20 @@ public sealed partial class CryoSleepSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnEntityDragDropped(Entity<CryoSleepComponent> ent, ref DragDropTargetEvent args)
+    private void OnEntityDragDropped(EntityUid uid, CryoSleepComponent component, DragDropTargetEvent args)
     {
-        args.Handled |= InsertBody(args.Dragged, ent, false);
+        if (InsertBody(args.Dragged, component, false))
+        {
+            args.Handled = true;
+        }
     }
 
-    public bool InsertBody(EntityUid? toInsert, Entity<CryoSleepComponent> cryopod, bool force)
+    public bool InsertBody(EntityUid? toInsert, CryoSleepComponent component, bool force)
     {
+        var cryopod = component.Owner;
         if (toInsert == null)
             return false;
-        if (IsOccupied(cryopod.Comp) && !force)
+        if (IsOccupied(component) && !force)
             return false;
 
         var mobQuery = GetEntityQuery<MobStateComponent>();
@@ -240,10 +224,12 @@ public sealed partial class CryoSleepSystem : EntitySystem
             }
         }
 
-        var success = _container.Insert(toInsert.Value, cryopod.Comp.BodyContainer);
+        var success = _container.Insert(toInsert.Value, component.BodyContainer);
 
         if (success && mindComp?.Session != null)
-            _euiManager.OpenEui(new CryoSleepEui(toInsert.Value, cryopod, this), mindComp.Session);
+        {
+            _euiManager.OpenEui(new CryoSleepEui(toInsert.Value,  cryopod, this), mindComp.Session);
+        }
 
         if (success)
         {
@@ -265,7 +251,7 @@ public sealed partial class CryoSleepSystem : EntitySystem
             };
 
             if (_doAfter.TryStartDoAfter(args))
-                cryopod.Comp.CryosleepDoAfter = ev.DoAfter.Id;
+                component.CryosleepDoAfter = ev.DoAfter.Id;
         }
 
         return success;
@@ -276,53 +262,37 @@ public sealed partial class CryoSleepSystem : EntitySystem
         if (!TryComp<CryoSleepComponent>(cryopod, out var cryo))
             return;
 
-        var deleteEntity = false;
         NetUserId? id = null;
-        if (_mind.TryGetMind(bodyId, out var mindEntity, out var mind) && mind.CurrentEntity is { Valid: true } body)
+        if (_mind.TryGetMind(bodyId, out var mindEntity, out var mind) && mind.CurrentEntity is { Valid : true } body)
         {
             var argMind = mind;
-            var ev = new CryosleepBeforeMindRemovedEvent(cryopod, argMind?.UserId);
-            RaiseLocalEvent(bodyId, ev, true);
-            deleteEntity = ev.DeleteEntity;
+            RaiseLocalEvent(bodyId, new CryosleepBeforeMindRemovedEvent(cryopod, argMind?.UserId), true);
+            _ghost.OnGhostAttempt(mindEntity, false, true, mind: mind);
 
-            // Note: must update stored bodies before ghosting to ensure cryo state is accurate.
             id = mind.UserId;
             if (id != null)
-            {
-                if (deleteEntity)
-                    _storedBodies.Remove(id.Value);
-                else
-                    _storedBodies[id.Value] = new StoredBody() { Body = body, Cryopod = cryopod };
-            }
-
-            _ghost.OnGhostAttempt(mindEntity, false, true, mind: mind);
+                _storedBodies[id.Value] = new StoredBody() { Body = body, Cryopod = cryopod };
         }
 
         var storage = GetStorageMap();
+        var xform = Transform(bodyId);
         _container.Remove(bodyId, cryo.BodyContainer, reparent: false, force: true);
-        _transform.SetCoordinates(bodyId, new EntityCoordinates(storage, Vector2.Zero));
+        xform.Coordinates = new EntityCoordinates(storage, Vector2.Zero);
 
         RaiseLocalEvent(bodyId, new CryosleepEnterEvent(cryopod, mind?.UserId), true);
 
         if (cryo.CryosleepDoAfter != null && _doAfter.GetStatus(cryo.CryosleepDoAfter) == DoAfterStatus.Running)
             _doAfter.Cancel(cryo.CryosleepDoAfter);
 
-        if (deleteEntity)
+        // Start a timer. When it ends, the body needs to be deleted.
+        Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NFCCVars.CryoExpirationTime)), () =>
         {
-            QueueDel(bodyId);
-        }
-        else
-        {
-            // Start a timer. When it ends, the body needs to be deleted.
-            Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NFCCVars.CryoExpirationTime)), () =>
-            {
-                if (id != null)
-                    ResetCryosleepState(id.Value);
+            if (id != null)
+                ResetCryosleepState(id.Value);
 
-                if (!Deleted(bodyId) && Transform(bodyId).ParentUid == _storageMap)
-                    QueueDel(bodyId);
-            });
-        }
+            if (!Deleted(bodyId) && Transform(bodyId).ParentUid == _storageMap)
+                QueueDel(bodyId);
+        });
     }
 
     /// <param name="body">If not null, will not eject if the stored body is different from that parameter.</param>
@@ -339,6 +309,7 @@ public sealed partial class CryoSleepSystem : EntitySystem
             return false;
 
         _container.Remove(toEject.Value, component.BodyContainer, force: true);
+        //_climb.ForciblySetClimbing(toEject.Value, pod);
 
         if (component.CryosleepDoAfter != null && _doAfter.GetStatus(component.CryosleepDoAfter) == DoAfterStatus.Running)
             _doAfter.Cancel(component.CryosleepDoAfter);
@@ -351,7 +322,7 @@ public sealed partial class CryoSleepSystem : EntitySystem
         return component.BodyContainer.ContainedEntity != null;
     }
 
-    private void OnRoundRestart(RoundRestartCleanupEvent args)
+    private void OnRoundEnded(RoundEndedEvent args)
     {
         _storedBodies.Clear();
     }
@@ -362,3 +333,4 @@ public sealed partial class CryoSleepSystem : EntitySystem
         public EntityUid Cryopod;
     }
 }
+

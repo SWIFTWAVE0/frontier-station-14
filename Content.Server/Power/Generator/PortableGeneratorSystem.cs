@@ -10,7 +10,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared.ActionBlocker; // Frontier
 
 namespace Content.Server.Power.Generator;
 
@@ -28,7 +27,6 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
     [Dependency] private readonly GeneratorSystem _generator = default!;
     [Dependency] private readonly PowerSwitchableSystem _switchable = default!;
     [Dependency] private readonly ActiveGeneratorRevvingSystem _revving = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!; // Frontier
 
     public override void Initialize()
     {
@@ -81,9 +79,6 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
         if (fuelGenerator.On || !Transform(uid).Anchored)
             return;
 
-        if (!_actionBlocker.CanComplexInteract(user)) // Frontier
-            return; // Frontier
-
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.StartTime, new GeneratorStartedEvent(), uid, uid)
         {
             BreakOnDamage = true,
@@ -95,9 +90,6 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
 
     private void StopGenerator(EntityUid uid, PortableGeneratorComponent component, EntityUid user)
     {
-        if (!_actionBlocker.CanComplexInteract(user)) // Frontier
-            return; // Frontier
-
         _generator.SetFuelGeneratorOn(uid, false);
     }
 
@@ -133,7 +125,7 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
         var clogged = _generator.GetIsClogged(uid);
 
         var sound = empty ? component.StartSoundEmpty : component.StartSound;
-        _audio.PlayPvs(sound, uid);
+        _audio.PlayEntity(sound, Filter.Pvs(uid), uid, true);
 
         if (!clogged && !empty && _random.Prob(component.StartChance))
         {
@@ -163,8 +155,6 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
         if (!args.CanAccess || !args.CanInteract)
             return;
 
-        bool disabled = !_actionBlocker.CanComplexInteract(args.User); // Frontier
-
         var fuelGenerator = Comp<FuelGeneratorComponent>(uid);
         if (fuelGenerator.On)
         {
@@ -174,7 +164,7 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
                 {
                     StopGenerator(uid, component, args.User);
                 },
-                Disabled = disabled, // Frontier
+                Disabled = false,
                 Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/zap.svg.192dpi.png")),
                 Text = Loc.GetString("portable-generator-verb-stop"),
             };
@@ -204,7 +194,6 @@ public sealed class PortableGeneratorSystem : SharedPortableGeneratorSystem
             }
             else
             {
-                verb.Disabled = disabled; // Frontier
                 verb.Message = Loc.GetString(reliable
                     ? "portable-generator-verb-start-msg-reliable"
                     : "portable-generator-verb-start-msg-unreliable");

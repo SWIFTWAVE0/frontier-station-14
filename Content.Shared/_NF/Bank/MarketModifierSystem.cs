@@ -1,8 +1,8 @@
 using Content.Shared.Examine;
-using Content.Shared._NF.Bank.Components;
+using Content.Shared.Bank.Components;
 using Content.Shared.VendingMachines;
 
-namespace Content.Shared._NF.Bank;
+namespace Content.Shared.Bank;
 
 public sealed partial class MarketModifierSystem : EntitySystem
 {

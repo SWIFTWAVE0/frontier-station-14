@@ -34,6 +34,8 @@
   - PilotClothingOuterHardsuitPilot
   subgroups:
   - ContractorOuterClothing
+  fallbacks:
+  - ContractorClothingOuterVestTank # Vox-only, default them to have this equipped
 
 - type: loadoutGroup
   id: PilotShoes
@@ -84,7 +86,7 @@
 
 - type: loadoutGroup
   id: PilotPDA
-  name: loadout-group-contractor-pda
+  name: loadout-group-contractor-id
   loadouts:
   - PilotPilotPDA
   subgroups:

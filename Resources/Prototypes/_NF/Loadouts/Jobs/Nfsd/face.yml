@@ -15,11 +15,3 @@
   storage:
     back:
     - ClothingMaskGasNfsd
-
-- type: loadout
-  id: NfsdVoxClothingMaskGasNfsd
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: EffectSpeciesVox
-  equipment:
-    mask: ClothingMaskGasNfsd

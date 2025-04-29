@@ -10,19 +10,21 @@
     - ClothingSkirtUniformRandomStandard
     - ClothingSkirtUniformRandomBra
     - ClothingSkirtUniformRandomShorts
-    - ClothingSkirtUniformRandomShirt
 
 - type: entity
   parent: ClothingUniformRandom
   id: ClothingSkirtUniformRandomArmless
-  name: colorful sleeveless top and skirt
+  name: colorful hands-free costume
   suffix: Skirt
   components:
+  - type: HarpyClothing # Frontier - Harpy
   - type: RandomSprite
     available:
       - torso:
           base_torso_armless: Sixteen
         leg:
+#          base_leg_standard: Sixteen # Frontier - Splited out for Harpy
+#          base_leg_short: Sixteen # Frontier - Splited out for Harpy
           base_leg_skirt: Sixteen
           base_leg_skirt_long: Sixteen
         decor:
@@ -41,15 +43,18 @@
 - type: entity
   parent: ClothingUniformRandom
   id: ClothingSkirtUniformRandomStandard
-  name: colorful top and skirt
+  name: colorful costume
   suffix: Skirt
   components:
+  - type: HarpyClothing # Frontier - Harpy
   - type: RandomSprite
     available:
       - torso:
           base_torso_standard: Sixteen
           base_torso_standard2: Sixteen
         leg:
+#          base_leg_standard: Sixteen # Frontier - Splited out for Harpy
+#          base_leg_short: Sixteen # Frontier - Splited out for Harpy
           base_leg_skirt: Sixteen
           base_leg_skirt_long: Sixteen
         decor:
@@ -77,14 +82,17 @@
 - type: entity
   parent: ClothingUniformRandom
   id: ClothingSkirtUniformRandomBra
-  name: colorful bra and skirt
+  name: colorful bra
   suffix: Skirt
   components:
+  - type: HarpyClothing # Frontier - Harpy
   - type: RandomSprite
     available:
       - torso:
           base_torso_bra: Sixteen
         leg:
+#          base_leg_standard: Sixteen # Frontier - Splited out for Harpy
+#          base_leg_short: Sixteen # Frontier - Splited out for Harpy
           base_leg_skirt: Sixteen
           base_leg_skirt_long: Sixteen
         decor:
@@ -101,30 +109,13 @@
   name: colorful skirt
   suffix: Skirt
   components:
+  - type: HarpyClothing # Frontier - Harpy
   - type: RandomSprite
     available:
       - torso:
           mask_null: ""
         leg:
+#          base_leg_standard: Sixteen # Frontier - Splited out for Harpy
+#          base_leg_short: Sixteen # Frontier - Splited out for Harpy
           base_leg_skirt: Sixteen
           base_leg_skirt_long: Sixteen
-
-- type: entity
-  parent: ClothingUniformRandom
-  id: ClothingSkirtUniformRandomShirt
-  name: colorful patterned top and skirt
-  components:
-  - type: RandomSprite
-    available:
-      - torso:
-          base_torso_armless: Sixteen
-          mask_null: ""
-        leg:
-          base_leg_skirt: Sixteen
-          base_leg_skirt_long: Sixteen
-        decor:
-          base_torso_shirt: Sixteen
-        overlay:
-          decor_torso_shirt1: Sixteen
-          decor_torso_shirt2: Sixteen
-          decor_torso_shirt3: Sixteen

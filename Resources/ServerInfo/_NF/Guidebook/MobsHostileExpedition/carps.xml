@@ -13,10 +13,10 @@
   [color=#a4885c]Flier[/color]: creature levitates above the ground and can bypass low obstacles such as tables, machine frames, or railings without being blocked or slowed down.
   
   <Box>
-  <GuideEntityEmbed Entity="MobCarp"/>
+  <GuideEntityEmbed Entity="MobCarpExpeditions"/>
   </Box>
   - [bold][color=#a4885c]Health thresholds:[/color][/bold] 50 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s[bold][color=#a4885c]*[/color][/bold]
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 4 m/s (4 m/s)[bold][color=#a4885c]*[/color][/bold]
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 5 [color=red]Slash[/color], 5 [color=yellow]Piercing[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier
@@ -32,10 +32,10 @@
   [color=#a4885c]Flier[/color]: creature levitates above the ground and can bypass low obstacles such as tables, machine frames, or railings without being blocked or slowed down.
   
   <Box>
-  <GuideEntityEmbed Entity="MobCarpMagic"/>
+  <GuideEntityEmbed Entity="MobCarpMagicExpeditions"/>
   </Box>
   - [bold][color=#a4885c]Health thresholds:[/color][/bold] 50 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 4 m/s (4 m/s)
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 5 [color=red]Slash[/color], 5 [color=yellow]Piercing[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier
@@ -51,10 +51,10 @@
   [color=#a4885c]Incorporeal[/color]: can only be damaged by melee attacks or energy weapons.
   
   <Box>
-  <GuideEntityEmbed Entity="MobCarpHolo"/>
+  <GuideEntityEmbed Entity="MobCarpHoloExpeditions"/>
   </Box>
   - [bold][color=#a4885c]Health thresholds:[/color][/bold] 50 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 4 m/s (4 m/s)
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 5 [color=red]Slash[/color], 5 [color=yellow]Piercing[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier, Incorporeal
@@ -68,10 +68,10 @@
   [color=#a4885c]Flier[/color]: creature levitates above the ground and can bypass low obstacles such as tables, machine frames, or railings without being blocked or slowed down.
   
   <Box>
-  <GuideEntityEmbed Entity="MobCarpRainbow"/>
+  <GuideEntityEmbed Entity="MobCarpRainbowExpeditions"/>
   </Box>
   - [bold][color=#a4885c]Health thresholds:[/color][/bold] 50 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 4 m/s (4 m/s)
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 5 [color=red]Slash[/color], 5 [color=yellow]Piercing[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier
@@ -85,32 +85,13 @@
   [color=#a4885c]Flier[/color]: creature levitates above the ground and can bypass low obstacles such as tables, machine frames, or railings without being blocked or slowed down.
   
   <Box>
-  <GuideEntityEmbed Entity="MobShark"/>
+  <GuideEntityEmbed Entity="MobSharkExpeditions"/>
   </Box>
   - [bold][color=#a4885c]Health thresholds:[/color][/bold] 80 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 4.5 m/s (2.5 m/s)
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 7 [color=red]Slash[/color], 5 [color=#9A54BF]Bloodloss[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier
-  
-  [bold][color=#a4885c]________________________________________________________________________[/color]
-  
-  # "Snake"
-  
-  A small but menacing poisonous snake, distant relative of purple snake from Kepler-283c.
-  
-  [color=#a4885c]Small[/color]: creature is small enough to pass under tables and airlocks.
-  
-  <Box>
-  <GuideEntityEmbed Entity="MobSnake"/>
-  </Box>
-  - [bold][color=#a4885c]Health thresholds:[/color][/bold] 50 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 4.5 m/s
-  - [bold][color=#a4885c]Damage (type):[/color][/bold] 3 [color=red]Slash[/color], 3 [color=#9A54BF]Bloodloss[/color], 4 [color=lime]Poison[/color]
-  - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
-  - [bold][color=#a4885c]Special abilities:[/color][/bold] Small, Poison
-  
-  <GuideReagentEmbed Reagent="Toxin"/>
   
   [bold][color=#a4885c]________________________________________________________________________[/color]
   
@@ -121,10 +102,10 @@
   [color=#a4885c]Flier[/color]: creature levitates above the ground and can bypass low obstacles such as tables, machine frames, or railings without being blocked or slowed down.
   
   <Box>
-  <GuideEntityEmbed Entity="NFMobDragonDungeon"/>
+  <GuideEntityEmbed Entity="MobDragonDungeon"/>
   </Box>
-  - [bold][color=#a4885c]Health thresholds:[/color][/bold] 200 (death)
-  - [bold][color=#a4885c]Run speed:[/color][/bold] 5 m/s
+  - [bold][color=#a4885c]Health thresholds:[/color][/bold] 450 (crit), 500 (death)
+  - [bold][color=#a4885c]Run (walk) speed:[/color][/bold] 5 m/s (3 m/s)
   - [bold][color=#a4885c]Damage (type):[/color][/bold] 15 [color=red]Slash[/color], 15 [color=yellow]Piercing[/color]
   - [bold][color=#a4885c]Damage resistances:[/color][/bold] none
   - [bold][color=#a4885c]Special abilities:[/color][/bold] Flier
@@ -134,7 +115,7 @@
   # Mission Objectives
   ## Elimination
   <Box>
-  <GuideEntityEmbed Entity="NFMobDragonDungeon"/>
+  <GuideEntityEmbed Entity="MobDragonDungeon"/>
   </Box>
   Eliminate a large and dangerous creature - a [color=#a4885c]space dragon[/color] within given time constraints to earn a monetary reward.
   

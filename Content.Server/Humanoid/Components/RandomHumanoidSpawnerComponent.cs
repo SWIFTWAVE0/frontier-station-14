@@ -13,7 +13,4 @@ public sealed partial class RandomHumanoidSpawnerComponent : Component
 {
     [DataField("settings", customTypeSerializer: typeof(PrototypeIdSerializer<RandomHumanoidSettingsPrototype>))]
     public string? SettingsPrototypeId;
-
-    // Frontier: entity to use (e.g. in storage fills)
-    public EntityUid SpawnedId = EntityUid.Invalid;
 }

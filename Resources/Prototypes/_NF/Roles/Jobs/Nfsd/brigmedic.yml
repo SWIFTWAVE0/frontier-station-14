@@ -19,8 +19,6 @@
   weight: 125
   displayWeight: 35
   canBeAntag: false
-  access:
-  - Brigmedic
   accessGroups:
   - GeneralNfsdAccess
   special:

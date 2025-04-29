@@ -14,11 +14,5 @@ public sealed partial class WorldLoaderComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)] [DataField("radius")]
     public int Radius = 128;
-
-    /// <summary>
-    ///     Frontier: if true, this loader is disabled, and will not be used
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)] [DataField]
-    public bool Disabled;
 }
 

@@ -202,10 +202,7 @@
         weight: 35
       - !type:NestedSelector
         tableId: SalvageTreasureRare
-        weight: 7.5 # Frontier: 15<7.5
-      - !type:NestedSelector # Frontier
-        tableId: TableStashVariety # Frontier
-        weight: 7.5 # Frontier
+        weight: 15
       - !type:NestedSelector
         tableId: SalvageTreasureLegendary
         weight: 5
@@ -360,11 +357,11 @@
       - !type:NestedSelector
         tableId: MaintFluffTable
     # 1% chance of syndie maintenance loot
-#    - !type:GroupSelector # Frontier
-#      weight: 1 # Frontier
-#      children: # Frontier
-#      - !type:NestedSelector # Frontier
-#        tableId: SyndieMaintLoot # Frontier
+    - !type:GroupSelector
+      weight: 1
+      children:
+      - !type:NestedSelector
+        tableId: SyndieMaintLoot
 
 - type: entity
   parent: MarkerBase
@@ -391,8 +388,8 @@
   - type: Sprite
     layers:
     - state: pink
-    - sprite: _NF/Structures/Storage/canister.rsi # Frontier
-      state: oxygen # Frontier blue<oxygen
+    - sprite: Structures/Storage/canister.rsi
+      state: blue
   - type: EntityTableSpawner
     table: !type:GroupSelector
       prob: 0.9
@@ -405,35 +402,22 @@
         weight: 0.25
       - id: NitrousOxideCanister
         weight: 0.25
-#      - id: TritiumCanister # Frontier
-#        weight: 0.05 # Frontier
-#      - id: FrezonCanister # Frontier
-#        weight: 0.03 # Frontier
-      - id: StorageCanister # Frontier
-      - id: AmmoniaCanister # Frontier
-      - id: WaterVaporCanister # Frontier
-#      - id: LiquidCarbonDioxideCanister # Frontier: Abused to hell
-#        weight: 0.01 # Frontier
-#      - id: LiquidNitrogenCanister # Frontier: Abused to hell
-#        weight: 0.01 # Frontier
-#      - id: LiquidOxygenCanister # Frontier: Abused to hell
-#        weight: 0.01 # Frontier
 
 - type: entityTable
   id: SalvageMagnetMobTable
   table: !type:GroupSelector
     children:
-    - id: NFMobCarp # Frontier MobCarpSalvage<NFMobCarp
+    - id: MobCarpSalvage
       weight: 80
-    - id: NFMobCarp # Frontier MobCarpSalvage<NFMobCarp
+    - id: MobCarpSalvage
       weight: 15
       amount: !type:RangeNumberSelector
         range: 1, 3
     - !type:AllSelector
       weight: 5
       children:
-      - id: NFMobShark # Frontier MobSharkSalvage<NFMobShark
-      - id: NFMobCarp # Frontier MobCarpSalvage<NFMobCarp
+      - id: MobSharkSalvage
+      - id: MobCarpSalvage
         amount: !type:ConstantNumberSelector
           value: 2
     # - id: MobHivebot (solo hivebot spawn)
@@ -487,8 +471,8 @@
   - type: EntityTableSpawner
     table: !type:AllSelector
       children:
-      - id: NFMobShark # Frontier MobSharkSalvage<NFMobShark
-      - id: NFMobCarp # Frontier MobCarpSalvage<NFMobCarp
+      - id: MobSharkSalvage
+      - id: MobCarpSalvage
         amount: !type:ConstantNumberSelector
           value: 3
 

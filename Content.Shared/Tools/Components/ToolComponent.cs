@@ -20,11 +20,6 @@ public sealed partial class ToolComponent : Component
 
     [DataField]
     public SoundSpecifier? UseSound;
-
-    // Frontier: hide qualities
-    [DataField]
-    public bool HideQualities;
-    // End Frontier
 }
 
 /// <summary>

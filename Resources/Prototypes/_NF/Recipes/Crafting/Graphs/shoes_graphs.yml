@@ -41,7 +41,7 @@
                 sprite: Clothing/Shoes/Specific/clown.rsi
                 state: icon
               doAfter: 1
-            - component: CondimentKetchup
+            - tag: Ketchup
               name: squeeze bottle
               icon:
                 sprite: _NF/Objects/Consumable/Food/condiments.rsi
@@ -64,13 +64,13 @@
                 sprite: Clothing/Shoes/Specific/clown.rsi
                 state: icon
               doAfter: 1
-            - component: CondimentKetchup
+            - tag: Ketchup
               name: ketchup
               icon:
                 sprite: _NF/Objects/Consumable/Food/condiments.rsi
                 state: squeeze-bottle-ketchup
               doAfter: 1
-            - component: CondimentMustard
+            - tag: Mustard
               name: mustard
               icon:
                 sprite: _NF/Objects/Consumable/Food/condiments.rsi
@@ -93,7 +93,7 @@
                 sprite: Clothing/Shoes/Specific/clown.rsi
                 state: icon
               doAfter: 1
-            - component: CondimentKetchup
+            - tag: Ketchup
               name: squeeze bottle
               icon:
                 sprite: _NF/Objects/Consumable/Food/condiments.rsi

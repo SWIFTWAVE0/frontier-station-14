@@ -13,7 +13,7 @@ public sealed partial class TwoWayLeverComponent : Component
     public TwoWayLeverState State;
 
     [DataField, AutoNetworkedField]
-    public bool NextSignalLeft = true; // Frontier: = true
+    public bool NextSignalLeft;
 
     [DataField]
     public ProtoId<SourcePortPrototype> LeftPort = "Left";

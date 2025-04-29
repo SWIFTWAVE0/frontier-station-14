@@ -2,9 +2,8 @@
 - type: entity
   name: burrower
   id: MobXeno
-  parent: SimpleSpaceMobBase
+  parent: [NFMobRestrictions, SimpleSpaceMobBase] # Frontier: add NFMobRestrictions
   description: They mostly come at night. Mostly.
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Insulated
   - type: CombatMode
@@ -95,15 +94,15 @@
     - id: FoodMeatXeno
       amount: 5
   - type: GhostRole
+    prob: 0 # Frontier
     allowMovement: true
     allowSpeech: true
     makeSentient: true
     name: ghost-role-information-xeno-name
     description: ghost-role-information-xeno-description
-    rules: ghost-role-information-xeno-rules
+    rules: ghost-role-information-rules-default-team-antagonist
     raffle:
       settings: default
-    prob: 0 # Frontier
   - type: GhostTakeoverAvailable
   - type: TypingIndicator
     proto: alien
@@ -121,12 +120,13 @@
     molsPerSecondPerUnitMass: 0.0005
   - type: Speech
     speechVerb: LargeMob
+  - type: ReplacementAccent # Frontier
+    accent: genericAggressive # Frontier
 
 - type: entity
   name: praetorian
   parent: MobXeno
   id: MobXenoPraetorian
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -160,7 +160,6 @@
   name: drone
   parent: MobXeno
   id: MobXenoDrone
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -198,7 +197,6 @@
   name: queen
   parent: MobXeno
   id: MobXenoQueen
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -238,7 +236,6 @@
   name: ravager
   parent: MobXeno
   id: MobXenoRavager
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -276,7 +273,6 @@
   name: runner
   parent: MobXeno
   id: MobXenoRunner
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -307,7 +303,6 @@
   name: rouny
   parent: MobXenoRunner
   id: MobXenoRouny
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -323,7 +318,6 @@
   name: spitter
   parent: MobXeno
   id: MobXenoSpitter
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -369,10 +363,9 @@
 
 - type: entity
   name: space adder
-  parent: SimpleSpaceMobBase
+  parent: [NFMobRestrictions, SimpleSpaceMobBase] # Frontier: add NFMobRestrictions
   id: MobPurpleSnake
   description: A menacing purple snake from Kepler-283c.
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -436,6 +429,8 @@
     tags:
     - DoorBumpOpener
     - FootstepSound
+  - type: ReplacementAccent # Frontier
+    accent: genericAggressive # Frontier
 
 - type: entity
   name: space adder
@@ -443,7 +438,6 @@
   id: MobSmallPurpleSnake
   suffix: small
   description: A smaller version of the menacing purple snake from Kepler-283c.
-  categories: [ HideSpawnMenu ] # Frontier
   components:
   - type: Sprite
     drawdepth: Mobs

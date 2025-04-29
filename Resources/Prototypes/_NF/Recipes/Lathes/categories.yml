@@ -1,4 +1,3 @@
-# TODO: migrate these to NF prefixes
 - type: latheCategory
   id: EVASuits
   name: lathe-category-evasuits
@@ -24,9 +23,5 @@
   name: lathe-category-medical-nf
 
 - type: latheCategory
-  id: Seeds
-  name: lathe-category-seeds
-
-- type: latheCategory
-  id: NFAnimalCubes
-  name: lathe-category-nf-animal-cubes
+  id: NFMaterials
+  name: lathe-category-materials-nf

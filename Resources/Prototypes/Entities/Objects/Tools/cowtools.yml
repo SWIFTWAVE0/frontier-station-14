@@ -153,21 +153,13 @@
   components:
   - type: Sprite
     sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
-    state: icon # cow_toolbox < icon
+    state: cow_toolbox
   - type: Item
     sprite: Objects/Tools/Cowtools/cow_toolbox.rsi
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 4
-  # Frontier: why
-  - type: GenericVisualizer
-    visuals:
-      enum.StorageVisuals.Open:
-        base:
-          True: { state: icon }
-          False: { state: icon }
-  # End Frontier
 
 - type: entity
   id: CowToolboxFilled

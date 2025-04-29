@@ -17,12 +17,22 @@ public sealed partial class CardHandMenu : RadialMenu
     [Dependency] private readonly EntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
+    private readonly SpriteSystem _spriteSystem;
+    private readonly SharedPopupSystem _popup;
+
     public event Action<NetEntity>? CardHandDrawMessageAction;
+
+    private EntityUid _owner;
 
     public CardHandMenu(EntityUid owner, CardHandMenuBoundUserInterface bui)
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
+
+        _spriteSystem = _entManager.System<SpriteSystem>();
+        _popup = _entManager.System<SharedPopupSystem>();
+
+        _owner = owner;
 
         // Find the main radial container
         var main = FindControl<RadialContainer>("Main");
@@ -32,15 +42,19 @@ public sealed partial class CardHandMenu : RadialMenu
 
         foreach (var card in stack.Cards)
         {
-            if (_playerManager.LocalSession == null
-                || !_entManager.TryGetComponent<CardComponent>(card, out var cardComp))
+            if (_playerManager.LocalSession == null)
                 return;
-
+            if (!_entManager.TryGetComponent<CardComponent>(card, out var cardComp))
+                return;
             string cardName;
             if (cardComp.Flipped && _entManager.TryGetComponent<MetaDataComponent>(card, out var metadata))
+            {
                 cardName = metadata.EntityName;
+            }
             else
+            {
                 cardName = Loc.GetString(cardComp.Name);
+            }
 
             var button = new CardMenuButton()
             {

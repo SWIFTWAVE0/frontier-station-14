@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, AllowSuitStorageClothing, RecyclableItemClothDurable ] # Frontier: added AllowSuitStorageClothing and RecyclableItemClothDurable
+  parent: [ Clothing, AllowSuitStorageClothing ] # Frontier: added AllowSuitStorageClothing as a second parent
   id: ClothingOuterBase
   components:
   - type: Clothing
@@ -8,8 +8,6 @@
     - outerClothing
   - type: Sprite
     state: icon
-  - type: StaticPrice # Frontier: setting base price to make material arbitrage happier
-    price: 30 # Frontier
 
 - type: entity
   abstract: true
@@ -43,11 +41,11 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
   - type: StaticPrice
-    price: 35 # Frontier 70<35
+    price: 70
 
 - type: entity
   abstract: true
-  parent: [RecyclableItemClothBasic, ClothingOuterStorageBase, BaseFoldable] # Frontier: added RecyclableItemClothBasic
+  parent: [ClothingOuterStorageBase, BaseFoldable]
   id: ClothingOuterStorageFoldableBase
   components:
   - type: Appearance
@@ -103,7 +101,7 @@
 
 - type: entity
   abstract: true
-  parent: [RecyclableItemClothHardsuit, ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing] # Frontier: added RecyclableItemClothHardsuit
+  parent: [ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing]
   id: ClothingOuterHardsuitBase
   name: base hardsuit
   components:
@@ -137,6 +135,12 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
+    - HidesHarpyWings #Frontier, needed for Harpies
+  - type: PhysicalComposition # Frontier
+    materialComposition: # Frontier
+      Durathread: 300 # Frontier
+      Cloth: 100 # Frontier
+      Steel: 100 # Frontier
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
   - type: DamageOnInteractProtection
@@ -144,10 +148,6 @@
       flatReductions:
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
-  - type: HarpyHideWings # Frontier, needed for Harpies
-  - type: StaticPrice # Frontier
-    price: 20 # Frontier
-    vendPrice: 1500 # Frontier
 
 - type: entity
   abstract: true

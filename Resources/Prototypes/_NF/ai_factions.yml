@@ -11,13 +11,11 @@
   - Cat
   - Chicken
   - Monkey
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Goblin
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -26,6 +24,10 @@
   - SiliconsExpeditionNF
   - AberrantFleshExpeditionNF
   - ContrabandClothing
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  #- ChaplainClothes
 
 - type: npcFaction
   id: Dwarf
@@ -38,8 +40,6 @@
 
 - type: npcFaction
   id: Cat
-  hostile:
-  - Mouse
 
 - type: npcFaction
   id: Chicken
@@ -65,15 +65,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   #- SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -83,6 +81,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: WizFedFaction
@@ -97,15 +99,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   #- WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   #- ArtifactConstruct
   - StreetGangNF
@@ -115,6 +115,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  #- GoblinbaneFaction
+  #- GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: BloodCultNF
@@ -129,15 +133,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   #- BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -147,9 +149,13 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
-  id: NFPirate
+  id: PirateNF
   hostile:
   ## SS14 factions
   - NanoTrasen
@@ -161,15 +167,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   #- Monkey
   #- Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  #- NFPirate
+  #- PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -177,8 +181,12 @@
   - MercenariesExpeditionNF
   - SiliconsExpeditionNF
   - AberrantFleshExpeditionNF
-  # - ContrabandClothing
+  - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: ArtifactConstruct
@@ -193,15 +201,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   #- Goblin
   - SyndicateNF
   #- WizFedFaction # Magic
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   #- ArtifactConstruct
   - StreetGangNF
@@ -211,6 +217,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  #- GoblinbaneFaction # Magic
+  #- GoblinbaneProvokedFaction # Magic
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: StreetGangNF
@@ -225,15 +235,13 @@
   - Zombie
   #- Revolutionary # Like their style
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   #- StreetGangNF
@@ -243,6 +251,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: DinosaursNF
@@ -257,15 +269,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -275,6 +285,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: ExplorersExpeditionNF
@@ -289,15 +303,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   #- ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -307,6 +319,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: MercenariesExpeditionNF
@@ -321,15 +337,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -339,6 +353,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: SiliconsExpeditionNF
@@ -353,15 +371,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -371,6 +387,10 @@
   - AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: AberrantFleshExpeditionNF
@@ -385,15 +405,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -403,6 +421,10 @@
   #- AberrantFleshExpeditionNF
   - ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: ContrabandClothing
@@ -417,15 +439,13 @@
   - Zombie
   - Revolutionary
   - Xeno
-  - Wizard
-  - Dragon
   ## Frontier Factions
   - Monkey
   - Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -435,38 +455,31 @@
   - AberrantFleshExpeditionNF
   #- ContrabandClothing
   - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
 
 - type: npcFaction
   id: ContrabandDetection
   hostile:
-  - ContrabandClothing
-
-- type: npcFaction
-  id: HostileUniversally
-  hostile:
   ## SS14 factions
-  - NanoTrasen
-  - Mouse
-  - Passive
-  - PetsNT
-  - SimpleHostile
-  - SimpleNeutral
+  #- NanoTrasen
   - Syndicate
-  - Xeno
+  - SimpleHostile
+  #- SimpleNeutral
+  #- Passive
+  #- PetsNT
   - Zombie
   - Revolutionary
-  - Wizard
-  - Dragon
+  - Xeno
   ## Frontier Factions
-  - Cat
-  - Dwarf
-  - Harpy
-  - Monkey
-  - Goblin
+  #- Monkey
+  #- Goblin
   - SyndicateNF
   - WizFedFaction
   - BloodCultNF
-  - NFPirate
+  - PirateNF
   - ExplorersExpeditionNF
   - ArtifactConstruct
   - StreetGangNF
@@ -475,4 +488,99 @@
   - SiliconsExpeditionNF
   - AberrantFleshExpeditionNF
   - ContrabandClothing
-  - ContrabandDetection
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  #- JanitorClothes
+  #- ChaplainClothes
+
+- type: npcFaction
+  id: HostileUniversally
+  hostile:
+  ## SS14 factions
+  - NanoTrasen
+  - Syndicate
+  - SimpleHostile
+  - SimpleNeutral
+  - Passive
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - Xeno
+  ## Frontier Factions
+  - Monkey
+  - Goblin
+  - SyndicateNF
+  - WizFedFaction
+  - BloodCultNF
+  - PirateNF
+  - ExplorersExpeditionNF
+  - ArtifactConstruct
+  - StreetGangNF
+  - DinosaursNF
+  - MercenariesExpeditionNF
+  - SiliconsExpeditionNF
+  - AberrantFleshExpeditionNF
+  - ContrabandClothing
+  - GoblinbaneFaction
+  - GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
+
+- type: npcFaction
+  id: GoblinbaneFaction
+  friendly:
+  - GoblinbaneProvokedFaction
+  - WizFedFaction
+  - JanitorClothes
+  hostile:
+  - PetsNT
+  - Pibble
+  - Mouse
+  - Zombie
+  ## Frontier Factions
+  - Felinid
+  - Monkey
+  - Goblin
+  - ChaplainClothes
+
+- type: npcFaction
+  id: GoblinbaneProvokedFaction
+  friendly:
+  - GoblinbaneFaction
+  hostile:
+  ## SS14 factions
+  - NanoTrasen
+  - Syndicate
+  - SimpleHostile
+  - SimpleNeutral
+  - Passive
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - Xeno
+  ## Frontier Factions
+  - Felinid
+  - Monkey
+  - Goblin
+  - SyndicateNF
+  - WizFedFaction
+  - BloodCultNF
+  - PirateNF
+  - ExplorersExpeditionNF
+  - ArtifactConstruct
+  - StreetGangNF
+  - DinosaursNF
+  - MercenariesExpeditionNF
+  - SiliconsExpeditionNF
+  - AberrantFleshExpeditionNF
+  - ContrabandClothing
+  #- GoblinbaneFaction
+  #- GoblinbaneProvokedFaction
+  - JanitorClothes
+  - ChaplainClothes
+
+- type: npcFaction
+  id: JanitorClothes
+
+- type: npcFaction
+  id: ChaplainClothes

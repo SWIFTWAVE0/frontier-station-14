@@ -2,53 +2,53 @@
   id: NFDetectiveJumpsuit
   name: loadout-group-contractor-jumpsuit
   loadouts:
-  - NFDetectiveClothingUniformJumpsuitDetective
-  - NFDetectiveClothingUniformJumpskirtDetective
-  - NFDetectiveClothingUniformJumpsuitDetectiveGrey
-  - NFDetectiveClothingUniformJumpskirtDetectiveGrey
+  - NFDetectiveClothingUniformJumpsuitNFDetective
+  - NFDetectiveClothingUniformJumpskirtNFDetective
   fallbacks:
-  - NFDetectiveClothingUniformJumpsuitDetective
-  - NFDetectiveClothingUniformJumpskirtDetective
+  - NFDetectiveClothingUniformJumpsuitNFDetective
+  - NFDetectiveClothingUniformJumpskirtNFDetective
   
 - type: loadoutGroup
   id: NFDetectiveOuterClothing
   name: loadout-group-contractor-outerclothing
   minLimit: 0
   loadouts:
+  - ContractorClothingOuterVestTank
   - NFDetectiveClothingOuterArmorBasic
   - NFDetectiveClothingOuterCoatDetectiveLoadout
   - NFDetectiveClothingOuterCoatDetectiveLoadoutGrey
   - NFDetectiveClothingOuterCoatTrench
+  fallbacks:
+  - ContractorClothingOuterVestTank
 
 - type: loadoutGroup
   id: NFDetectiveHead
   name: loadout-group-contractor-head
   minLimit: 0
   loadouts:
-  - NFDetectiveClothingHeadHatFedoraBrown
-  - NFDetectiveClothingHeadHatFedoraGrey
+  - NFDetectiveClothingHeadHatNFDetective
   
 - type: loadoutGroup
   id: NFDetectiveGloves
   name: loadout-group-contractor-gloves
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
-  - NFDetectiveClothingHandsGlovesForensicNF
+  - NFDetectiveClothingHandsGlovesNFDetective
   fallbacks:
-  - NFDetectiveClothingHandsGlovesForensicNF
+  - NFDetectiveClothingHandsGlovesNFDetective
 
 - type: loadoutGroup
   id: NFDetectiveNeck
   name: loadout-group-contractor-neck
-  hidden: true # No point in showing this, it gets auto-selected.
+  minLimit: 0
   loadouts:
-  - NFDetectiveClothingNeckNfsdBadgeDetective
+  - NFDetectiveClothingNeckBadgeNFDetective
 
 - type: loadoutGroup
   id: NFDetectivePDA
-  name: loadout-group-contractor-pda
+  name: loadout-group-contractor-id
   hidden: true # No point in showing this, it gets auto-selected.
   loadouts:
-  - NFDetectiveNFDetectivePDA
+  - NFNFDetectiveDetectivePDA
   fallbacks:
-  - NFDetectiveNFDetectivePDA
+  - NFNFDetectiveDetectivePDA

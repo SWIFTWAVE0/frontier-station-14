@@ -139,9 +139,9 @@
 
 # A bag full of mail capsules, for the ERT mail carrier
 - type: entity
-  parent: NFMailBag
+  parent: MailBag
   suffix: Capsules
-  id: NFMailBagCapsulePrimed
+  id: MailBagCapsulePrimed
   components:
   - type: StorageFill
     contents:

@@ -13,21 +13,14 @@
 - type: accessGroup
   id: Command
   tags:
-  - Captain
-  - Command
-  - ChiefEngineer
-  - ChiefMedicalOfficer
-  - Cryogenics
-  - HeadOfPersonnel
-  - HeadOfSecurity
-  - Quartermaster
-  - ResearchDirector
   - Frontier # Frontier
-  
+  - Command
+  - Captain
+  - HeadOfPersonnel
+  - Cryogenics
+
 - type: accessLevel
   id: EmergencyShuttleRepealAll
-  name: id-card-access-level-emergency-shuttle-repeal
-  canAddToIdCard: false
 
 - type: accessLevel
   id: Cryogenics

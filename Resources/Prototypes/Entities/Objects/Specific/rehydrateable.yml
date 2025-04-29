@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, RecyclableItemOrganicTiny] # Frontier: added RecyclableItemOrganicTiny
+  parent: BaseItem
   id: MonkeyCube
   name: monkey cube
   description: Just add water!
@@ -11,7 +11,7 @@
       cube:
         maxVol: 11 # needs room for water
         reagents:
-        - ReagentId: Enzyme # Nutriment<Enzyme
+        - ReagentId: Nutriment
           Quantity: 10
   - type: Food
     solution: cube
@@ -55,7 +55,6 @@
         - LowImpassable
   - type: StaticPrice
     price: 35 # The same price as dead (-20)
-  - type: BadFood # Frontier: stop eating your friends
 
 - type: entity
   parent: MonkeyCube
@@ -173,7 +172,7 @@
       plushie:
         maxVol: 11 # needs room for water
         reagents:
-        - ReagentId: CarpoToxin #Frontier Nutriment<CarpoToxin
+        - ReagentId: Nutriment #contains nutriment like other dehydrated animals, but isn't edible? Who is grinding dehydrated carp to eat them??
           Quantity: 10
   - type: RefillableSolution
     solution: plushie
@@ -233,7 +232,7 @@
       cube:
         maxVol: 11 # needs room for water
         reagents:
-        - ReagentId: Ipecac # Nutriment<Ipecac
+        - ReagentId: Nutriment
           Quantity: 10
   - type: Food
     solution: cube

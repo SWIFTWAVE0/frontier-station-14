@@ -10,7 +10,6 @@
 #
 - type: vessel
   id: Bocakillo
-  parent: BaseVesselAntag
   name: Bocakillo
   description: A tiny plastitanium vessel suited to a crew of 2 to 3 pirates. Has two broadside cannons and a rear-facing disposals launcher. Runs on plasma.
   price: 35000 #Cheap
@@ -30,7 +29,7 @@
   minPlayers: 0
   stations:
     Bocakillo:
-      stationProto: StandardFrontierAntagVessel
+      stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Bocadillo {1}' #Sneaky spoofed name
@@ -39,4 +38,4 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            NFPirate: [ 0, 0 ]
+            Pirate: [ 0, 0 ]

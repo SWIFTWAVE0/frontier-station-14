@@ -18,23 +18,20 @@ public sealed partial class BountyContractUiFragmentListEntry : Control
         BountyName.Text = contract.Name;
 
         // vessel
-        if (string.IsNullOrEmpty(contract.Vessel) || contract.Vessel == Loc.GetString("bounty-contracts-ui-create-vessel-unknown"))
-            BountyVessel.Visible = false;
-        else
-            BountyVessel.Text = Loc.GetString("bounty-contracts-ui-list-vessel", ("vessel", contract.Vessel));
+        var vessel = !string.IsNullOrEmpty(contract.Vessel) ? contract.Vessel : Loc.GetString("bounty-contracts-ui-create-vessel-unknown");
+        var vesselMsg = Loc.GetString("bounty-contracts-ui-list-vessel", ("vessel", vessel));
+        BountyVessel.Text = vesselMsg;
 
         // bounty description
-        if (string.IsNullOrWhiteSpace(contract.Description))
-            BountyDescription.Visible = false;
-        else
-            BountyDescription.SetMessage(contract.Description);
+        var desc = !string.IsNullOrEmpty(contract.Description) ? contract.Description : Loc.GetString("bounty-contracts-ui-list-no-description");
+        BountyDescription.SetMessage(desc);
 
         // author
-        string author = contract.Author ?? "";
-        if (string.IsNullOrWhiteSpace(contract.Author))
-            author = Loc.GetString("bounty-contracts-ui-list-unknown-author");
-
-        BountyAuthor.Text = Loc.GetString("bounty-contracts-ui-list-author", ("author", author));
+        if (!string.IsNullOrEmpty(contract.Author))
+        {
+            var author = Loc.GetString("bounty-contracts-ui-list-author", ("author", contract.Author));
+            BountyAuthor.Text = author;
+        }
 
         // bounty reward
         BountyReward.Text = BankSystemExtensions.ToSpesoString(contract.Reward);
@@ -43,11 +40,13 @@ public sealed partial class BountyContractUiFragmentListEntry : Control
         RemoveButton.OnPressed += _ => OnRemoveButtonPressed?.Invoke(contract);
         RemoveButton.Disabled = !canRemoveContracts;
 
-        // Get category
+        // color
         var meta = SharedBountyContractSystem.CategoriesMeta[contract.Category];
         BountyPanel.ModulateSelfOverride = meta.UiColor;
 
-        var category = Loc.GetString("bounty-contracts-ui-list-category", ("category", Loc.GetString(meta.Name))); 
-        BountyCategory.Text = category;
+        // category
+        var category = Loc.GetString(meta.Name);
+        BountyCategory.Text = Loc.GetString("bounty-contracts-ui-list-category",
+            ("category", category));
     }
 }

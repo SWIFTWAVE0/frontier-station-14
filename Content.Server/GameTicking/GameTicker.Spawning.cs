@@ -2,18 +2,19 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Managers;
-using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
+using Content.Server.Ghost;
+using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.Database;
-using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -21,8 +22,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Server._Corvax.Respawn; // Frontier
-using Content.Shared._NF.Roles.Components; // Frontier
+using Content.Server.Corvax.Respawn; // Frontier
 
 namespace Content.Server.GameTicking
 {
@@ -30,7 +30,6 @@ namespace Content.Server.GameTicking
     {
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
-        [Dependency] private readonly AdminSystem _admin = default!;
         [Dependency] private readonly RespawnSystem _respawn = default!; // Frontier
 
         [ValidatePrototypeId<EntityPrototype>]
@@ -101,9 +100,6 @@ namespace Content.Server.GameTicking
                 if (job == null)
                 {
                     var playerSession = _playerManager.GetSessionById(netUser);
-                    var evNoJobs = new NoJobsAvailableSpawningEvent(playerSession); // Used by gamerules to wipe their antag slot, if they got one
-                    RaiseLocalEvent(evNoJobs);
-
                     _chatManager.DispatchServerMessage(playerSession, Loc.GetString("job-not-available-wait-in-lobby"));
                 }
                 else
@@ -215,9 +211,6 @@ namespace Content.Server.GameTicking
                     JoinAsObserver(player);
                 }
 
-                var evNoJobs = new NoJobsAvailableSpawningEvent(player); // Used by gamerules to wipe their antag slot, if they got one
-                RaiseLocalEvent(evNoJobs);
-
                 _chatManager.DispatchServerMessage(player,
                     Loc.GetString("game-ticker-player-no-jobs-available-when-joining"));
                 return;
@@ -233,6 +226,9 @@ namespace Content.Server.GameTicking
             _mind.SetUserId(newMind, data.UserId);
 
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
+            var job = new JobComponent {Prototype = jobId};
+            _roles.MindAddRole(newMind, job, silent: silent);
+            var jobName = _jobs.MindTryGetJobName(newMind);
 
             _playTimeTrackings.PlayerRolesChanged(player);
 
@@ -244,23 +240,11 @@ namespace Content.Server.GameTicking
                 spawnPointType = SpawnPointType.Job;
             }
 
-            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character, spawnPointType: spawnPointType, session: player); // Frontier: add session
+            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, job, character, spawnPointType: spawnPointType, session: player); // Frontier: add session
             DebugTools.AssertNotNull(mobMaybe);
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(newMind, mob);
-
-            // Frontier: ensure jobs are tracked
-            var jobComp = EnsureComp<JobTrackingComponent>(mob);
-            jobComp.Job = jobId;
-            jobComp.SpawnStation = station;
-            jobComp.Active = true;
-            Dirty(mob, jobComp);
-            // End Frontier
-
-            _roles.MindAddJobRole(newMind, silent: silent, jobPrototype:jobId);
-            var jobName = _jobs.MindTryGetJobName(newMind);
-            _admin.UpdatePlayerList(player);
 
             if (lateJoin && !silent)
             {
@@ -296,17 +280,13 @@ namespace Content.Server.GameTicking
             _stationJobs.TryAssignJob(station, jobPrototype, player.UserId);
 
             if (lateJoin)
-            {
                 _adminLogger.Add(LogType.LateJoin,
                     LogImpact.Medium,
                     $"Player {player.Name} late joined as {character.Name:characterName} on station {Name(station):stationName} with {ToPrettyString(mob):entity} as a {jobName:jobName}.");
-            }
             else
-            {
                 _adminLogger.Add(LogType.RoundStartJoin,
                     LogImpact.Medium,
                     $"Player {player.Name} joined as {character.Name:characterName} on station {Name(station):stationName} with {ToPrettyString(mob):entity} as a {jobName:jobName}.");
-            }
 
             // Make sure they're aware of extended access.
             if (Comp<StationJobsComponent>(station).ExtendedAccess
@@ -387,7 +367,6 @@ namespace Content.Server.GameTicking
             if (DummyTicker)
                 return;
 
-            var makeObserver = false;
             Entity<MindComponent?>? mind = player.GetMind();
             if (mind == null)
             {
@@ -395,13 +374,10 @@ namespace Content.Server.GameTicking
                 var (mindId, mindComp) = _mind.CreateMind(player.UserId, name);
                 mind = (mindId, mindComp);
                 _mind.SetUserId(mind.Value, player.UserId);
-                makeObserver = true;
+                _roles.MindAddRole(mind.Value, new ObserverRoleComponent());
             }
 
             var ghost = _ghost.SpawnGhost(mind.Value);
-            if (makeObserver)
-                _roles.MindAddRole(mind.Value, "MindRoleObserver");
-
             _adminLogger.Add(LogType.LateJoin,
                 LogImpact.Low,
                 $"{player.Name} late joined the round as an Observer with {ToPrettyString(ghost):entity}.");
@@ -455,7 +431,7 @@ namespace Content.Server.GameTicking
                 {
                     var gridXform = Transform(gridUid);
 
-                    return new EntityCoordinates(gridUid, Vector2.Transform(toMap.Position, _transform.GetInvWorldMatrix(gridXform)));
+                    return new EntityCoordinates(gridUid, Vector2.Transform(toMap.Position, gridXform.InvWorldMatrix));
                 }
 
                 return spawn;
@@ -490,5 +466,72 @@ namespace Content.Server.GameTicking
         }
 
         #endregion
+    }
+
+    /// <summary>
+    ///     Event raised broadcast before a player is spawned by the GameTicker.
+    ///     You can use this event to spawn a player off-station on late-join but also at round start.
+    ///     When this event is handled, the GameTicker will not perform its own player-spawning logic.
+    /// </summary>
+    [PublicAPI]
+    public sealed class PlayerBeforeSpawnEvent : HandledEntityEventArgs
+    {
+        public ICommonSession Player { get; }
+        public HumanoidCharacterProfile Profile { get; }
+        public string? JobId { get; }
+        public bool LateJoin { get; }
+        public EntityUid Station { get; }
+
+        public PlayerBeforeSpawnEvent(ICommonSession player,
+            HumanoidCharacterProfile profile,
+            string? jobId,
+            bool lateJoin,
+            EntityUid station)
+        {
+            Player = player;
+            Profile = profile;
+            JobId = jobId;
+            LateJoin = lateJoin;
+            Station = station;
+        }
+    }
+
+    /// <summary>
+    ///     Event raised both directed and broadcast when a player has been spawned by the GameTicker.
+    ///     You can use this to handle people late-joining, or to handle people being spawned at round start.
+    ///     Can be used to give random players a role, modify their equipment, etc.
+    /// </summary>
+    [PublicAPI]
+    public sealed class PlayerSpawnCompleteEvent : EntityEventArgs
+    {
+        public EntityUid Mob { get; }
+        public ICommonSession Player { get; }
+        public string? JobId { get; }
+        public bool LateJoin { get; }
+        public bool Silent { get; }
+        public EntityUid Station { get; }
+        public HumanoidCharacterProfile Profile { get; }
+
+        // Ex. If this is the 27th person to join, this will be 27.
+        public int JoinOrder { get; }
+
+        public PlayerSpawnCompleteEvent(EntityUid mob,
+            ICommonSession player,
+            string? jobId,
+            bool lateJoin,
+            bool silent,
+            int joinOrder,
+            EntityUid station,
+            HumanoidCharacterProfile profile)
+        {
+            Mob = mob;
+            Player = player;
+            JobId = jobId;
+            LateJoin = lateJoin;
+            Silent = silent;
+            Station = station;
+            Profile = profile;
+            JoinOrder = joinOrder;
+        }
     }
 }

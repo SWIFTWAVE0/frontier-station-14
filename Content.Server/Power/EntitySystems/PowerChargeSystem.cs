@@ -82,7 +82,7 @@ public sealed class PowerChargeSystem : EntitySystem
         UpdateState((ent, ent.Comp, powerReceiver));
     }
 
-    public void SetSwitchedOn(EntityUid uid, PowerChargeComponent component, bool on,  // Frontier: private<public for linking system in StationAnchorSystem.
+    private void SetSwitchedOn(EntityUid uid, PowerChargeComponent component, bool on,
         ApcPowerReceiverComponent? powerReceiver = null, EntityUid? user = null)
     {
         if (!Resolve(uid, ref powerReceiver))

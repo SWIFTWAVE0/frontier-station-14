@@ -5,7 +5,6 @@ using Content.Shared.Administration;
 using Content.Shared.Radiation.Events;
 using Content.Shared.Radiation.Systems;
 using Robust.Shared.Console;
-using Robust.Shared.Debugging;
 using Robust.Shared.Enums;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
@@ -43,12 +42,12 @@ public partial class RadiationSystem
     /// </summary>
     private void UpdateDebugOverlay(EntityEventArgs ev)
     {
-        foreach (var session in _debugSessions)
+        var sessions = _debugSessions.ToArray();
+        foreach (var session in sessions)
         {
             if (session.Status != SessionStatus.InGame)
                 _debugSessions.Remove(session);
-            else
-                RaiseNetworkEvent(ev, session);
+            RaiseNetworkEvent(ev, session.Channel);
         }
     }
 
@@ -71,16 +70,13 @@ public partial class RadiationSystem
         UpdateDebugOverlay(ev);
     }
 
-    private void UpdateGridcastDebugOverlay(
-        double elapsedTime,
-        int totalSources,
-        int totalReceivers,
-        List<DebugRadiationRay>? rays)
+    private void UpdateGridcastDebugOverlay(double elapsedTime, int totalSources,
+        int totalReceivers, List<RadiationRay> rays)
     {
         if (_debugSessions.Count == 0)
             return;
 
-        var ev = new OnRadiationOverlayUpdateEvent(elapsedTime, totalSources, totalReceivers, rays ?? new());
+        var ev = new OnRadiationOverlayUpdateEvent(elapsedTime, totalSources, totalReceivers, rays);
         UpdateDebugOverlay(ev);
     }
 }

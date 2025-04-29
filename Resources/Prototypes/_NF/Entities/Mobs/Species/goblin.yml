@@ -8,10 +8,6 @@
     scale: 0.8, 0.7
   - type: HumanoidAppearance
     species: Goblin
-    hideLayersOnEquip:
-    - Hair
-    - HeadTop
-    - Snout # Nose, tusks
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -43,7 +39,6 @@
     - GoblinMutter
     - GoblinThroatSinging
     - Hiss
-    - Belch
   - type: DamageOnHighSpeedImpact
     damage:
       types:
@@ -57,7 +52,7 @@
       - 3,3,3,6
     storedRotation: -67.5 # Bug: must be half the angle.
   - type: Vocal
-    wilhelm: "/Audio/_NF/Voice/Goblin/goblin_cackle_5.ogg"
+    wilhelm: "/Audio/_NF/Voice/Goblin/goblin-cackle-05.ogg"
     sounds:
       Male: MaleGoblin
       Female: FemaleGoblin
@@ -112,14 +107,6 @@
         probability: 0.2
   - type: Rummager # DeltaV Code
   - type: AlwaysTriggerMousetrap # DeltaV Code
-  - type: Inventory
-    speciesId: goblin
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
 
 - type: entity
   save: false

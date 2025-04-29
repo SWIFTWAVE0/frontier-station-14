@@ -22,7 +22,10 @@
 - type: loadoutGroup
   id: StcEars
   name: loadout-group-contractor-ears
-  loadouts: []
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingHeadsetGreyCommon
   subgroups:
   - MercenaryEars
   - PilotEars
@@ -36,6 +39,4 @@
   loadouts:
   - StcClothingShoesBootsLaceup
   subgroups:
-  - ContractorShoes
-  fallbacks:
-  - StcClothingShoesBootsLaceup
+    - ContractorShoes

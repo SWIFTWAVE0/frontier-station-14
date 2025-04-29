@@ -22,10 +22,4 @@ public sealed partial class RefillableSolutionComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2? MaxRefill = null;
-
-    /// <summary>
-    /// Frontier: prevent transferring solution out into others
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public bool PreventTransferOut = false;
 }

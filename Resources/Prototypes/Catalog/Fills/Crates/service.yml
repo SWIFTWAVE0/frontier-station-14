@@ -34,17 +34,6 @@
       - id: BoxLightbulb
 
 - type: entity
-  id: CrateServiceHolidayLights
-  parent: CrateGenericSteel
-  name: holiday lights crate
-  description: Deck the halls with these festive holiday lights!
-  components:
-  - type: StorageFill
-    contents:
-      - id: BoxLighttubeHoliday
-      - id: BoxLighttubeHoliday
-
-- type: entity
   id: CrateMousetrapBoxes
   parent: CrateGenericSteel
   name: mousetraps crate
@@ -90,7 +79,6 @@
     contents:
     - id: ClothingUniformJumpskirtPerformer
     - id: ClothingShoesBootsPerformer
-    - id: ClothingHeadPerformerWig
     - id: ClothingOuterSuitMonkey
     - id: ClothingHeadHatAnimalMonkey
     - id: ClothingNeckCloakMoth
@@ -143,7 +131,6 @@
     - id: BoxFolderYellow
     - id: NewtonCradle
     - id: BoxEnvelope
-    - id: BrbSign
     - id: RubberStampCaptain # Frontier
 
 - type: entity
@@ -200,7 +187,7 @@
       - id: BookMedicalReferenceBook
       - id: BookHowToSurvive
       - id: BookChemicalCompendium
-      - id: NFHyperlinkBookSpaceLaw # Frontier: BookSpaceLaw<NFHyperlinkBookSpaceLaw
+      - id: HyperlinkBookSpaceLaw # Frontier: BookSpaceLaw<HyperlinkBookSpaceLaw
 
 - type: entity
   id: CrateServiceSodaDispenser

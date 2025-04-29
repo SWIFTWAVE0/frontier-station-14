@@ -1,25 +1,20 @@
 - type: entity
   parent: BaseItem
   id: DrinkKegBase
-  name: cask
+  name: keg
   abstract: true
-  description: I don't have a drinking problem, the cask solved it.
+  description: I don't have a drinking problem - the keg solved it.
   components:
   - type: Sprite
     sprite: _NF/Objects/Consumable/Drinks/keg_steel.rsi
     state: icon
-    scale: 0.8, 0.8
     layers:
     - state: icon
-    - state: stopper
-      visible: true
       map: ["enum.OpenableVisuals.Layer"]
     - state: paper
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: Item
-    size: Large
-    shape:
-    - 0,0,2,2
+    size: Huge
   - type: Clothing
     sprite: _NF/Objects/Consumable/Drinks/keg_steel.rsi
     quickEquip: false
@@ -30,7 +25,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 300
+        maxVol: 600
   - type: Drink
   - type: DrawableSolution
     solution: drink
@@ -39,7 +34,7 @@
   - type: DrainableSolution
     solution: drink
   - type: SolutionTransfer
-    transferAmount: 100
+    transferAmount: 50
     maxTransferAmount: 100
     minTransferAmount: 10
     canChangeTransferAmount: true
@@ -53,8 +48,8 @@
     visuals:
       enum.OpenableVisuals.Opened:
         enum.OpenableVisuals.Layer:
-          True: { visible: false }
-          False: { visible: true }
+          True: { state: "icon_open" }
+          False: { state: "icon" }
       enum.PaperLabelVisuals.HasLabel:
         enum.PaperLabelVisuals.Layer:
           True: { visible: true }
@@ -67,8 +62,8 @@
           Invoice: { state: paper }
   - type: PaperLabel
     labelSlot:
-      insertVerbText: comp-paper-label-insert
-      ejectVerbText: comp-paper-label-eject
+      insertVerbText: Attach Label
+      ejectVerbText: Remove Label
       whitelist:
         components:
         - Paper
@@ -89,7 +84,7 @@
 - type: entity
   parent: DrinkKegBase
   id: DrinkKegSteel
-  name: steel cask
+  suffix: Steel
   components:
   - type: Sprite
     sprite: _NF/Objects/Consumable/Drinks/keg_steel.rsi
@@ -102,7 +97,7 @@
 - type: entity
   parent: DrinkKegBase
   id: DrinkKegWood
-  name: wood cask
+  suffix: Wood
   components:
   - type: Sprite
     sprite: _NF/Objects/Consumable/Drinks/keg_wood.rsi
@@ -115,7 +110,7 @@
 - type: entity
   parent: DrinkKegBase
   id: DrinkKegPlastic
-  name: plastic cask
+  suffix: Plastic
   components:
   - type: Sprite
     sprite: _NF/Objects/Consumable/Drinks/keg_plastic.rsi

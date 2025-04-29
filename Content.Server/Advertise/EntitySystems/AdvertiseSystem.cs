@@ -2,7 +2,6 @@ using Content.Server.Advertise.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
 using Content.Shared.VendingMachines;
-using Robust.Shared.Player; // Frontier
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -32,7 +31,6 @@ public sealed class AdvertiseSystem : EntitySystem
 
         SubscribeLocalEvent<ApcPowerReceiverComponent, AttemptAdvertiseEvent>(OnPowerReceiverAttemptAdvertiseEvent);
         SubscribeLocalEvent<VendingMachineComponent, AttemptAdvertiseEvent>(OnVendingAttemptAdvertiseEvent);
-        SubscribeLocalEvent<ActorComponent, AttemptAdvertiseEvent>(OnActorAttemptAdvertiseEvent); // Frontier: no player advertisements
 
         _nextCheckTime = TimeSpan.MinValue;
     }
@@ -99,13 +97,6 @@ public sealed class AdvertiseSystem : EntitySystem
     {
         args.Cancelled |= machine.Broken;
     }
-
-    // Frontier: no player advertisements
-    private static void OnActorAttemptAdvertiseEvent(EntityUid uid, ActorComponent actor, ref AttemptAdvertiseEvent args)
-    {
-        args.Cancelled = true;
-    }
-    // End Frontier
 }
 
 [ByRefEvent]

@@ -41,8 +41,6 @@
       - id: SprayBottleWater
       - id: ReagentContainerFlour
         amount: 2
-      # - id: FoodBoxCloth # Frontier
-      #   amount: 1 # Frontier
       - id: ReagentContainerSugar
       - id: FoodCondimentPacketSalt
         amount: 3
@@ -97,12 +95,14 @@
   components:
   - type: StorageFill
     contents:
-      # - id: ClothingHandsGlovesLeather
-      # - id: ClothingOuterApronBotanist
-      # - id: ClothingHeadBandBotany
-      # - id: ChemistryBottleRobustHarvest
-      #   prob: 0.3
-      # - id: ClothingBeltPlant
+#      - id: ClothingHandsGlovesLeather # Frontier
+#      - id: ClothingOuterApronBotanist # Frontier
+#      - id: ClothingHeadBandBotany # Frontier
+#      - id: HydroponicsToolClippers # Frontier
+#      - id: HydroponicsToolSpade # Frontier
+#      - id: HydroponicsToolMiniHoe # Frontier
+#      - id: RobustHarvestChemistryBottle # Frontier
+#      - id: ClothingBeltPlant # Frontier
       - id: ClothingBeltPlantFilled # Frontier
       - id: PlantBag ##Some maps don't have nutrivend
       - id: BoxMouthSwab
@@ -133,7 +133,6 @@
   id: ClosetJanitorBombFilled
   parent: ClosetJanitorBomb
   suffix: DO NOT MAP, Filled
-  categories: [ DoNotMap ]
   components:
   - type: StorageFill
     contents:

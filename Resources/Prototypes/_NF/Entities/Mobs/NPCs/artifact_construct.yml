@@ -1,7 +1,7 @@
 ﻿- type: entity
   abstract: true
   parent:
-    - NFMobAtmos
+    - MobAtmosNF
     - BaseSimpleMob
     - MobCombat
     - FlyingMobBase

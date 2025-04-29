@@ -227,7 +227,6 @@ public sealed partial class ArtifactSystem
 
             EntityManager.RemoveComponentDeferred(uid, _componentFactory.GetRegistration(name).Type);
         }
-
         component.CurrentNodeId = null;
     }
 

@@ -131,24 +131,6 @@
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
-  id: FaxMachineNFTradeMallSTC
-  suffix: POI, Mall STC
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: FaxMachine
-    name: "Trade Mall STC"
-
-- type: entity
-  parent: [BaseStructureDisableToolUse, FaxMachineBase]
-  id: FaxMachineNFTradeMallNFSD
-  suffix: POI, Trade NFSD
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: FaxMachine
-    name: "Trade Mall NFSD Post"
-
-- type: entity
-  parent: [BaseStructureDisableToolUse, FaxMachineBase]
   id: FaxMachineNFLab
   suffix: POI, Lab
   categories: [ HideSpawnMenu ]
@@ -230,7 +212,6 @@
 
 - type: entity
   parent: [BaseStructureDisableToolUse, FaxMachineBase]
-<<<<<<< HEAD
   id: FaxMachineFDhub
   suffix: POI, FD_hub
   categories: [ HideSpawnMenu ]
@@ -246,14 +227,6 @@
   components:
   - type: FaxMachine
     name: "Storage Facility"
-=======
-  id: FaxMachineNFMedicalDispatch
-  suffix: POI, Medical Dispatch
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: FaxMachine
-    name: "Medical Dispatch"
->>>>>>> master
 
 # Events
 - type: entity

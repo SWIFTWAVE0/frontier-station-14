@@ -1,7 +1,7 @@
 - type: entity
   name: soap
   id: Soap
-  parent: [BaseItem, RecyclableItemOrganicTiny] # Frontier: added RecyclableItemOrganicTiny
+  parent: BaseItem
   description: A cheap bar of soap. Doesn't smell.
   components:
   - type: Tag

@@ -20,15 +20,15 @@ public sealed partial class DrainComponent : Component
     [ValidatePrototypeId<TagPrototype>]
     public const string PlungerTag = "Plunger";
 
-    [ViewVariables]
+    [DataField]
     public Entity<SolutionComponent>? Solution = null;
 
     [DataField]
     public float Accumulator = 0f;
 
     /// <summary>
-    /// If true, automatically transfers solutions from nearby puddles and drains them. True for floor drains;
-    /// false for things like toilets and sinks.
+    /// Does this drain automatically absorb surrouding puddles? Or is it a drain designed to empty
+    /// solutions in it manually? 
     /// </summary>
     [DataField]
     public bool AutoDrain = true;
@@ -52,7 +52,7 @@ public sealed partial class DrainComponent : Component
     /// drain puddles from.
     /// </summary>
     [DataField]
-    public float Range = 2.5f;
+    public float Range = 2f;
 
     /// <summary>
     /// How often in seconds the drain checks for puddles around it.

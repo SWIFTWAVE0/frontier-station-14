@@ -2,7 +2,6 @@
   id: ChemVendInventory
   startingInventory:
     Jug: 8
-    # Frontier: all values to 4
     JugAluminium: 4
     JugCarbon: 4
     JugChlorine: 4
@@ -23,12 +22,8 @@
     JugSodium: 4
     JugSugar: 4
     JugSulfur: 4
-    # End Frontier
-  contrabandInventory:
-    DrinkLithiumFlask: 1
-    StrangePill: 3
   emaggedInventory:
-    ChemistryBottleToxin: 1
+    ToxinChemistryBottle: 4
 
 - type: vendingMachineInventory
   id: ChemVendInventorySyndicate
@@ -55,12 +50,9 @@
     JugSugar: 3
     JugSulfur: 1
     JugWeldingFuel: 1
-  contrabandInventory:
-    DrinkLithiumFlask: 1
-    StrangePill: 3
   emaggedInventory:
-    ChemistryBottlePax: 3
-    ChemistryBottleMuteToxin: 3
-    ChemistryBottleLead: 2
-    ChemistryBottleToxin: 1
+    PaxChemistryBottle: 3
+    MuteToxinChemistryBottle: 3
+    LeadChemistryBottle: 2
+    ToxinChemistryBottle: 1
 

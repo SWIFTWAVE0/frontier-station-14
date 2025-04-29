@@ -10,18 +10,13 @@
 # Provides higher end expeditionary ships and a space for vets to spawn in away from potential frontier shenanigans
 - type: pointOfInterest
   id: Lodge
-  parent: BasePOI
   name: 'Expeditionary Lodge'
-  minimumDistance: 1650
-  maximumDistance: 3400
+  rangeMin: 1650
+  rangeMax: 3400
+  IFFColor: "#3737C8" #blue the color of NT
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/lodge.yml
-  addComponents:
-  - type: IFF
-    color: "#3737F8"
-  - type: StationTransit
-    routes:
-      SpawnPoints: 20
+  busStop: true
 
 - type: gameMap
   id: Lodge
@@ -30,7 +25,7 @@
   minPlayers: 0
   stations:
     Lodge:
-      stationProto: RecordsFrontierOutpost
+      stationProto: SpawnableFrontierOutpost
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Expeditionary Lodge'

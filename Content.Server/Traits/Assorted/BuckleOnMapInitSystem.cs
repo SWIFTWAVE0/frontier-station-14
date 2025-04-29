@@ -5,7 +5,6 @@ namespace Content.Server.Traits.Assorted;
 public sealed class BuckleOnMapInitSystem : EntitySystem
 {
     [Dependency] private readonly SharedBuckleSystem _buckleSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Goobstation
 
     public override void Initialize()
     {
@@ -14,7 +13,7 @@ public sealed class BuckleOnMapInitSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, BuckleOnMapInitComponent component, MapInitEvent args)
     {
-        var buckle = Spawn(component.Prototype, _transform.GetMapCoordinates(uid)); // Goob edit: Transform.Coordinates<_transform.GetMapCoordinates
+        var buckle = Spawn(component.Prototype, Transform(uid).Coordinates);
         _buckleSystem.TryBuckle(uid, uid, buckle);
     }
 }

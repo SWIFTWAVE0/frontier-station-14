@@ -7,7 +7,6 @@
     proto: CartridgeCaselessRifleRubber
     capacity: 10
   - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi
     layers:
     - state: rubber
       map: ["enum.GunVisualLayers.Base"]
@@ -27,7 +26,6 @@
   - type: BallisticAmmoProvider
     proto: CartridgeCaselessRifleRubber
   - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_rifle_mag.rsi
     layers:
     - state: rubber
       map: ["enum.GunVisualLayers.Base"]
@@ -43,7 +41,6 @@
     proto: CartridgeCaselessRifleRubber
     capacity: 20
   - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_rifle_mag_short.rsi
     layers:
     - state: rubber
       map: ["enum.GunVisualLayers.Base"]

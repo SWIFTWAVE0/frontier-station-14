@@ -54,9 +54,9 @@ public sealed partial class LockComponent : Component
     /// <summary>
     /// Whether or not an emag disables it.
     /// </summary>
-    [DataField]
+    [DataField("breakOnEmag")]
     [AutoNetworkedField]
-    public bool BreakOnAccessBreaker = true;
+    public bool BreakOnEmag = true;
 
     /// <summary>
     /// Amount of do-after time needed to lock the entity.
@@ -77,6 +77,12 @@ public sealed partial class LockComponent : Component
     [DataField]
     [AutoNetworkedField]
     public TimeSpan UnlockTime;
+
+    /// <summary>
+    /// Frontier - Whether or not its emag immune.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool ImmuneToEmag;
 }
 
 /// <summary>

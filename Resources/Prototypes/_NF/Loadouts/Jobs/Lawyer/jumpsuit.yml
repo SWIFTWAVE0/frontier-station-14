@@ -1,5 +1,8 @@
 - type: loadout
   id: LawyerClothingUniformJumpsuitLawyerBlack
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
 
@@ -10,6 +13,9 @@
 
 - type: loadout
   id: LawyerClothingUniformJumpsuitLawyerBlue
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlue
 
@@ -20,6 +26,9 @@
 
 - type: loadout
   id: LawyerClothingUniformJumpsuitLawyerPurple
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerPurple
 
@@ -30,6 +39,9 @@
 
 - type: loadout
   id: LawyerClothingUniformJumpsuitLawyerRed
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerRed
 
@@ -40,6 +52,9 @@
 
 - type: loadout
   id: LawyerClothingUniformJumpsuitLawyerGood
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: PantsCapableNF
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerGood
 

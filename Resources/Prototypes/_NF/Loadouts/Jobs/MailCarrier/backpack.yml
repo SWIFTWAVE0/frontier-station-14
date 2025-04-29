@@ -4,11 +4,6 @@
     back: ClothingBackpackMessengerMailCarrier
 
 - type: loadout
-  id: MailCarrierNFClothingBackpackDuffelMailCarrier
-  equipment:
-    back: NFClothingBackpackDuffelMailCarrier
-
-- type: loadout
   id: MailCarrierClothingBackpackClippy
   equipment:
     back: ClothingBackpackClippy

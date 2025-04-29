@@ -7,28 +7,24 @@
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 36000 #10 hrs
-  # weight: 5 # Frontier
   startingGear: WardenGear
   icon: "JobIconWarden"
+  requireAdminNotify: true
   supervisors: job-supervisors-hos
   canBeAntag: false
-  ## Frontier: commented out stuff below
-  # access:
-  # - Security
-  # - Brig
-  # - Armory
-  # - Maintenance
-  # - Service
-  # - External
-  # - Detective
-  # - Cryogenics
-  # special:
-  # - !type:AddImplantSpecial
-  #   implants: [ MindShieldImplant ]
-  ## End Frontier: commented out stuff above
+  access:
+  - Security
+  - Brig
+  - Armory
+  - Maintenance
+  - Service
+  - External
+  - Detective
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
   setPreference: false # Frontier
-  accessGroups: # Frontier
-  - GeneralAccess # Frontier
 
 - type: startingGear
   id: WardenGear

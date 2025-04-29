@@ -371,6 +371,8 @@
     chance: 1
     offset: 0.0
     rarePrototypes:
+    - LockerSyndicatePersonal
+    # - LockerSyndicatePersonalFilled # Less Syndicate Loot
     - SpawnDungeonLootSuitStorageUnitsMercenary
     rareChance: 0.05
 

@@ -25,8 +25,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared.Humanoid;
-using Content.Shared.Stacks; // Frontier
 
 namespace Content.Server.Materials;
 
@@ -103,7 +101,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             }
         }
 
-        args.Handled = TryStartProcessItem(entity.Owner, args.Used, entity.Comp, args.User, predictSound: false); // Frontier: add predictSound: false
+        args.Handled = TryStartProcessItem(entity.Owner, args.Used, entity.Comp, args.User);
     }
 
     private void OnSuicideByEnvironment(Entity<MaterialReclaimerComponent> entity, ref SuicideByEnvironmentEvent args)
@@ -200,15 +198,11 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
 
         var xform = Transform(uid);
 
-        // Frontier: industrial reagent grinder shouldn't process materials, it processes reagents and double counts the results.
-        if (component.ProcessMaterials)
-            SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
-        // End Frontier
+        SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
 
         if (CanGib(uid, item, component))
         {
-            var logImpact = HasComp<HumanoidAppearanceComponent>(item) ? LogImpact.Extreme : LogImpact.Medium;
-            _adminLogger.Add(LogType.Gib, logImpact, $"{ToPrettyString(item):victim} was gibbed by {ToPrettyString(uid):entity} ");
+            _adminLogger.Add(LogType.Gib, LogImpact.Extreme, $"{ToPrettyString(item):victim} was gibbed by {ToPrettyString(uid):entity} ");
             SpawnChemicalsFromComposition(uid, item, completion, false, component, xform);
             _body.GibBody(item, true);
             _appearance.SetData(uid, RecyclerVisuals.Bloody, true);
@@ -285,14 +279,13 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         if (reclaimerComponent.UseOldSolutionLogic &&
             TryComp<SolutionContainerManagerComponent>(item, out var solutionContainer))
         {
-            var solutionScale = efficiency;
-            if (TryComp<StackComponent>(item, out var stack))
-                solutionScale *= stack.Count;
             foreach (var (_, soln) in _solutionContainer.EnumerateSolutions((item, solutionContainer)))
             {
                 var solution = soln.Comp.Solution;
-                solution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
-                totalChemicals.AddSolution(solution, _prototype);
+                foreach (var quantity in solution.Contents)
+                {
+                    totalChemicals.AddReagent(quantity.Reagent.Prototype, quantity.Quantity * efficiency, false);
+                }
             }
         }
         // End Frontier: use old material reclaimer code
@@ -301,12 +294,6 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             // Are we a recycler? Only use drainable solution.
             if (_solutionContainer.TryGetDrainableSolution(item, out _, out var drainableSolution))
             {
-                // Frontier: respect stacks and efficiency
-                var solutionScale = efficiency;
-                if (TryComp<StackComponent>(item, out var stack))
-                    solutionScale *= stack.Count;
-                drainableSolution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
-                // End Frontier
                 totalChemicals.AddSolution(drainableSolution, _prototype);
             }
         }
@@ -315,12 +302,6 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             // Are we an industrial reagent grinder? Use extractable solution.
             if (_solutionContainer.TryGetExtractableSolution(item, out _, out var extractableSolution))
             {
-                // Frontier: respect stacks and efficiency
-                var solutionScale = efficiency;
-                if (TryComp<StackComponent>(item, out var stack))
-                    solutionScale *= stack.Count;
-                extractableSolution.ScaleSolution(solutionScale); // Scale in situ, entity will be destroyed.
-                // End Frontier
                 totalChemicals.AddSolution(extractableSolution, _prototype);
             }
         }

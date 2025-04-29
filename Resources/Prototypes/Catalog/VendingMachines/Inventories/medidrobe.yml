@@ -4,7 +4,6 @@
     ClothingBackpackMedical: 4
     ClothingBackpackSatchelMedical: 4
     ClothingBackpackDuffelMedical: 4
-    ClothingBackpackDuffelTrauma: 4 # Frontier
     ClothingBackpackMessengerMedical: 4 # Frontier
     ClothingOuterEVASuitMedic: 4 # Frontier
     ClothingUniformJumpsuitMedicalDoctor: 4
@@ -87,6 +86,3 @@
 # CMO:
   contrabandInventory: # Frontier - Hidden inventory
     ClothingUniformJumpskirtOfLife: 1
-    ToyFigurineMedicalDoctor: 1
-    ToyFigurineParamedic: 1
-    ToyFigurineChiefMedicalOfficer: 1

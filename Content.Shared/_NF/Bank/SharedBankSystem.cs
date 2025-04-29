@@ -1,9 +1,9 @@
-using Content.Shared._NF.Bank.Components;
+using Content.Shared.Bank.Components;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._NF.Bank;
+namespace Content.Shared.Bank;
 
 [NetSerializable, Serializable]
 public enum BankATMMenuUiKey : byte

@@ -90,7 +90,6 @@
 - type: wireLayout
   id: FireAlarm
   wires:
-  - !type:AiInteractWireAction
   - !type:PowerWireAction
   - !type:AtmosMonitorDeviceNetWire
     alarmOnPulse: true
@@ -189,19 +188,3 @@
   wires:
   - !type:PowerWireAction
   - !type:AiInteractWireAction
-
-- type: wireLayout
-  id: Holopad
-  dummyWires: 2
-  wires:
-  - !type:PowerWireAction
-  - !type:AiInteractWireAction
-  - !type:AiVisionWireAction
-
-- type: wireLayout
-  id: BarSign
-  dummyWires: 2
-  wires:
-  - !type:PowerWireAction
-  - !type:AiInteractWireAction
-  - !type:AccessWireAction

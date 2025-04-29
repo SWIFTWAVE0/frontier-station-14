@@ -2,6 +2,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Preferences;
+using Content.Shared.Roles.Jobs;
 
 namespace Content.IntegrationTests.Tests.Internals;
 
@@ -9,8 +10,7 @@ namespace Content.IntegrationTests.Tests.Internals;
 [TestOf(typeof(InternalsSystem))]
 public sealed class AutoInternalsTests
 {
-    [Test]
-    [Ignore("Frontier: Changes to StationSpawningSystem breaks this")] // Frontier
+    [Ignore("Not relevant for Frontier")] // Frontier
     public async Task TestInternalsAutoActivateInSpaceForStationSpawn()
     {
         await using var pair = await PoolManager.GetServerClient();
@@ -25,7 +25,10 @@ public sealed class AutoInternalsTests
         await server.WaitAssertion(() =>
         {
             var profile = new HumanoidCharacterProfile();
-            var dummy = stationSpawning.SpawnPlayerMob(testMap.GridCoords, "TestInternalsDummy", profile, station: null);
+            var dummy = stationSpawning.SpawnPlayerMob(testMap.GridCoords, new JobComponent()
+            {
+                Prototype = "TestInternalsDummy"
+            }, profile, station: null);
 
             Assert.That(atmos.HasAtmosphere(testMap.Grid), Is.False, "Test map has atmosphere - test needs adjustment!");
             Assert.That(internals.AreInternalsWorking(dummy), "Internals did not automatically connect!");
@@ -36,7 +39,7 @@ public sealed class AutoInternalsTests
         await pair.CleanReturnAsync();
     }
 
-    [Test]
+    [Ignore("Not relevant for Frontier")] // Frontier
     public async Task TestInternalsAutoActivateInSpaceForEntitySpawn()
     {
         await using var pair = await PoolManager.GetServerClient();

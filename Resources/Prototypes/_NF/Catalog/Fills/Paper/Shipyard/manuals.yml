@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, RecyclableItemCardboard]
+  parent: BaseItem
   id: ShipyardInfoBase
   name: shuttle user manual
   description: The preflight checklist for a shuttle. Check it for power settings!
@@ -135,21 +135,3 @@
   - type: GuideHelp
     guides:
     - ShipyardSearchlight
-
-- type: entity
-  parent: ShipyardInfoBase
-  id: ShipyardNightlightInfo
-  name: Nightlight user manual
-  components:
-  - type: GuideHelp
-    guides:
-    - ShipyardNightlight
-
-- type: entity
-  parent: ShipyardInfoBase
-  id: ShipyardCharonInfo
-  name: Charon user manual
-  components:
-  - type: GuideHelp
-    guides:
-    - ShipyardCharon

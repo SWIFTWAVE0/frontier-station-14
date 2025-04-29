@@ -36,12 +36,7 @@ public static partial class PoolManager
         (CCVars.ConfigPresetDevelopment.Name, "false"),
         (CCVars.AdminLogsEnabled.Name, "false"),
         (CCVars.AutosaveEnabled.Name, "false"),
-        (CVars.NetBufferSize.Name, "0"),
-        (CCVars.InteractionRateLimitCount.Name, "9999999"),
-        (CCVars.InteractionRateLimitPeriod.Name, "0.1"),
-        (CCVars.GameLobbyDefaultPreset.Name, "nftest"), // Frontier: Adventure takes ages, default to nftest (no need to test events we will not run, e.g. meteor swarm)
-        (CCVars.StaticStorageUI.Name, "true"), // Frontier: causes storage test failures
-        (CCVars.StorageLimit.Name, "1")// Frontier: test failures with multiple storage enabled
+        (CVars.NetBufferSize.Name, "0")
     };
 
     public static async Task SetupCVars(RobustIntegrationTest.IntegrationInstance instance, PoolSettings settings)
@@ -66,9 +61,6 @@ public static partial class PoolManager
 
             if (cfg.IsCVarRegistered(CVars.NetInterp.Name))
                 cfg.SetCVar(CVars.NetInterp, !settings.DisableInterpolate);
-
-            if (cfg.IsCVarRegistered(CCVars.GameLobbyDefaultPreset.Name) && !string.IsNullOrEmpty(settings.GameLobbyDefaultPreset)) // Frontier
-                cfg.SetCVar(CCVars.GameLobbyDefaultPreset, settings.GameLobbyDefaultPreset); // Frontier
         });
     }
 

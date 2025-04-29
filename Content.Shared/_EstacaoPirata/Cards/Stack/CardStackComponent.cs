@@ -13,16 +13,16 @@ namespace Content.Shared._EstacaoPirata.Cards.Stack;
 
 public sealed partial class CardStackComponent : Component
 {
-    [DataField]
+    [DataField("content")]
     public List<EntProtoId> InitialContent = [];
 
-    [DataField]
+    [DataField("shuffleSound")]
     public SoundSpecifier ShuffleSound = new SoundCollectionSpecifier("cardFan");
 
-    [DataField]
+    [DataField("pickUpSound")]
     public SoundSpecifier PickUpSound = new SoundCollectionSpecifier("cardSlide");
 
-    [DataField]
+    [DataField("placeDownSound")]
     public SoundSpecifier PlaceDownSound = new SoundCollectionSpecifier("cardShove");
 
 
@@ -78,3 +78,6 @@ public sealed class CardStackFlippedEvent(NetEntity cardStack) : EntityEventArgs
 {
     public NetEntity CardStack = cardStack;
 }
+
+
+

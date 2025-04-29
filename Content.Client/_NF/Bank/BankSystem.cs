@@ -1,4 +1,4 @@
-using Content.Shared._NF.Bank;
+using Content.Shared.Bank;
 
 namespace Content.Client.Bank;
 

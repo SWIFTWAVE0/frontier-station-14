@@ -6,10 +6,8 @@
                   SeparationOverride="0"
                   Name="InternalHBox">
         <SpriteView Scale="2 2"
-                    Margin="0 4 4 4"
                     OverrideDirection="South"
-                    Name="View"
-                    SetSize="64 64"/>
+                    Name="View"/>
         <Label Name="DescriptionLabel"
                ClipText="True"
                HorizontalExpand="True"/>

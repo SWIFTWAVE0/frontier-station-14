@@ -25,8 +25,8 @@ namespace Content.Server.Body.Components
         /// <summary>
         ///     The solution inside of this stomach this transfers reagents to the body.
         /// </summary>
-        [ViewVariables]
-        public Entity<SolutionComponent>? Solution;
+        [DataField]
+        public Entity<SolutionComponent>? Solution = null;
 
         /// <summary>
         ///     What solution should this stomach push reagents into, on the body?
@@ -69,11 +69,5 @@ namespace Content.Server.Body.Components
 
             public void Increment(TimeSpan delta) => Lifetime += delta;
         }
-
-        /// <summary>
-        ///     Frontier: If false, this entity can eat anything with FoodComponent.RequiresSpecialDigestion set to false.  If true, it can only eat items matching its specialDigestion criteria.
-        /// </summary>
-        [DataField]
-        public bool SpecialDigestibleOnly = false;
     }
 }

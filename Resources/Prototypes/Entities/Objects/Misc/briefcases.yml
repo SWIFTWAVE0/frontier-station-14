@@ -23,10 +23,10 @@
   name: brown briefcase
   components:
   - type: Sprite
-    sprite: _NF/Objects/Storage/Briefcases/briefcase_brown.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
     state: icon
   - type: Item
-    sprite: _NF/Objects/Storage/Briefcases/briefcase_brown.rsi # Frontier: _NF prefix
+    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
 
 - type: entity
   parent: BriefcaseBrown

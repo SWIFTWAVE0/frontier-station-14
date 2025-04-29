@@ -4,11 +4,17 @@
 ///     Raised on entity when it was irradiated
 ///     by some radiation source.
 /// </summary>
-public readonly record struct OnIrradiatedEvent(float FrameTime, float RadsPerSecond)
+public sealed class OnIrradiatedEvent : EntityEventArgs
 {
-    public readonly float FrameTime = FrameTime;
+    public readonly float FrameTime;
 
-    public readonly float RadsPerSecond = RadsPerSecond;
+    public readonly float RadsPerSecond;
 
     public float TotalRads => RadsPerSecond * FrameTime;
+
+    public OnIrradiatedEvent(float frameTime, float radsPerSecond)
+    {
+        FrameTime = frameTime;
+        RadsPerSecond = radsPerSecond;
+    }
 }

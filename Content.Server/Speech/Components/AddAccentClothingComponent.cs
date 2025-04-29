@@ -1,5 +1,4 @@
-﻿using Content.Server.Speech.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+﻿using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Speech.Components;
 
@@ -26,9 +25,4 @@ public sealed partial class AddAccentClothingComponent : Component
     ///     Is that clothing is worn and affecting someones accent?
     /// </summary>
     public bool IsActive = false;
-
-    /// <summary>
-    ///     Who is currently wearing the item?
-    /// </summary>
-    public EntityUid Wearer; // Frontier
 }

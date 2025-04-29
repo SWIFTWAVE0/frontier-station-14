@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [BaseItem, RecyclableItemCardboard] # Frontier: added RecyclableItemCardboard
+  parent: BaseItem
   id: BoxDonkSoftBase
   name: foamdart box
   components:
@@ -25,6 +25,9 @@
         - BulletFoam
     capacity: 40
     proto: BulletFoam
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Storage/boxes.rsi # Frontier
+    state: foamdartsdisplay # Frontier
   - type: Sprite
     sprite: Objects/Storage/boxes.rsi
     layers:
@@ -39,15 +42,14 @@
   - type: BallisticAmmoProvider
     proto: CartridgeCap
     capacity: 20
-  - type: MagazineVisuals
-    magState: mag # Frontier: mag-cap<mag
-    steps: 4
-    zeroVisible: false
+  - type: Icon # Frontier
+    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/magnum.rsi # Frontier
+    state: capdisplay # Frontier
   - type: Sprite
-    sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/magnum.rsi # Frontier: add _NF prefix
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/magnum.rsi
     layers:
-      - state: capbase # Frontier: base<capbase
+      - state: capbase
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1 # Frontier: mag-cap-1<mag-1
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
-      # - state: capbase # Frontier
+      - state: cap

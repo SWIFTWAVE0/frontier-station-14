@@ -1,7 +1,6 @@
 using Content.Server.Botany.Components;
 using Content.Server.Botany.Systems;
 using Content.Shared.Atmos;
-using Content.Shared.Database;
 using Content.Shared.EntityEffects;
 using Content.Shared.Random;
 using Robust.Shared.Audio;
@@ -12,10 +11,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Botany;
 
-[Prototype]
+[Prototype("seed")]
 public sealed partial class SeedPrototype : SeedData, IPrototype
 {
-    [IdDataField] public string ID { get; private set; } = default!;
+    [IdDataField] public string ID { get; private init; } = default!;
 }
 
 public enum HarvestType : byte
@@ -99,12 +98,6 @@ public partial class SeedData
     /// </summary>
     [DataField("noun")]
     public string Noun { get; private set; } = "";
-
-    /// <summary>
-    ///     Frontier: The localized string used for a set of seeds (or equivalent)
-    /// </summary>
-    [DataField("packetName")]
-    public string PacketName { get; private set; } = "botany-seed-packet-name";
 
     /// <summary>
     ///     Name displayed when examining the hydroponics tray. Describes the actual plant, not the seed itself.
@@ -217,23 +210,6 @@ public partial class SeedData
 
     #endregion
 
-    // Frontier: no fun fields
-    #region Frontier
-    /// <summary>
-    ///     If true, the plant cannot be swabbed.
-    /// </summary>
-    [DataField] public bool PreventSwabbing;
-    /// <summary>
-    ///     If true, the plant cannot be clipped.
-    /// </summary>
-    [DataField] public bool PreventClipping;
-    /// <summary>
-    ///     If true, the plant will always be seedless.
-    /// </summary>
-    [DataField] public bool PermanentlySeedless;
-    #endregion
-    // End Frontier
-
     #region Cosmetics
 
     [DataField(required: true)]
@@ -266,18 +242,6 @@ public partial class SeedData
     /// </summary>
     [DataField(customTypeSerializer: typeof(PrototypeIdListSerializer<SeedPrototype>))]
     public List<string> MutationPrototypes = new();
-
-    /// <summary>
-    ///  Log impact for when the seed is planted.
-    /// </summary>
-    [DataField]
-    public LogImpact? PlantLogImpact = null;
-
-    /// <summary>
-    ///  Log impact for when the seed is harvested.
-    /// </summary>
-    [DataField]
-    public LogImpact? HarvestLogImpact = null;
 
     public SeedData Clone()
     {
@@ -321,10 +285,6 @@ public partial class SeedData
             Seedless = Seedless,
             Viable = Viable,
             Ligneous = Ligneous,
-
-            PreventSwabbing = PreventSwabbing, // Frontier
-            PreventClipping = PreventClipping, // Frontier
-            PermanentlySeedless = PermanentlySeedless, // Frontier
 
             PlantRsi = PlantRsi,
             PlantIconState = PlantIconState,
@@ -388,10 +348,6 @@ public partial class SeedData
             Seedless = Seedless,
             Viable = Viable,
             Ligneous = Ligneous,
-
-            PreventSwabbing = PreventSwabbing, // Frontier
-            PreventClipping = PreventClipping, // Frontier
-            PermanentlySeedless = PermanentlySeedless, // Frontier
 
             PlantRsi = other.PlantRsi,
             PlantIconState = other.PlantIconState,

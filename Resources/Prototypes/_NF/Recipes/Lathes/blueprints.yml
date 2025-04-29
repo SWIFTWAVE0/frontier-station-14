@@ -5,7 +5,7 @@
   id: NFBaseBlueprintLatheRecipe
   completetime: 4
   materials:
-    Paper: 300
+    Paper: 500
 
 # Recipes
 ## Engineering
@@ -70,11 +70,6 @@
   id: NFBlueprintConstructionBagOfHolding
   result: NFBlueprintConstructionBagOfHolding
 
-- type: latheRecipe
-  parent: NFBaseBlueprintLatheRecipe
-  id: NFBlueprintPortableGeneratorDKJr
-  result: NFBlueprintPortableGeneratorDKJr
-
 ## Medical
 
 - type: latheRecipe
@@ -86,11 +81,6 @@
   parent: NFBaseBlueprintLatheRecipe
   id: NFBlueprintSyringeBluespace
   result: NFBlueprintSyringeBluespace
-
-- type: latheRecipe
-  parent: NFBaseBlueprintLatheRecipe
-  id: NFBlueprintJugBluespace
-  result: NFBlueprintJugBluespace
 
 - type: latheRecipe
   parent: NFBaseBlueprintLatheRecipe
@@ -164,6 +154,11 @@
   result: NFBlueprintPlantBagOfHolding
 
 ## Armory
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintWeaponAntiqueLaser
+  result: NFBlueprintWeaponAntiqueLaser
 
 - type: latheRecipe
   parent: NFBaseBlueprintLatheRecipe

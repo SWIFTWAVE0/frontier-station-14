@@ -1,7 +1,7 @@
 - type: alert
-  id: MagbootsSecurity
+  id: MagbootsCombat
   icons:
-  - sprite: _NF/Clothing/Shoes/Boots/magboots-security.rsi
+  - sprite: _NF/Clothing/Shoes/Boots/magboots-combat.rsi
     state: icon-on
   name: alerts-magboots-name
   description: alerts-magboots-desc

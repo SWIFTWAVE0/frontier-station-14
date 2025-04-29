@@ -124,10 +124,7 @@
     whitelist:
       components:
       - Item
-      - Goblin # Frontier
-    blacklist:
-      components:
-      - EntityStorage
+      - Goblin
   - type: MailingUnit
   - type: DeviceNetwork
     deviceNetId: Wired

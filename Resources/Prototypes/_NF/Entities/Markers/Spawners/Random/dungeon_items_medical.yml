@@ -60,7 +60,7 @@
     layers:
       - state: green
         scale: 0.7, 0.7
-      - sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi # Frontier: _NF prefix
+      - sprite: Objects/Specific/Medical/firstaidkits.rsi
         state: firstaid
       - sprite: _NF/Markers/general.rsi
         state: questionmark
@@ -259,8 +259,8 @@
     - CombatMedipen
     - Stimpack
     - StimpackMini
-    - ChemistryBottleCognizine
-    - ChemistryBottleOmnizine
+    - CognizineChemistryBottle
+    - OmnizineChemistryBottle
     rareChance: 0.01
 
 - type: entity
@@ -442,6 +442,7 @@
     chance: 0.65
     offset: 0.0
     rarePrototypes:
+    # - SyndiHypo #  # A bit less Syndicate loot
      - Hypospray
     rareChance: 0.01
 
@@ -650,8 +651,8 @@
     chance: 1
     offset: 0.0
     rarePrototypes:
-    - VendingMachineSyndieContraband
-    # - VendingMachineSyndieDrobe # A bit less Syndicate loot
+#    - VendingMachineSyndieContraband # A bit less Syndicate loot
+#    - VendingMachineSyndieDrobe # A bit less Syndicate loot
     - VendingMachineRobotics
     rareChance: 0.01
 
@@ -699,12 +700,12 @@
     chance: 1
     offset: 0.0
     rarePrototypes:
-    - ChemistryBottleCognizine
-    - ChemistryBottleOmnizine
-    - ChemistryBottlePax
-    - ChemistryBottleMuteToxin
-    - ChemistryBottleToxin
-    - ChemistryBottleLead
+    - CognizineChemistryBottle
+    - OmnizineChemistryBottle
+    - PaxChemistryBottle
+    - MuteToxinChemistryBottle
+    - ToxinChemistryBottle
+    - LeadChemistryBottle
     rareChance: 0.01
 
 - type: entity

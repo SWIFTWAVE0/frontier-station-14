@@ -41,6 +41,22 @@
   - VimHarness
 
 - type: technology
+  id: FoodService
+  name: research-technology-food-service
+  icon:
+    sprite: Structures/Machines/juicer.rsi
+    state: juicer1
+  discipline: CivilianServices
+  tier: 1
+  cost: 7500
+  recipeUnlocks: #remove all of these once we have more kitchen equipment
+  - MicrowaveMachineCircuitboard
+  - ReagentGrinderMachineCircuitboard
+  - ElectricGrillMachineCircuitboard
+  - BoozeDispenserMachineCircuitboard
+  - SodaDispenserMachineCircuitboard
+
+- type: technology
   id: AudioVisualCommunication
   name: research-technology-audio-visual-communication
   icon:
@@ -57,7 +73,6 @@
   - SurveillanceCameraMonitorCircuitboard
   - SurveillanceWirelessCameraMonitorCircuitboard
   - TelecomServerCircuitboard
-#  - HolopadMachineCircuitboard # Frontier: needs work before use
 
 - type: technology
   id: AdvancedEntertainment
@@ -71,6 +86,8 @@
   recipeUnlocks:
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
+    - BorgModuleMusique
+    - BorgModuleClowning
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
@@ -85,8 +102,8 @@
   tier: 1
   cost: 5000
   recipeUnlocks:
+  - BorgModuleLightReplacer
   - BorgModuleAdvancedCleaning
-  - PortablePumpMachineCircuitBoard # Frontier
 
 - type: technology
   id: MeatManipulation
@@ -99,7 +116,7 @@
   cost: 7500
   recipeUnlocks:
   - FatExtractorMachineCircuitboard
-  - BiogeneratorMachineCircuitboard # Frontier BiofabricatorMachineCircuitboard<BiogeneratorMachineCircuitboard
+  - BiofabricatorMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
 
 # Tier 2
@@ -119,7 +136,6 @@
   - FauxTileJungleAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
-  - FauxTileAstroAsteroidSand
 
 - type: technology
   id: BiochemicalStasis
@@ -146,8 +162,8 @@
   tier: 2
   cost: 5000
   recipeUnlocks:
-  # - BorgModuleAdvancedTreatment # Frontier
-  # - BorgModuleDefibrillator # Frontier
+  - BorgModuleAdvancedTreatment
+  - BorgModuleDefibrillator
   - BorgModuleAdvancedParamedic # Frontier
 
 - type: technology
@@ -163,7 +179,6 @@
   - AdvMopItem
   - MegaSprayBottle
   - NFBlueprintAdvMopItem # Frontier
-  - ReinforcedJug # Frontier
 
 - type: technology
   id: HONKMech
@@ -236,9 +251,7 @@
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
-  - JugBluespace # Frontier
   - VialBluespace # Frontier
   - NFBlueprintBluespaceBeaker # Frontier
   - NFBlueprintSyringeBluespace # Frontier
-  - NFBlueprintJugBluespace # Frontier
   - NFBlueprintVialBluespace # Frontier

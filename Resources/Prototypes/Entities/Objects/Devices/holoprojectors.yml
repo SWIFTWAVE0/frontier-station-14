@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, RecyclableItemDeviceSmall] # Frontier: added RecyclableItemDeviceSmall
+  parent: BaseItem
   id: Holoprojector
   name: holographic sign projector
   description: A handy-dandy holographic projector that displays a janitorial sign.
@@ -67,11 +67,6 @@
       - HolofanProjector
   - type: StaticPrice
     price: 80
-  - type: GuideHelp
-    guides:
-    - AtmosTools
-    - Fires
-    - Spacing
 
 - type: entity
   parent: HolofanProjector
@@ -126,7 +121,6 @@
     - type: Tag
       tags:
         - HolofanProjector
-        - SecBeltEquip
     - type: StaticPrice
       price: 50
 

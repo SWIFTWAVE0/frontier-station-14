@@ -39,7 +39,6 @@
           bounds: "-0.25,-0.25,0.25,0.25"
         density: 100
         mask:
-        - TableMask # Should collide with tables (MidImpassible, Impassible)
         - InteractImpassable
         layer:
         - InteractImpassable

@@ -19,7 +19,10 @@
     bodyType: Static
     canCollide: false
   - type: Fixtures
-    fixtures: {}
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb {}
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Wood

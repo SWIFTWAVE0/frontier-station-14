@@ -110,39 +110,18 @@ namespace Content.Client.HealthAnalyzer.UI
 
             // Alerts
 
-            var showAlerts = msg.Unrevivable == true || msg.Bleeding == true || msg.Unclonable == true; // Frontier: add Unclonable cond
-
-            AlertsDivider.Visible = showAlerts;
-            AlertsContainer.Visible = showAlerts;
-
-            if (showAlerts)
-                AlertsContainer.DisposeAllChildren();
-
-            if (msg.Unrevivable == true)
-                AlertsContainer.AddChild(new RichTextLabel
-                {
-                    Text = Loc.GetString("health-analyzer-window-entity-unrevivable-text"),
-                    Margin = new Thickness(0, 4),
-                    MaxWidth = 300
-                });
-
-            // Frontier: unclonable text
-            if (msg.Unclonable == true)
-                AlertsContainer.AddChild(new RichTextLabel
-                {
-                    Text = Loc.GetString("health-analyzer-window-entity-unclonable-text"),
-                    Margin = new Thickness(0, 4),
-                    MaxWidth = 300
-                });
-            // End Frontier
+            AlertsDivider.Visible = msg.Bleeding == true;
+            AlertsContainer.Visible = msg.Bleeding == true;
 
             if (msg.Bleeding == true)
-                AlertsContainer.AddChild(new RichTextLabel
+            {
+                AlertsContainer.DisposeAllChildren();
+                AlertsContainer.AddChild(new Label
                 {
                     Text = Loc.GetString("health-analyzer-window-entity-bleeding-text"),
-                    Margin = new Thickness(0, 4),
-                    MaxWidth = 300
+                    FontColorOverride = Color.Red,
                 });
+            }
 
             // Damage Groups
 

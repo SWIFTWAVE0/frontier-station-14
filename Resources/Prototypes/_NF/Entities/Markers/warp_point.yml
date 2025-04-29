@@ -1,20 +1,49 @@
 - type: entity
-  id: WarpPointAdmin
+  id: WarpPointShip
   parent: WarpPoint
-  suffix: Admin-only
-  categories: [ DoNotMap ]
+  suffix: Ship
   components:
   - type: WarpPoint
-    adminOnly: true
+    useStationName: true
 
+# Outpost
 - type: entity
-  id: WarpPointDungeon
+  id: WarpPointNFFrontier
   parent: WarpPoint
-  suffix: Dungeon
+  suffix: Outpost, Frontier
   categories: [ HideSpawnMenu ]
   components:
   - type: WarpPoint
-<<<<<<< HEAD
+    location: Frontier Outpost
+
+# POI
+- type: entity
+  id: WarpPointNFBeacon
+  parent: WarpPoint
+  suffix: POI, Omnichurch Beacon
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WarpPoint
+    location: Omnichurch Beacon
+
+- type: entity
+  id: WarpPointNFLPBravo
+  parent: WarpPoint
+  suffix: POI, LP Bravo
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SyndicateFOB # For pinpointer
+  - type: WarpPoint
+    location: "Listening Point: Bravo"
+    adminOnly: true
+
+- type: entity
+  id: WarpPointNFLodge
+  parent: WarpPoint
+  suffix: POI, Lodge
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WarpPoint
     location: The Lodge
 
 - type: entity
@@ -182,7 +211,3 @@
   - type: WarpPoint
     location: Syndicate Supply Drop
     adminOnly: true
-=======
-    queryGridName: true
-    location: grid
->>>>>>> master

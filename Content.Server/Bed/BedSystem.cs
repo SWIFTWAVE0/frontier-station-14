@@ -22,7 +22,6 @@ namespace Content.Server.Bed
     {
         [Dependency] private readonly DamageableSystem _damageableSystem = default!;
         [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-        [Dependency] private readonly EmagSystem _emag = default!;
         [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
         [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -37,9 +36,8 @@ namespace Content.Server.Bed
             SubscribeLocalEvent<StasisBedComponent, UnstrappedEvent>(OnStasisUnstrapped);
             SubscribeLocalEvent<StasisBedComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<StasisBedComponent, GotEmaggedEvent>(OnEmagged);
-            SubscribeLocalEvent<StasisBedComponent, GotUnEmaggedEvent>(OnUnemagged); // Frontier
-            SubscribeLocalEvent<StasisBedComponent, RefreshPartsEvent>(OnRefreshParts); // Frontier
-            SubscribeLocalEvent<StasisBedComponent, UpgradeExamineEvent>(OnUpgradeExamine); // Frontier
+            SubscribeLocalEvent<StasisBedComponent, RefreshPartsEvent>(OnRefreshParts);
+            SubscribeLocalEvent<StasisBedComponent, UpgradeExamineEvent>(OnUpgradeExamine);
         }
 
         private void OnStrapped(Entity<HealOnBuckleComponent> bed, ref StrappedEvent args)
@@ -120,35 +118,13 @@ namespace Content.Server.Bed
 
         private void OnEmagged(EntityUid uid, StasisBedComponent component, ref GotEmaggedEvent args)
         {
-            if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
-                return;
-
-            if (_emag.CheckFlag(uid, EmagType.Interaction))
-                return;
-
+            args.Repeatable = true;
             // Reset any metabolisms first so they receive the multiplier correctly
             UpdateMetabolisms(uid, component, false);
             component.Multiplier = 1 / component.Multiplier;
             UpdateMetabolisms(uid, component, true);
             args.Handled = true;
         }
-
-        // Frontier: demag
-        private void OnUnemagged(EntityUid uid, StasisBedComponent component, ref GotUnEmaggedEvent args)
-        {
-            if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
-                return;
-
-            if (!_emag.CheckFlag(uid, EmagType.Interaction))
-                return;
-
-            // Reset any metabolisms first so they receive the multiplier correctly
-            UpdateMetabolisms(uid, component, false);
-            component.Multiplier = 1 / component.Multiplier; // Reciprocal of reciprocal
-            UpdateMetabolisms(uid, component, true);
-            args.Handled = true;
-        }
-        // End Frontier: demag
 
         private void UpdateMetabolisms(EntityUid uid, StasisBedComponent component, bool shouldApply)
         {
@@ -162,12 +138,11 @@ namespace Content.Server.Bed
             }
         }
 
-        // Frontier: upgradeable parts
         private void OnRefreshParts(EntityUid uid, StasisBedComponent component, RefreshPartsEvent args)
         {
             var metabolismRating = args.PartRatings[component.MachinePartMetabolismModifier];
             component.Multiplier = component.BaseMultiplier * metabolismRating; //linear scaling so it's not OP
-            if (_emag.CheckFlag(uid, EmagType.Interaction))
+            if (HasComp<EmaggedComponent>(uid))
                 component.Multiplier = 1f / component.Multiplier;
         }
 
@@ -175,6 +150,5 @@ namespace Content.Server.Bed
         {
             args.AddPercentageUpgrade("stasis-bed-component-upgrade-stasis", component.Multiplier / component.BaseMultiplier);
         }
-        // End Frontier: upgradeable parts
     }
 }

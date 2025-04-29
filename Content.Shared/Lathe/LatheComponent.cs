@@ -1,5 +1,4 @@
 using Content.Shared.Construction.Prototypes;
-using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -11,22 +10,22 @@ namespace Content.Shared.Lathe
     public sealed partial class LatheComponent : Component
     {
         /// <summary>
-        /// All of the recipe packs that the lathe has by default
+        /// All of the recipes that the lathe has by default
         /// </summary>
         [DataField]
-        public List<ProtoId<LatheRecipePackPrototype>> StaticPacks = new();
+        public List<ProtoId<LatheRecipePrototype>> StaticRecipes = new();
 
         /// <summary>
-        /// All of the recipe packs that the lathe is capable of researching
+        /// All of the recipes that the lathe is capable of researching
         /// </summary>
         [DataField]
-        public List<ProtoId<LatheRecipePackPrototype>> DynamicPacks = new();
+        public List<ProtoId<LatheRecipePrototype>> DynamicRecipes = new();
 
         /// <summary>
         /// The lathe's construction queue
         /// </summary>
         [DataField]
-        public List<LatheRecipeBatch> Queue = new(); // Frontier: LatheRecipePrototype<LatheRecipeBatch
+        public List<LatheRecipePrototype> Queue = new();
 
         /// <summary>
         /// The sound that plays when the lathe is producing an item, if any
@@ -116,14 +115,6 @@ namespace Content.Shared.Lathe
         [DataField]
         public float PartRatingMaterialUseMultiplier = DefaultPartRatingMaterialUseMultiplier;
         // End Frontier
-
-        // Frontier: restored for machine part upgrades
-        /// <summary>
-        /// If not null, finite and non-negative, modifies values on spawned items
-        /// </summary>
-        [DataField]
-        public float? ProductValueModifier = 0.3f;
-        // End Frontier
         #endregion
     }
 
@@ -141,23 +132,6 @@ namespace Content.Shared.Lathe
             getUnavailable = forced;
         }
     }
-
-    // Frontier: batch lathe recipes
-    [Serializable]
-    public sealed partial class LatheRecipeBatch : EntityEventArgs
-    {
-        public LatheRecipePrototype Recipe;
-        public int ItemsPrinted;
-        public int ItemsRequested;
-
-        public LatheRecipeBatch(LatheRecipePrototype recipe, int itemsPrinted, int itemsRequested)
-        {
-            Recipe = recipe;
-            ItemsPrinted = itemsPrinted;
-            ItemsRequested = itemsRequested;
-        }
-    }
-    // End Frontier
 
     /// <summary>
     /// Event raised on a lathe when it starts producing a recipe.

@@ -15,6 +15,7 @@
   - Handcuffs
   - ClothingOuterArmorBulletproofNF
   - ClothingOuterCoatBHTrench
+  - ContrabandAppraisalTool
   - PinpointerUniversalNF
   - ClothingEyesHudBountyHunter
   - WeaponShotgunKammererNF
@@ -29,13 +30,13 @@
   id: MagnetsTechCombat
   name: research-technology-magnets-tech-combat
   icon:
-    sprite: _NF/Clothing/Shoes/Boots/magboots-security.rsi
+    sprite: _NF/Clothing/Shoes/Boots/magboots-combat.rsi
     state: icon
   discipline: Experimental
   tier: 1
   cost: 9000
   recipeUnlocks:
-  - ClothingShoesBootsMagSecurity
+  - ClothingShoesBootsMagCombat
   - ClothingShoesBootsMagMercenary
   technologyPrerequisites:
   - MagnetsTech

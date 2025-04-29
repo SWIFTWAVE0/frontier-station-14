@@ -20,15 +20,5 @@
   components:
   - type: StorageFill
     contents:
-      - id: NFVehicleJanicart
+      - id: VehicleJanicart
       - id: VehicleKeyJanicart
-
-- type: entity
-  id: CrateServiceReplacementColoredLights
-  name: colored lights crate
-  parent: CrateGenericSteel
-  components:
-  - type: StorageFill
-    contents:
-      - id: BoxColoredLighttube
-      - id: BoxColoredLightbulb

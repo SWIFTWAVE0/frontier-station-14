@@ -2,7 +2,6 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Physics;
-using Content.Shared.Whitelist; // Frontier
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Dynamics;
@@ -90,11 +89,5 @@ namespace Content.Server.Explosion.Components
         [ViewVariables]
         [DataField("layer", customTypeSerializer: typeof(FlagSerializer<CollisionLayer>))]
         public int Layer = (int) (CollisionGroup.MidImpassable | CollisionGroup.LowImpassable | CollisionGroup.HighImpassable);
-        
-        /// <summary>
-        /// Frontier: Use Whitelist to trigger
-        /// </summary>
-        [DataField]
-        public EntityWhitelist? Whitelist;
     }
 }

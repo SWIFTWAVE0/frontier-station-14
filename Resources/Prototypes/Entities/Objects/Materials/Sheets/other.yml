@@ -110,7 +110,6 @@
   - type: Tag
     tags:
     - Sheet
-  - type: NFFuel # Frontier
 
 - type: entity
   parent: SheetPlasma
@@ -197,7 +196,7 @@
     count: 1
 
 - type: entity
-  parent: [SheetOtherBase, EdibleBase]
+  parent: [SheetOtherBase, FoodBase]
   id: SheetUranium
   name: uranium
   suffix: Full
@@ -235,8 +234,6 @@
         - ReagentId: Radium
           Quantity: 2
         canReact: false
-  - type: UraniumMaterials # Frontier
-  - type: NFFuel # Frontier
 
 - type: entity
   parent: SheetUranium

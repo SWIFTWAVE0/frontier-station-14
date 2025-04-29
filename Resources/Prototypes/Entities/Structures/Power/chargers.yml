@@ -193,7 +193,7 @@
           - PotatoBattery
 
 - type: entity
-  parent: [BaseStructureWallmount, BaseItemRecharger] # Frontier: add BaseStructureWallmount
+  parent: BaseItemRecharger
   id: WallWeaponCapacitorRecharger
   name: wall recharger
   components:

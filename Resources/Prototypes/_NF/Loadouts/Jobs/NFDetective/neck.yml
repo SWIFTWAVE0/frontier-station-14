@@ -1,5 +1,5 @@
 #T0
 - type: loadout
-  id: NFDetectiveClothingNeckNfsdBadgeDetective
+  id: NFDetectiveClothingNeckBadgeNFDetective
   equipment:
-    neck: ClothingNeckNfsdBadgeDetective
+    neck: ClothingNeckNfsdBadgeSecurity

@@ -31,7 +31,6 @@ public sealed partial class AnchorableSystem : EntitySystem
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private   readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -48,18 +47,6 @@ public sealed partial class AnchorableSystem : EntitySystem
         SubscribeLocalEvent<AnchorableComponent, TryAnchorCompletedEvent>(OnAnchorComplete);
         SubscribeLocalEvent<AnchorableComponent, TryUnanchorCompletedEvent>(OnUnanchorComplete);
         SubscribeLocalEvent<AnchorableComponent, ExaminedEvent>(OnAnchoredExamine);
-        SubscribeLocalEvent<AnchorableComponent, ComponentStartup>(OnAnchorStartup);
-        SubscribeLocalEvent<AnchorableComponent, AnchorStateChangedEvent>(OnAnchorStateChange);
-    }
-
-    private void OnAnchorStartup(EntityUid uid, AnchorableComponent comp, ComponentStartup args)
-    {
-        _appearance.SetData(uid, AnchorVisuals.Anchored, Transform(uid).Anchored);
-    }
-
-    private void OnAnchorStateChange(EntityUid uid, AnchorableComponent comp, AnchorStateChangedEvent args)
-    {
-        _appearance.SetData(uid, AnchorVisuals.Anchored, args.Anchored);
     }
 
     /// <summary>
@@ -83,7 +70,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         // Log unanchor attempt (server only)
         _adminLogger.Add(LogType.Anchor, LogImpact.Low, $"{ToPrettyString(userUid):user} is trying to unanchor {ToPrettyString(uid):entity} from {transform.Coordinates:targetlocation}");
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryUnanchorCompletedEvent()); // Frontier: Delay<CurrentDelay
+        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryUnanchorCompletedEvent());
     }
 
     private void OnInteractUsing(EntityUid uid, AnchorableComponent anchorable, InteractUsingEvent args)
@@ -240,7 +227,7 @@ public sealed partial class AnchorableSystem : EntitySystem
             return;
         }
 
-        _tool.UseTool(usingUid, userUid, uid, anchorable.CurrentDelay, usingTool.Qualities, new TryAnchorCompletedEvent()); // Frontier: Delay<CurrentDelay
+        _tool.UseTool(usingUid, userUid, uid, anchorable.Delay, usingTool.Qualities, new TryAnchorCompletedEvent());
     }
 
     private bool Valid(
@@ -272,7 +259,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         else
             RaiseLocalEvent(uid, (UnanchorAttemptEvent) attempt);
 
-        anchorable.CurrentDelay = anchorable.Delay + attempt.Delay; // Frontier: assign delay from base value
+        anchorable.Delay += attempt.Delay;
 
         return !attempt.Cancelled;
     }
@@ -355,10 +342,4 @@ public sealed partial class AnchorableSystem : EntitySystem
     private sealed partial class TryAnchorCompletedEvent : SimpleDoAfterEvent
     {
     }
-}
-
-[Serializable, NetSerializable]
-public enum AnchorVisuals : byte
-{
-    Anchored
 }

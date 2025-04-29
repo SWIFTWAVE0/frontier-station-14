@@ -1,5 +1,5 @@
-- type: entity
-  parent: [RecyclableItemSteelSmall, GasPipeBase] # Frontier: add RecyclableItemSteelSmall
+﻿- type: entity
+  parent: GasPipeBase
   abstract: true
   id: GasBinaryBase
   placement:
@@ -24,24 +24,18 @@
         pipeDirection: South
 
 - type: entity
-  parent: GasBinaryBase
+  parent: [BaseMachinePowered, GasBinaryBase]
   id: GasPressurePump
   name: gas pump
   description: A pump that moves gas by pressure.
   placement:
     mode: SnapgridCenter
   components:
-  - type: ExtensionCableReceiver
-  - type: LightningTarget
-    priority: 1
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: Rotatable
   - type: Transform
     noRot: false
-  - type: SubFloorHide
-    visibleLayers:
-    - enum.SubfloorLayers.FirstLayer
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/pump.rsi
     layers:
@@ -60,13 +54,10 @@
   - type: PipeColorVisuals
   - type: GasPressurePump
     enabled: false
-  - type: ActivatableUI
-    key: enum.GasPressurePumpUiKey.Key
-  - type: ActivatableUIRequiresAnchor
   - type: UserInterface
     interfaces:
-      enum.GasPressurePumpUiKey.Key:
-        type: GasPressurePumpBoundUserInterface
+        enum.GasPressurePumpUiKey.Key:
+          type: GasPressurePumpBoundUserInterface
   - type: Construction
     graph: GasBinary
     node: pressurepump
@@ -76,31 +67,20 @@
     range: 5
     sound:
       path: /Audio/Ambience/Objects/gas_pump.ogg
-  - type: AtmosMonitoringConsoleDevice
-    navMapBlip: GasFlowRegulator
-  - type: GuideHelp
-    guides:
-    - Pumps
 
 - type: entity
-  parent: GasBinaryBase
+  parent: [BaseMachinePowered, GasBinaryBase]
   id: GasVolumePump
   name: volumetric gas pump
   description: A pump that moves gas by volume.
   placement:
     mode: SnapgridCenter
   components:
-    - type: ExtensionCableReceiver
-    - type: LightningTarget
-      priority: 1
     - type: ApcPowerReceiver
       powerLoad: 200
     - type: Rotatable
     - type: Transform
       noRot: false
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       sprite: Structures/Piping/Atmospherics/pump.rsi
       layers:
@@ -141,11 +121,6 @@
       examinableAddress: true
       prefix: device-address-prefix-volume-pump
     - type: WiredNetworkConnection
-    - type: AtmosMonitoringConsoleDevice
-      navMapBlip: GasFlowRegulator
-    - type: GuideHelp
-      guides:
-      - Pumps
 
 - type: entity
   parent: GasBinaryBase
@@ -155,9 +130,6 @@
   placement:
     mode: SnapgridCenter
   components:
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       sprite: Structures/Piping/Atmospherics/pump.rsi
       layers:
@@ -178,11 +150,6 @@
       range: 5
       sound:
         path: /Audio/Ambience/Objects/gas_hiss.ogg
-    - type: AtmosMonitoringConsoleDevice
-      navMapBlip: GasValve
-    - type: GuideHelp
-      guides:
-      - PassiveGate
 
 - type: entity
   parent: GasBinaryBase
@@ -193,9 +160,6 @@
     mode: SnapgridCenter
   components:
     # TODO ATMOS: Give unique sprite.
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       sprite: Structures/Piping/Atmospherics/pump.rsi
       layers:
@@ -234,11 +198,6 @@
       range: 5
       sound:
         path: /Audio/Ambience/Objects/gas_hiss.ogg
-    - type: AtmosMonitoringConsoleDevice
-      navMapBlip: GasValve
-    - type: GuideHelp
-      guides:
-      - ManualValve
 
 - type: entity
   parent: GasBinaryBase
@@ -249,9 +208,6 @@
     mode: SnapgridCenter
   components:
   - type: StationAiWhitelist
-  - type: SubFloorHide
-    visibleLayers:
-    - enum.SubfloorLayers.FirstLayer
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/pump.rsi
     layers:
@@ -301,11 +257,6 @@
     range: 5
     sound:
       path: /Audio/Ambience/Objects/gas_hiss.ogg
-  - type: AtmosMonitoringConsoleDevice
-    navMapBlip: GasValve
-  - type: GuideHelp
-    guides:
-    - SignalValve
 
 - type: entity
   parent: GasBinaryBase
@@ -315,9 +266,6 @@
   placement:
     mode: SnapgridCenter
   components:
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
       layers:
@@ -338,24 +286,15 @@
     - type: Construction
       graph: GasBinary
       node: port
-    - type: AtmosMonitoringConsoleDevice
-      navMapBlip: GasVentOpening
-    - type: GuideHelp
-      guides:
-      - GasCanisters
 
 - type: entity
   parent: GasVentPump
   id: GasDualPortVentPump
   name: dual-port air vent
-  categories: [ HideSpawnMenu ] # Frontier
   description: Has a valve and a pump attached to it. There are two ports, one is an input for releasing air, the other is an output when siphoning.
   placement:
     mode: SnapgridCenter
   components:
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       drawdepth: FloorObjects
       sprite: _NF/Structures/Piping/Atmospherics/vent.rsi # Frontier
@@ -403,11 +342,6 @@
           pipeDirection: South
     - type: AmbientSound
       enabled: true
-    - type: AtmosMonitoringConsoleDevice
-      navMapBlip: GasVentOpening
-    - type: GuideHelp
-      guides:
-      - AirVent
 
 - type: entity
   parent: [ BaseMachine, ConstructibleMachine ]
@@ -436,7 +370,6 @@
   - type: PipeColorVisuals
   - type: Rotatable
   - type: GasRecycler
-  - type: NFGasRecyclerVisuals # Frontier
   - type: PipeRestrictOverlap
   - type: NodeContainer
     nodes:
@@ -471,8 +404,6 @@
         acts: ["Destruction"]
   - type: Machine
     board: GasRecyclerMachineCircuitboard
-  - type: AtmosMonitoringConsoleDevice
-    navMapBlip: GasValve
 
 - type: entity
   parent: GasBinaryBase
@@ -513,37 +444,3 @@
   - type: Construction
     graph: GasBinary
     node: radiator
-  - type: AtmosMonitoringConsoleDevice
-    navMapBlip: Thermoregulator
-  - type: GuideHelp
-    guides:
-    - Radiators
-
-- type: entity
-  parent: HeatExchanger
-  id: HeatExchangerBend
-  suffix: Bend
-  components:
-    - type: SubFloorHide
-      visibleLayers:
-      - enum.SubfloorLayers.FirstLayer
-    - type: Sprite
-      layers:
-      - sprite: Structures/Piping/Atmospherics/pipe.rsi
-        state: pipeBend
-        map: [ "enum.PipeVisualLayers.Pipe" ]
-      - state: heBend
-        map: [ "enum.SubfloorLayers.FirstLayer" ]
-    - type: NodeContainer
-      nodes:
-        inlet:
-          !type:PipeNode
-          nodeGroupID: Pipe
-          pipeDirection: South
-        outlet:
-          !type:PipeNode
-          nodeGroupID: Pipe
-          pipeDirection: West
-    - type: Construction
-      graph: GasBinary
-      node: bendradiator

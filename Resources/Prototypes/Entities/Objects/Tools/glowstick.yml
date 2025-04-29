@@ -1,6 +1,6 @@
 - type: entity
   name: green glowstick
-  parent: [BaseItem, RecyclableItemPlasticTiny] # Frontier: added RecyclableItemPlasticTiny
+  parent: BaseItem
   id: GlowstickBase
   description: Useful for raves and emergencies.
   components:

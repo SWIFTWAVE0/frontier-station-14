@@ -1,3 +1,9 @@
+using Robust.Shared.GameObjects;
+using Robust.Shared.Maths;
+using Robust.Shared.Serialization.Manager.Attributes;
+using Robust.Shared.ViewVariables;
+using System;
+
 namespace Content.Server._NF.Salvage;
 
 /// <summary>

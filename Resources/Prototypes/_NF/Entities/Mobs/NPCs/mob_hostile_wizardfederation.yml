@@ -7,7 +7,7 @@
   - MobPassiveRegen
   - MobHumanoidInvetory
   - MobHumanoidHostileAISimpleRanged
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   - NFMobRestrictions
   id: MobWizFedlBase
   components:
@@ -47,9 +47,6 @@
     deleteOrgans: true
     gib: false
     useArgumentEntity: true
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
 
 # Humans
 # Blue Wizard, summons 2 Blue Curacao Elementals
@@ -243,6 +240,3 @@
     transferAmount: 10
   - type: Ammo
     muzzleFlash: null
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5

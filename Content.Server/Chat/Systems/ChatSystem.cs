@@ -4,9 +4,10 @@ using System.Text;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
+using Content.Server.Examine;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
-using Content.Server.Speech.Prototypes;
+using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
@@ -17,11 +18,13 @@ using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
-using Content.Shared.Players.RateLimiting;
 using Content.Shared.Radio;
+using Content.Shared.Speech;
 using Content.Shared.Whitelist;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -119,7 +122,6 @@ public sealed partial class ChatSystem : SharedChatSystem
                     _configurationManager.SetCVar(CCVars.OocEnabled, false);
                 break;
             case GameRunLevel.PostRound:
-            case GameRunLevel.PreRoundLobby:
                 if (!_configurationManager.GetCVar(CCVars.OocEnableDuringRound))
                     _configurationManager.SetCVar(CCVars.OocEnabled, true);
                 break;
@@ -328,7 +330,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.GetSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -437,9 +439,9 @@ public sealed partial class ChatSystem : SharedChatSystem
         {
             var nameEv = new TransformSpeakerNameEvent(source, Name(source));
             RaiseLocalEvent(source, nameEv);
-            name = nameEv.VoiceName;
+            name = nameEv.Name;
             // Check for a speech verb override
-            if (nameEv.SpeechVerb != null && _prototypeManager.TryIndex(nameEv.SpeechVerb, out var proto))
+            if (nameEv.SpeechVerb != null && _prototypeManager.TryIndex<SpeechVerbPrototype>(nameEv.SpeechVerb, out var proto))
                 speech = proto;
         }
 
@@ -511,7 +513,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         {
             var nameEv = new TransformSpeakerNameEvent(source, Name(source));
             RaiseLocalEvent(source, nameEv);
-            name = nameEv.VoiceName;
+            name = nameEv.Name;
         }
         name = FormattedMessage.EscapeText(name);
 
@@ -593,18 +595,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
-        bool soundEmoteSent = true; // Frontier: if check emote is false, assume somebody's sending an emote
         if (checkEmote)
-            soundEmoteSent = TryEmoteChatInput(source, action); // Frontier: assign value to soundEmoteSent
-
-        // Frontier: send emote message
-        if (!soundEmoteSent)
-        {
-            var ev = new NFEntityEmotedEvent(source, action);
-            RaiseLocalEvent(source, ev, true);
-        }
-        // End Frontier
-
+            TryEmoteChatInput(source, action);
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
@@ -761,12 +753,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     // ReSharper disable once InconsistentNaming
     private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
     {
-        var newMessage = SanitizeMessageReplaceWords(message.Trim());
+        var newMessage = message.Trim();
+        newMessage = SanitizeMessageReplaceWords(newMessage);
 
-        GetRadioKeycodePrefix(source, newMessage, out newMessage, out var prefix);
-
-        // Sanitize it first as it might change the word order
-        _sanitizer.TrySanitizeEmoteShorthands(newMessage, source, out newMessage, out emoteStr);
+        _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr); // Frontier: moved up from bottom of function
 
         if (capitalize)
             newMessage = SanitizeMessageCapital(newMessage);
@@ -775,7 +765,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (punctuate)
             newMessage = SanitizeMessagePeriod(newMessage);
 
-        return prefix + newMessage;
+        return newMessage;
     }
 
     private string SanitizeInGameOOCMessage(string message)
@@ -925,6 +915,20 @@ public record ExpandICChatRecipientsEvent(EntityUid Source, float VoiceRange, Di
 {
 }
 
+public sealed class TransformSpeakerNameEvent : EntityEventArgs
+{
+    public EntityUid Sender;
+    public string Name;
+    public string? SpeechVerb;
+
+    public TransformSpeakerNameEvent(EntityUid sender, string name, string? speechVerb = null)
+    {
+        Sender = sender;
+        Name = name;
+        SpeechVerb = speechVerb;
+    }
+}
+
 /// <summary>
 ///     Raised broadcast in order to transform speech.transmit
 /// </summary>
@@ -975,23 +979,6 @@ public sealed class EntitySpokeEvent : EntityEventArgs
         ObfuscatedMessage = obfuscatedMessage;
     }
 }
-
-// Frontier: emote event
-/// <summary>
-///     Raised on an entity when it sends a custom emote (one with a message but no sound).
-/// </summary>
-public sealed class NFEntityEmotedEvent : EntityEventArgs
-{
-    public readonly EntityUid Source;
-    public readonly string Emote;
-
-    public NFEntityEmotedEvent(EntityUid source, string emote)
-    {
-        Source = source;
-        Emote = emote;
-    }
-}
-// End Frontier
 
 /// <summary>
 ///     InGame IC chat is for chat that is specifically ingame (not lobby) but is also in character, i.e. speaking.

@@ -1,12 +1,15 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Cargo.Systems;
+using Content.Server.Interaction;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Stunnable;
 using Content.Server.Weapons.Ranged.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Effects;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged;
@@ -34,13 +37,16 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly IComponentFactory _factory = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly DamageExamineSystem _damageExamine = default!;
+    [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly PricingSystem _pricing = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
 
     private const float DamagePitchVariation = 0.05f;
+    public const float GunClumsyChance = 0.5f;
 
     public override void Initialize()
     {
@@ -75,14 +81,26 @@ public sealed partial class GunSystem : SharedGunSystem
     {
         userImpulse = true;
 
-        if (user != null)
+        // Try a clumsy roll
+        // TODO: Who put this here
+        if (TryComp<ClumsyComponent>(user, out var clumsy) && gun.ClumsyProof == false)
         {
-            var selfEvent = new SelfBeforeGunShotEvent(user.Value, (gunUid, gun), ammo);
-            RaiseLocalEvent(user.Value, selfEvent);
-            if (selfEvent.Cancelled)
+            for (var i = 0; i < ammo.Count; i++)
             {
-                userImpulse = false;
-                return;
+                if (_interaction.TryRollClumsy(user.Value, GunClumsyChance, clumsy))
+                {
+                    // Wound them
+                    Damageable.TryChangeDamage(user, clumsy.ClumsyDamage, origin: user);
+                    _stun.TryParalyze(user.Value, TimeSpan.FromSeconds(3f), true);
+
+                    // Apply salt to the wound ("Honk!")
+                    Audio.PlayPvs(new SoundPathSpecifier("/Audio/Weapons/Guns/Gunshots/bang.ogg"), gunUid);
+                    Audio.PlayPvs(clumsy.ClumsySound, gunUid);
+
+                    PopupSystem.PopupEntity(Loc.GetString("gun-clumsy"), user.Value);
+                    userImpulse = false;
+                    return;
+                }
             }
         }
 
@@ -108,11 +126,6 @@ public sealed partial class GunSystem : SharedGunSystem
 
         foreach (var (ent, shootable) in ammo)
         {
-            // Frontier: set projectiles to map parent
-            if (ent != null)
-                _transform.SetParent(ent.Value, fromEnt.EntityId);
-            // End Frontier: set projectiles to map parent
-
             // pneumatic cannon doesn't shoot bullets it just throws them, ignore ammo handling
             if (throwItems && ent != null)
             {
@@ -227,7 +240,7 @@ public sealed partial class GunSystem : SharedGunSystem
 
                         var hitName = ToPrettyString(hitEntity);
                         if (dmg != null)
-                            dmg = Damageable.TryChangeDamage(hitEntity, dmg * Damageable.UniversalHitscanDamageModifier, origin: user);
+                            dmg = Damageable.TryChangeDamage(hitEntity, dmg, origin: user);
 
                         // check null again, as TryChangeDamage returns modified damage values
                         if (dmg != null)
@@ -405,28 +418,28 @@ public sealed partial class GunSystem : SharedGunSystem
     // TODO: Pseudo RNG so the client can predict these.
     #region Hitscan effects
 
-    private void FireEffects(EntityCoordinates fromCoordinates, float distance, Angle angle, HitscanPrototype hitscan, EntityUid? hitEntity = null)
+    private void FireEffects(EntityCoordinates fromCoordinates, float distance, Angle mapDirection, HitscanPrototype hitscan, EntityUid? hitEntity = null)
     {
         // Lord
         // Forgive me for the shitcode I am about to do
         // Effects tempt me not
         var sprites = new List<(NetCoordinates coordinates, Angle angle, SpriteSpecifier sprite, float scale)>();
-        var fromXform = Transform(fromCoordinates.EntityId);
+        var gridUid = fromCoordinates.GetGridUid(EntityManager);
+        var angle = mapDirection;
 
         // We'll get the effects relative to the grid / map of the firer
         // Look you could probably optimise this a bit with redundant transforms at this point.
+        var xformQuery = GetEntityQuery<TransformComponent>();
 
-        var gridUid = fromXform.GridUid;
-        if (gridUid != fromCoordinates.EntityId && TryComp(gridUid, out TransformComponent? gridXform))
+        if (xformQuery.TryGetComponent(gridUid, out var gridXform))
         {
-            var (_, gridRot, gridInvMatrix) = TransformSystem.GetWorldPositionRotationInvMatrix(gridXform);
-            var map = _transform.ToMapCoordinates(fromCoordinates);
-            fromCoordinates = new EntityCoordinates(gridUid.Value, Vector2.Transform(map.Position, gridInvMatrix));
+            var (_, gridRot, gridInvMatrix) = TransformSystem.GetWorldPositionRotationInvMatrix(gridXform, xformQuery);
+
+            fromCoordinates = new EntityCoordinates(gridUid.Value,
+                Vector2.Transform(fromCoordinates.ToMapPos(EntityManager, TransformSystem), gridInvMatrix));
+
+            // Use the fallback angle I guess?
             angle -= gridRot;
-        }
-        else
-        {
-            angle -= _transform.GetWorldRotation(fromXform);
         }
 
         if (distance >= 1f)

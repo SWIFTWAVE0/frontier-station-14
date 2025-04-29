@@ -26,9 +26,6 @@
     deleteOrgans: true
     gib: false
     useArgumentEntity: true
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
 
 # Humans
 # Blood Cult Priest, ranged mab, bolts deal 10 slash damage
@@ -38,7 +35,7 @@
   parent:
   - MobBloodCultistBase
   - MobHumanoidHostileAISimpleRanged
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobBloodCultistPriest
   description: Enlightened by the whispers of The Void That Is, these individuals are initiated into secret rituals. They lead the blood harvest and perform rites, bringing the day when Nar'Sie rises ever closer.
   categories: [ HideSpawnMenu ]
@@ -72,7 +69,7 @@
   parent:
   - MobBloodCultistBase
   - MobHumanoidHostileAISimpleRanged
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobBloodCultistJanitor
   description: The fate of blood cults on space stations hinges on the actions of a single individual - the station janitor. This humble worker serves as the primary line of defense against the presence of blood cults, but even the most resolute individuals can be swayed by corruption.
   categories: [ HideSpawnMenu ]
@@ -107,7 +104,7 @@
   parent:
   - MobBloodCultistBase
   - MobHumanoidHostileAISimpleMelee
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   id: MobBloodCultistAcolyte
   description: |-
    The acolyte - The most trusted cult follower and bodyguard of a priest, clad in the finest armor the cult has to offer and armed with the most vile weapons: eldrich blades and unholy halberds.
@@ -249,9 +246,8 @@
   parent:
   - MobNonHumanHostileBase
   - MobHumanoidHostileAIComplex
-  #- MobLaserReflect # Added to prevent laser abuse from players
+  - MobLaserReflect # Added to prevent laser abuse from players
   - NFMobRestrictions
-  - NFMobBossRestrictions
   id: MobBloodCultistAscended
   components:
   - type: NpcFactionMember
@@ -339,9 +335,6 @@
     spawned:
     - id: ClothingNeckAmuletBloodCult
       amount: 1
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
 
 # Drained One, melee
 - type: entity
@@ -417,9 +410,6 @@
     speechVerb: Ghost
   - type: Ammo
     muzzleFlash: null
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 4.5
-    baseSprintSpeed : 4.5
 
 - type: entity
   name: cultist shade
@@ -495,7 +485,7 @@
 - type: entity
   parent:
   - BaseC3CultContraband
-  - BaseWeaponTurretNF
+  - BaseWeaponTurret
   #- MobBloodCultistTimedDespawn
   id: BloodCultTurret
   name: blood pylon
@@ -526,11 +516,10 @@
         collection: RadiationPulse
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1
-      rechargeSound: Null
-    - type: BasicEntityAmmoProvider
+      rechargeSound:
+        path: /Audio/_NF/Effects/silence.ogg
+    - type: BallisticAmmoProvider
       proto: BulletBloodCultDarkBolt
-      capacity: 3
-      count: 3
     - type: HTN
       rootTask:
         task: TurretCompound
@@ -572,6 +561,3 @@
                 ShardCrystalRed:
                   min: 1
                   max: 3
-    - type: ContainerContainer # TODO: parent this off of a ballistic version?
-      containers:
-        ballistic-ammo: !type:Container

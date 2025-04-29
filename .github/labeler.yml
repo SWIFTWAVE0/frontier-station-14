@@ -50,10 +50,6 @@
 - changed-files:
   - any-glob-to-any-file: '**/*.swsl'
 
-"Audio":
-- changed-files:
-  - any-glob-to-any-file: '**/*.ogg'
-
 "No C#":
 - changed-files:
   - all-globs-to-all-files: "!**/*.cs"
@@ -72,7 +68,7 @@
 - all:
   - changed-files:
     - any-glob-to-any-file: "**/*.yml"
-    - all-globs-to-any-file:
+    - all-globs-to-all-files:
       - "!Resources/Maps/_NF/**/*.yml"
       - "!Resources/Prototypes/Maps/_NF/**/*.yml"
 

@@ -328,9 +328,6 @@
     attributes:
       proper: true
       gender: male
-  - type: Speech
-    speechVerb: Canine
-    speechSounds: Dog
   - type: Tag
     tags:
     - CannotSuicide
@@ -430,9 +427,6 @@
     - VimPilot
   - type: StealTarget
     stealGroup: AnimalWalter
-  - type: Speech
-    speechVerb: Canine
-    speechSounds: Dog
 
 - type: entity
   name: Morty
@@ -726,7 +720,7 @@
 - type: entity
   name: Smile
   id: MobSlimesPet
-  parent: [MobAdultSlimes, StripableInventoryBase]
+  parent: MobAdultSlimes
   description: This masterpiece has gone through thousands of experiments. But it is the sweetest creature in the world. Smile Slime!
   components:
   - type: Sprite
@@ -736,16 +730,6 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       state: aslime-_3
       shader: unshaded
-    - map: [ "head" ]
-  - type: Inventory
-    speciesId: slime
-    templateId: head
-    displacements:
-      head:
-        sizeMaps:
-          32:
-            sprite: Mobs/Pets/Smile/smile_displacement.rsi
-            state: head
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -791,7 +775,7 @@
         Caustic: 1
   - type: MultiHandedItem
   - type: Item
-    sprite: Mobs/Pets/Smile/smile.rsi
+    sprite: Mobs/Pets/smile.rsi
     size: Huge
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-slime
@@ -801,7 +785,6 @@
     name: ghost-role-information-smile-name
     description: ghost-role-information-smile-description
     rules: ghost-role-information-nonantagonist-rules
-    raffle: null
   - type: Grammar
     attributes:
       proper: true
@@ -842,7 +825,6 @@
     attributes:
       proper: true
       gender: male
-  - type: CargoSellBlacklist # Frontier
 
 - type: entity
   name: Tropico

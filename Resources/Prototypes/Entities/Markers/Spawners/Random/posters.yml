@@ -92,25 +92,12 @@
       - PosterContrabandInterdyne
       - PosterContrabandWaffleCorp
       - PosterContrabandMissingSpacepen
-        # Frontier: Start
-      - NFPosterContrabandLvhiStation
-      - NFPosterContrabandLvhiShuttle
-      - NFPosterContrabandLvhiSpace
-      - NFPosterContrabandLvhiMountains
-      - NFPosterContrabandLvhiPlanetCore
-      - NFPosterContrabandLvhiLogo
-      - NFPosterContrabandFsbLogo
-      - NFPosterContrabandFsbStasis
-      - NFPosterContrabandFsbApothecary
-      - NFPosterContrabandEatShrooms
-      - NFPosterContrabandKillerFashion
-      - NFPosterContrabandGoblinFront
-      - NFPosterContrabandGoblinate
-      - NFPosterContrabandFsbRubicon
-      - NFPosterContrabandWyvernShipyards
-      - NFPosterContrabandRatvarLives
-      - NFPosterContrabandFsbNightlight
-        # Frontier: Ending
+      - NFPosterContrabandLvhiStation # Frontier
+      - NFPosterContrabandLvhiShuttle # Frontier
+      - NFPosterContrabandLvhiSpace # Frontier
+      - NFPosterContrabandFsbLogo # Frontier
+      - NFPosterContrabandFsbStasis # Frontier
+      - NFPosterContrabandFsbApothecary # Frontier
     chance: 1
 
 - type: entity
@@ -169,22 +156,5 @@
       - PosterLegitPeriodicTable
       - PosterLegitRenault
       - PosterLegitNTTGC
-      - PosterLegitSafetyMothDelam
-      - PosterLegitSafetyMothEpi
-      - PosterLegitSafetyMothPiping
-      - PosterLegitSafetyMothMeth
-      - PosterLegitSafetyMothHardhat
-      - PosterLegitSafetyMothSSD
-      - PosterLegitOppenhopper
-      - PosterLegitTyrone
-        # Frontier
-      - NFPosterLegitMagnusWatching
-      - NFPosterLegitGoblinTinkerer
-      - NFPosterLegitBahamaMama
-      - NFPosterLegitWinnerWinner
-      - NFPosterLegitWantedClarpy
-      - NFPosterLegitMothPlease
-      - NFPosterLegitHaveYouSeenThisEgg
-      - NFPosterLegitGunTurnIn
-        # End Frontier
+      - NFPosterLegitMagnusWatching # Frontier
     chance: 1

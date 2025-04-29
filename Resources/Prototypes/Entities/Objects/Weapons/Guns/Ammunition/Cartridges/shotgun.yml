@@ -1,7 +1,7 @@
 - type: entity
   id: BaseShellShotgun
   name: shell (.50)
-  parent: [ BaseCartridge, BaseC1Contraband ] # Frontier: added BaseC1Contraband
+  parent: [ BaseCartridge, BaseC1Contraband ] # Frontier: BaseRestrictedContraband<BaseC1Contraband
   abstract: true
   components:
   - type: Tag
@@ -24,13 +24,8 @@
 - type: entity
   id: ShellShotgunBeanbag
   name: shell (.50 beanbag)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityBartenderContraband
+  parent: BaseShellShotgun
   components:
-  - type: Tag
-    tags:
-    - Cartridge
-    - ShellShotgun
-    - ShellShotgunLight
   - type: Sprite
     layers:
       - state: beanbag
@@ -43,7 +38,7 @@
 - type: entity
   id: ShellShotgunSlug
   name: shell (.50 slug)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
   - type: Sprite
     layers:
@@ -59,11 +54,6 @@
   name: shell (.50 flare)
   parent: BaseShellShotgun
   components:
-  - type: Tag
-    tags:
-    - Cartridge
-    - ShellShotgun
-    - ShellShotgunLight
   - type: Sprite
     layers:
       - state: flare
@@ -75,8 +65,8 @@
 
 - type: entity
   id: ShellShotgun
-  name: shell (.50 pellet)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  name: shell (.50)
+  parent: BaseShellShotgun
   components:
   - type: Sprite
     layers:
@@ -88,7 +78,7 @@
 - type: entity
   id: ShellShotgunIncendiary
   name: shell (.50 incendiary)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
   - type: Sprite
     layers:
@@ -102,7 +92,7 @@
 - type: entity
   id: ShellShotgunPractice
   name: shell (.50 practice)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
   - type: Sprite
     layers:
@@ -116,13 +106,8 @@
 - type: entity
   id: ShellTranquilizer
   name: shell (.50 tranquilizer)
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
-  - type: Tag
-    tags:
-    - Cartridge
-    - ShellShotgun
-    - ShellShotgunLight
   - type: Sprite
     layers:
       - state: tranquilizer
@@ -145,13 +130,8 @@
   id: ShellShotgunImprovised
   name: improvised shotgun shell
   description: A homemade shotgun shell that shoots painful glass shrapnel. The spread is so wide that it couldn't hit the broad side of a barn.
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
-  - type: Tag
-    tags:
-    - Cartridge
-    - ShellShotgun
-    - ShellShotgunLight
   - type: Sprite
     layers:
       - state: improvised
@@ -167,7 +147,7 @@
 - type: entity
   id: ShellShotgunUranium
   name: uranium shotgun shell
-  parent: BaseShellShotgun # Frontier: remove BaseSecurityContraband
+  parent: BaseShellShotgun
   components:
     - type: Sprite
       layers:

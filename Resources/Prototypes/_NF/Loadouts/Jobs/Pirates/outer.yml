@@ -1,11 +1,11 @@
 - type: loadout
-  id: NFPirateFirstMateClothingOuterCoatGentle
+  id: PirateFirstMateClothingOuterCoatGentle
   price: 0
   equipment:
     outerClothing: ClothingOuterCoatGentle
 
 - type: loadout
-  id: NFPirateCaptainClothingOuterCoatPirate
+  id: PirateCaptainClothingOuterCoatPirate
   price: 0
   equipment:
     outerClothing: ClothingOuterCoatPirate

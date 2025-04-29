@@ -9,7 +9,6 @@ using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Database;
-using Content.Shared.IdentityManagement;
 using Content.Shared.NameIdentifier;
 using Content.Shared.Paper;
 using Content.Shared.Stacks;
@@ -18,7 +17,6 @@ using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Cargo.Systems;
@@ -28,7 +26,6 @@ public sealed partial class CargoSystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly NameIdentifierSystem _nameIdentifier = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSys = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     [ValidatePrototypeId<NameIdentifierGroupPrototype>]
     private const string BountyNameIdentifierGroup = "Bounty";
@@ -58,7 +55,7 @@ public sealed partial class CargoSystem
             return;
 
         var untilNextSkip = bountyDb.NextSkipTime - _timing.CurTime;
-        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(bountyDb.Bounties, bountyDb.History, untilNextSkip));
+        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(bountyDb.Bounties, untilNextSkip));
     }
 
     private void OnPrintLabelMessage(EntityUid uid, CargoBountyConsoleComponent component, BountyPrintLabelMessage args)
@@ -99,13 +96,13 @@ public sealed partial class CargoSystem
             return;
         }
 
-        if (!TryRemoveBounty(station, bounty.Value, true, args.Actor))
+        if (!TryRemoveBounty(station, bounty.Value))
             return;
 
         FillBountyDatabase(station);
         db.NextSkipTime = _timing.CurTime + db.SkipDelay;
         var untilNextSkip = db.NextSkipTime - _timing.CurTime;
-        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
+        _uiSystem.SetUiState(uid, CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, untilNextSkip));
         _audio.PlayPvs(component.SkipSound, uid);
     }
 
@@ -182,7 +179,7 @@ public sealed partial class CargoSystem
                 continue;
             }
 
-            TryRemoveBounty(station, bounty.Value, false);
+            TryRemoveBounty(station, bounty.Value);
             FillBountyDatabase(station);
             _adminLogger.Add(LogType.Action, LogImpact.Low, $"Bounty \"{bounty.Value.Bounty}\" (id:{bounty.Value.Id}) was fulfilled");
         }
@@ -423,13 +420,6 @@ public sealed partial class CargoSystem
             return false;
 
         _nameIdentifier.GenerateUniqueName(uid, BountyNameIdentifierGroup, out var randomVal);
-        var newBounty = new CargoBountyData(bounty, randomVal);
-        // This bounty id already exists! Probably because NameIdentifierSystem ran out of ids.
-        if (component.Bounties.Any(b => b.Id == newBounty.Id))
-        {
-            Log.Error("Failed to add bounty {ID} because another one with the same ID already existed!", newBounty.Id);
-            return false;
-        }
         component.Bounties.Add(new CargoBountyData(bounty, randomVal));
         _adminLogger.Add(LogType.Action, LogImpact.Low, $"Added bounty \"{bounty.ID}\" (id:{component.TotalBounties}) to station {ToPrettyString(uid)}");
         component.TotalBounties++;
@@ -437,44 +427,24 @@ public sealed partial class CargoSystem
     }
 
     [PublicAPI]
-    public bool TryRemoveBounty(Entity<StationCargoBountyDatabaseComponent?> ent,
-        string dataId,
-        bool skipped,
-        EntityUid? actor = null)
+    public bool TryRemoveBounty(EntityUid uid, string dataId, StationCargoBountyDatabaseComponent? component = null)
     {
-        if (!TryGetBountyFromId(ent.Owner, dataId, out var data, ent.Comp))
+        if (!TryGetBountyFromId(uid, dataId, out var data, component))
             return false;
 
-        return TryRemoveBounty(ent, data.Value, skipped, actor);
+        return TryRemoveBounty(uid, data.Value, component);
     }
 
-    public bool TryRemoveBounty(Entity<StationCargoBountyDatabaseComponent?> ent,
-        CargoBountyData data,
-        bool skipped,
-        EntityUid? actor = null)
+    public bool TryRemoveBounty(EntityUid uid, CargoBountyData data, StationCargoBountyDatabaseComponent? component = null)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(uid, ref component))
             return false;
 
-        for (var i = 0; i < ent.Comp.Bounties.Count; i++)
+        for (var i = 0; i < component.Bounties.Count; i++)
         {
-            if (ent.Comp.Bounties[i].Id == data.Id)
+            if (component.Bounties[i].Id == data.Id)
             {
-                string? actorName = null;
-                if (actor != null)
-                {
-                    var getIdentityEvent = new TryGetIdentityShortInfoEvent(ent.Owner, actor.Value);
-                    RaiseLocalEvent(getIdentityEvent);
-                    actorName = getIdentityEvent.Title;
-                }
-
-                ent.Comp.History.Add(new CargoBountyHistoryData(data,
-                    skipped
-                        ? CargoBountyHistoryData.BountyResult.Skipped
-                        : CargoBountyHistoryData.BountyResult.Completed,
-                    _gameTiming.CurTime,
-                    actorName));
-                ent.Comp.Bounties.RemoveAt(i);
+                component.Bounties.RemoveAt(i);
                 return true;
             }
         }
@@ -515,7 +485,7 @@ public sealed partial class CargoSystem
             }
 
             var untilNextSkip = db.NextSkipTime - _timing.CurTime;
-            _uiSystem.SetUiState((uid, ui), CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, db.History, untilNextSkip));
+            _uiSystem.SetUiState((uid, ui), CargoConsoleUiKey.Bounty, new CargoBountyConsoleState(db.Bounties, untilNextSkip));
         }
     }
 

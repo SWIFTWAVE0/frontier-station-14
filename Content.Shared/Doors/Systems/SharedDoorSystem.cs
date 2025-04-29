@@ -9,7 +9,6 @@ using Content.Shared.Emag.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.Prying.Components;
 using Content.Shared.Prying.Systems;
 using Content.Shared.Stunnable;
@@ -23,6 +22,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Map.Components;
+using Content.Shared.Emag.Components; // Frontier - Added DEMAG
 
 namespace Content.Shared.Doors.Systems;
 
@@ -33,7 +33,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] protected readonly SharedPhysicsSystem PhysicsSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] protected readonly TagSystem Tags = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
@@ -44,18 +43,25 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly PryingSystem _pryingSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
 
 
     [ValidatePrototypeId<TagPrototype>]
     public const string DoorBumpTag = "DoorBumpOpener";
 
     /// <summary>
+    ///     A body must have an intersection percentage larger than this in order to be considered as colliding with a
+    ///     door. Used for safety close-blocking and crushing.
+    /// </summary>
+    /// <remarks>
+    ///     The intersection percentage relies on WORLD AABBs. So if this is too small, and the grid is rotated 45
+    ///     degrees, then an entity outside of the airlock may be crushed.
+    /// </remarks>
+    public const float IntersectPercentage = 0.2f;
+
+    /// <summary>
     ///     A set of doors that are currently opening, closing, or just queued to open/close after some delay.
     /// </summary>
     private readonly HashSet<Entity<DoorComponent>> _activeDoors = new();
-
-    private readonly HashSet<Entity<PhysicsComponent>> _doorIntersecting = new();
 
     public override void Initialize()
     {
@@ -77,8 +83,10 @@ public abstract partial class SharedDoorSystem : EntitySystem
         SubscribeLocalEvent<DoorComponent, WeldableAttemptEvent>(OnWeldAttempt);
         SubscribeLocalEvent<DoorComponent, WeldableChangedEvent>(OnWeldChanged);
         SubscribeLocalEvent<DoorComponent, GetPryTimeModifierEvent>(OnPryTimeModifier);
+
+        SubscribeLocalEvent<DoorComponent, OnAttemptEmagEvent>(OnAttemptEmag);
         SubscribeLocalEvent<DoorComponent, GotEmaggedEvent>(OnEmagged);
-        SubscribeLocalEvent<DoorComponent, GotUnEmaggedEvent>(OnUnEmagged); // Frontier: demag
+        SubscribeLocalEvent<DoorComponent, GotUnEmaggedEvent>(OnUnEmagged); // Frontier - Added DEMUG
     }
 
     protected virtual void OnComponentInit(Entity<DoorComponent> ent, ref ComponentInit args)
@@ -117,50 +125,49 @@ public abstract partial class SharedDoorSystem : EntitySystem
         _activeDoors.Remove(door);
     }
 
-    private void OnEmagged(EntityUid uid, DoorComponent door, ref GotEmaggedEvent args)
+    private void OnAttemptEmag(EntityUid uid, DoorComponent door, ref OnAttemptEmagEvent args)
     {
-        if (!_emag.CompareFlag(args.Type, EmagType.Access))
-            return;
-
         if (!TryComp<AirlockComponent>(uid, out var airlock))
+        {
+            args.Handled = true;
             return;
+        }
 
         if (IsBolted(uid) || !airlock.Powered)
+        {
+            args.Handled = true;
             return;
+        }
 
         if (door.State != DoorState.Closed)
-            return;
+        {
+            args.Handled = true;
+        }
+    }
 
+    private void OnEmagged(EntityUid uid, DoorComponent door, ref GotEmaggedEvent args)
+    {
         if (!SetState(uid, DoorState.Emagging, door))
             return;
-
-        args.Repeatable = true;
+        Audio.PlayPredicted(door.SparkSound, uid, args.UserUid, AudioParams.Default.WithVolume(8));
         args.Handled = true;
     }
 
     private void OnUnEmagged(EntityUid uid, DoorComponent door, ref GotUnEmaggedEvent args) // Frontier - Added DEMUG
     {
-        if (!_emag.CompareFlag(args.Type, EmagType.Access))
-            return;
-
-        if (!TryComp<AirlockComponent>(uid, out var airlock))
-            return;
-
-        if (!airlock.Powered)
-            return;
-
-        if (!_emag.CheckFlag(uid, EmagType.Access))
-            return;
-
-        if (TryComp<DoorBoltComponent>(uid, out var doorBolt)
-            && IsBolted(uid, doorBolt))
+        if (TryComp<AirlockComponent>(uid, out var airlockComponent))
         {
-            SetBoltsDown((uid, doorBolt), false, args.UserUid, true);
+            if (HasComp<EmaggedComponent>(uid))
+            {
+                if (TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
+                {
+                    SetBoltsDown((uid, doorBoltComponent), !doorBoltComponent.BoltsDown, null, true);
+                    SetState(uid, DoorState.Closing, door);
+                }
+                Audio.PlayPredicted(door.SparkSound, uid, args.UserUid, AudioParams.Default.WithVolume(8));
+                args.Handled = true;
+            }
         }
-        SetState(uid, DoorState.Closing, door);
-
-        Audio.PlayPredicted(door.SparkSound, uid, args.UserUid, AudioParams.Default.WithVolume(8));
-        args.Handled = true;
     }
 
     #region StateManagement
@@ -173,9 +180,10 @@ public abstract partial class SharedDoorSystem : EntitySystem
             _activeDoors.Add(ent);
 
         RaiseLocalEvent(ent, new DoorStateChangedEvent(door.State));
+        AppearanceSystem.SetData(ent, DoorVisuals.State, door.State);
     }
 
-    public bool SetState(EntityUid uid, DoorState state, DoorComponent? door = null)
+    protected bool SetState(EntityUid uid, DoorState state, DoorComponent? door = null)
     {
         if (!Resolve(uid, ref door))
             return false;
@@ -220,7 +228,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
         door.State = state;
         Dirty(uid, door);
         RaiseLocalEvent(uid, new DoorStateChangedEvent(state));
-
         AppearanceSystem.SetData(uid, DoorVisuals.State, door.State);
         return true;
     }
@@ -413,25 +420,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
         Dirty(uid, door);
 
     }
-
-    /// <summary>
-    /// Opens and then bolts a door.
-    /// Different from emagging this does not remove the access reader, so it can be repaired by simply unbolting the door.
-    /// </summary>
-    public bool TryOpenAndBolt(EntityUid uid, DoorComponent? door = null, AirlockComponent? airlock = null)
-    {
-        if (!Resolve(uid, ref door, ref airlock))
-            return false;
-
-        if (IsBolted(uid) || !airlock.Powered || door.State != DoorState.Closed)
-        {
-            return false;
-        }
-
-        SetState(uid, DoorState.Emagging, door);
-
-        return true;
-    }
     #endregion
 
     #region Closing
@@ -453,7 +441,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     /// <param name="uid"> The uid of the door</param>
     /// <param name="door"> The doorcomponent of the door</param>
     /// <param name="user"> The user (if any) opening the door</param>
-    public bool CanClose(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool partial = false)
+    public bool CanClose(EntityUid uid, DoorComponent? door = null, EntityUid? user = null)
     {
         if (!Resolve(uid, ref door))
             return false;
@@ -463,7 +451,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (door.State is DoorState.Welded or DoorState.Closed)
             return false;
 
-        var ev = new BeforeDoorClosedEvent(door.PerformCollisionCheck, partial);
+        var ev = new BeforeDoorClosedEvent(door.PerformCollisionCheck);
         RaiseLocalEvent(uid, ev);
         if (ev.Cancelled)
             return false;
@@ -497,17 +485,17 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!Resolve(uid, ref door, ref physics))
             return false;
 
+        door.Partial = true;
+
         // Make sure no entity walked into the airlock when it started closing.
-        if (!CanClose(uid, door, partial: true))
+        if (!CanClose(uid, door))
         {
             door.NextStateChange = GameTiming.CurTime + door.OpenTimeTwo;
-            door.State = DoorState.Open;
-            AppearanceSystem.SetData(uid, DoorVisuals.State, DoorState.Open);
-            Dirty(uid, door);
+            door.State = DoorState.Opening;
+            AppearanceSystem.SetData(uid, DoorVisuals.State, DoorState.Opening);
             return false;
         }
 
-        door.Partial = true;
         SetCollidable(uid, true, door, physics);
         door.NextStateChange = GameTiming.CurTime + door.CloseTimeTwo;
         Dirty(uid, door);
@@ -586,28 +574,24 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!TryComp<MapGridComponent>(xform.GridUid, out var mapGridComp))
             yield break;
         var tileRef = _mapSystem.GetTileRef(xform.GridUid.Value, mapGridComp, xform.Coordinates);
-
-        _doorIntersecting.Clear();
-        _entityLookup.GetLocalEntitiesIntersecting(xform.GridUid.Value, tileRef.GridIndices, _doorIntersecting, gridComp: mapGridComp, flags: (LookupFlags.All & ~LookupFlags.Sensors));
+        var doorWorldBounds = _entityLookup.GetWorldBounds(tileRef);
 
         // TODO SLOTH fix electro's code.
         // ReSharper disable once InconsistentNaming
+        var doorAABB = _entityLookup.GetWorldAABB(uid);
 
-        foreach (var otherPhysics in _doorIntersecting)
+        foreach (var otherPhysics in PhysicsSystem.GetCollidingEntities(Transform(uid).MapID, doorWorldBounds))
         {
             if (otherPhysics.Comp == physics)
                 continue;
 
-            if (!otherPhysics.Comp.CanCollide)
-                continue;
-
             //TODO: Make only shutters ignore these objects upon colliding instead of all airlocks
             // Excludes Glasslayer for windows, GlassAirlockLayer for windoors, TableLayer for tables
-            if (otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassAirlockLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.TableLayer)
+            if (!otherPhysics.Comp.CanCollide || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassAirlockLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.TableLayer)
                 continue;
 
-            // Ignore low-passable entities.
-            if ((otherPhysics.Comp.CollisionMask & (int)CollisionGroup.LowImpassable) == 0)
+            //If the colliding entity is a slippable item ignore it by the airlock
+            if (otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.SlipLayer && otherPhysics.Comp.CollisionMask == (int) CollisionGroup.ItemMask)
                 continue;
 
             //For when doors need to close over conveyor belts
@@ -615,6 +599,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
                 continue;
 
             if ((physics.CollisionMask & otherPhysics.Comp.CollisionLayer) == 0 && (otherPhysics.Comp.CollisionMask & physics.CollisionLayer) == 0)
+                continue;
+
+            if (_entityLookup.GetWorldAABB(otherPhysics.Owner).IntersectPercentage(doorAABB) < IntersectPercentage)
                 continue;
 
             yield return otherPhysics.Owner;
@@ -644,7 +631,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         var otherUid = args.OtherEntity;
 
         if (Tags.HasTag(otherUid, DoorBumpTag))
-            TryOpen(uid, door, otherUid, quiet: door.State == DoorState.Denying, predicted: true);
+            TryOpen(uid, door, otherUid, quiet: door.State == DoorState.Denying);
     }
     #endregion
 
@@ -736,8 +723,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
         }
 
         door.NextStateChange = GameTiming.CurTime + delay.Value;
-        Dirty(uid, door);
-
         _activeDoors.Add((uid, door));
     }
 
@@ -746,7 +731,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         var (uid, door, physics) = ent;
         if (door.BumpOpen)
         {
-            foreach (var other in PhysicsSystem.GetContactingEntities(uid, physics))
+            foreach (var other in PhysicsSystem.GetContactingEntities(uid, physics, approximate: true))
             {
                 if (Tags.HasTag(other, DoorBumpTag) && TryOpen(uid, door, other, quiet: true))
                     break;

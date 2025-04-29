@@ -9,20 +9,16 @@
     handheld: true
 
 - type: entity
-  parent: [MusicBasePDA, AdminPDA]
+  parent: [MusicBasePDA, CentcomPDA]
   id: NFAdminPDA
   components:
   - type: CartridgeLoader
-    diskSpace: 20
     preinstalled:
       - CrewManifestCartridge
       - NotekeeperCartridge
-      - NanoTaskCartridge
       - NewsReaderCartridge
       - BountyContractsCartridge
-      - AstroNavCartridge
       - WantedListCartridge
-      - LedgerCartridge
       - LogProbeCartridge
       - MailMetricsCartridge
       - AppraisalCartridge
@@ -36,15 +32,24 @@
   components:
   - type: Pda
     id: MercenaryIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-mercenary
+    state: pda-mercenary
   - type: PdaBorderColor
     borderColor: "#717059"
     accentVColor: "#A32D26"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-mercenary
 
 - type: entity
@@ -55,15 +60,24 @@
   components:
   - type: Pda
     id: PilotIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-pilot
+    state: pda-pilot
   - type: PdaBorderColor
     borderColor: "#717059"
     accentVColor: "#A32D26"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-pilot
 
 - type: entity
@@ -74,15 +88,24 @@
   components:
   - type: Pda
     id: StcIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-stc
+    state: pda-stc
   - type: PdaBorderColor
     borderColor: "#F2F2F2"
     accentVColor: "#FE4900"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-stc
 
 - type: entity
@@ -93,11 +116,7 @@
   components:
   - type: Pda
     id: SecurityGuardIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-security
+    state: pda-security
   - type: PdaBorderColor
     borderColor: "#A32D26"
   - type: Icon
@@ -118,13 +137,14 @@
         - Write
 
 - type: entity
-  parent: [BaseSecurityPDA, BaseCommandContraband]
+  parent: BaseSecurityPDA
   id: SheriffPDA
   name: sheriff PDA
   description: Whosoever bears this PDA is the law.
   components:
   - type: Pda
     id: ShriffIDCard
+    state: pda-sheriff
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -132,32 +152,24 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-    penSlot:
-      startingItem: PenCentcom
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-sheriff
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-sheriff
-  - type: CartridgeLoader # Extended with the ledger
-    preinstalled:
-    - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NanoTaskCartridge
-    - NewsReaderCartridge
-    - BountyContractsCartridge
-    - AstroNavCartridge
-    - WantedListCartridge
-    - LedgerCartridge
 
 - type: entity
   parent: BaseSecurityPDA
@@ -167,6 +179,7 @@
   components:
   - type: Pda
     id: CadetIDCard
+    state: pda-cadet
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -174,15 +187,23 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-cadet
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-cadet
 
 - type: entity
@@ -193,6 +214,7 @@
   components:
   - type: Pda
     id: DeputyIDCard
+    state: pda-deputy
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -200,15 +222,23 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-deputy
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-deputy
 
 - type: entity
@@ -219,6 +249,7 @@
   components:
   - type: Pda
     id: BrigmedicNFIDCard
+    state: pda-brigmed
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -226,15 +257,23 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-brigmed
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-brigmed
 
 - type: entity
@@ -245,6 +284,7 @@
   components:
   - type: Pda
     id: SergeantIDCard
+    state: pda-sergeant
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -252,15 +292,23 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-sergeant
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-sergeant
 
 - type: entity
@@ -271,6 +319,7 @@
   components:
   - type: Pda
     id: BailiffIDCard
+    state: pda-bailiff
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -278,15 +327,23 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-bailiff
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-bailiff
 
 - type: entity
@@ -297,6 +354,7 @@
   components:
   - type: Pda
     id: NFDetectiveIDCard
+    state: pda-nfdetective
     bookSlot: # Frontier
       startingItem: HyperlinkBookNfsdSop
       priority: -2
@@ -304,14 +362,22 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-nfdetective
   - type: PdaBorderColor
     borderColor: "#774705"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-nfdetective
 
 - type: entity
@@ -322,6 +388,7 @@
   components:
   - type: Pda
     id: PublicAffairsIDCard
+    state: pda-pal
     penSlot:
       startingItem: PublicAffairsPen
       priority: -1
@@ -335,93 +402,85 @@
         tags:
         - BookSpaceLaw
         - BookNfsdSop
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-pal
   - type: PdaBorderColor
     borderColor: "#FFFDD0"
     accentHColor: "#896b49"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-pal
 
 - type: entity
-  parent: [BaseSecurityPDA, BaseCommandContraband]
+  parent: BaseSecurityPDA
   id: SrPDA
   name: station representative PDA
   description: Looks like it's been clawed on.
   components:
   - type: Pda
     id: SrIDCard
+    state: pda-sr
     penSlot:
       startingItem: PenCentcom
       priority: -1
       whitelist:
         tags:
         - Write
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-sr
   - type: PdaBorderColor
     borderColor: "#789876"
     accentHColor: "#447987"
+  - type: Sprite
+    sprite: _NF/Objects/Devices/pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
   - type: Icon
+    sprite: _NF/Objects/Devices/pda.rsi
     state: pda-sr
-  - type: CartridgeLoader
-    preinstalled:
-    - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NanoTaskCartridge
-    - NewsReaderCartridge
-    - BountyContractsCartridge
-    - AstroNavCartridge
-    - LedgerCartridge
-    - MailMetricsCartridge
 
 - type: entity
   parent: PiratePDA
-  id: NFPiratePDA
+  id: PirateNFPDA
   name: pirate PDA
-  suffix: Frontier
   components:
   - type: Pda
-    id: NFPirateIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-pirate
+    id: PirateNFIDCard
+    state: pda-pirate
 
 - type: entity
   parent: PiratePDA
-  id: NFPirateCaptainPDA
+  id: PirateCaptainNFPDA
   name: pirate captain PDA
-  suffix: Frontier
   components:
   - type: Pda
-    id: NFPirateCaptainIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-pirate
+    id: PirateCaptainNFIDCard
+    state: pda-pirate
 
 - type: entity
   parent: PiratePDA
-  id: NFPirateFirstMatePDA
+  id: PirateFirstMateNFPDA
   name: pirate first mate PDA
-  suffix: Frontier
   components:
   - type: Pda
-    id: NFPirateFirstMateIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-pirate
+    id: PirateFirstMateNFIDCard
+    state: pda-pirate
 
 - type: entity
   parent: PassengerPDA
@@ -430,11 +489,7 @@
   components:
   - type: Pda
     id: ContractorIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda
+    state: pda
 
 - type: entity
   parent: ClearPDA
@@ -442,56 +497,4 @@
   components:
   - type: Pda
     id: ContractorIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-clear
-
-- type: entity
-  parent: JanitorPDA
-  id: NFJanitorPDA
-  components:
-  - type: Pda
-    id: NFJanitorIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-janitor
-
-- type: entity
-  parent: [CMOPDA, BaseCommandContraband]
-  id: DocPDA
-  name: director of care PDA
-  description: It smells like disinfectant.
-  components:
-  - type: Pda
-    id: DocIDCard
-    penSlot:
-      startingItem: PenCentcom
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: PdaBorderColor
-    borderColor: "#789876"
-    accentHColor: "#447987"
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-doc
-  - type: Icon
-    sprite: _NF/Objects/Devices/pda.rsi
-    state: pda-doc
-  - type: CartridgeLoader
-    preinstalled:
-    - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NanoTaskCartridge
-    - NewsReaderCartridge
-    - BountyContractsCartridge
-    - AstroNavCartridge
-    - LedgerCartridge
-    - MedTekCartridge #medtek preloaded. Should be ok.
+    state: pda-clear

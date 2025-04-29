@@ -1,6 +1,6 @@
 - type: entity
-  id: ClothingShoesBootsMagSecurityFilled
-  parent: [ClothingShoesBootsMagSecurity, ClothingShoesBootsCombatFilled]
+  id: ClothingShoesBootsMagCombatFilled
+  parent: [ClothingShoesBootsMagCombat, ClothingShoesBootsCombatFilled]
 
 - type: entity
   id: ClothingShoesBootsMagNfsdFilled

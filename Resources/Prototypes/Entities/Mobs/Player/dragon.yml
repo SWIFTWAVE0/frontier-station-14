@@ -15,8 +15,6 @@
     name: ghost-role-information-space-dragon-name
     description: ghost-role-information-space-dragon-description
     rules: ghost-role-information-space-dragon-rules
-    mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -153,19 +151,13 @@
     tags:
     - CannotSuicide
     - DoorBumpOpener
-  - type: Puller
-    needsHands: false
 
 - type: entity
   parent: BaseMobDragon
   id: MobDragon
-  abstract: true # Frontier: use NF variants
   components:
   - type: Dragon
     spawnRiftAction: ActionSpawnRift
-  - type: GhostRole
-    mindRoles:
-    - MindRoleDragon
   - type: ActionGun
     action: ActionDragonsBreath
     gunProto: DragonsBreathGun
@@ -194,8 +186,7 @@
     projectileSpeed: 5
 
 - type: entity
-  abstract: true # Frontier: use NF variant
-  parent: [BaseMobDragon, MobNonHumanHostileBase]
+  parent: [NFMobRestrictions, BaseMobDragon] # Frontier: add NFMobRestrictions
   id: MobDragonDungeon
   suffix: Dungeon
   components:
@@ -216,11 +207,17 @@
     spawned:
     - id: FoodMeatDragon
       amount: 3
+    - id: DragonEgg #Frontier
+      amount: 1 #Frontier
+      prob: 0.3 #Frontier
   # half damage, spread evenly
   - type: MeleeWeapon
     damage:
       groups:
         Brute: 12
+  - type: ActionGun #Frontier
+    action: ActionDragonsBreath #Frontier
+    gunProto: DragonsBreathGun #Frontier
 
 - type: entity
   id: ActionSpawnRift

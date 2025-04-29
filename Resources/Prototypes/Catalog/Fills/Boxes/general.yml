@@ -1,6 +1,6 @@
 - type: entity
   name: cardboard box
-  parent: [BoxBase, RecyclableItemCardboard] # Frontier: added RecyclableItemCardboard
+  parent: BoxBase
   id: BoxCardboard
   description: A cardboard box for storing things.
   components:
@@ -56,16 +56,6 @@
         amount: 12
 
 - type: entity
-  name: warm lightbulb box # Frontier: "warm" to beginning
-  parent: BoxLightbulb
-  id: BoxWarmLightbulb
-  components:
-  - type: StorageFill
-    contents:
-      - id: WarmLightBulb
-        amount: 12
-
-- type: entity
   name: lighttube box
   parent: BoxLightbulb
   id: BoxLighttube
@@ -94,26 +84,6 @@
         amount: 6
       - id: LightBulb
         amount: 6
-
-- type: entity
-  name: holiday lighttube box
-  parent: BoxLightbulb
-  id: BoxLighttubeHoliday
-  components:
-  - type: StorageFill
-    contents:
-      - id: LightTubeCrystalRed # Its alternating on purpose for the light replacer.
-      - id: LightTubeCrystalGreen
-      - id: LightTubeCrystalRed
-      - id: LightTubeCrystalGreen
-      - id: LightTubeCrystalRed
-      - id: LightTubeCrystalGreen
-      - id: LightTubeCrystalRed
-      - id: LightTubeCrystalGreen
-      - id: LightTubeCrystalRed
-      - id: LightTubeCrystalGreen
-      - id: LightTubeCrystalRed
-      - id: LightTubeCrystalGreen
 
 - type: entity
   name: PDA box
@@ -189,7 +159,7 @@
       - id: FoodCondimentPacketKetchup
   - type: Sprite
     layers:
-      - state: box
+      - state: box_olive
       - state: writing
 
 - type: entity
@@ -230,7 +200,6 @@
     contents:
       - id: ClothingShoesBootsPerformer
       - id: ClothingUniformJumpskirtPerformer
-      - id: ClothingHeadPerformerWig
       - id: FoodMealMemoryleek
         amount: 2
 
@@ -351,7 +320,7 @@
         amount: 4
 
 - type: entity
-  name: NFSD encryption key box
+  name: nfsd encryption key box
   parent: BoxEncryptionKeyPassenger
   id: BoxEncryptionKeySecurity
   components:

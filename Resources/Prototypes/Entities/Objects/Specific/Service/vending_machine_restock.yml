@@ -344,7 +344,6 @@
     - SpaceUpInventory
     - SodaInventory
     - DrGibbInventory
-    - SmiteInventory 
   - type: Sprite
     layers:
     - state: base
@@ -377,7 +376,7 @@
   components:
   - type: VendingMachineRestock
     canRestock:
-    - NFSalvageEquipmentInventory # Frontier SalvageEquipmentInventory<NFSalvageEquipmentInventory
+    - SalvageEquipmentInventory
   - type: Sprite
     layers:
     - state: base

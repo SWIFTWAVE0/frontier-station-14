@@ -3,13 +3,11 @@ station-event-ion-storm-start-announcement = Ion storm detected near the station
 ion-storm-law-scrambled-number = [font="Monospace"][scramble rate=250 length={$length} chars="@@###$$&%!01"/][/font]
 
 ion-storm-you = YOU
-# Frontier: the station < the sector
-ion-storm-the-station = THE SECTOR
+ion-storm-the-station = THE STATION
 ion-storm-the-crew = THE CREW
 ion-storm-the-job = THE {$job}
 ion-storm-clowns = CLOWNS
-# Frontier: heads of staff < sector command
-ion-storm-heads = SECTOR COMMAND
+ion-storm-heads = HEADS OF STAFF
 ion-storm-crew = CREW
 ion-storm-people = PEOPLE
 
@@ -19,11 +17,8 @@ ion-storm-x-and-y = {$x} AND {$y}
 # joined is short for {$number} {$adjective}
 # subjects can generally be threats or jobs or objects
 # thing is specified above it
-# Frontier: "on the station" < "in the sector"
-ion-storm-law-on-station = THERE ARE {$joined} {$subjects} IN THE SECTOR
-# ion-storm-law-call-shuttle = THE SHUTTLE MUST BE CALLED BECAUSE OF {$joined} {$subjects} ON THE STATION
-# Frontier
-ion-storm-law-nf-needs-help = {$joined} {$subjects} NEED YOUR HELP
+ion-storm-law-on-station = THERE ARE {$joined} {$subjects} ON THE STATION
+ion-storm-law-no-shuttle = THE SHIFT END CANNOT BE CALLED BECAUSE OF {$joined} {$subjects} ON FRONTIER
 ion-storm-law-crew-are = THE {$who} ARE NOW {$joined} {$subjects}
 
 ion-storm-law-subjects-harmful = {$adjective} {$subjects} ARE HARMFUL TO THE CREW
@@ -38,21 +33,21 @@ ion-storm-law-not-having-harmful = NOT HAVING {$adjective} {$thing} IS HARMFUL T
 
 # thing is a concept or require
 ion-storm-law-requires = {$who} {$plural ->
-    [true] REQUIRE
-    *[false] REQUIRES
+    [true] REQUIRES
+    *[false] REQUIRE
 } {$thing}
 ion-storm-law-requires-subjects = {$who} {$plural ->
-    [true] REQUIRE
-    *[false] REQUIRES
+    [true] REQUIRES
+    *[false] REQUIRE
 } {$joined} {$subjects}
 
 ion-storm-law-allergic = {$who} {$plural ->
-    [true] ARE
-    *[false] IS
+    [true] IS
+    *[false] ARE
 } {$severity} ALLERGIC TO {$allergy}
 ion-storm-law-allergic-subjects = {$who} {$plural ->
-    [true] ARE
-    *[false] IS
+    [true] IS
+    *[false] ARE
 } {$severity} ALLERGIC TO {$adjective} {$subjects}
 
 ion-storm-law-feeling = {$who} {$feeling} {$concept}

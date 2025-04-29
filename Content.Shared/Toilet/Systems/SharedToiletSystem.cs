@@ -33,13 +33,15 @@ namespace Content.Shared.Toilet.Systems
             if (_random.Prob(0.5f))
                 component.ToggleSeat = true;
 
-            // Frontier: selectively clog toilets, unclogged toilets don't get free stuff
-            if (TryComp<PlungerUseComponent>(uid, out var plunger))
+            if (_random.Prob(0.3f))
             {
-                plunger.NeedsPlunger = _random.Prob(component.ClogProbability);
-                plunger.Plunged = !plunger.NeedsPlunger;
+                TryComp<PlungerUseComponent>(uid, out var plunger);
+
+                if (plunger == null)
+                    return;
+
+                plunger.NeedsPlunger = true;
             }
-            // End Frontier
 
             UpdateAppearance(uid);
             Dirty(uid, component);

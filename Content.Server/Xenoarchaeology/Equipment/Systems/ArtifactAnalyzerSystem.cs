@@ -12,7 +12,6 @@ using Content.Shared.Paper;
 using Content.Shared.Placeable;
 using Content.Shared.Popups;
 using Content.Shared.Power;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.Research.Components;
 using Content.Shared.Xenoarchaeology.Equipment;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
@@ -34,16 +33,15 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly ArtifactSystem _artifact = default!;
-    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly PaperSystem _paper = default!;
     [Dependency] private readonly ResearchSystem _research = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _receiver = default!;
+    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly TraversalDistorterSystem _traversalDistorter = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -503,32 +501,30 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
     private void OnAnalyzeStart(EntityUid uid, ActiveArtifactAnalyzerComponent component, ComponentStartup args)
     {
         // Frontier: enable power before running
-        if (!TryComp<ApcPowerReceiverComponent>(uid, out var power))
+        if (!TryComp<ApcPowerReceiverComponent>(uid, out var powa))
             return;
 
         if (!TryComp<ArtifactAnalyzerComponent>(uid, out var analyzer))
             return;
 
-        SetPowerSwitch(analyzer, power, true);
+        SetPowerSwitch(analyzer, powa, true);
         // End Frontier
 
-        //_receiver.SetNeedsPower(uid, true); // Frontier
         _ambientSound.SetAmbience(uid, true);
     }
 
     private void OnAnalyzeEnd(EntityUid uid, ActiveArtifactAnalyzerComponent component, ComponentShutdown args)
     {
         // Frontier: disable power when not running
-        if (!TryComp<ApcPowerReceiverComponent>(uid, out var power))
+        if (!TryComp<ApcPowerReceiverComponent>(uid, out var powa))
             return;
 
         if (!TryComp<ArtifactAnalyzerComponent>(uid, out var analyzer))
             return;
 
-        SetPowerSwitch(analyzer, power, false);
+        SetPowerSwitch(analyzer, powa, false);
         // End Frontier
 
-        // _receiver.SetNeedsPower(uid, false); // Frontier
         _ambientSound.SetAmbience(uid, false);
     }
 

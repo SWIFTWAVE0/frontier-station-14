@@ -33,7 +33,7 @@
   id: NFJanitorGear
   equipment:
     shoes: ClothingShoesGaloshes
-    id: NFJanitorPDA
+    id: JanitorPDA
     belt: ClothingBeltJanitorFilled
   storage:
     back:

@@ -234,7 +234,7 @@
         - id: ClothingOuterHardsuitPrivateSecurity
         - id: ClothingMaskGasSecurity
         - id: JetpackMiniFilled
-        - id: ClothingShoesBootsMagSecurity
+        - id: ClothingShoesBootsMagCombat
   - type: AccessReader
     access: [["Captain"], ["Mercenary"]]
 
@@ -328,7 +328,7 @@
         - id: JetpackNfsdFilled
         - id: ClothingShoesBootsMagNfsd # Frontier
   - type: AccessReader
-    access: [["Brigmedic"]]
+    access: [["Security"]]
 
 #Sergeant hardsuit
 - type: entity
