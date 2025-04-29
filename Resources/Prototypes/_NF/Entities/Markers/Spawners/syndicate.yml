@@ -11,18 +11,17 @@
           state: icon
     - type: RandomSpawner
       prototypes:
-        - CrateTradeContrabandSecureCyberSunFilled
-        - CrateTradeContrabandSecureDonkFilled
-        - CrateTradeContrabandSecureNormalFilled
-        - CrateTradeSecureHighFilledContraband
-        - CrateTradeSecureNormalFilledContraband #its in here twice for balance. TODO: find a better crate to put here instead like an animal one or something.
-        - CrateTradeSecureNormalFilledContraband
+        - CrateTradeContrabandSecure5
+        - CrateTradeContrabandSecure4
+        - CrateTradeContrabandSecure3
+        - CrateTradeContrabandSecure2
+        - CrateTradeContrabandSecure1
+        - CrateTradeContrabandSecure1
         - LandMineExplosive
         - BannerSyndicate
       rarePrototypes:
-        - CrateSyndicateSurplusBundle
-        - CrateSyndicateLightSurplusBundle
-      rareChance: 0.01
+        - Telecrystal5 # FIXME: loose telecrystals no good
+      rareChance: 0.01 # ~1/12th as likely as a given crate
 
 - type: entity
   name: Contraband Crate Spawner
@@ -37,9 +36,9 @@
           state: icon
     - type: RandomSpawner
       prototypes:
-        - CrateTradeContrabandSecureCyberSunFilled
-        - CrateTradeContrabandSecureDonkFilled
-        - CrateTradeContrabandSecureNormalFilled
+        - CrateTradeContrabandSecure5
+        - CrateTradeContrabandSecure4
+        - CrateTradeContrabandSecure3
       rarePrototypes:
         - CrateSyndicateSurplusBundle
         - CrateSyndicateSurplusBundle
@@ -60,15 +59,11 @@
           state: pinpointer-syndicate
     - type: RandomSpawner
       prototypes:
-        - ToolboxSyndicateFilled
-        - ToolboxSyndicate
-        - ClothingEyesGlassesHiddenSecurity
         - ClothingBackpackDuffelSyndicateEVABundle
         - ClothingBackpackSyndicate
         - ClothingMaskGasSyndicate
         - SyndieHandyFlag
         - SyndicatePersonalAI
-        - RubberStampSyndicate
         - ClothingBeltSyndieHolster
         - ClothingEyesHudSyndicate
         - ClothingBackpackDuffelSyndicatePyjamaBundle
@@ -79,7 +74,8 @@
         - ToyFigurineNukieElite
         - ToyNuke
         - PlushieNuke
-      chance: 0.9
+        - Telecrystal5
+        - Telecrystal5
       rarePrototypes:
         - PinpointerSyndicatePOI
       rareChance: 0.1

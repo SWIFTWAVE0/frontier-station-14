@@ -41,7 +41,7 @@ public sealed class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
     {
         base.Started(uid, component, gameRule, args);
 
-        var numFaxes = _random.Next(component.MinFaxes, component.MaxFaxes);
+        var numFaxes = _random.Next(component.MinFaxes, component.MaxFaxes + 1);
 
         List<EntityUid> stations = new();
         int retries = 0;
@@ -79,7 +79,8 @@ public sealed class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
                 PrototypeId = component.PrototypeId,
                 StampState = component.StampState,
                 StampedBy = component.StampedBy ?? new(),
-                Locked = component.Locked
+                Locked = component.Locked,
+                StampProtected = component.StampProtected, // Frontier
             };
             string? localAddress = component.FromAddress;
             if (component.PreFaxActions != null)
@@ -113,11 +114,13 @@ public sealed class RandomFaxRule : StationEventSystem<RandomFaxRuleComponent>
                     prototypeId: recipientPrintout.PrototypeId,
                     stampState: recipientPrintout.StampState,
                     stampedBy: recipientPrintout.StampedBy,
-                    locked: recipientPrintout.Locked
+                    locked: recipientPrintout.Locked,
+                    stampProtected: recipientPrintout.StampProtected
                     );
                 _faxSystem.Receive(faxUid, printout, recipientAddress, faxComp);
                 break;
             }
+            stations.Add(chosenStation.Value);
             faxesSent++;
         }
     }

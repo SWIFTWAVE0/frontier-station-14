@@ -21,14 +21,14 @@
   objectType: Structure
 
 - type: construction
-  name: secure crate
-  id: CrateSecure
-  graph: CrateSecure
+  name: freezer
+  id: CrateFreezer
+  graph: CrateFreezer
   startNode: start
-  targetNode: cratesecure
+  targetNode: done
   category: construction-category-storage
-  description: A secure metal crate for storing things. Requires no special access, can be configured with an Access Configurator.
-  icon: { sprite: Structures/Storage/Crates/secure.rsi, state: icon }
+  description: A metal freezing crate for storing things.
+  icon: { sprite: Structures/Storage/Crates/freezer.rsi, state: icon }
   objectType: Structure
 
 - type: construction
