@@ -16,10 +16,22 @@
             "directions": 4
         },
         {
+            "name": "alpha-slice-filling"
+        },
+        {
             "name": "tin"
         },
         {
+            "name": "applecrisp"
+        },
+        {
+            "name": "applecrisp-slice"
+        },
+        {
             "name": "pearandcheese"
-        }        
+        },
+        {
+            "name": "pearandcheese-slice"
+        }
     ]
 }

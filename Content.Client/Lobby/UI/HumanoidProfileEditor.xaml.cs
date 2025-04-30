@@ -407,13 +407,13 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            //TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab")); // Frontier
 
             RefreshTraits();
 
             #region Markings
 
-            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-markings-tab")); // Frontier: 4<3
 
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
@@ -491,7 +491,7 @@ namespace Content.Client.Lobby.UI
             TraitsList.DisposeAllChildren();
 
             var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-traits-tab")); // Frontier: 3<2
 
             if (traits.Count < 1)
             {
@@ -523,12 +523,6 @@ namespace Content.Client.Lobby.UI
                 group.Add(trait.ID);
             }
 
-            // Frontier: index current species
-            EntityPrototype? speciesEntProto = null;
-            if (_prototypeManager.TryIndex(Profile?.Species, out var species))
-                _prototypeManager.TryIndex<EntityPrototype>(species.Prototype, out speciesEntProto);
-            // End Frontier
-
             // Create UI view from model
             foreach (var (categoryId, categoryTraits) in traitGroups)
             {
@@ -557,17 +551,6 @@ namespace Content.Client.Lobby.UI
                     selector.Preference = Profile?.TraitPreferences.Contains(trait.ID) == true;
                     if (selector.Preference)
                         selectionCount += trait.Cost;
-
-                    // Frontier: disable UI on species trait availability (hack)
-                    if (Profile == null ||
-                        speciesEntProto == null ||
-                        _whitelist.IsPrototypeWhitelistFail(trait.Whitelist, speciesEntProto) ||
-                        _whitelist.IsPrototypeBlacklistPass(trait.Blacklist, speciesEntProto))
-                    {
-                        selector.Checkbox.Disabled = true;
-                        selector.Checkbox.Label.FontColorOverride = Color.Gray;
-                    }
-                    // End Frontier
 
                     selector.PreferenceChanged += preference =>
                     {
@@ -646,6 +629,8 @@ namespace Content.Client.Lobby.UI
 
         public void RefreshAntags()
         {
+            // Frontier: no antags
+            /*
             AntagList.DisposeAllChildren();
             var items = new[]
             {
@@ -704,6 +689,8 @@ namespace Content.Client.Lobby.UI
 
                 AntagList.AddChild(antagContainer);
             }
+            */
+            // End Frontier: no antags
         }
 
         private void SetDirty()
@@ -865,7 +852,7 @@ namespace Content.Client.Lobby.UI
 
             foreach (var department in departments)
             {
-                var departmentName = Loc.GetString($"department-{department.ID}");
+                var departmentName = Loc.GetString(department.Name);
 
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
@@ -1040,6 +1027,13 @@ namespace Content.Client.Lobby.UI
             // Refresh the buttons etc.
             _loadoutWindow.RefreshLoadouts(roleLoadout, session, collection);
             _loadoutWindow.OpenCenteredLeft();
+
+            _loadoutWindow.OnNameChanged += name =>
+            {
+                roleLoadout.EntityName = name;
+                Profile = Profile.WithLoadout(roleLoadout);
+                SetDirty();
+            };
 
             _loadoutWindow.OnLoadoutPressed += (loadoutGroup, loadoutProto) =>
             {
