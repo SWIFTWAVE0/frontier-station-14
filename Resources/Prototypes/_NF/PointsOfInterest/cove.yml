@@ -8,6 +8,7 @@
 
 # Notes:
 # Byarr
+
 - type: pointOfInterest
   id: Cove
   parent: BasePOI
@@ -39,11 +40,6 @@
           iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
           stationSubtext: 'frontier-lobby-pirate-subtext'
           stationDescription: 'frontier-lobby-pirate-description'
-        - type: StationJobs
-          availableJobs:
-            NFPirateCaptain: [ 1, 1 ]
-            NFPirateFirstMate: [ 1, 1 ]
-            NFPirate: [ 0, 0 ]
         - type: StationDeadDropReporting
           messageSet: Pirate
         - type: StationDeadDropHintExempt

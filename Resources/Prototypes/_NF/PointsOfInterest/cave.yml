@@ -1,0 +1,24 @@
+- type: pointOfInterest
+  id: cave
+  parent: BasePOI
+  name: Scrap Graveyard
+  minimumDistance: 1800
+  maximumDistance: 2200
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/cave.yml
+  addComponents:
+  - type: IFF
+    color: "#FF4500"
+
+- type: gameMap
+  id: cave
+  mapName: "Scrap Graveyard"
+  mapPath: /Maps/_NF/POI/cave.yml
+  minPlayers: 0
+  stations:
+    cave:
+      stationProto: DeadDropRecordsFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Scrap Graveyard"
+        - type: BindToStationVariationPassExemption

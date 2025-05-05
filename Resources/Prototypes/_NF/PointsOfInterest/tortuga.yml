@@ -1,0 +1,49 @@
+# Author Info
+# GitHub:
+# Discord: dvir01
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# Byarr
+- type: pointOfInterest
+  id: tortuga
+  parent: BasePOI
+  name: Tortuga
+  minimumDistance: 1500
+  maximumDistance: 3000
+  spawnGamePreset: [ NFPirate ]
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/tortuga.yml
+  hideWarp: true
+  addComponents:
+  - type: IFF
+    color: "#DC143C"
+    flags: [HideLabel]
+    readOnly: false
+
+- type: gameMap
+  id: tortuga
+  mapName: 'Tortuga'
+  mapPath: /Maps/_NF/POI/tortuga.yml
+  minPlayers: 0
+  stations:
+    tortuga:
+      stationProto: RecordsFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Tortuga'
+        - type: ExtraStationInformation
+          iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
+          stationSubtext: 'frontier-lobby-pirate-subtext'
+          stationDescription: 'frontier-lobby-pirate-description'
+        - type: StationJobs
+          availableJobs:
+            NFPirate: [ -1, -1 ]
+        - type: StationDeadDropReporting
+          messageSet: Pirate
+        - type: StationDeadDropHintExempt
+        - type: TradeCrateWildcardDestination
+        - type: BindToStationVariationPassExemption

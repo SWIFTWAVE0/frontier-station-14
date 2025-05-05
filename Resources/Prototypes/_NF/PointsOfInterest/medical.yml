@@ -39,13 +39,5 @@
           stationSubtext: 'frontier-lobby-medical-subtext'
           stationDescription: 'frontier-lobby-medical-description'
           lobbySortOrder: 4
-        - type: StationJobs
-          availableJobs:
-            DirectorOfCare: [ 1, 1 ]
-            Pilot: [ -1, -1 ]
-            Mercenary: [ -1, -1 ]
-          tags:
-          - HeadOfPersonnel
-          - HeadOfSecurity
         - type: StationDeadDrop
           maxDeadDrops: 1 # Fewer here, players start here.

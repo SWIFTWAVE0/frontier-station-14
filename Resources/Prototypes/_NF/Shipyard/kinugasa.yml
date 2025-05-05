@@ -1,0 +1,46 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: kinugasa
+  name: SVPL Kinugasa
+  description: Sevastopol last defense measure.
+  price: 1000000
+  parent: BaseVessel
+  category: Large
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/kinugasa.yml
+  guidebookPage: Null
+  addComponents:
+  - type: IFF
+    color: "#CD5C5C"
+  class:
+  - Fighter
+  - Personalized
+
+- type: gameMap
+  id: kinugasa
+  mapName: 'SVPL Kinugasa'
+  mapPath: /Maps/_NF/Shuttles/kinugasa.yml
+  minPlayers: 0
+  stations:
+    kinugasa:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'SVPL Kinugasa {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

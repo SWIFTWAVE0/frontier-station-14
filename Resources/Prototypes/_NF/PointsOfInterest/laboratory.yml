@@ -1,0 +1,39 @@
+# Author Info
+# GitHub:
+# Discord: Checkraze
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# The local Science lab
+- type: pointOfInterest
+  id: laboratory
+  parent: BasePOI
+  name: 'Abandoned Laboratory'
+  minimumDistance: 1100
+  maximumDistance: 1400
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/laboratory.yml
+  addComponents:
+  - type: IFF
+    color: "#D8BFD8"
+  - type: SolarPoweredGrid
+    trackOnInit: true
+    doNotCull: true
+
+- type: gameMap
+  id: laboratory
+  mapName: 'Abandoned Laboratory'
+  mapPath: /Maps/_NF/POI/laboratory.yml
+  minPlayers: 0
+  stations:
+    laboratory:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Abandoned Laboratory'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

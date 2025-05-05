@@ -5,7 +5,7 @@
   playTimeTracker: JobMercenary
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 108000
+      time: 0
   icon: "JobIconMercenary"
   supervisors: job-supervisors-hire
   weight: 3 # Prioritize station & department jobs
@@ -27,7 +27,7 @@
   playTimeTracker: JobMercenaryInterview
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 108000
+      time: 0
   setPreference: false
   startingGear: MercenaryHologramGear
   icon: "JobIconMercenary"
