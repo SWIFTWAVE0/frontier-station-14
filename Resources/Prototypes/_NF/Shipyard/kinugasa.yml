@@ -12,7 +12,7 @@
   id: kinugasa
   name: SVPL Kinugasa
   description: Sevastopol last defense measure.
-  price: 1000000
+  price: 2000000
   parent: BaseVessel
   category: Large
   group: Shipyard
@@ -23,7 +23,6 @@
     color: "#CD5C5C"
   class:
   - Fighter
-  - Personalized
 
 - type: gameMap
   id: kinugasa

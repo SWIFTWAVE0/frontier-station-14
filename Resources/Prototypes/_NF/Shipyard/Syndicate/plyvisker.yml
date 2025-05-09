@@ -12,24 +12,26 @@
   id: Plyvisker
   name: IPV Plyvisker
   description: Stealth combat exploratory vessel prototype, seems to be taken early from the shipyard without being properly finished.
-  price: 200000
+  price: 500000
   category: Medium
-  group: Shipyard
-  shuttlePath: /Maps/_NF/Shuttles/plyvisker.yml
+  group: Syndicate
+  shuttlePath: /Maps/_NF/Shuttles/Syndicate/plyvisker.yml
   guidebookPage: Null
   class:
-  - Salvage
+  - Syndicate
   - Mercenary
   - Personalized
+  engine:
+  - AME
 
 - type: gameMap
   id: Plyvisker
   mapName: 'IPV Plyvisker'
-  mapPath: /Maps/_NF/Shuttles/plyvisker.yml
+  mapPath: /Maps/_NF/Shuttles/Syndicate/plyvisker.yml
   minPlayers: 0
   stations:
     Plyvisker:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierAntagVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'IPV Plyvisker {1}'
@@ -37,7 +39,4 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationJobs
-          availableJobs:
-            Contractor: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
-            Mercenary: [ 0, 0 ]
+          availableJobs: {}

@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/05/2025 13:34:08
-  entityCount: 1560
+  time: 05/07/2025 09:30:08
+  entityCount: 1575
 maps: []
 grids:
 - 1
@@ -1145,24 +1145,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,2.5
       parent: 1
-  - uid: 1403
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,1.5
-      parent: 1
-  - uid: 1404
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,1.5
-      parent: 1
-  - uid: 1405
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,1.5
-      parent: 1
   - uid: 1541
     components:
     - type: Transform
@@ -1235,12 +1217,127 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -27.5,0.5
       parent: 1
+  - uid: 1566
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,1.5
+      parent: 1
+  - uid: 1567
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,0.5
+      parent: 1
+  - uid: 1568
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,-0.5
+      parent: 1
 - proto: BarricadeBlock
   entities:
   - uid: 686
     components:
     - type: Transform
       pos: -21.5,2.5
+      parent: 1
+  - uid: 1404
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -25.5,0.5
+      parent: 1
+  - uid: 1569
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 4.5,0.5
+      parent: 1
+- proto: BarricadeDirectional
+  entities:
+  - uid: 961
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,1.5
+      parent: 1
+  - uid: 1385
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,0.5
+      parent: 1
+  - uid: 1403
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,1.5
+      parent: 1
+  - uid: 1405
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -28.5,-0.5
+      parent: 1
+  - uid: 1561
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -28.5,-0.5
+      parent: 1
+  - uid: 1562
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -29.5,0.5
+      parent: 1
+  - uid: 1563
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -29.5,1.5
+      parent: 1
+  - uid: 1565
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,-0.5
+      parent: 1
+  - uid: 1570
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,1.5
+      parent: 1
+  - uid: 1571
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,0.5
+      parent: 1
+  - uid: 1572
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,-0.5
+      parent: 1
+  - uid: 1573
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -26.5,0.5
+      parent: 1
+  - uid: 1574
+    components:
+    - type: Transform
+      pos: -26.5,0.5
+      parent: 1
+  - uid: 1575
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -26.5,1.5
       parent: 1
 - proto: Bed
   entities:
@@ -5175,6 +5272,10 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,-1.5
       parent: 1
+    - type: GasMixer
+      inletTwoConcentration: 0.20999998
+      inletOneConcentration: 0.79
+      enabled: True
     - type: AtmosPipeColor
       color: '#0000FFFF'
 - proto: GasMixerOn
@@ -5185,6 +5286,10 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -12.5,-1.5
       parent: 1
+    - type: GasMixer
+      inletTwoConcentration: 0.20999998
+      inletOneConcentration: 0.79
+      enabled: True
     - type: AtmosPipeColor
       color: '#0000FFFF'
 - proto: GasPassiveVent
@@ -6497,6 +6602,8 @@ entities:
       pos: 2.5,0.5
       parent: 1
     - type: DeviceNetwork
+      configurators:
+      - invalid
       deviceLists:
       - 1373
     - type: AtmosPipeColor
@@ -6984,6 +7091,14 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,4.5
       parent: 1
+- proto: InflatableWallStack5
+  entities:
+  - uid: 1564
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -24.675209,-0.38808885
+      parent: 1
 - proto: KitchenElectricGrill
   entities:
   - uid: 721
@@ -7063,24 +7178,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -17.5,-8.5
       parent: 1
-- proto: LiquidNitrogenCanister
-  entities:
-  - uid: 961
-    components:
-    - type: Transform
-      anchored: True
-      pos: -13.5,-2.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
-  - uid: 971
-    components:
-    - type: Transform
-      anchored: True
-      pos: -7.5,-2.5
-      parent: 1
-    - type: Physics
-      bodyType: Static
 - proto: LockerWoodenGeneric
   entities:
   - uid: 992
@@ -7285,6 +7382,24 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.3333008,-4.2676845
       parent: 1
+- proto: NitrogenCanister
+  entities:
+  - uid: 971
+    components:
+    - type: Transform
+      anchored: True
+      pos: -7.5,-2.5
+      parent: 1
+    - type: Physics
+      bodyType: Static
+  - uid: 1384
+    components:
+    - type: Transform
+      anchored: True
+      pos: -13.5,-2.5
+      parent: 1
+    - type: Physics
+      bodyType: Static
 - proto: OxygenCanister
   entities:
   - uid: 962
@@ -8180,12 +8295,16 @@ entities:
     - type: Transform
       pos: -21.5,7.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 2
   - uid: 712
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -24.5,5.5
       parent: 1
+    - type: DeviceLinkSink
+      invokeCounter: 2
   - uid: 1248
     components:
     - type: Transform
@@ -8358,18 +8477,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,1.5
-      parent: 1
-  - uid: 1384
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,3.5
-      parent: 1
-  - uid: 1385
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-2.5
       parent: 1
 - proto: SinkStemlessWater
   entities:
