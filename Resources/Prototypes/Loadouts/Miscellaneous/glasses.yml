@@ -6,6 +6,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobLibrarian
+      time: 0
 
 - type: loadoutEffectGroup
   id: JensenTimer
@@ -14,6 +15,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Cargo
+      time: 0
 
 # Basic options
 # Glasses

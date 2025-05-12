@@ -6,6 +6,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
+      time: 0
+
 
 # Head of Greytide (for grey mantle)
 - type: loadoutEffectGroup
@@ -15,6 +17,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
+      time: 0
+
 
 # Face
 - type: loadout

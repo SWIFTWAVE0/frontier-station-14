@@ -5,6 +5,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobJanitor
+      time: 0
 
 # Head
 - type: loadout

@@ -6,6 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
+      time: 0
 
 # Flowers
 - type: loadout
@@ -202,6 +203,8 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:OverallPlaytimeRequirement
+      time: 0
+
   storage:
     back:
     - TowelColorWhite
@@ -212,6 +215,8 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:OverallPlaytimeRequirement
+      time: 0
+
   storage:
     back:
     - TowelColorSilver
@@ -222,6 +227,8 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:OverallPlaytimeRequirement
+      time: 0
+
   storage:
     back:
     - TowelColorGold
@@ -233,6 +240,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Cargo
+      time: 0
+
   storage:
     back:
     - TowelColorLightBrown
@@ -244,6 +253,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Civilian
+      time: 0
+
   storage:
     back:
     - TowelColorGreen
@@ -255,6 +266,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Command
+      time: 0
+
   storage:
     back:
     - TowelColorDarkBlue
@@ -266,6 +279,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Engineering
+      time: 0
+
   storage:
     back:
     - TowelColorOrange
@@ -277,6 +292,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Medical
+      time: 0
+
   storage:
     back:
     - TowelColorLightBlue
@@ -288,6 +305,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Science
+      time: 0
+
   storage:
     back:
     - TowelColorPurple
@@ -299,6 +318,8 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
+      time: 0
+
   storage:
     back:
     - TowelColorRed
@@ -310,6 +331,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
+      time: 0
+
   storage:
     back:
     - TowelColorGray
@@ -321,6 +344,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobChaplain
+      time: 0
+
   storage:
     back:
     - TowelColorBlack
@@ -332,6 +357,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobLibrarian
+      time: 0
+
   storage:
     back:
     - TowelColorDarkGreen
@@ -343,6 +370,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobLawyer
+      time: 0
+
   storage:
     back:
     - TowelColorMaroon
@@ -354,6 +383,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobClown
+      time: 0
+
   storage:
     back:
     - TowelColorYellow
@@ -365,6 +396,8 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobMime
+      time: 0
+
   storage:
     back:
     - TowelColorMime

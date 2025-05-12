@@ -6,10 +6,13 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobWarden
+      time: 0
+
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
+      time: 0
 
 #Security Star
 - type: loadoutEffectGroup
@@ -19,6 +22,7 @@
       requirement:
         !type:DepartmentTimeRequirement
         department: Security
+        time: 0
 
 # Head
 - type: loadout

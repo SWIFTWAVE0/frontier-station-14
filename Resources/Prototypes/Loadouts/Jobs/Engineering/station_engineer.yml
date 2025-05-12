@@ -6,14 +6,19 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
+      time: 0
+
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
       role: JobStationEngineer
+      time: 0
+
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
       department: Engineering
+      time: 0
 
 # Head
 - type: startingGear
