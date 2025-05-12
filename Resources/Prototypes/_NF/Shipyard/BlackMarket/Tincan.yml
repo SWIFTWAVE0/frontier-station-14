@@ -1,0 +1,33 @@
+- type: vessel
+  id: tincan
+  parent: BaseVesselAntag
+  name: Tin Can
+  description: A small combat interceptor with two "Friendship" grenade launchers onboard.
+  price: 40000
+  category: Small
+  group: BlackMarket
+  shuttlePath: /Maps/_NF/Shuttles/BlackMarket/Tincan.yml
+  guidebookPage: Null
+  class:
+  - Pirate
+  - Fighter
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: tincan
+  mapName: 'Tin Can'
+  mapPath: /Maps/_NF/Shuttles/BlackMarket/Tincan.yml
+  minPlayers: 0
+  stations:
+    Schooner:
+      stationProto: StandardFrontierAntagVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Tin Can {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            NFPirate: [ 0, 0 ]

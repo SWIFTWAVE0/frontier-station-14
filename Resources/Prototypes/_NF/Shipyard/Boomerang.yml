@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: boomerang
+  name: CSV Boomerang
+  description: Medium-sized combat vessel equiped with 4x "Friendship" grenade launchers.
+  price: 85000
+  parent: BaseVessel
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/Boomerang.yml
+  guidebookPage: Null
+  addComponents:
+  - type: IFF
+    color: "#ADFF2F"
+  class:
+  - Fighter
+
+- type: gameMap
+  id: boomerang
+  mapName: 'CSV Boomerang'
+  mapPath: /Maps/_NF/Shuttles/Boomerang.yml
+  minPlayers: 0
+  stations:
+    boomerang:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'CSV Boomerang {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

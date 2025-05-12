@@ -4,14 +4,14 @@
   name: 'Sevastopol'
   minimumDistance: 700
   maximumDistance: 800
-  spawnGroup: Required
+  spawnGroup: MarketStation
   gridPath: /Maps/_NF/POI/FD_hub.yml
   addComponents:
   - type: IFF
     color: "#9370DB"
   - type: StationTransit
     routes:
-      SpawnPoints: 30
+      TradeExpress: 10
 
 - type: gameMap
   id: FD_hub
@@ -20,7 +20,7 @@
   minPlayers: 0
   stations:
     FD_hub:
-      stationProto: RecordsFrontierOutpost
+      stationProto: MarketFrontierOutpost
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Sevastopol'
@@ -36,6 +36,8 @@
             Mercenary: [ -1, -1 ]
         - type: StationDeadDrop
           maxDeadDrops: 1 # Fewer here, players start here.
+        - type: TradeCrateDestination
+          destinationProto: Trade
 
 # Others:
 #            Borg: [ 0, 0 ]

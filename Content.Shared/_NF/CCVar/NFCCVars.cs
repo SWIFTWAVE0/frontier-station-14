@@ -63,7 +63,7 @@ public sealed class NFCCVars
     /// The number of Trade Stations to spawn in every round
     /// </summary>
     public static readonly CVarDef<int> MarketStations =
-        CVarDef.Create("nf14.worldgen.market_stations", 1, CVar.SERVERONLY);
+        CVarDef.Create("nf14.worldgen.market_stations", 3, CVar.SERVERONLY);
 
     /// <summary>
     /// The number of Cargo Depots to spawn in every round
