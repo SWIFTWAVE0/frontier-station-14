@@ -6,7 +6,6 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Science
-      time: 216000 #60 hrs
 
 # Head
 - type: startingGear

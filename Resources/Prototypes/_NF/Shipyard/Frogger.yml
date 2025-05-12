@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: frogger
+  name: CSV Frogger
+  description: Small-sized combat vessel equiped with 2x "Friendship" grenade launchers.
+  price: 50000
+  parent: BaseVessel
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/Frogger.yml
+  guidebookPage: Null
+  addComponents:
+  - type: IFF
+    color: "#2E8B57"
+  class:
+  - Fighter
+
+- type: gameMap
+  id: frogger
+  mapName: 'CSV Frogger'
+  mapPath: /Maps/_NF/Shuttles/Frogger.yml
+  minPlayers: 0
+  stations:
+    frogger:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'CSV Frogger {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

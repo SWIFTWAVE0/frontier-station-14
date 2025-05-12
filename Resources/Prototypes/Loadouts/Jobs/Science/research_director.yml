@@ -6,7 +6,6 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobResearchDirector
-      time: 72000 #20 hrs
 
 # Head
 - type: loadout
