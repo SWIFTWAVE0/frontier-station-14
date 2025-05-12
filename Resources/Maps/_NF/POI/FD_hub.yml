@@ -16263,14 +16263,6 @@ entities:
     - type: Transform
       pos: 34.340195,7.7214155
       parent: 2
-- proto: BoxSurvivalNFOxygen
-  entities:
-  - uid: 390
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 35.975613,7.5859995
-      parent: 2
 - proto: BoxWetFloorSign
   entities:
   - uid: 391
