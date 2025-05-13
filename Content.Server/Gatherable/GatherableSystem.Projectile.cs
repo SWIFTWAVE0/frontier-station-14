@@ -4,7 +4,9 @@ using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Content.Shared.Coordinates;
+using Content.Server._NF.Gatherable.Components;
+using Content.Shared.Maps;
+using System.Linq;
 
 namespace Content.Server.Gatherable;
 
@@ -27,17 +29,6 @@ public sealed partial class GatherableSystem
             return;
         }
 
-        // DAN CHANGES START
-
-        EntityUid? gridId = _entManager.GetComponent<TransformComponent>(args.OtherEntity).GridUid;
-        if (_entManager.TryGetComponent(gridId, out MapGridComponent? grid))
-        {
-            var childTransform = _entManager.GetComponent<TransformComponent>(args.OtherEntity);
-            _mapSystem.SetTile(gridId.Value, grid, childTransform.Coordinates, Tile.Empty);
-        }
-
-        // DAN CHANGES END
-
         // Frontier: gathering changes
         // bad gatherer - not strong enough
         if (_whitelistSystem.IsWhitelistFail(gatherable.ToolWhitelist, gathering.Owner))
@@ -45,14 +36,30 @@ public sealed partial class GatherableSystem
             QueueDel(gathering);
             return;
         }
-        /* DAN CHANGES START
+
+        // DAN EDIT START
+        if (HasComp<MiningGatheringUnfloorComponent>(gathering.Owner))
+        {
+            EntityUid? gridId = _entManager.GetComponent<TransformComponent>(args.OtherEntity).GridUid;
+            if (_entManager.TryGetComponent(gridId, out MapGridComponent? grid))
+            {
+                var childTransform = _entManager.GetComponent<TransformComponent>(args.OtherEntity);
+                TileRef tile = _mapSystem.GetTileRef(gridId.Value, grid, childTransform.Coordinates);
+                if (tile.GetContentTileDefinition().BaseTurf == "Space" && tile.GetContentTileDefinition().DeconstructTools.Count == 0)
+                {
+                    _mapSystem.SetTile(gridId.Value, grid, childTransform.Coordinates, Tile.Empty);
+                }
+
+            }
+        }
+        // DAN EDIT END
+
         // Too strong (e.g. overpen) - gathers ore but destroys it
-        if (TryComp<OreVeinComponent>(args.OtherEntity, out var oreVein)
+        else if (TryComp<OreVeinComponent>(args.OtherEntity, out var oreVein)
             && _whitelistSystem.IsWhitelistPass(oreVein.GatherDestructionWhitelist, gathering.Owner))
         {
             oreVein.PreventSpawning = true;
         }
-        DAN CHANGES END */
         // End Frontier: gathering changes
 
         Gather(args.OtherEntity, gathering, gatherable);

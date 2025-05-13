@@ -476,6 +476,7 @@
     energy: 0.5
   - type: GatheringProjectile
   - type: MiningGatheringHard # Frontier
+  - type: MiningGatheringUnfloor # DAN
 
 - type: entity
   id: BulletCharge
