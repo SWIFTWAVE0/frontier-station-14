@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Grid
+  engineVersion: 251.0.0
+  forkId: ""
+  forkVersion: ""
+  time: 05/13/2025 10:29:56
+  entityCount: 898
+maps: []
+grids:
+- 1
+orphans:
+- 1
+nullspace: []
 tilemap:
   0: Space
   3: FloorArcadeRed
@@ -24,11 +35,11 @@ entities:
     components:
     - type: MetaData
       name: Infiltrator
-    - type: BecomesStation
-      id: Infiltrator
     - type: Transform
       pos: 0.64252126,4.1776605
       parent: invalid
+    - type: BecomesStation
+      id: Infiltrator
     - type: MapGrid
       chunks:
         -1,-1:
@@ -94,7 +105,8 @@ entities:
           0,-4:
             0: 48015
           0,-3:
-            0: 4507
+            0: 411
+            2: 4096
             1: 35840
           0,-2:
             0: 48944
@@ -133,7 +145,7 @@ entities:
           0,-7:
             1: 51
             0: 53248
-            2: 136
+            3: 136
           0,-6:
             0: 65421
           0,-8:
@@ -142,7 +154,7 @@ entities:
             1: 528
           1,-7:
             0: 12288
-            3: 34
+            4: 34
           1,-6:
             0: 4867
         uniqueMixes:
@@ -166,6 +178,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.1499
+          moles:
+          - 18.472576
+          - 69.49208
           - 0
           - 0
           - 0
@@ -2125,28 +2152,6 @@ entities:
       canCollide: False
     - type: Fixtures
       fixtures: {}
-- proto: Catwalk
-  entities:
-  - uid: 306
-    components:
-    - type: Transform
-      pos: 0.5,-9.5
-      parent: 1
-  - uid: 307
-    components:
-    - type: Transform
-      pos: 0.5,-8.5
-      parent: 1
-  - uid: 316
-    components:
-    - type: Transform
-      pos: -1.5,-8.5
-      parent: 1
-  - uid: 351
-    components:
-    - type: Transform
-      pos: -1.5,-9.5
-      parent: 1
 - proto: Carpet
   entities:
   - uid: 253
@@ -2378,6 +2383,26 @@ entities:
     - type: Transform
       pos: -0.5,-11.5
       parent: 1
+  - uid: 306
+    components:
+    - type: Transform
+      pos: 0.5,-9.5
+      parent: 1
+  - uid: 307
+    components:
+    - type: Transform
+      pos: 0.5,-8.5
+      parent: 1
+  - uid: 316
+    components:
+    - type: Transform
+      pos: -1.5,-8.5
+      parent: 1
+  - uid: 351
+    components:
+    - type: Transform
+      pos: -1.5,-9.5
+      parent: 1
 - proto: Chair
   entities:
   - uid: 303
@@ -2402,6 +2427,18 @@ entities:
       parent: 1
 - proto: ChairPilotSeat
   entities:
+  - uid: 41
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,-9.5
+      parent: 1
+  - uid: 298
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 4.5,-9.5
+      parent: 1
   - uid: 305
     components:
     - type: Transform
@@ -2439,6 +2476,16 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -1.5,-10.5
+      parent: 1
+  - uid: 364
+    components:
+    - type: Transform
+      pos: -2.5,-28.5
+      parent: 1
+  - uid: 365
+    components:
+    - type: Transform
+      pos: 1.5,-28.5
       parent: 1
 - proto: CigPackSyndicate
   entities:
@@ -2480,6 +2527,25 @@ entities:
     - type: Transform
       pos: 1.412887,-13.279245
       parent: 1
+    - type: GroupExamine
+      group:
+      - hoverMessage: ""
+        contextText: verb-examine-group-other
+        icon: /Textures/Interface/examine-star.png
+        components:
+        - Armor
+        - ClothingSpeedModifier
+        entries:
+        - message: >-
+            It provides the following protection:
+
+            - [color=orange]Explosion[/color] damage [color=white]to contents[/color] reduced by [color=lightblue]10%[/color].
+          priority: 0
+          component: Armor
+        - message: This decreases your running speed by [color=yellow]10%[/color].
+          priority: 0
+          component: ClothingSpeedModifier
+        title: null
 - proto: ClothingBackpackSyndicate
   entities:
   - uid: 670
@@ -2494,6 +2560,36 @@ entities:
     - type: Transform
       pos: 1.4706825,-11.349909
       parent: 1
+- proto: ClothingHeadHatBeret
+  entities:
+  - uid: 885
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 888
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 889
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 890
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingHeadHatSyndie
   entities:
   - uid: 315
@@ -2508,6 +2604,66 @@ entities:
     - type: Transform
       pos: -5.4188166,-4.5927215
       parent: 1
+- proto: ClothingOuterCoatTrench
+  entities:
+  - uid: 880
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 882
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 883
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 884
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingUniformJumpsuitOperative
+  entities:
+  - uid: 891
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 892
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 893
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 894
+    components:
+    - type: Transform
+      parent: 839
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ComfyChair
   entities:
   - uid: 318
@@ -2554,6 +2710,94 @@ entities:
     - type: Transform
       pos: -0.5,-2.5
       parent: 1
+- proto: CrateAmmoGeneric
+  entities:
+  - uid: 510
+    components:
+    - type: Transform
+      pos: 0.50810015,-8.060473
+      parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14908
+        moles:
+        - 1.606311
+        - 6.042789
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 527
+          - 647
+          - 671
+          - 673
+          - 834
+          - 835
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+- proto: CrateGenericSteel
+  entities:
+  - uid: 839
+    components:
+    - type: Transform
+      pos: 0.60185015,-8.669848
+      parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14923
+        moles:
+        - 1.7459903
+        - 6.568249
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 880
+          - 882
+          - 883
+          - 884
+          - 885
+          - 888
+          - 889
+          - 890
+          - 891
+          - 892
+          - 893
+          - 894
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: CrowbarRed
   entities:
   - uid: 324
@@ -3733,6 +3977,52 @@ entities:
     - type: Transform
       pos: -4.5,-17.5
       parent: 1
+- proto: MagazineGrenadeEMP
+  entities:
+  - uid: 527
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 834
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 835
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MagazineGrenadeFrag
+  entities:
+  - uid: 647
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 671
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 673
+    components:
+    - type: Transform
+      parent: 510
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MedicalBed
   entities:
   - uid: 500
@@ -3765,6 +4055,13 @@ entities:
     components:
     - type: Transform
       pos: -3.383473,-22.548275
+      parent: 1
+- proto: NFHolopadShipAntag
+  entities:
+  - uid: 509
+    components:
+    - type: Transform
+      pos: -0.5,-10.5
       parent: 1
 - proto: NitrogenCanister
   entities:
@@ -4410,8 +4707,41 @@ entities:
     - type: Transform
       pos: -2.5,-1.5
       parent: 1
+- proto: ShuttleGunFriendship
+  entities:
+  - uid: 37
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 5.5,-9.5
+      parent: 1
+  - uid: 38
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-9.5
+      parent: 1
+  - uid: 39
+    components:
+    - type: Transform
+      pos: -2.5,-29.5
+      parent: 1
+  - uid: 40
+    components:
+    - type: Transform
+      pos: 1.5,-29.5
+      parent: 1
 - proto: SignalButton
   entities:
+  - uid: 36
+    components:
+    - type: Transform
+      pos: -2.4988875,-28.99018
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        39:
+        - Pressed: Trigger
   - uid: 609
     components:
     - type: Transform
@@ -4432,6 +4762,62 @@ entities:
       linkedPorts:
         605:
         - Pressed: Toggle
+  - uid: 895
+    components:
+    - type: Transform
+      pos: 0.12115109,-21.912516
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        668:
+        - Pressed: Toggle
+        667:
+        - Pressed: Toggle
+        666:
+        - Pressed: Toggle
+        665:
+        - Pressed: Toggle
+        664:
+        - Pressed: Toggle
+        663:
+        - Pressed: Toggle
+        662:
+        - Pressed: Toggle
+        661:
+        - Pressed: Toggle
+        660:
+        - Pressed: Toggle
+        659:
+        - Pressed: Toggle
+  - uid: 896
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.533281,-9.506742
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        37:
+        - Pressed: Trigger
+  - uid: 897
+    components:
+    - type: Transform
+      pos: 1.5115296,-28.99018
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        40:
+        - Pressed: Trigger
+  - uid: 898
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.06939,-9.506742
+      parent: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        38:
+        - Pressed: Trigger
 - proto: SignalButtonDirectional
   entities:
   - uid: 20

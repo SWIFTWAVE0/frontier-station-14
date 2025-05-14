@@ -1,0 +1,34 @@
+- type: vessel
+  id: Bigsby
+  parent: BaseVessel
+  name: FTU Bigsby
+  description: An old model of an infamous FTU vessel from the known part of the human space.
+  price: 280000
+  category: Large
+  group: Scrap
+  shuttlePath: /Maps/_NF/Shuttles/Scrap/Bigsby.yml
+  class:
+  - Scrapyard
+  - Civilian
+  engine:
+  - AME
+
+- type: gameMap
+  id: Bigsby
+  mapName: 'FTU Bigsby'
+  mapPath: /Maps/_NF/Shuttles/Scrap/Bigsby.yml
+  minPlayers: 0
+  stations:
+    Bigsby:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'FTU Bigsby {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

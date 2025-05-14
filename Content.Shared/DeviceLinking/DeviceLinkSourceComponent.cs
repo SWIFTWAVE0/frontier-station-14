@@ -38,5 +38,5 @@ public sealed partial class DeviceLinkSourceComponent : Component
     ///     Limits the range devices can be linked across.
     /// </summary>
     [DataField]
-    public float Range = 30f;
+    public float Range = 500f;
 }

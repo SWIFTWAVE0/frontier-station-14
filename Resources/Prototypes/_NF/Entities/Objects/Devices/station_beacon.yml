@@ -111,7 +111,7 @@
   suffix: NFSD
   components:
   - type: NavMapBeacon
-    defaultText: station-beacon-nfsd    
+    defaultText: station-beacon-nfsd
     color: "#f1b223"
 
 - type: entity
@@ -296,3 +296,431 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-dock-six-c
+
+# Sevastopol
+
+# Dock C
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC0A
+  suffix: C0-A
+  components:
+  - type: NavMapBeacon
+    defaultText: C0-A
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC0B
+  suffix: C0-B
+  components:
+  - type: NavMapBeacon
+    defaultText: C0-B
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC1
+  suffix: C1
+  components:
+  - type: NavMapBeacon
+    defaultText: C1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC2
+  suffix: C2
+  components:
+  - type: NavMapBeacon
+    defaultText: C2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC3
+  suffix: C3
+  components:
+  - type: NavMapBeacon
+    defaultText: C3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC4
+  suffix: C4
+  components:
+  - type: NavMapBeacon
+    defaultText: C4
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC5
+  suffix: C5
+  components:
+  - type: NavMapBeacon
+    defaultText: C5
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC6
+  suffix: C6
+  components:
+  - type: NavMapBeacon
+    defaultText: C6
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC7
+  suffix: C7
+  components:
+  - type: NavMapBeacon
+    defaultText: C7
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC8
+  suffix: C8
+  components:
+  - type: NavMapBeacon
+    defaultText: C8
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockC9
+  suffix: C9
+  components:
+  - type: NavMapBeacon
+    defaultText: C9
+
+# Dock B
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB0A
+  suffix: B0-A
+  components:
+  - type: NavMapBeacon
+    defaultText: B0-A
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB0B
+  suffix: B0-B
+  components:
+  - type: NavMapBeacon
+    defaultText: B0-B
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB1
+  suffix: B1
+  components:
+  - type: NavMapBeacon
+    defaultText: B1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB2
+  suffix: B2
+  components:
+  - type: NavMapBeacon
+    defaultText: B2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB3
+  suffix: B3
+  components:
+  - type: NavMapBeacon
+    defaultText: B3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB4
+  suffix: B4
+  components:
+  - type: NavMapBeacon
+    defaultText: B4
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB5
+  suffix: B5
+  components:
+  - type: NavMapBeacon
+    defaultText: B5
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB6
+  suffix: B6
+  components:
+  - type: NavMapBeacon
+    defaultText: B6
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB7
+  suffix: B7
+  components:
+  - type: NavMapBeacon
+    defaultText: B7
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB8
+  suffix: B8
+  components:
+  - type: NavMapBeacon
+    defaultText: B8
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockB9
+  suffix: B9
+  components:
+  - type: NavMapBeacon
+    defaultText: B9
+
+# Dock A-1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-1
+  suffix: A1-1
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-2
+  suffix: A1-2
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-3
+  suffix: A1-3
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-4
+  suffix: A1-4
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-4
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-5
+  suffix: A1-5
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-5
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-6
+  suffix: A1-6
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-6
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-7
+  suffix: A1-7
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-7
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-8
+  suffix: A1-8
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-8
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-9
+  suffix: A1-9
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-9
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA1-10
+  suffix: A1-10
+  components:
+  - type: NavMapBeacon
+    defaultText: A1-10
+
+# Dock A-2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-1
+  suffix: A2-1
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-2
+  suffix: A2-2
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-3
+  suffix: A2-3
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-4
+  suffix: A2-4
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-4
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-5
+  suffix: A2-5
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-5
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-6
+  suffix: A2-6
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-6
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-7
+  suffix: A2-7
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-7
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-8
+  suffix: A2-8
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-8
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-9
+  suffix: A2-9
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-9
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA2-10
+  suffix: A2-10
+  components:
+  - type: NavMapBeacon
+    defaultText: A2-10
+
+# Dock A-3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-1
+  suffix: A3-1
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-1
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-2
+  suffix: A3-2
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-2
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-3
+  suffix: A3-3
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-3
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-4
+  suffix: A3-4
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-4
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-5
+  suffix: A3-5
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-5
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-6
+  suffix: A3-6
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-6
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-7
+  suffix: A3-7
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-7
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-8
+  suffix: A3-8
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-8
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-9
+  suffix: A3-9
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-9
+
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconFrontierDockA3-10
+  suffix: A3-10
+  components:
+  - type: NavMapBeacon
+    defaultText: A3-10

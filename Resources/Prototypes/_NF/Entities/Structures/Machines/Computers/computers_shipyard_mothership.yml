@@ -111,3 +111,13 @@
     - Legman
     - Liquidator
     - Honker
+
+# FTU Bigsby
+- type: entity
+  id: BigsbyMothershipComputer
+  parent: BaseMothershipComputer
+  name: bigsby shipyard console
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - Canister

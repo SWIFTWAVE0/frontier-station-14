@@ -1,0 +1,36 @@
+# Author Info
+# GitHub: RealIHANOfficial (??)
+# Discord:
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# The local Science lab
+- type: pointOfInterest
+  id: fleshship
+  parent: BasePOI
+  name: 'Derelict ???'
+  minimumDistance: 4700
+  maximumDistance: 5400
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/flesh_ship.yml
+  addComponents:
+  - type: IFF
+    color: "#FF4500"
+
+- type: gameMap
+  id: fleshship
+  mapName: 'Derelict ???'
+  mapPath: /Maps/_NF/POI/flesh_ship.yml
+  minPlayers: 0
+  stations:
+    fleshship:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Derelict ???'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt
