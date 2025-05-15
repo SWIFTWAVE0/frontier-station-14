@@ -743,7 +743,7 @@
     damage:
       types:
         Blunt: 1
-        Structural: 50
+        Structural: 200
     soundHit:
       path: /Audio/Effects/gen_hit.ogg
   - type: StaminaDamageOnCollide
