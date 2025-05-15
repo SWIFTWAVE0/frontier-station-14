@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from dunno",
+  "states": [
+    {
+      "name": "anglershark",
+      "directions": 4
+    },
+    {
+      "name": "anglershark-moving",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+	{
+      "name": "spacejelly",
+      "directions": 1
+    },
+    {
+      "name": "spacejelly-moving",
+      "directions": 1,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "flatcarp",
+      "directions": 4
+	},
+    {
+      "name": "flatcarp-moving",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "bluefish",
+      "directions": 4
+	},
+    {
+      "name": "bluefish-moving",
+      "directions": 4,
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "bluefish_dead",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "anglershark_dead",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "spacejelly_dead",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "flatcarp_dead",
+      "delays": [
+        [
+          1
+        ]
+      ]
+    }
+  ]
+}

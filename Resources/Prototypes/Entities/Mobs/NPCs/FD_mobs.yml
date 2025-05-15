@@ -1,0 +1,90 @@
+# MOB CODE
+
+- type: entity
+  name: bluefish
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  id: FDMobCarpBluefish
+  description: An much smaller carp breed, distinguishing characteristic of which is it's light-blue color.
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+    - type: Sprite
+      sprite: _FD/Mobs/fish.rsi
+    - type: TypingIndicator
+      proto: guardian
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 1
+      baseSprintSpeed: 1.5
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 3
+
+- type: entity
+  name: anglershark
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  id: FDMobCarpAnglershark
+  description: Pretty dangerous carp subspecies, known for it's shining eyes, attracting small prey.
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+    - type: Sprite
+      sprite: _FD/Mobs/fish.rsi
+    - type: TypingIndicator
+      proto: guardian
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 2.5
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 8
+          Blunt: 4
+          Structural: 20
+
+- type: entity
+  name: spacejelly
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  id: FDMobCarpSpacejelly
+  description: Venomous being, capable of performing multiple fast zaps.
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+    - type: Sprite
+      sprite: _FD/Mobs/fish.rsi
+    - type: TypingIndicator
+      proto: guardian
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 2.5
+    - type: MeleeWeapon
+      animation: WeaponArcThrust
+      damage:
+        types:
+          Heat: 10
+      soundHit:
+        path: /Audio/Effects/sparks4.ogg
+    - type: Butcherable
+      spawned:
+      - id: FoodMeatSlime
+        amount: 2
+
+- type: entity
+  name: flatcarp
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  id: FDMobCarpFlatcarp
+  description: Flat fish. Literally. Instead of biting - it simply hits you like a metal plate.
+  categories: [ HideSpawnMenu ] # Frontier
+  components:
+    - type: Sprite
+      sprite: _FD/Mobs/fish.rsi
+    - type: TypingIndicator
+      proto: guardian
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3
+      baseSprintSpeed: 2.5
+    - type: MeleeWeapon
+      animation: WeaponArcPunch
+      damage:
+        types:
+          Blunt: 8
+          Structural: 10
+      soundHit:
+        path: /Audio/Effects/hit_kick.ogg

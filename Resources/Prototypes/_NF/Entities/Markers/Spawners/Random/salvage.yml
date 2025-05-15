@@ -824,8 +824,17 @@
     - SpawnMobCarp
     - SpawnMobCarp
     - SpawnMobCarp
-    - SpawnMobCarp
-    - SpawnMobCarp
+    - FDMobCarpBluefish,
+    - FDMobCarpBluefish,
+    - FDMobCarpBluefish,
+    - FDMobCarpBluefish,
+    - FDMobCarpBluefish,
+    - FDMobCarpFlatcarp
+    - FDMobCarpFlatcarp
+    - FDMobCarpSpacejelly
+    - FDMobCarpSpacejelly
+    - FDMobCarpSpacejelly
+    - FDMobCarpSpacejelly
     - SpawnMobBearSalvage
     - SpawnMobSpiderSalvage
     - SpawnMobKangarooSalvage
@@ -845,6 +854,11 @@
     - NFMobShark
     - NFMobShark
     - NFMobShark
+    - FDMobCarpAnglershark
+    - FDMobCarpAnglershark
+    - FDMobCarpAnglershark
+    - FDMobCarpAnglershark
+    - FDMobCarpAnglershark
     - NFPlushieSharkMinnow
     - DehydratedSharkMinnow
     - SpawnMobCobraSalvage
