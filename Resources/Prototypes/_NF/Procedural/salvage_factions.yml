@@ -35,6 +35,15 @@
       cost: 2
     - proto: NFMobCarp
       cost: 2
+    - proto: FDMobCarpBluefish
+      cost: 1
+    - proto: FDMobCarpAnglershark
+      cost: 3
+      prob: 0.6
+    - proto: FDMobCarpFlatcarp
+      cost: 2
+    - proto: FDMobCarpSpacejelly
+      cost: 1
     - proto: NFMobCarpHolo
       cost: 2
       prob: 0.1
