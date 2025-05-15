@@ -1,0 +1,85 @@
+- type: entity
+  id: FDMagazineGrenadeBaton
+  name: baton extended cartridge
+  parent: BaseMagazineGrenade
+  components:
+  - type: BallisticAmmoProvider
+    proto: GrenadeBaton
+    mayTransfer: true
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 20
+    soundRack:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        variation: 0.05
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
+      params:
+        variation: 0.05
+
+- type: entity
+  id: ShuttleGun50cal
+  parent: [ShuttleGunBase] # Frontier: Removed ConstructibleMachine
+  name: 50-CAL "Liberty"
+  description: Stationary flak cannon, firing small baton grenades.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _FD/Structures/50cal.rsi
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      ballistic-ammo: !type:Container
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 90
+    fireRate: 3
+    angleDecay: 45
+    minAngle: 0
+    maxAngle: 15
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/ship_friendship.ogg
+      params:
+        pitch: 0.8
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 40
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: Machine
+    board: ShuttleGun50calCircuitboard
+
+- type: entity
+  id: ShuttleGun50calCircuitboard
+  parent: BaseMachineCircuitboard
+  name: 50-CAL "Liberty" machine board
+  description: A machine printed circuit board for an 50-CAL "Liberty".
+  suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    state: security
+  - type: MachineBoard
+    prototype: ShuttleGun50cal
+    requirements: # Frontier
+      MatterBin: 3 # Frontier stackRequirements<requirements
+      Manipulator: 2 # Frontier stackRequirements<requirements
+    stackRequirements:
+      Steel: 7
+      CableHV: 5
