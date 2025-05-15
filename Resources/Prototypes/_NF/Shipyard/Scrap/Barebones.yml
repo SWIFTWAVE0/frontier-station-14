@@ -1,0 +1,25 @@
+- type: vessel
+  id: Barebones
+  parent: BaseVessel
+  name: FTU Barebones
+  description: A technically spacefaring vessel.  No livery.
+  price: 16000
+  category: Micro
+  group: Scrap
+  shuttlePath: /Maps/_NF/Shuttles/Barebones.yml
+  class:
+  - Salvage
+
+- type: gameMap
+  id: Barebones
+  mapName: 'FTU Barebones'
+  mapPath: /Maps/_NF/Shuttles/Barebones.yml
+  minPlayers: 0
+  stations:
+    Barebones:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'FTU Barebones {1}'
+        nameGenerator: !type:NanotrasenNameGenerator
+          prefixCreator: '14'

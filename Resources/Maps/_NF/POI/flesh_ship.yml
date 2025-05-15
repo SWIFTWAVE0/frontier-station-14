@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/12/2025 13:18:04
-  entityCount: 381
+  time: 05/15/2025 11:07:03
+  entityCount: 404
 maps: []
 grids:
 - 1
@@ -212,14 +212,6 @@ entities:
     - type: RadiationGridResistance
     - type: SalvageMobRestrictionsGrid
       mobsToKill: []
-- proto: AberrantFleshDigestiveSack
-  entities:
-  - uid: 188
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 8.5,1.5
-      parent: 1
 - proto: APCBasic
   entities:
   - uid: 353
@@ -620,6 +612,61 @@ entities:
           showEnts: False
           occludes: True
           ent: null
+  - uid: 388
+    components:
+    - type: Transform
+      pos: 6.5,-3.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 389
+          - 390
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 392
+    components:
+    - type: Transform
+      pos: 10.5,7.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 393
+          - 394
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 398
+    components:
+    - type: Transform
+      pos: 11.5,1.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 399
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: CrateInternals
   entities:
   - uid: 324
@@ -711,11 +758,11 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 255
           - 256
-          - 257
-          - 258
           - 259
+          - 258
+          - 257
+          - 255
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -1250,6 +1297,29 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: MaterialDiamond
+  entities:
+  - uid: 389
+    components:
+    - type: Transform
+      parent: 388
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 390
+    components:
+    - type: Transform
+      parent: 388
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MaterialGoliathHide
+  entities:
+  - uid: 386
+    components:
+    - type: Transform
+      pos: 10.51077,2.3647149
+      parent: 1
 - proto: MaterialSheetMeat1
   entities:
   - uid: 156
@@ -1377,6 +1447,66 @@ entities:
     - type: Transform
       pos: 19.091503,-6.4431405
       parent: 1
+- proto: MaterialWebSilk25
+  entities:
+  - uid: 393
+    components:
+    - type: Transform
+      parent: 392
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 394
+    components:
+    - type: Transform
+      parent: 392
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: MaterialWoodPlank
+  entities:
+  - uid: 399
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 400
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 401
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 402
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 403
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 404
+    components:
+    - type: Transform
+      parent: 398
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: NFBoxSurvival
   entities:
   - uid: 320
@@ -1547,6 +1677,28 @@ entities:
     - type: Transform
       pos: 0.7230499,-0.05138725
       parent: 1
+- proto: SignMaterials
+  entities:
+  - uid: 387
+    components:
+    - type: Transform
+      pos: 3.5,1.5
+      parent: 1
+- proto: SpaceCash1000
+  entities:
+  - uid: 384
+    components:
+    - type: Transform
+      pos: 8.325907,14.554713
+      parent: 1
+- proto: SpaceCash2500
+  entities:
+  - uid: 385
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.278513,14.48097
+      parent: 1
 - proto: SpawnDungeonLootFlatpacks
   entities:
   - uid: 274
@@ -1572,8 +1724,25 @@ entities:
       rot: 3.141592653589793 rad
       pos: 7.679786,-7.7328215
       parent: 1
+- proto: SpawnMobAberrantFleshNewbornExpeditions
+  entities:
+  - uid: 396
+    components:
+    - type: Transform
+      pos: 5.5,0.5
+      parent: 1
+  - uid: 397
+    components:
+    - type: Transform
+      pos: 8.5,2.5
+      parent: 1
 - proto: SpawnMobFleshAssimilatedMiner
   entities:
+  - uid: 188
+    components:
+    - type: Transform
+      pos: 6.4768257,-1.3605554
+      parent: 1
   - uid: 211
     components:
     - type: Transform
@@ -1583,6 +1752,11 @@ entities:
     components:
     - type: Transform
       pos: 16.333317,-3.2617805
+      parent: 1
+  - uid: 382
+    components:
+    - type: Transform
+      pos: 14.652756,-3.3761804
       parent: 1
 - proto: SpawnMobFleshClampExpeditions
   entities:
@@ -1611,6 +1785,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.505624,3.6032932
+      parent: 1
+- proto: SpawnMobFleshJaredExpeditions
+  entities:
+  - uid: 395
+    components:
+    - type: Transform
+      pos: 9.725674,0.89434946
       parent: 1
 - proto: SpawnMobFleshLoverExpeditions
   entities:
@@ -2374,6 +2555,22 @@ entities:
     components:
     - type: Transform
       pos: 4.5,1.5
+      parent: 1
+- proto: WarpPoint
+  entities:
+  - uid: 391
+    components:
+    - type: Transform
+      pos: 8.5,0.5
+      parent: 1
+    - type: WarpPoint
+      location: Derelict ???
+- proto: WeaponMinigun
+  entities:
+  - uid: 383
+    components:
+    - type: Transform
+      pos: 5.4593444,7.6871243
       parent: 1
 - proto: WeaponTurretSyndicateBroken
   entities:

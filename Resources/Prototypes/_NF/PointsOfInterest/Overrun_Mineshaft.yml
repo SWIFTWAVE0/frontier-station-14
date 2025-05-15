@@ -1,0 +1,36 @@
+# Author Info
+# GitHub: RealIHANOfficial (??)
+# Discord:
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# The local Science lab
+- type: pointOfInterest
+  id: mineshaft
+  parent: BasePOI
+  name: 'Unknown Mining Facility'
+  minimumDistance: 5000
+  maximumDistance: 5400
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/Overrun_Mineshaft.yml
+  addComponents:
+  - type: IFF
+    color: "#C0C0C0"
+
+- type: gameMap
+  id: mineshaft
+  mapName: 'Unknown Mining Facility'
+  mapPath: /Maps/_NF/POI/Overrun_Mineshaft.yml
+  minPlayers: 0
+  stations:
+    mineshaft:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Unknown Mining Facility'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

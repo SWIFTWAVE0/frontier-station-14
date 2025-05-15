@@ -120,4 +120,4 @@
   components:
   - type: ShipyardListing
     shuttles:
-    - Canister
+    - Barebones
