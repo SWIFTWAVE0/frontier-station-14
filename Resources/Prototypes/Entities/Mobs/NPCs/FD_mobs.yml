@@ -1,90 +1,108 @@
 # MOB CODE
 
 - type: entity
-  name: bluefish
-  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  name: Bluefish
   id: FDMobCarpBluefish
-  description: An much smaller carp breed, distinguishing characteristic of which is it's light-blue color.
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
+  suffix: "Frontier"
   categories: [ DoNotMap ]
   components:
-    - type: Sprite
-      sprite: _FD/Mobs/fish.rsi
-    - type: TypingIndicator
-      proto: guardian
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 1
-      baseSprintSpeed: 1.5
-    - type: MeleeWeapon
-      damage:
-        types:
-          Slash: 3
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: Sprite
+    sprite: _FD/Mobs/bluefish.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1.5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 3
 
 - type: entity
-  name: anglershark
-  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  name: Anglershark
   id: FDMobCarpAnglershark
-  description: Pretty dangerous carp subspecies, known for it's shining eyes, attracting small prey.
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
+  suffix: "Frontier"
   categories: [ DoNotMap ]
   components:
-    - type: Sprite
-      sprite: _FD/Mobs/fish.rsi
-    - type: TypingIndicator
-      proto: guardian
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 3
-      baseSprintSpeed: 2.5
-    - type: MeleeWeapon
-      damage:
-        types:
-          Slash: 8
-          Blunt: 4
-          Structural: 20
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      70: Dead
+  - type: Sprite
+    sprite: _FD/Mobs/anglershark.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 2.5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 8
+        Blunt: 4
+        Structural: 20
 
 - type: entity
-  name: spacejelly
-  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  name: Spacejelly
   id: FDMobCarpSpacejelly
-  description: Venomous being, capable of performing multiple fast zaps.
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
+  suffix: "Frontier"
   categories: [ DoNotMap ]
   components:
-    - type: Sprite
-      sprite: _FD/Mobs/fish.rsi
-    - type: TypingIndicator
-      proto: guardian
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 3
-      baseSprintSpeed: 2.5
-    - type: MeleeWeapon
-      animation: WeaponArcThrust
-      damage:
-        types:
-          Heat: 10
-      soundHit:
-        path: /Audio/Effects/sparks4.ogg
-    - type: Butcherable
-      spawned:
-      - id: FoodMeatSlime
-        amount: 2
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Sprite
+    sprite: _FD/Mobs/spacejelly.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2.5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Heat: 10
+    soundHit:
+      path: /Audio/Effects/sparks4.ogg
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatSlime
+      amount: 2
 
 - type: entity
-  name: flatcarp
-  parent: [NFMobRestrictions, NFMobSimpleHostileBase, MobCarp, NFMobRoadkillable]
+  name: Flatcarp
   id: FDMobCarpFlatcarp
-  description: Flat fish. Literally. Instead of biting - it simply hits you like a metal plate.
+  parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
+  suffix: "Frontier"
   categories: [ DoNotMap ]
   components:
-    - type: Sprite
-      sprite: _FD/Mobs/fish.rsi
-    - type: TypingIndicator
-      proto: guardian
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 3
-      baseSprintSpeed: 2.5
-    - type: MeleeWeapon
-      animation: WeaponArcPunch
-      damage:
-        types:
-          Blunt: 8
-          Structural: 10
-      soundHit:
-        path: /Audio/Effects/hit_kick.ogg
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Sprite
+    sprite: _FD/Mobs/flatcarp.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 2.5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+        Structural: 20
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg

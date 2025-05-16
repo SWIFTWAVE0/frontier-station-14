@@ -128,7 +128,7 @@
   damage:
     types:
       Heat: 45
-      Structural: 70
+      Structural: 400
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_beam_heavy2

@@ -28,6 +28,8 @@
   components:
   - type: Sprite
     sprite: _FD/Structures/50cal.rsi
+    layers:
+    - state: space-artillery
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
