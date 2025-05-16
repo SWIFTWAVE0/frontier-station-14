@@ -1,0 +1,25 @@
+- type: vessel
+  id: bullet
+  parent: BaseVessel
+  name: FTU Bullet
+  description: Simple FTU salvage capsule for a salvage purposes.
+  price: 12000
+  category: Micro
+  group: Scrap
+  shuttlePath: /Maps/_NF/Shuttles/Bullet.yml
+  class:
+  - Salvage
+
+- type: gameMap
+  id: bullet
+  mapName: 'FTU Bullet'
+  mapPath: /Maps/_NF/Shuttles/bullet.yml
+  minPlayers: 0
+  stations:
+    bullet:
+      stationProto: StandardFrontierVessel
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'FTU Bullet {1}'
+        nameGenerator: !type:NanotrasenNameGenerator
+          prefixCreator: '14'

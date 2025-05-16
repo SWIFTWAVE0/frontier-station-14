@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/14/2025 13:03:58
-  entityCount: 153
+  time: 05/16/2025 02:16:47
+  entityCount: 155
 maps: []
 grids:
 - 1
@@ -631,11 +631,11 @@ entities:
       parent: 1
 - proto: ClothingHeadHatWelding
   entities:
-  - uid: 100
+  - uid: 155
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5647726,3.108463
+      rot: 1.5707963267948966 rad
+      pos: 0.8772167,3.5390794
       parent: 1
 - proto: ComputerShuttle
   entities:
@@ -643,6 +643,13 @@ entities:
     components:
     - type: Transform
       pos: 0.5,1.5
+      parent: 1
+- proto: FuelPlasma
+  entities:
+  - uid: 100
+    components:
+    - type: Transform
+      pos: 1.1115917,3.1172044
       parent: 1
 - proto: GravityGeneratorMini
   entities:
@@ -659,13 +666,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,2.5
       parent: 1
-- proto: JerryCanWeldingFuel
+- proto: NFHolopadShip
   entities:
-  - uid: 99
+  - uid: 154
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.8616476,2.967838
+      pos: 0.5,-0.5
       parent: 1
 - proto: OreBag
   entities:
@@ -681,9 +687,9 @@ entities:
     - type: Transform
       pos: -0.3727274,0.56158805
       parent: 1
-- proto: PortableGeneratorJrPacmanShuttle
+- proto: PortableGeneratorPacmanShuttle
   entities:
-  - uid: 15
+  - uid: 99
     components:
     - type: Transform
       pos: 0.5,2.5
@@ -963,6 +969,14 @@ entities:
       parent: 1
     - type: WarpPoint
       location: FTU Barebones
+- proto: Welder
+  entities:
+  - uid: 15
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 0.2365917,3.4140794
+      parent: 1
 - proto: WeldingFuelTankFull
   entities:
   - uid: 59

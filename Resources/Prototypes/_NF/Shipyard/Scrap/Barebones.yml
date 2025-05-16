@@ -2,7 +2,7 @@
   id: Barebones
   parent: BaseVessel
   name: FTU Barebones
-  description: A technically spacefaring vessel.  No livery.
+  description: A technically spacefaring mining vessel equiped with mining machinery.
   price: 16000
   category: Micro
   group: Scrap
