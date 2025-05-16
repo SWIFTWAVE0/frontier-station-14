@@ -4,11 +4,11 @@
   parent: BaseMagazineGrenade
   components:
   - type: BallisticAmmoProvider
-    proto: GrenadeBaton
+    proto: Grenade
     mayTransfer: true
     whitelist:
       tags:
-        - GrenadeBaton
+        - Grenade
     capacity: 20
     soundRack:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
@@ -25,11 +25,11 @@
   parent: BaseMagazineGrenade
   components:
   - type: BallisticAmmoProvider
-    proto: GrenadeFrag
+    proto: Grenade
     mayTransfer: true
     whitelist:
       tags:
-        - GrenadeFrag
+        - Grenade
     capacity: 6
     soundRack:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
