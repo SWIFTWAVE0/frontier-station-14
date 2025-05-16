@@ -230,9 +230,7 @@
     - SecurityExplosives
     - SecurityEquipment
     - SecurityWeapons
-    - BasicShuttleArmament
-    - AdvancedShuttleWeapon
-    - DraconicMunitions
+
   - type: EmagLatheRecipes
     emagDynamicPacks:
   # - SecurityAmmo
