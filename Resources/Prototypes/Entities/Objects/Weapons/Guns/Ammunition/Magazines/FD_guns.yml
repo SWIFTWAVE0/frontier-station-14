@@ -4,7 +4,7 @@
   parent: BaseMagazineGrenade
   components:
   - type: BallisticAmmoProvider
-    proto: Grenade
+    proto: GrenadeBaton
     mayTransfer: true
     whitelist:
       tags:
@@ -25,7 +25,7 @@
   parent: BaseMagazineGrenade
   components:
   - type: BallisticAmmoProvider
-    proto: Grenade
+    proto: GrenadeFrag
     mayTransfer: true
     whitelist:
       tags:
@@ -75,7 +75,7 @@
           acts: ["Destruction"]
   - type: Gun
     projectileSpeed: 50
-    fireRate: 6
+    fireRate: 8
     angleDecay: 45
     minAngle: 0
     maxAngle: 15
@@ -88,12 +88,25 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - GrenadeFrag
+        - Grenade
     capacity: 6
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
     board: ShuttleGunMissileCircuitboard
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineGrenade
+        insertSound:
+          path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+          params:
+            pitch: 2
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
 
 - type: entity
   id: ShuttleGun50cal
@@ -136,12 +149,25 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - GrenadeBaton
+        - Grenade
     capacity: 60
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
     board: ShuttleGun50calCircuitboard
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineGrenade
+        insertSound:
+          path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+          params:
+            pitch: 2
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
 
 - type: entity
   id: ShuttleGun50calCircuitboard
@@ -159,7 +185,7 @@
       MatterBin: 3 # Frontier stackRequirements<requirements
       Manipulator: 2 # Frontier stackRequirements<requirements
     stackRequirements:
-      Steel: 7
+      Steel: 30
       CableHV: 5
 
 - type: entity
@@ -175,8 +201,10 @@
   - type: MachineBoard
     prototype: ShuttleGun50cal
     requirements: # Frontier
-      MatterBin: 3 # Frontier stackRequirements<requirements
-      Manipulator: 2 # Frontier stackRequirements<requirements
+      MatterBin: 6 # Frontier stackRequirements<requirements
+      Manipulator: 4 # Frontier stackRequirements<requirements
     stackRequirements:
-      Steel: 7
+      Steel: 50
       CableHV: 5
+      Uranium: 5
+      Gold: 5
