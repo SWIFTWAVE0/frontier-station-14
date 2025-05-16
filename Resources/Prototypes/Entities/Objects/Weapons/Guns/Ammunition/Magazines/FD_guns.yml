@@ -88,7 +88,7 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - GrenadeFrag
+        - Grenade
     capacity: 6
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
@@ -136,7 +136,7 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - GrenadeBaton
+        - Grenade
     capacity: 60
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
