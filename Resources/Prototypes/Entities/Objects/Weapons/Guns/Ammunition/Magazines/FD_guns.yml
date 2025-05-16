@@ -94,6 +94,7 @@
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
     board: ShuttleGunMissileCircuitboard
+  - type: MagazineAmmoProvider
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -155,6 +156,7 @@
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
     board: ShuttleGun50calCircuitboard
+  - type: MagazineAmmoProvider
   - type: ItemSlots
     slots:
       gun_magazine:
