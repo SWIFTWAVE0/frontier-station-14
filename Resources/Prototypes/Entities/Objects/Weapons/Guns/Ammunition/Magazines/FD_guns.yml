@@ -134,7 +134,7 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
-    board: ShuttleGun50calCircuitboard
+    board: ShuttleGunMissileCircuitboard
 
 - type: entity
   id: ShuttleGun50cal
@@ -189,6 +189,25 @@
   parent: BaseMachineCircuitboard
   name: 50-CAL "Liberty" machine board
   description: A machine printed circuit board for an 50-CAL "Liberty".
+  suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    state: security
+  - type: MachineBoard
+    prototype: ShuttleGun50cal
+    requirements: # Frontier
+      MatterBin: 3 # Frontier stackRequirements<requirements
+      Manipulator: 2 # Frontier stackRequirements<requirements
+    stackRequirements:
+      Steel: 7
+      CableHV: 5
+
+- type: entity
+  id: ShuttleGunMissileCircuitboard
+  parent: BaseMachineCircuitboard
+  name: EXP-BARRAGE "Devastator" machine board
+  description: A machine printed circuit board for an EXP-BARRAGE "Devastator".
   suffix: DO NOT MAP, Machine Board
   categories: [ DoNotMap ]
   components:
