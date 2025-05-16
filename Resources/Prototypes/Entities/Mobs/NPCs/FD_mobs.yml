@@ -2,6 +2,7 @@
 
 - type: entity
   name: Bluefish
+  description: Особый выводок космических карпов, обладающий крайне малыми размерами и почти безобидными зубами. Практически килька.
   id: FDMobCarpBluefish
   parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
   suffix: "Frontier"
@@ -23,9 +24,16 @@
     damage:
       types:
         Slash: 3
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        mouth: ""
 
 - type: entity
   name: Anglershark
+  description: Монструозное создание, ещё не являющееся акулой, но и от карпа уже будет далековато. Известно своими яркими голубыми глазами, которые светятся даже в кромешной тьме, приманивая добычу.
   id: FDMobCarpAnglershark
   parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
   suffix: "Frontier"
@@ -49,9 +57,16 @@
         Slash: 8
         Blunt: 4
         Structural: 20
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        mouth: ""
 
 - type: entity
   name: Spacejelly
+  description: Главный источник космического желе. Эта медуза - ещё один мутант рода карповых, получившийся при неизвестных обстоятельствах. Жалит очень больно.
   id: FDMobCarpSpacejelly
   parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
   suffix: "Frontier"
@@ -79,9 +94,16 @@
     spawned:
     - id: FoodMeatSlime
       amount: 2
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        mouth: ""
 
 - type: entity
   name: Flatcarp
+  description: Этот карп настолько плоский, что вместо укусов - он бьёт своих жертв своим крепким как металлическая плита телом.
   id: FDMobCarpFlatcarp
   parent: [NFMobRestrictions, NFMobSimpleHostileBase, NFMobCarp]
   suffix: "Frontier"
@@ -106,3 +128,9 @@
         Structural: 20
     soundHit:
       path: /Audio/Effects/hit_kick.ogg
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        alive: ""
+      enum.DamageStateVisualLayers.BaseUnshaded:
+        mouth: ""
