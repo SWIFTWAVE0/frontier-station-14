@@ -27,9 +27,9 @@
   categories: [ DoNotMap ]
   components:
   - type: Sprite
-    sprite: _FD/Structures/50cal.rsi
+    sprite: _FD/Structures/flak.rsi
     layers:
-    - state: space-artillery
+    - state: space_artillery
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
