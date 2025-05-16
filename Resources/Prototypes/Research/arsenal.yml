@@ -29,19 +29,19 @@
   discipline: Arsenal
   tier: 1
   cost: 10000
-   recipeUnlocks:
-   - BoxShotgunIncendiary
-   - MagazineRifleIncendiary
-   - MagazinePistolIncendiary
-   - MagazinePistolSubMachineGunIncendiary
-   - MagazineLightRifleIncendiary
-   - SpeedLoaderMagnumIncendiary
-   - MagazineShotgunIncendiary
-   - MagazineBoxPistolIncendiary
-   - MagazineBoxMagnumIncendiary
-   - MagazineBoxLightRifleIncendiary
-   - MagazineBoxRifleIncendiary
-   - SpeedLoaderRifleHeavyIncendiary # Frontier
+  recipeUnlocks:
+  - BoxShotgunIncendiary
+  - MagazineRifleIncendiary
+  - MagazinePistolIncendiary
+  - MagazinePistolSubMachineGunIncendiary
+  - MagazineLightRifleIncendiary
+  - SpeedLoaderMagnumIncendiary
+  - MagazineShotgunIncendiary
+  - MagazineBoxPistolIncendiary
+  - MagazineBoxMagnumIncendiary
+  - MagazineBoxLightRifleIncendiary
+  - MagazineBoxRifleIncendiary
+  - SpeedLoaderRifleHeavyIncendiary # Frontier
 
 # End Frontier: restricted arsenal research
 
@@ -88,17 +88,17 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
-   - MagazineRifleUranium
-   - MagazinePistolUranium
-   - MagazinePistolSubMachineGunUranium
-   - MagazineLightRifleUranium
-   - SpeedLoaderMagnumUranium
-   - MagazineBoxPistolUranium
-   - MagazineBoxMagnumUranium
-   - MagazineBoxLightRifleUranium
-   - MagazineBoxRifleUranium
-   - BoxShotgunUranium
-   - SpeedLoaderRifleHeavyUranium # Frontier
+  - MagazineRifleUranium
+  - MagazinePistolUranium
+  - MagazinePistolSubMachineGunUranium
+  - MagazineLightRifleUranium
+  - SpeedLoaderMagnumUranium
+  - MagazineBoxPistolUranium
+  - MagazineBoxMagnumUranium
+  - MagazineBoxLightRifleUranium
+  - MagazineBoxRifleUranium
+  - BoxShotgunUranium
+  - SpeedLoaderRifleHeavyUranium # Frontier
 
 # End Frontier: restricted arsenal research
 
