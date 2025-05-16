@@ -8,8 +8,7 @@
     },
     "states": [
     {
-        "name": "space_artillery",
-		"directions": 4
+        "name": "space_artillery"
     },
     {
         "name": "mag-1"
