@@ -90,6 +90,8 @@
   - ShuttleGunFriendshipCircuitboard
   - ShuttleGunPerforatorCircuitboard
   - ShuttleGunSvalinnMachineGunCircuitboard
+  - ShuttleGunMissileCircuitboard
+  - ShuttleGun50calCircuitboard
 
 - type: latheRecipePack
   parent:

@@ -87,6 +87,8 @@
   - GrenadeBlast
   - GrenadeEMP
   - GrenadeFlash
+  - GrenadeFrag
+  - GrenadeBaton
   - PortableRecharger
   - SignalTrigger
   - TelescopicShield
@@ -98,10 +100,6 @@
   - WeaponLaserCannon
   - WeaponLaserCarbine
   - WeaponXrayCannon
-
-- type: latheRecipePack
-  id: NFNfsdTechfabDeprecatedEmag
-  recipes:
   - BoxShotgunIncendiary
   - BoxShotgunUranium
   - MagazineBoxLightRifleIncendiary
@@ -124,3 +122,7 @@
   - SpeedLoaderMagnumUranium
   - SpeedLoaderRifleHeavyIncendiary
   - SpeedLoaderRifleHeavyUranium
+
+- type: latheRecipePack
+  id: NFNfsdTechfabDeprecatedEmag
+  recipes: []

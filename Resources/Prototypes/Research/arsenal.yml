@@ -188,13 +188,14 @@
   - PowerCageSmall
   - PowerCageMedium
   - MagazineGrenadeEmpty
+  - GrenadeBaton
   - GrenadeFlash
   - GrenadeBlast
   - GrenadeEMP #Frontier
   - PowerCageHigh #frontier
   - ShuttleGunSvalinnMachineGunCircuitboard # Frontier
-  - ShuttleGunPerforatorCircuitboard # Frontier
   - ShuttleGunFriendshipCircuitboard # Frontier
+  - ShuttleGun50calCircuitboard
   technologyPrerequisites:
   - SalvageWeapons
 
@@ -237,8 +238,10 @@
   tier: 3
   cost: 15000
   recipeUnlocks:
-  - GrenadeEMP
+  - GrenadeFrag
   - PowerCageHigh
+  - ShuttleGunMissileCircuitboard
   - ShuttleGunDusterCircuitboard # Frontier
+  - ShuttleGunPerforatorCircuitboard # Frontier
   technologyPrerequisites:
   - BasicShuttleArmament
