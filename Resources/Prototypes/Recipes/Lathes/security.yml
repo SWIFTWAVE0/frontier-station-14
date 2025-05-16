@@ -686,6 +686,25 @@
     Glass: 20
 
 - type: latheRecipe
+  id: GrenadeBaton
+  result: GrenadeBaton
+  completetime: 3
+  materials:
+    Steel: 300
+    Plastic: 200
+    Glass: 60
+
+- type: latheRecipe
+  id: GrenadeFrag
+  result: GrenadeFrag
+  completetime: 3
+  materials:
+    Steel: 800
+    Plastic: 200
+    Glass: 100
+    Uranium: 200
+
+- type: latheRecipe
   id: PortableRecharger
   result: PortableRecharger
   completetime: 15

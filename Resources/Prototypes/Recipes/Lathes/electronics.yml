@@ -563,31 +563,43 @@
   parent: BaseCircuitboardRecipe
   id: ShuttleGunSvalinnMachineGunCircuitboard
   result: ShuttleGunSvalinnMachineGunCircuitboard
-  completetime: 6
+  completetime: 20
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: ShuttleGunMissileCircuitboard
+  result: ShuttleGunMissileCircuitboard
+  completetime: 60
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: ShuttleGun50calCircuitboard
+  result: ShuttleGun50calCircuitboard
+  completetime: 20
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   id: ShuttleGunPerforatorCircuitboard
   result: ShuttleGunPerforatorCircuitboard
-  completetime: 10
+  completetime: 60
 
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
   id: ShuttleGunKineticCircuitboard
   result: ShuttleGunKineticCircuitboard
-  completetime: 6
+  completetime: 20
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   id: ShuttleGunFriendshipCircuitboard
   result: ShuttleGunFriendshipCircuitboard
-  completetime: 8
+  completetime: 20
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   id: ShuttleGunDusterCircuitboard
   result: ShuttleGunDusterCircuitboard
-  completetime: 12
+  completetime: 60
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
