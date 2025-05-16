@@ -214,7 +214,7 @@
     - ScienceWeapons
     - Mining
     - AtmosTools
-    # - EngineeringWeapons # Frontier
+    - EngineeringWeapons # Frontier
     - Chemistry
     - Janitor
     - Instruments
@@ -226,12 +226,19 @@
     - NFService # Frontier
     - NFScience # Frontier
     - NFPouches # Frontier
-  - type: EmagLatheRecipes
-    emagDynamicPacks:
     - SecurityAmmo
     - SecurityExplosives
     - SecurityEquipment
     - SecurityWeapons
+    - BasicShuttleArmament
+    - AdvancedShuttleWeapon
+    - DraconicMunitions
+  - type: EmagLatheRecipes
+    emagDynamicPacks:
+  # - SecurityAmmo
+  # - SecurityExplosives
+  # - SecurityEquipment
+  # - SecurityWeapons
     - SyringeGuns # Delta-V
 
 - type: entity
@@ -290,6 +297,7 @@
     - NFEngineeringBoards # Frontier
     - NFMedicalBoards # Frontier
     - NFServiceBoards # Frontier
+    - SecurityBoards
   - type: EmagLatheRecipes
     emagDynamicPacks: [] # Frontier: empty list
     # - SecurityBoards # Frontier
@@ -423,7 +431,7 @@
     - SecurityWeaponsStatic
     dynamicPacks:
     - SecurityEquipment
-    # - SecurityBoards # Frontier
+    - SecurityBoards # Frontier
     - SecurityExplosives
     - SecurityAmmo
     - SecurityWeapons
