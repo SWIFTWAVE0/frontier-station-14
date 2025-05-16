@@ -8,7 +8,7 @@
     mayTransfer: true
     whitelist:
       tags:
-        - Grenade
+        - GrenadeBaton
     capacity: 20
     soundRack:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
@@ -18,6 +18,123 @@
       path: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
       params:
         variation: 0.05
+
+- type: entity
+  id: FDMagazineRocketLauncher
+  name: missile cartridge
+  parent: BaseMagazineGrenade
+  components:
+  - type: BallisticAmmoProvider
+    proto: FDCartridgeRocket
+    mayTransfer: true
+    whitelist:
+      tags:
+        - FDCartridgeRocket
+    capacity: 6
+    soundRack:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        variation: 0.05
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
+      params:
+        variation: 0.05
+  - type: Sprite
+    sprite: _FD/Structures/rocketcartridge.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: FDCartridgeRocket
+  name: PG-7VL shuttle rocket
+  parent: [BaseItem, BaseC2ContrabandUnredeemable]
+  description: A 1.5 warhead designed for the shuttle missile launcher. Has tubular shape.
+  components:
+  - type: Tag
+    tags:
+      - FDCartridgeRocket
+  - type: Item
+    size: Small
+  - type: CartridgeAmmo
+    proto: FDBulletRocket
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: rpg
+  - type: StaticPrice
+    price: 20
+
+- type: entity
+  id: FDBulletRocket
+  name: rocket
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: frag
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 175 # about a ~6 tile radius
+    intensitySlope: 1
+    maxIntensity: 10
+  - type: PointLight
+    radius: 3.5
+    color: orange
+    energy: 0.5
+
+- type: entity
+  id: ShuttleGunMissile
+  parent: [ShuttleGunBase] # Frontier: Removed ConstructibleMachine
+  name: EXP-BARRAGE "Devastator"
+  description: Stationary missile launcher, firing explosive rods.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _FD/Structures/rocketlauncher.rsi
+    layers:
+    - state: space_artillery
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      ballistic-ammo: !type:Container
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 50
+    fireRate: 6
+    angleDecay: 45
+    minAngle: 0
+    maxAngle: 15
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
+      params:
+        pitch: 0.8
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - FDCartridgeRocket
+    capacity: 6
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: Machine
+    board: ShuttleGun50calCircuitboard
 
 - type: entity
   id: ShuttleGun50cal
@@ -47,7 +164,7 @@
           acts: ["Destruction"]
   - type: Gun
     projectileSpeed: 90
-    fireRate: 3
+    fireRate: 5
     angleDecay: 45
     minAngle: 0
     maxAngle: 15
@@ -60,8 +177,8 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - Grenade
-    capacity: 40
+        - GrenadeBaton
+    capacity: 60
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: Machine
