@@ -84,8 +84,7 @@
   - TelescopicShield
 
 - type: latheRecipePack
-  id: SecurityBoards
-  abstract: true # Frontier: finally, spammable shuttle guns
+  id: SecurityBoards # Frontier: finally, spammable shuttle guns
   recipes:
   - ShuttleGunDusterCircuitboard
   - ShuttleGunFriendshipCircuitboard
