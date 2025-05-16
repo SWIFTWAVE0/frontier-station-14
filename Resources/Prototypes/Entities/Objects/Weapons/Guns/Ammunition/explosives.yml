@@ -60,6 +60,10 @@
   name: baton grenade
   parent: BaseGrenade
   components:
+  - type: Tag
+    tags:
+    - Grenade
+    - GrenadeBaton
   - type: CartridgeAmmo
     proto: BulletGrenadeBaton
   - type: Sprite
@@ -111,6 +115,10 @@
   name: frag grenade
   parent: BaseGrenade
   components:
+  - type: Tag
+    tags:
+    - Grenade
+    - GrenadeFrag
   - type: CartridgeAmmo
     proto: BulletGrenadeFrag
   - type: Sprite

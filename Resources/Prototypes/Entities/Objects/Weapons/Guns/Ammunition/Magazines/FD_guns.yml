@@ -25,11 +25,11 @@
   parent: BaseMagazineGrenade
   components:
   - type: BallisticAmmoProvider
-    proto: FDCartridgeRocket
+    proto: GrenadeFrag
     mayTransfer: true
     whitelist:
       tags:
-        - FDCartridgeRocket
+        - GrenadeFrag
     capacity: 6
     soundRack:
       path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
@@ -46,47 +46,6 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-5
       map: ["enum.GunVisualLayers.Mag"]
-
-- type: entity
-  id: FDCartridgeRocket
-  name: PG-7VL shuttle rocket
-  parent: [BaseItem, BaseC2ContrabandUnredeemable]
-  description: A 1.5 warhead designed for the shuttle missile launcher. Has tubular shape.
-  components:
-  - type: Tag
-    tags:
-      - FDCartridgeRocket
-  - type: Item
-    size: Small
-  - type: CartridgeAmmo
-    proto: FDBulletRocket
-    deleteOnSpawn: true
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: rpg
-  - type: StaticPrice
-    price: 20
-
-- type: entity
-  id: FDBulletRocket
-  name: rocket
-  parent: BaseBulletTrigger
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-      - state: frag
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    totalIntensity: 175 # about a ~6 tile radius
-    intensitySlope: 1
-    maxIntensity: 10
-  - type: PointLight
-    radius: 3.5
-    color: orange
-    energy: 0.5
 
 - type: entity
   id: ShuttleGunMissile
@@ -129,7 +88,7 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - FDCartridgeRocket
+        - GrenadeFrag
     capacity: 6
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
