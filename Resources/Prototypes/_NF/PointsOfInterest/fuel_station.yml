@@ -18,7 +18,7 @@
   gridPath: /Maps/_NF/POI/fuel_station.yml
   addComponents:
   - type: IFF
-    color: "#6B8E23"
+    color: "#00FF00"
   - type: SolarPoweredGrid
     trackOnInit: true
     doNotCull: true
