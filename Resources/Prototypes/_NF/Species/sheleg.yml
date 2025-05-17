@@ -1,7 +1,7 @@
 - type: species
   id: Sheleg
   name: species-name-sheleg
-  roundStart: false
+  roundStart: true
   prototype: MobSheleg
   dollPrototype: MobShelegDummy
   markingLimits: MobShelegMarkingLimits
