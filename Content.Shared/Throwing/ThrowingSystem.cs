@@ -60,7 +60,8 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        bool unanchor = false,
+        bool fly = true)
     {
         var thrownPos = _transform.GetMapCoordinates(uid);
         var mapPos = _transform.ToMapCoordinates(coordinates);
@@ -68,7 +69,7 @@ public sealed class ThrowingSystem : EntitySystem
         if (mapPos.MapId != thrownPos.MapId)
             return;
 
-        TryThrow(uid, mapPos.Position - thrownPos.Position, baseThrowSpeed, user, pushbackRatio, friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin, unanchor: unanchor);
+        TryThrow(uid, mapPos.Position - thrownPos.Position, baseThrowSpeed, user, pushbackRatio, friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin, unanchor: unanchor, fly: fly);
     }
 
     /// <summary>
@@ -93,7 +94,8 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        bool unanchor = false,
+        bool fly = true)
     {
         var physicsQuery = GetEntityQuery<PhysicsComponent>();
         if (!physicsQuery.TryGetComponent(uid, out var physics))
@@ -110,7 +112,7 @@ public sealed class ThrowingSystem : EntitySystem
             baseThrowSpeed,
             user,
             pushbackRatio,
-            friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin, unanchor: unanchor);
+            friction, compensateFriction: compensateFriction, recoil: recoil, animated: animated, playSound: playSound, doSpin: doSpin, unanchor: unanchor, fly: fly);
     }
 
     /// <summary>
@@ -138,7 +140,8 @@ public sealed class ThrowingSystem : EntitySystem
         bool animated = true,
         bool playSound = true,
         bool doSpin = true,
-        bool unanchor = false)
+        bool unanchor = false,
+        bool fly = true)
     {
         if (baseThrowSpeed <= 0 || direction == Vector2Helpers.Infinity || direction == Vector2Helpers.NaN || direction == Vector2.Zero || friction < 0)
             return;
@@ -207,13 +210,16 @@ public sealed class ThrowingSystem : EntitySystem
         var impulseVector = direction.Normalized() * throwSpeed * physics.Mass;
         _physics.ApplyLinearImpulse(uid, impulseVector, body: physics);
 
-        if (comp.LandTime == null || comp.LandTime <= TimeSpan.Zero)
+        if (fly)
         {
-            _thrownSystem.LandComponent(uid, comp, physics, playSound);
-        }
-        else
-        {
-            _physics.SetBodyStatus(uid, physics, BodyStatus.InAir);
+            if (comp.LandTime == null || comp.LandTime <= TimeSpan.Zero)
+            {
+                _thrownSystem.LandComponent(uid, comp, physics, playSound);
+            }
+            else
+            {
+                _physics.SetBodyStatus(uid, physics, BodyStatus.InAir);
+            }
         }
 
         if (user == null)
@@ -233,7 +239,7 @@ public sealed class ThrowingSystem : EntitySystem
             const float massLimit = 5f;
 
             if (!msg.Cancelled)
-                
+
                 // Frontier: apply impulse to buckled object if buckled
                 if (TryComp<BuckleComponent>(user, out var buckle) && buckle.BuckledTo is not null)
                 {

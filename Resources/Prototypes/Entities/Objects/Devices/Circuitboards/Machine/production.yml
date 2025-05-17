@@ -1413,3 +1413,19 @@
     stackRequirements:
       Steel: 2
       Cable: 1
+
+# FD - DAN
+- type: entity
+  id: ResourceMagnetCircuitboard
+  parent: BaseMachineCircuitboard
+  name: industrial magnet machine board
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: ResourceMagnet
+      requirements:
+        Capacitor: 2
+      stackRequirements:
+        CableHV: 5
+        Steel: 5

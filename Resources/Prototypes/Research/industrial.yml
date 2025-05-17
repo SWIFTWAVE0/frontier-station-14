@@ -196,6 +196,7 @@
     - NFBlueprintMiningDrillDiamond # Frontier
     - NFBlueprintAdvancedMineralScannerEmpty # Frontier
     - BorgModuleAdvancedMining # Frontier
+    - ResourceMagnetCircuitboard # FD - DAN
 
 # Tier 3
 

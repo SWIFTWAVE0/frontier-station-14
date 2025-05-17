@@ -620,3 +620,9 @@
   parent: BaseCircuitboardRecipe
   id: HolopadMachineCircuitboard
   result: HolopadMachineCircuitboard
+
+# FD - DAN
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: ResourceMagnetCircuitboard
+  result: ResourceMagnetCircuitboard
