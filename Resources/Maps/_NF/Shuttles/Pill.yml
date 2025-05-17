@@ -4,7 +4,7 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/16/2025 02:06:02
+  time: 05/16/2025 16:16:47
   entityCount: 63
 maps: []
 grids:
@@ -370,17 +370,19 @@ entities:
       parent: 1
 - proto: Railing
   entities:
-  - uid: 2
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -0.5,1.5
-      parent: 1
   - uid: 17
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.5,1.5
+      parent: 1
+- proto: RailingCorner
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,1.5
       parent: 1
 - proto: RailingCornerSmall
   entities:
@@ -397,12 +399,6 @@ entities:
       parent: 1
 - proto: ShuttleGunKinetic
   entities:
-  - uid: 41
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,1.5
-      parent: 1
   - uid: 42
     components:
     - type: Transform
@@ -419,8 +415,6 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        41:
-        - Pressed: Toggle
         42:
         - Pressed: Toggle
   - uid: 44
@@ -443,6 +437,14 @@ entities:
         - Pressed: Toggle
         16:
         - Pressed: Toggle
+- proto: SmallGyroscope
+  entities:
+  - uid: 41
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,1.5
+      parent: 1
 - proto: SmallThruster
   entities:
   - uid: 11

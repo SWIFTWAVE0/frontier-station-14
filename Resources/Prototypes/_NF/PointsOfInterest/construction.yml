@@ -1,0 +1,36 @@
+# Author Info
+# GitHub: RealIHANOfficial (??)
+# Discord:
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# The local Science lab
+- type: pointOfInterest
+  id: construction
+  parent: BasePOI
+  name: 'Adandoned Construction Site'
+  minimumDistance: 3000
+  maximumDistance: 3500
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/construction.yml
+  addComponents:
+  - type: IFF
+    color: "#A9A9A9"
+
+- type: gameMap
+  id: construction
+  mapName: 'Adandoned Construction Site'
+  mapPath: /Maps/_NF/POI/construction.yml
+  minPlayers: 0
+  stations:
+    construction:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Adandoned Construction Site'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

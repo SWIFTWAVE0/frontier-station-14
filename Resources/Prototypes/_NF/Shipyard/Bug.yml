@@ -9,32 +9,32 @@
 # Shuttle Notes:
 #
 - type: vessel
-  id: frogger
-  name: SFV Frogger
-  description: Small-sized combat vessel equiped with 2x "Friendship" grenade launchers.
-  price: 55000
+  id: Bug
+  name: SFV Bug
+  description: An old small-sized combat vessel dedicated to the Basilisk-class mothership.
+  price: 45000
   parent: BaseVessel
   category: Small
-  group: Shipyard
-  shuttlePath: /Maps/_NF/Shuttles/Frogger.yml
+  group: Security
+  shuttlePath: /Maps/_NF/Shuttles/Bug.yml
   guidebookPage: Null
   addComponents:
   - type: IFF
-    color: "#2E8B57"
+    color: "#1E90FF"
   class:
   - Fighter
 
 - type: gameMap
-  id: frogger
-  mapName: 'SFV Frogger'
-  mapPath: /Maps/_NF/Shuttles/Frogger.yml
+  id: Bug
+  mapName: 'SFV Bug'
+  mapPath: /Maps/_NF/Shuttles/Bug.yml
   minPlayers: 0
   stations:
-    frogger:
+    Bug:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'SFV Frogger {1}'
+          mapNameTemplate: 'SFV Bug {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

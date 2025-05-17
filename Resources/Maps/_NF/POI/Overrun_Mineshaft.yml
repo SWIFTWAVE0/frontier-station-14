@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/16/2025 00:50:33
-  entityCount: 3473
+  time: 05/16/2025 16:21:35
+  entityCount: 3475
 maps: []
 grids:
 - 1
@@ -5263,8 +5263,6 @@ entities:
     - type: Transform
       pos: 1.7732123,-5.1480856
       parent: 1
-    - type: Item
-      heldPrefix: lit
     - type: IgnitionSource
       ignited: True
 - proto: FlippoLighter
@@ -5430,6 +5428,13 @@ entities:
     components:
     - type: Transform
       pos: -23.767553,-14.367666
+      parent: 1
+- proto: GravityGenerator
+  entities:
+  - uid: 3474
+    components:
+    - type: Transform
+      pos: -20.5,-14.5
       parent: 1
 - proto: GrenadeIncendiary
   entities:
@@ -6904,6 +6909,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 12.794144,27.39929
+      parent: 1
+- proto: StationAnchor
+  entities:
+  - uid: 3475
+    components:
+    - type: Transform
+      pos: -20.5,-14.5
       parent: 1
 - proto: Stool
   entities:
