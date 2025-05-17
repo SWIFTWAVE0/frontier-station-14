@@ -131,4 +131,5 @@
   name: sol fleet vessel shipyard console
   components:
   - type: ShipyardListing
-    shuttles: []
+    shuttles:
+    - Bug
