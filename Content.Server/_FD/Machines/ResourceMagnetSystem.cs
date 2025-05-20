@@ -235,7 +235,7 @@ namespace Content.Server._FD.EntitySystems
                 // vector from epicenter to target entity
                 var direction = -(targetPos - epicenter);
 
-                if (direction.Length() <= 0.6f)
+                if (direction.Length() <= 0.3f)
                     continue;
 
                 var speed = component.AttractSpeed * (1 - component.AttractRange / direction.Length());
