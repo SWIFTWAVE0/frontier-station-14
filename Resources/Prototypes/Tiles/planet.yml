@@ -53,6 +53,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  baseTurf: Space
 
 # Grass
 - type: tile
@@ -95,6 +96,7 @@
   heatCapacity: 10000
   weather: true
   indestructible: true
+  baseTurf: Space
 
 # Snow
 - type: tile
@@ -145,6 +147,7 @@
   mobFrictionNoInput: 0.05
   mobAcceleration: 2
   indestructible: true
+  baseTurf: Space
 
 # Dug snow
 - type: tile
