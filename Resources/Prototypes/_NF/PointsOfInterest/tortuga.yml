@@ -12,8 +12,8 @@
   id: tortuga
   parent: BasePOI
   name: Tortuga
-  minimumDistance: 10000
-  maximumDistance: 15000
+  minimumDistance: 14500
+  maximumDistance: 16000
   spawnGamePreset: [ NFPirate ]
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/tortuga.yml

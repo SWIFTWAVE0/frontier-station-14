@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/15/2025 11:07:03
-  entityCount: 404
+  time: 05/16/2025 09:46:13
+  entityCount: 415
 maps: []
 grids:
 - 1
@@ -26,7 +26,7 @@ entities:
     - type: MetaData
       name: grid
     - type: Transform
-      pos: -0.5458871,-0.4816541
+      pos: -0.57715225,-0.47123718
       parent: invalid
     - type: MapGrid
       chunks:
@@ -250,6 +250,32 @@ entities:
     - type: Transform
       pos: 9.5,-7.5
       parent: 1
+- proto: BoxLethalshot
+  entities:
+  - uid: 409
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
+  - uid: 410
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
+  - uid: 411
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
+  - uid: 412
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
 - proto: BrokenBottle
   entities:
   - uid: 310
@@ -623,8 +649,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 389
           - 390
+          - 389
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -657,12 +683,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
+          - 404
           - 399
-          - 400
           - 401
           - 402
           - 403
-          - 404
+          - 400
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -758,11 +784,30 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 256
           - 259
-          - 258
-          - 257
           - 255
+          - 257
+          - 258
+          - 256
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+- proto: CrateSecureMercenary
+  entities:
+  - uid: 413
+    components:
+    - type: Transform
+      pos: 5.5,1.5
+      parent: 1
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 414
+          - 415
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -1677,6 +1722,22 @@ entities:
     - type: Transform
       pos: 0.7230499,-0.05138725
       parent: 1
+- proto: ShuttleGunPerforatorCircuitboard
+  entities:
+  - uid: 414
+    components:
+    - type: Transform
+      parent: 413
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 415
+    components:
+    - type: Transform
+      parent: 413
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: SignMaterials
   entities:
   - uid: 387
@@ -1785,6 +1846,16 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 13.505624,3.6032932
+      parent: 1
+  - uid: 383
+    components:
+    - type: Transform
+      pos: 2.4416513,-0.5613343
+      parent: 1
+  - uid: 405
+    components:
+    - type: Transform
+      pos: 13.3244915,-8.424974
       parent: 1
 - proto: SpawnMobFleshJaredExpeditions
   entities:
@@ -2565,13 +2636,59 @@ entities:
       parent: 1
     - type: WarpPoint
       location: Derelict ???
-- proto: WeaponMinigun
+- proto: WeaponCaseHeavy
   entities:
-  - uid: 383
+  - uid: 406
     components:
     - type: Transform
-      pos: 5.4593444,7.6871243
+      pos: 6.459277,7.361673
       parent: 1
+    - type: Storage
+      storedItems:
+        407:
+          position: 0,0
+          _rotation: East
+        408:
+          position: 2,0
+          _rotation: East
+        409:
+          position: 4,0
+          _rotation: South
+        410:
+          position: 6,0
+          _rotation: South
+        411:
+          position: 4,2
+          _rotation: South
+        412:
+          position: 6,2
+          _rotation: South
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+- proto: WeaponShotgunEnforcer
+  entities:
+  - uid: 407
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
+  - uid: 408
+    components:
+    - type: Transform
+      parent: 406
+    - type: Physics
+      canCollide: False
 - proto: WeaponTurretSyndicateBroken
   entities:
   - uid: 307

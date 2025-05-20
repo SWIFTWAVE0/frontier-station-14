@@ -9,32 +9,32 @@
 # Shuttle Notes:
 #
 - type: vessel
-  id: frogger
-  name: SFV Frogger
-  description: Small-sized combat vessel equiped with 2x "Friendship" grenade launchers.
-  price: 55000
+  id: Widow
+  name: IPV Weeping Widow
+  description: You don't want to know...
+  price: 5000000
   parent: BaseVessel
-  category: Small
+  category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_NF/Shuttles/Frogger.yml
+  shuttlePath: /Maps/_NF/Shuttles/Widow.yml
   guidebookPage: Null
   addComponents:
   - type: IFF
-    color: "#2E8B57"
+    color: "#3CB371"
   class:
-  - Fighter
+  - Civilian
 
 - type: gameMap
-  id: frogger
-  mapName: 'SFV Frogger'
-  mapPath: /Maps/_NF/Shuttles/Frogger.yml
+  id: Widow
+  mapName: 'IPV Weeping Widow'
+  mapPath: /Maps/_NF/Shuttles/Widow.yml
   minPlayers: 0
   stations:
-    frogger:
+    Widow:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'SFV Frogger {1}'
+          mapNameTemplate: 'IPV Weeping Widow {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -12,7 +12,7 @@
   id: Plyvisker
   name: IPV Plyvisker
   description: Stealth combat exploratory vessel prototype, seems to be taken early from the shipyard without being properly finished.
-  price: 500000
+  price: 380000
   category: Medium
   group: Syndicate
   shuttlePath: /Maps/_NF/Shuttles/Syndicate/plyvisker.yml

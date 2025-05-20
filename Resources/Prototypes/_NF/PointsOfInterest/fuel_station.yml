@@ -1,0 +1,39 @@
+# Author Info
+# GitHub:
+# Discord: Checkraze
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# The local Science lab
+- type: pointOfInterest
+  id: fuel_station
+  parent: BasePOI
+  name: 'Fuel Station'
+  minimumDistance: 1000
+  maximumDistance: 1200
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/fuel_station.yml
+  addComponents:
+  - type: IFF
+    color: "#00FF00"
+  - type: SolarPoweredGrid
+    trackOnInit: true
+    doNotCull: true
+
+- type: gameMap
+  id: fuel_station
+  mapName: 'Fuel Station'
+  mapPath: /Maps/_NF/POI/fuel_station.yml
+  minPlayers: 0
+  stations:
+    fuel_station:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Fuel Station'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

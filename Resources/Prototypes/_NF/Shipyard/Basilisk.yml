@@ -1,0 +1,36 @@
+- type: vessel
+  id: Basilisk
+  parent: BaseVessel
+  name: SFV Basilisk
+  description: Gorgeous ancient military mothership with an extraordinary ability to wipe out any enemy vessel.
+  price: 450000
+  category: Large
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/Basilisk.yml
+  addComponents:
+  - type: IFF
+    color: "#1E90FF"
+  class:
+  - Fighter
+  engine:
+  - AME
+
+- type: gameMap
+  id: Basilisk
+  mapName: 'SFV Basilisk'
+  mapPath: /Maps/_NF/Shuttles/Basilisk.yml
+  minPlayers: 0
+  stations:
+    Basilisk:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'SFV Basilisk {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]
