@@ -32,6 +32,20 @@
         mouth: ""
 
 - type: entity
+  name: Bluefish Spawner
+  id: SpawnMobBluefish
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: icon
+      sprite: _FD/Mobs/bluefish.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - FDMobCarpBluefish # Frontier MobCarp<NFMobCarp
+
+- type: entity
   name: Anglershark
   description: Монструозное создание, ещё не являющееся акулой, но и от карпа уже будет далековато. Известно своими яркими голубыми глазами, которые светятся даже в кромешной тьме, приманивая добычу.
   id: FDMobCarpAnglershark
@@ -63,6 +77,20 @@
         alive: ""
       enum.DamageStateVisualLayers.BaseUnshaded:
         mouth: ""
+
+- type: entity
+  name: Anglershark Spawner
+  id: SpawnMobAnglershark
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: icon
+      sprite: _FD/Mobs/anglershark.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - FDMobCarpAnglershark # Frontier MobCarp<NFMobCarp
 
 - type: entity
   name: Spacejelly
@@ -102,6 +130,20 @@
         mouth: ""
 
 - type: entity
+  name: Spacejelly Spawner
+  id: SpawnMobSpacejelly
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: icon
+      sprite: _FD/Mobs/spacejelly.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - FDMobCarpSpacejelly # Frontier MobCarp<NFMobCarp
+
+- type: entity
   name: Flatcarp
   description: Этот карп настолько плоский, что вместо укусов - он бьёт своих жертв своим крепким как металлическая плита телом.
   id: FDMobCarpFlatcarp
@@ -134,3 +176,17 @@
         alive: ""
       enum.DamageStateVisualLayers.BaseUnshaded:
         mouth: ""
+
+- type: entity
+  name: Flatcarp Spawner
+  id: SpawnMobFlatcarp
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: icon
+      sprite: _FD/Mobs/flatcarp.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - FDMobCarpFlatcarp # Frontier MobCarp<NFMobCarp
