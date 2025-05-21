@@ -13,11 +13,10 @@
   id: oasis
   parent: BasePOI
   name: Oasis
-  minimumDistance: 5000
-  maximumDistance: 5000
+  minimumDistance: 6666
+  maximumDistance: 6669
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/oasis.yml
-  hideWarp: true
   addComponents:
   - type: IFF
     color: "#2F4F4F"
