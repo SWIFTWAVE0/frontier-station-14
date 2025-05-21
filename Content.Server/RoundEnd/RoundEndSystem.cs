@@ -361,7 +361,9 @@ namespace Content.Server.RoundEnd
             {
                 if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
                 {
-                    RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
+                    // [FD-EDIT START]
+                    // RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
+                    // [FD-EDIT END]
                     _autoCalledBefore = true;
                 }
 
