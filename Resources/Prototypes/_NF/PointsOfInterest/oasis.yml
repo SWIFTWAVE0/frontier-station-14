@@ -1,0 +1,40 @@
+# Author Info
+# GitHub:
+# Discord: dvir01
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# Byarr
+
+- type: pointOfInterest
+  id: oasis
+  parent: BasePOI
+  name: Oasis
+  minimumDistance: 5000
+  maximumDistance: 5000
+  spawnGroup: Required
+  gridPath: /Maps/_NF/POI/oasis.yml
+  hideWarp: true
+  addComponents:
+  - type: IFF
+    color: "#2F4F4F"
+    flags: [HideLabel, Hide]
+    readOnly: false
+
+- type: gameMap
+  id: oasis
+  mapName: 'Oasis'
+  mapPath: /Maps/_NF/POI/oasis.yml
+  minPlayers: 0
+  stations:
+    oasis:
+      stationProto: StandardFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Oasis'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt
