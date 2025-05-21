@@ -133,3 +133,16 @@
   - type: ShipyardListing
     shuttles:
     - Bug
+
+# Admin
+- type: entity
+  id: AdminMothershipComputer
+  parent: BaseMothershipComputer
+  name: admin vessel shipyard console
+  components:
+  - type: ShipyardListing
+    shuttles:
+    - kinugasa
+    - Widow
+  # - Эк шип
+  # - Шип Дани
