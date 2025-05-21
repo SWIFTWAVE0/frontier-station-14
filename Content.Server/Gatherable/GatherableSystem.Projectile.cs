@@ -45,7 +45,8 @@ public sealed partial class GatherableSystem
             {
                 var childTransform = _entManager.GetComponent<TransformComponent>(args.OtherEntity);
                 TileRef tile = _mapSystem.GetTileRef(gridId.Value, grid, childTransform.Coordinates);
-                if (tile.GetContentTileDefinition().BaseTurf == "Space" && tile.GetContentTileDefinition().DeconstructTools.Count == 0)
+                if (tile.GetContentTileDefinition().BaseTurf == "Space" &&
+                    tile.GetContentTileDefinition().DeconstructTools.Count == 0)
                 {
                     _mapSystem.SetTile(gridId.Value, grid, childTransform.Coordinates, Tile.Empty);
                 }

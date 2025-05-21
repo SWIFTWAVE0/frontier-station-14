@@ -357,6 +357,8 @@
   components:
   - type: Flatpack
     entity: ComputerTelevision
+  - type: StaticPrice
+    price: 20
 
 - type: entity
   parent: UniformPrinterFlatpack
@@ -412,6 +414,8 @@
   components:
   - type: Flatpack
     entity: ComputerWithdrawBankATM
+  - type: StaticPrice
+    price: 20
 
 - type: entity
   parent: UniformPrinterFlatpack
@@ -531,7 +535,7 @@
   - type: Flatpack
     entity: ShuttleGunKinetic
   - type: StaticPrice
-    price: 250
+    price: 40
   - type: Sprite
     layers:
     - state: supply_gun
@@ -678,7 +682,7 @@
   - type: Flatpack
     entity: Airlock
   - type: StaticPrice
-    price: 95
+    price: 20
   - type: Sprite
     layers:
     - state: command_airlock
