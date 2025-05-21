@@ -3,7 +3,7 @@
   parent: BaseVessel
   name: FTU Barebones
   description: A technically spacefaring mining vessel equiped with mining machinery.
-  price: 16000
+  price: 15000
   category: Micro
   group: Scrap
   shuttlePath: /Maps/_NF/Shuttles/Barebones.yml

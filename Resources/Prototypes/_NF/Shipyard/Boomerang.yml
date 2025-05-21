@@ -12,7 +12,7 @@
   id: boomerang
   name: CSV Boomerang
   description: Medium-sized combat vessel equiped with 4x "Friendship" grenade launchers.
-  price: 85000
+  price: 100000
   parent: BaseVessel
   category: Medium
   group: Shipyard

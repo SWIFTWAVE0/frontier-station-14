@@ -3,7 +3,7 @@
   parent: BaseVessel
   name: FTU Bigsby
   description: An old model of an infamous FTU vessel from the known part of the human space.
-  price: 280000
+  price: 400000
   category: Large
   group: Scrap
   shuttlePath: /Maps/_NF/Shuttles/Scrap/Bigsby.yml
