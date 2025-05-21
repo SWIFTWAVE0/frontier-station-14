@@ -27,18 +27,20 @@
     clothingPrototype: ClothingHeadHelmetHardsuitVoidcrew
 
 - type: entity
-  parent: ClothingHeadBase
-  id: ClothingHeadHatHoodVoidcrew
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakVoidcrew
   name: Разорванная мантия пустотника
   description: Потрёпанная временем чёрная ряса, принадлежащая Ордену Пустоты.
   components:
   - type: Sprite
     sprite: _FD/Clothing/voidcloak.rsi
-  - type: Clothing
-    sprite: _FD/Clothing/voidcloak.rsi
-  - type: Tag
-    tags:
-    - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Hair
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodVoidCloak
+    requiredSlot:
+    - neck
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: TypingIndicatorClothing
+    proto: alien
