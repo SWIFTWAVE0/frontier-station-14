@@ -202,3 +202,92 @@
       CableHV: 5
       Uranium: 5
       Gold: 5
+
+
+# Funny hull-eating thing
+
+- type: entity
+  id: ShuttleGunHulleater
+  parent: [ ShuttleGunBase, ConstructibleMachine]
+  name: Зуб
+  description: Длинный зуб минералопожирающего существа из дальнего космоса. Под такой лучше не попадаться.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _FD/Structures/tendril.rsi
+    layers:
+    - state: claw
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 900
+      behaviors:
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 60
+    fireRate: 3
+    selectedMode: SemiAuto
+    angleDecay: 45
+    minAngle: 5
+    maxAngle: 15
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+      params:
+        variation: 0.12
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1
+    rechargeSound:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        pitch: 1.2
+        variation: 0.08
+  - type: BasicEntityAmmoProvider
+    proto: BulletTendrilShuttle
+    capacity: 30
+    count: 30
+  - type: Machine
+    board: ShuttleGunKineticCircuitboard
+  - type: ExtensionCableReceiver # Frontier
+  - type: ApcPowerReceiver # Frontier
+    powerLoad: 1500 # Frontier
+
+- type: entity
+  id: BulletTendrilShuttle
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    color: "#FF8888" # Frontier: color it red vs. handheld bolts
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 900
+        Heat: 900
+        Structural: 900
+  - type: Ammo
+    muzzleFlash: HitscanEffect
+  - type: TimedDespawn
+    lifetime: 0.5
+  - type: PointLight
+    radius: 2.5
+    color: "#FF8888"
+    energy: 0.5
+  - type: GatheringProjectile
+  - type: MiningGatheringHard
+  - type: MiningGatheringUnfloor
