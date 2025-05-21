@@ -19,8 +19,8 @@
   gridPath: /Maps/_NF/POI/oasis.yml
   addComponents:
   - type: IFF
-    color: "#2F4F4F"
-    flags: [HideLabel, Hide]
+    color: "#A9A9A9"
+    flags: [HideLabel]
     readOnly: false
 
 - type: gameMap
