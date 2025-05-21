@@ -1,0 +1,17 @@
+- type: entity
+  parent: NFClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitVoidcrew
+  categories: [ HideSpawnMenu ]
+  name: Шлем пустотника
+  description: Легко-бронированный шлем пустотного рыцаря.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _FD/Clothing/voidhelmet.rsi
+  - type: Clothing
+    sprite: _FD/Clothing/voidhelmet.rsi
+  - type: PointLight
+    color: "#ffdbad"
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000

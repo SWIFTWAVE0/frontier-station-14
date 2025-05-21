@@ -1,0 +1,44 @@
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitVoidcrew
+  name: Костюм пустотника
+  description: Легко-бронированный РИГ пустотного рыцаря.
+  components:
+  - type: Sprite
+    sprite: _FD/Clothing/voidhardsuit.rsi
+  - type: Clothing
+    sprite: _FD/Clothing/voidhardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Radiation: 0.3
+        Caustic: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitVoidcrew
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHoodVoidcrew
+  name: Разорванная мантия пустотника
+  description: Потрёпанная временем чёрная ряса, принадлежащая Ордену Пустоты.
+  components:
+  - type: Sprite
+    sprite: _FD/Clothing/voidcloak.rsi
+  - type: Clothing
+    sprite: _FD/Clothing/voidcloak.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
