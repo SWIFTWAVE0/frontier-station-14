@@ -22,19 +22,19 @@ public sealed partial class ResourceMagnetComponent : Component
     /// <summary>
     /// The current amount of power being used.
     /// </summary>
-    [DataField("powerUseActive")]
+    [DataField("powerUseActive"), ViewVariables(VVAccess.ReadWrite)]
     public int PowerUseActive = 1000;
 
     /// <summary>
     /// The time between each pull.
     /// </summary>
-    [DataField("AttractRate")]
+    [DataField("AttractRate"), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan AttractRate = TimeSpan.FromMilliseconds(100);
 
     /// <summary>
     /// The pull speed.
     /// </summary>
-    [DataField("AttractSpeed")]
+    [DataField("AttractSpeed"), ViewVariables(VVAccess.ReadWrite)]
     public float AttractSpeed = 0.5f;
 
     /// <summary>
@@ -64,7 +64,7 @@ public sealed partial class ResourceMagnetComponent : Component
     /// <summary>
     /// What kind of entities should we attract?
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public EntityWhitelist? Whitelist;
 
     /// <summary>
