@@ -3,14 +3,14 @@
 # Discord: dvir01 (84770870936997888)
 
 # Shuttle Notes:
-# 
+#
 
 - type: vessel
   id: McCargo
   parent: BaseVessel
   name: DC McCargo
   description: "Your very own McCargo™ franchise! Comes fully stocked and ready for production of McMeals."
-  price: 65000
+  price: 80000
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/mccargo.yml

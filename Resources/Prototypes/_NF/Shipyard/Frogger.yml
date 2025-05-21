@@ -12,7 +12,7 @@
   id: frogger
   name: SFV Frogger
   description: Small-sized combat vessel equiped with 2x "Friendship" grenade launchers.
-  price: 55000
+  price: 80000
   parent: BaseVessel
   category: Small
   group: Shipyard

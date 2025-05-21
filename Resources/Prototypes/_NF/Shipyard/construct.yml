@@ -3,7 +3,7 @@
   parent: BaseVessel
   name: NT Construct
   description: A technically spacefaring vessel.  No livery.
-  price: 10500
+  price: 5000
   category: Micro
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/construct.yml

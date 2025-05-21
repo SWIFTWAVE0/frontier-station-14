@@ -3,7 +3,7 @@
   parent: BaseVessel
   name: FTU Pill
   description: Simple FTU salvage capsule even without a gyroscope.
-  price: 10000
+  price: 5000
   category: Micro
   group: Scrap
   shuttlePath: /Maps/_NF/Shuttles/Pill.yml
