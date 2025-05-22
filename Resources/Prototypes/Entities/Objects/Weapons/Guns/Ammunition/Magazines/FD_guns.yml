@@ -234,14 +234,11 @@
   - type: Gun
     projectileSpeed: 60
     fireRate: 3
-    selectedMode: SemiAuto
     angleDecay: 45
     minAngle: 5
     maxAngle: 15
-    availableModes:
-    - SemiAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+      path: /Audio/Effects/bite.ogg
       params:
         variation: 0.12
   - type: RechargeBasicEntityAmmo
@@ -283,7 +280,7 @@
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: TimedDespawn
-    lifetime: 0.5
+    lifetime: 0.1
   - type: PointLight
     radius: 2.5
     color: "#FF8888"
