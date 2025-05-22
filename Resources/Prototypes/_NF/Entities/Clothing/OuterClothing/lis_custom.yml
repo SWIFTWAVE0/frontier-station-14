@@ -1,0 +1,27 @@
+- type: entity
+  parent: ClothingOuterHardsuitBaseNF
+  id: ClothingOuterHardsuitLis
+  name: Костюм искателя
+  description: Тяжёлый РИГ неизвестного производства. Напоминает...рыцаря.
+  components:
+  - type: Sprite
+    sprite: _FD/Clothing/lishardsuit.rsi
+  - type: Clothing
+    sprite: _FD/Clothing/lishardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.5
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.8
+        Radiation: 0.3
+        Caustic: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitLis

@@ -214,7 +214,7 @@
   categories: [ DoNotMap ]
   components:
   - type: Sprite
-    sprite: _FD/Structures/tendril.rsi
+    sprite: _FD/Structures/claw.rsi
     layers:
     - state: claw
   - type: ContainerContainer

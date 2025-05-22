@@ -841,8 +841,6 @@
     - PlushieCarp
     - DehydratedSpaceCarp
     - NFMobTick
-    - NFMobTick
-    - NFMobTick
     - NFMobSmallRainbowSnake # SpawnMobCobraSalvage<NFMobSmallRainbowSnake
     chance: 0.95
     rarePrototypes:
