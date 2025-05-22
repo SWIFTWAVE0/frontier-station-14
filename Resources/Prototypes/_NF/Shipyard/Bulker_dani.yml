@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: bulkder_dani
+  name: KL Bulker
+  description: Your ship.
+  price: 40000
+  parent: BaseVessel
+  category: Medium
+  group: Custom
+  shuttlePath: /Maps/_NF/Shuttles/bulkder_dani.yml
+  guidebookPage: Null
+  addComponents:
+  - type: IFF
+    color: "#98FB98"
+  class:
+  - Cargo
+
+- type: gameMap
+  id: bulkder_dani
+  mapName: 'KL Bulker'
+  mapPath: /Maps/_NF/Shuttles/bulkder_dani.yml
+  minPlayers: 0
+  stations:
+    bulkder_dani:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'KL Bulker {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

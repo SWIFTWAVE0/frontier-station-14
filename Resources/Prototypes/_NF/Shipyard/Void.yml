@@ -1,0 +1,46 @@
+# Author Info
+# GitHub: chrome-cirrus
+# Discord: scry
+
+# Maintainer Info
+# GitHub: chrome-cirrus
+# Discord: scry
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: fd_anchor
+  parent: BaseVessel
+  name: KC Anchor
+  description: Eben ship.
+  # Sell value @ exped shipyard 70408, 15% markup and a little rounding gives us...
+  price: 120000
+  # 24x33 tiles
+  # 627 total tiles
+  # In light of the mid-range tile count and relatively narrow width I feel like Medium is more appropriate than Large even though it is technically one tile too long for the class.
+  category: Large
+  group: Custom
+  shuttlePath: /Maps/_NF/Shuttles/Void.yml
+  addComponents:
+  - type: IFF
+    color: "#FFFACD"
+  class:
+  - Expedition
+  engine:
+  - AME
+
+
+- type: gameMap
+  id: fd_anchor
+  mapName: 'KC Anchor'
+  mapPath: /Maps/_NF/Shuttles/Expedition/Void.yml
+  minPlayers: 0
+  stations:
+    fd_anchor:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'KC Anchor {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'

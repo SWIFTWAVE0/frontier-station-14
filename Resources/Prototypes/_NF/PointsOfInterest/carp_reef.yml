@@ -10,15 +10,15 @@
 # Byarr
 
 - type: pointOfInterest
-  id: oasis
+  id: carp_reef
   parent: BasePOI
-  name: Oasis
-  minimumDistance: 6666
-  maximumDistance: 6669
+  name: Carp Reef
+  minimumDistance: 3000
+  maximumDistance: 4500
   spawnGroup: Required
-  gridPath: /Maps/_NF/POI/oasis.yml
+  gridPath: /Maps/_NF/POI/carp_reef.yml
   addComponents:
   - type: IFF
-    color: "#FFA07A"
+    color: "#8FBC8F"
     flags: [HideLabel]
     readOnly: false

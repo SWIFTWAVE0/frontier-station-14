@@ -10,15 +10,15 @@
 # Byarr
 
 - type: pointOfInterest
-  id: oasis
+  id: klondaik
   parent: BasePOI
-  name: Oasis
-  minimumDistance: 6666
-  maximumDistance: 6669
+  name: Klondaik
+  minimumDistance: 16666
+  maximumDistance: 16669
   spawnGroup: Required
-  gridPath: /Maps/_NF/POI/oasis.yml
+  gridPath: /Maps/_NF/POI/klondaik.yml
   addComponents:
   - type: IFF
-    color: "#FFA07A"
+    color: "#9370DB"
     flags: [HideLabel]
     readOnly: false
