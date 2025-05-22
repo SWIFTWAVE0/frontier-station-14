@@ -9,14 +9,14 @@
 # Shuttle Notes:
 #
 - type: vessel
-  id: bulkder_dani
+  id: bulker_dani
   name: KL Bulker
   description: Your ship.
   price: 40000
   parent: BaseVessel
   category: Medium
   group: Custom
-  shuttlePath: /Maps/_NF/Shuttles/bulkder_dani.yml
+  shuttlePath: /Maps/_NF/Shuttles/Bulker_dani.yml
   guidebookPage: Null
   addComponents:
   - type: IFF
@@ -25,9 +25,9 @@
   - Cargo
 
 - type: gameMap
-  id: bulkder_dani
+  id: bulker_dani
   mapName: 'KL Bulker'
-  mapPath: /Maps/_NF/Shuttles/bulkder_dani.yml
+  mapPath: /Maps/_NF/Shuttles/Bulker_dani.yml
   minPlayers: 0
   stations:
     bulkder_dani:
