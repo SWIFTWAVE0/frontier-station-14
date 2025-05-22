@@ -242,9 +242,9 @@
       params:
         variation: 0.12
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 1
+    rechargeCooldown: 0.1
     rechargeSound:
-      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      path: /Audio/Effects/bite.ogg
       params:
         pitch: 1.2
         variation: 0.08
@@ -280,7 +280,7 @@
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: TimedDespawn
-    lifetime: 0.1
+    lifetime: 0.02
   - type: PointLight
     radius: 2.5
     color: "#FF8888"
