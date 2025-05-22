@@ -108,3 +108,9 @@
   name: 100R
   path:
     path: /Audio/_DV/Jukebox/100R.ogg
+
+- type: jukebox
+  id: fd19
+  name: SAMURAI Album
+  path:
+    path: /Audio/_DV/Jukebox/SAMURAI_Album.ogg
