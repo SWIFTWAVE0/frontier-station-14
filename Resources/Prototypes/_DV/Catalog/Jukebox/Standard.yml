@@ -105,36 +105,6 @@
 
 - type: jukebox
   id: fd18
-  name: Advent Coalition
+  name: 100R
   path:
-    path: /Audio/_DV/Jukebox/Advent_Coalition.ogg
-
-- type: jukebox
-  id: fd19
-  name: Alien Fortress
-  path:
-    path: /Audio/_DV/Jukebox/Alien_Fortress.ogg
-
-- type: jukebox
-  id: fd20
-  name: Ambush
-  path:
-    path: /Audio/_DV/Jukebox/Ambush.ogg
-
-- type: jukebox
-  id: fd21
-  name: Avenger Attacked
-  path:
-    path: /Audio/_DV/Jukebox/Avenger_Attacked.ogg
-
-- type: jukebox
-  id: fd22
-  name: Blacksite Horror
-  path:
-    path: /Audio/_DV/Jukebox/Blacksite_Horror.ogg
-
-- type: jukebox
-  id: fd23
-  name: Break the Line
-  path:
-    path: /Audio/_DV/Jukebox/Break_the_Line.ogg
+    path: /Audio/_DV/Jukebox/100R.ogg

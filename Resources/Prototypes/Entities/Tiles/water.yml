@@ -20,7 +20,7 @@
   - type: SolutionContainerManager
     solutions:
       pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable. 
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
         reagents:
         - ReagentId: Water
           Quantity: 9999999
@@ -63,3 +63,29 @@
   - type: TileEntityEffect
     effects:
     - !type:ExtinguishReaction
+
+# Волшебная вода
+
+- type: entity
+  parent: FloorWaterEntity
+  id: FloorWaterEntityHealing
+  name: water
+  description: A real thirst quencher.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      pool:
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
+        reagents:
+        - ReagentId: Water
+          Quantity: 999999
+        - ReagentId: Omnizine
+          Quantity: 999999
+  - type: SolutionRegeneration
+    solution: tank
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 50
+      - ReagentId: Omnizine
+        Quantity: 50
