@@ -1,0 +1,17 @@
+- type: entity
+  parent: NFClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitLis
+  categories: [ HideSpawnMenu ]
+  name: Шлем искателя
+  description: Тяжёлый шлем многоцелевого РИГа неизвестного производства. Напоминает...рыцарский?
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _FD/Clothing/lishelmet.rsi
+  - type: Clothing
+    sprite: _FD/Clothing/lishelmet.rsi
+  - type: PointLight
+    color: "#ffdbad"
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
