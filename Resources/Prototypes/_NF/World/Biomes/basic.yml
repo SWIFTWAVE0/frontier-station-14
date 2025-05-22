@@ -9,7 +9,7 @@
     noiseChannel: Wreck
   - type: NoiseRangeCarver
     ranges:
-    - 0.4, 0.6
+    - 50.5, 50.6
     noiseChannel: Carver
   - type: PointSetDistanceCarver
 
@@ -17,7 +17,7 @@
 - type: spaceBiome
   id: NFAsteroidsNear
   parent: NFBiomeBase
-  priority: 2
+  priority: 3
   distanceRange: 0, 5000
   chunkComponents:
   - type: SimpleDebrisSelector
@@ -90,7 +90,7 @@
 - type: spaceBiome
   id: NFAsteroidsMid
   parent: NFBiomeBase
-  priority: 1
+  priority: 2
   distanceRange: 5000, 9500
   chunkComponents:
   - type: SimpleDebrisSelector
@@ -242,7 +242,7 @@
 - type: spaceBiome
   id: NFAsteroidsFar
   parent: NFBiomeBase
-  priority: 0
+  priority: 1
   # no distanceRange, accepts all remaining distance
   noiseRanges: {}
   chunkComponents:
