@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/16/2025 16:29:07
-  entityCount: 1978
+  time: 05/22/2025 13:54:43
+  entityCount: 1980
 maps: []
 grids:
 - 1
@@ -1985,7 +1985,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -29267.27
+      secondsUntilStateChange: -29436.318
       state: Opening
   - uid: 104
     components:
@@ -1997,7 +1997,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -29264.87
+      secondsUntilStateChange: -29433.918
       state: Opening
   - uid: 105
     components:
@@ -4489,6 +4489,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -10.5,22.5
       parent: 1
+- proto: CyberPen
+  entities:
+  - uid: 1979
+    components:
+    - type: Transform
+      pos: 14.856471,-5.1209545
+      parent: 1
 - proto: DefaultStationBeaconDockingArm
   entities:
   - uid: 1577
@@ -6392,6 +6399,15 @@ entities:
     - type: Transform
       pos: 11.4939,17.9847
       parent: 1
+- proto: Paper
+  entities:
+  - uid: 624
+    components:
+    - type: Transform
+      pos: 26.72934,21.616964
+      parent: 1
+    - type: Paper
+      content: Дьявол знает, где таится Оазис...
 - proto: PlastitaniumWindow
   entities:
   - uid: 1114
@@ -8891,12 +8907,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 27.009935,24.056341
       parent: 1
-  - uid: 624
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.9810591,25.90097
-      parent: 1
   - uid: 625
     components:
     - type: Transform
@@ -11100,6 +11110,13 @@ entities:
     components:
     - type: Transform
       pos: -26.516228,-21.36238
+      parent: 1
+- proto: ScrapProcessor
+  entities:
+  - uid: 1980
+    components:
+    - type: Transform
+      pos: -12.5,22.5
       parent: 1
 - proto: ScrapSteel
   entities:

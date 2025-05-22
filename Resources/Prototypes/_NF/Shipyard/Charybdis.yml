@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: Wolfhauler
+# Discord: wolfhauler
+
+# Maintainer Info
+# GitHub: ThatOneGoblin25
+# Discord: thedaarkgoblin
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Charybdis
+  name: Unknown Megafauna
+  description: You don't want to know...
+  price: 100
+  parent: BaseVessel
+  category: Large
+  group: Custom
+  shuttlePath: /Maps/_NF/Shuttles/Charybdis.yml
+  guidebookPage: Null
+  addComponents:
+  - type: IFF
+    color: "#8B0000"
+  class:
+  - Civilian
+
+- type: gameMap
+  id: Charybdis
+  mapName: 'Unknown Megafauna'
+  mapPath: /Maps/_NF/Shuttles/Charybdis.yml
+  minPlayers: 0
+  stations:
+    Charybdis:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Unknown Megafauna {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

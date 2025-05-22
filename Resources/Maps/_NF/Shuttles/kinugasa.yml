@@ -4,8 +4,8 @@ meta:
   engineVersion: 251.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/17/2025 11:18:37
-  entityCount: 1049
+  time: 05/22/2025 14:38:27
+  entityCount: 1051
 maps: []
 grids:
 - 1
@@ -4960,6 +4960,13 @@ entities:
       rot: 3.141592653589793 rad
       pos: -0.5,-27.5
       parent: 1
+- proto: MobileEmpGenerator
+  entities:
+  - uid: 1051
+    components:
+    - type: Transform
+      pos: -0.5,-0.5
+      parent: 1
 - proto: NFHolopadShip
   entities:
   - uid: 978
@@ -5003,6 +5010,18 @@ entities:
       parent: 1
     - type: Physics
       bodyType: Static
+- proto: PirateFlag
+  entities:
+  - uid: 24
+    components:
+    - type: Transform
+      pos: 2.5,-18.5
+      parent: 1
+  - uid: 1050
+    components:
+    - type: Transform
+      pos: 0.5,4.5
+      parent: 1
 - proto: Pitcher
   entities:
   - uid: 966
@@ -5916,12 +5935,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,-0.5
-      parent: 1
-  - uid: 24
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 4.5,-1.5
       parent: 1
   - uid: 25
     components:
